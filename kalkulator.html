@@ -60,7 +60,7 @@
 <style>
 :root {
   --navy:#1B3858; --navy-deep:#0f2035;
-  --teal:#7DC8C0; --purple:#8B6CB5; --pink:#E8457A; --gold:#F0B429;
+  --teal:#5FA79E; --teal-ink:#3F7C74; --teal-lite:#8CC5BD; --purple:#8B6CB5; --pink:#E8457A; --gold:#F0B429;
   --green:#22c55e; --bg:#F6F8FB; --gray:#6B7A8D;
   --border:rgba(27,56,88,.10);
   --fb:'Space Grotesk',sans-serif; --fd:'Poppins',sans-serif;
@@ -293,9 +293,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,32,53,.96
 .adv-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;position:relative;margin:0 auto .9rem;background:rgba(125,200,192,.12);border:2px solid rgba(125,200,192,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:1.3rem;font-weight:800;color:var(--teal);}
 .adv-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .adv-name{font-family:var(--fb);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
-.adv-role{font-size:.78rem;color:#3f8f87;font-weight:600;line-height:1.4;min-height:2.2em;}
+.adv-role{font-size:.78rem;color:var(--teal-ink);font-weight:600;line-height:1.4;min-height:2.2em;}
 .adv-more{margin-top:.85rem;display:inline-flex;align-items:center;gap:.35rem;font-family:var(--fb);font-size:.74rem;font-weight:700;color:var(--gray);transition:color .2s;}
-.adv-card:hover .adv-more{color:var(--teal);}
+.adv-card:hover .adv-more{color:var(--teal-ink);}
 
 /* HÁTLAP */
 .adv-back{transform:rotateY(180deg);background:var(--navy-deep);border:1.5px solid rgba(240,180,41,.45);}
@@ -690,7 +690,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 .sub-note{margin-top:1.2rem;padding:.9rem 1.15rem;border-radius:12px;background:var(--bg);border:1px solid var(--border);font-size:.75rem;line-height:1.65;color:var(--gray);}
 .sub-note b{color:var(--navy);}
 .upd{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;border-radius:100px;background:rgba(240,180,41,.14);border:1px solid rgba(240,180,41,.35);font-family:var(--fb);font-size:.68rem;font-weight:700;color:#8a6d1f;margin-bottom:.9rem;}
-.sub-back{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fb);font-size:.8rem;font-weight:700;color:var(--teal);text-decoration:none;margin-bottom:1rem;}
+.sub-back{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fb);font-size:.84rem;font-weight:700;color:var(--teal-lite);text-decoration:none;margin-bottom:1rem;}
 .sub-back:hover{text-decoration:underline;}
 
 /* ═══════════ KALKULÁTOROK ═══════════ */
@@ -713,7 +713,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 .fld:last-child{margin-bottom:0;}
 .fld-l{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.45rem;}
 .fld-l label{font-family:var(--fb);font-size:.82rem;font-weight:700;color:var(--navy);}
-.fld-v{font-family:var(--fb);font-size:.9rem;font-weight:800;color:var(--teal);white-space:nowrap;}
+.fld-v{font-family:var(--fb);font-size:.95rem;font-weight:800;color:var(--teal-ink);white-space:nowrap;}
 .fld input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:100px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) var(--p,50%),#e3e9f1 var(--p,50%),#e3e9f1 100%);outline:none;}
 .fld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--teal);cursor:pointer;box-shadow:0 2px 8px rgba(27,56,88,.2);}
 .fld input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--teal);cursor:pointer;}
@@ -744,6 +744,77 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 .calchead h3{font-family:var(--fb);font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:.3rem;}
 .calchead p{font-size:.85rem;line-height:1.65;color:var(--gray);}
 .calcsec{scroll-margin-top:90px;}
+
+
+/* ═══════════ GEOMETRIA: egységes, szigorúbb sarkok ═══════════ */
+.why-card,.fw-card,.svc-card,.step-card,.faq-item,.adv-card .adv-side,.lead-box,.cta-box,
+.calcbox,.calctile,.qz,.imp-modal,.adv-modal,.docbox,.progbox,.warnbox,.ctab,.ttable,
+.st,.bignum,.ki,.calccta,.sub-note,.sav-note,.res-note,.compare-table,.video-embed,
+.rz-list,.rz-badge,.qz-opt,.eo-tile > span{border-radius:10px!important;}
+.apt-btn-inner,.lead-send,.qz-next,.calccta-b,.res-cta,.adv-m-book a,.adv-cbtn,.hact,.qn,
+.lead-field input,.lead-field textarea,.fld input[type=number],.rz-again{border-radius:8px!important;}
+.sav-badge,.st-n,.ic-box{border-radius:9px!important;}
+.adv-photo,.adv-face,.adv-m-photo{border-radius:12px!important;}
+
+
+/* ═══════════ TIPOGRÁFIA: nagyobb törzsszöveg, visszafogottabb címek ═══════════ */
+body{font-size:16px;}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem)!important;letter-spacing:-.015em;}
+.hero-title{font-size:clamp(1.75rem,3.6vw,2.5rem)!important;letter-spacing:-.02em;}
+.sub-h1{font-size:clamp(1.6rem,3.2vw,2.3rem)!important;letter-spacing:-.018em;}
+.section-sub{font-size:1rem!important;line-height:1.75!important;max-width:620px;}
+.hero-lead{font-size:1.02rem!important;line-height:1.75!important;max-width:520px;}
+.sub-lead{font-size:1.02rem!important;line-height:1.78!important;}
+.fw-text,.why-text,.svc-desc,.step-text,.sav-text,.st-d,.ki-d,.docitem span,
+.progbox p,.warnbox li,.calccta-d,.calctile .ct-d,.qz-help,.rz-i span,.imp-modal p,
+.imp-modal li,.adv-m-bio,.faq-a,.faq-a p,.lead-sub,.cta-sub,.about-bio{font-size:.95rem!important;line-height:1.75!important;}
+.fw-title,.why-title,.svc-title,.step-title,.ki-t,.adv-name,.calctile .ct-t{font-size:1.02rem!important;}
+.faq-q{font-size:1rem!important;}
+.st-t,.docbox h4,.progbox h4,.warnbox h4{font-size:1.02rem!important;}
+.res-row span{font-size:.9rem!important;}
+.res-row b{font-size:1rem!important;}
+.fld-l label{font-size:.9rem!important;}
+.fld-h{font-size:.8rem!important;line-height:1.6!important;}
+.sub-note,.sav-note,.res-note{font-size:.82rem!important;line-height:1.7!important;}
+.label-chip{font-size:.7rem!important;letter-spacing:.12em;}
+.adv-role{font-size:.85rem!important;}
+.qz-q{font-size:1.35rem!important;}
+.qz-opt{font-size:.98rem!important;padding:1.05rem 1.2rem!important;}
+.hact,.qn{font-size:.9rem!important;}
+.apt-btn-inner{font-size:.92rem!important;}
+.trow{font-size:.94rem!important;}
+.compare-cell{font-size:.93rem!important;}
+.ctab-r > div{font-size:.93rem!important;}
+@media(max-width:560px){
+  .section-sub,.hero-lead,.sub-lead{font-size:.95rem!important;}
+  .fw-text,.why-text,.svc-desc,.step-text,.sav-text,.st-d{font-size:.88rem!important;}
+}
+
+
+/* ═══════════ VONALAS IKONOK ═══════════ */
+.ic{flex:none;display:inline-block;vertical-align:-.18em;}
+.ic-lg{flex:none;display:block;}
+.ic-box{width:40px;height:40px;border-radius:10px;background:rgba(94,167,158,.11);border:1px solid rgba(94,167,158,.22);display:flex;align-items:center;justify-content:center;color:var(--teal-ink);flex:none;}
+
+
+/* ═══════════ ANIMÁCIÓ-DIÉTA ═══════════ */
+.money-float{display:none!important;}
+.eo-tile > span{animation-duration:34s!important;}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+
+.apt-btn-inner,.hact,.qn,.calccta-b,.res-cta,.lead-send,.adv-m-book a,.qz-next{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;}
+.lead-send{width:100%;}
+.calchead h3{display:flex;align-items:center;gap:.6rem;color:var(--navy);}
+.calchead h3 .ic{color:var(--teal-ink);}
+.calctile .ct-i{display:flex;justify-content:center;color:var(--teal-ink);margin-bottom:.75rem;}
+.why-icon.ic-box{margin-top:.1rem;}
+.sub-chip .ic{color:var(--teal-lite);}
+.upd .ic{color:#8a6d1f;}
+.warnbox h4,.docbox h4{display:flex;align-items:center;gap:.5rem;}
+.warnbox h4 .ic{color:var(--teal-ink);}
+.rz-i .m .ic{color:var(--teal-ink);}
+.trow span:first-child{gap:0;}
 
 </style>
 </head>
@@ -786,15 +857,15 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
     <h1 class="sub-h1">Kalkulátorok - <em>számold ki a saját helyzetedre</em></h1>
     <p class="sub-lead">Négy eszköz a leggyakoribb kérdésekre. Mindegyik azonnal számol, semmit nem kell megadnod magadról, és nem kérünk regisztrációt. A kalkulátor becslés: a pontos számokat egy díjmentes átvilágításon nézzük meg.</p>
     <div class="sub-chips">
-      <div class="sub-chip">⚡ Azonnali eredmény</div>
-      <div class="sub-chip">🔒 <b>Nincs adatbekérés</b></div>
-      <div class="sub-chip">📅 Adatok: <b data-upd></b></div>
+      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 2.5L4.5 13.6h6.4l-.7 7.9 8.9-11.1h-6.4z"/></svg> Azonnali eredmény</div>
+      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.2" rx="2.2"/><path d="M8.2 10.5V7.4a3.8 3.8 0 0 1 7.6 0v3.1"/></svg> <b>Nincs adatbekérés</b></div>
+      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Adatok: <b data-upd></b></div>
     </div>
     <div class="quicknav">
-      <a href="kalkulator.html" class="qn on"><span>🧮</span>Számolok</a>
-      <a href="kviz.html" class="qn"><span>✅</span>Jár nekem?</a>
-      <a href="lakashitel-folyamat.html" class="qn"><span>🏠</span>Lakásfinanszírozás</a>
-      <a href="index.html#advisors" class="qn"><span>📅</span>Időpontot foglalok</a>
+      <a href="kalkulator.html" class="qn on"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h4"/></svg>Számolok</a>
+      <a href="kviz.html" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M8.2 12.2l2.6 2.6 5-5.2"/></svg>Jár nekem?</a>
+      <a href="lakashitel-folyamat.html" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5L12 3.5l8.5 7"/><path d="M5.5 9.6V20a.9.9 0 0 0 .9.9h11.2a.9.9 0 0 0 .9-.9V9.6"/><path d="M9.8 20.9v-6h4.4v6"/></svg>Lakásfinanszírozás</a>
+      <a href="index.html#advisors" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Időpontot foglalok</a>
     </div>
   </div>
 </section>
@@ -802,10 +873,10 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 <section class="section" style="background:#fff;padding-top:3rem;padding-bottom:1rem;">
   <div class="container">
     <div class="calcgrid">
-      <a href="#torleszto" class="calctile"><div class="ct-i">🧮</div><div class="ct-t">Törlesztő és kamatkülönbség</div><div class="ct-d">Mennyi lenne a havi törlesztőd, és mennyit hoz egy jobb kamat</div></a>
-      <a href="#jtm" class="calctile"><div class="ct-i">📊</div><div class="ct-t">Mennyi hitelt kaphatok?</div><div class="ct-d">Az MNB adósságfék-szabálya szerint, Otthon Start módban is</div></a>
-      <a href="#kivaltas" class="calctile"><div class="ct-i">🔄</div><div class="ct-t">Hitelkiváltás megtérülés</div><div class="ct-d">Megéri-e váltani, és hány hónap alatt jön vissza a költség</div></a>
-      <a href="#bankszamla" class="calctile"><div class="ct-i">🏦</div><div class="ct-t">Bankszámla költség</div><div class="ct-d">Mennyit spórolsz, ha kedvezőbb számlacsomagra váltasz</div></a>
+      <a href="#torleszto" class="calctile"><div class="ct-i"><svg class="ic-lg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h4"/></svg></div><div class="ct-t">Törlesztő és kamatkülönbség</div><div class="ct-d">Mennyi lenne a havi törlesztőd, és mennyit hoz egy jobb kamat</div></a>
+      <a href="#jtm" class="calctile"><div class="ct-i"><svg class="ic-lg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5h17"/><rect x="5.5" y="12" width="3.4" height="6.5" rx="1"/><rect x="10.3" y="7.5" width="3.4" height="11" rx="1"/><rect x="15.1" y="10" width="3.4" height="8.5" rx="1"/></svg></div><div class="ct-t">Mennyi hitelt kaphatok?</div><div class="ct-d">Az MNB adósságfék-szabálya szerint, Otthon Start módban is</div></a>
+      <a href="#kivaltas" class="calctile"><div class="ct-i"><svg class="ic-lg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-14.6 5.9M3.5 12a8.5 8.5 0 0 1 14.6-5.9"/><path d="M18.1 2.6v3.5h-3.5M5.9 21.4v-3.5h3.5"/></svg></div><div class="ct-t">Hitelkiváltás megtérülés</div><div class="ct-d">Megéri-e váltani, és hány hónap alatt jön vissza a költség</div></a>
+      <a href="#bankszamla" class="calctile"><div class="ct-i"><svg class="ic-lg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 9.6L12 4l8.8 5.6"/><path d="M5.4 9.9v8.2M9.8 9.9v8.2M14.2 9.9v8.2M18.6 9.9v8.2"/><path d="M3 20.6h18"/></svg></div><div class="ct-t">Bankszámla költség</div><div class="ct-d">Mennyit spórolsz, ha kedvezőbb számlacsomagra váltasz</div></a>
     </div>
   </div>
 </section>
@@ -815,7 +886,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
   <div class="container">
     <div class="calcbox">
       <div class="calchead">
-        <h3>🧮 Törlesztő és kamatkülönbség</h3>
+        <h3><svg class="ic" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h4"/></svg> Törlesztő és kamatkülönbség</h3>
         <p>Írd be a hitelösszeget és a futamidőt. Megmutatja, mennyi lenne a havi törlesztőd, és mekkora a különbség a hirdetett és az egyedi bírálattal elérhető kamat között.</p>
       </div>
       <div class="calcbody">
@@ -854,7 +925,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
         <div class="res-row"><span>Teljes visszafizetés – egyedi</span><b id="t_t2" class="good"></b></div>
         <div class="res-row"><span>Kamat összesen – hirdetett</span><b id="t_int1"></b></div>
         <div class="res-row"><span>Kamat összesen – egyedi</span><b id="t_int2" class="good"></b></div>
-          <a href="index.html#advisors" class="res-cta">📅 Nézzük meg a te esetedre</a>
+          <a href="index.html#advisors" class="res-cta"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Nézzük meg a te esetedre</a>
         </div>
       </div>
     </div>
@@ -866,7 +937,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
   <div class="container">
     <div class="calcbox">
       <div class="calchead">
-        <h3>📊 Mennyi hitelt kaphatok?</h3>
+        <h3><svg class="ic" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5h17"/><rect x="5.5" y="12" width="3.4" height="6.5" rx="1"/><rect x="10.3" y="7.5" width="3.4" height="11" rx="1"/><rect x="15.1" y="10" width="3.4" height="8.5" rx="1"/></svg> Mennyi hitelt kaphatok?</h3>
         <p>Az MNB adósságfék-szabálya (JTM) szerint számol: havi 800 ezer forint nettó jövedelem alatt a jövedelmed 50%-a, afölött 60%-a mehet el törlesztésre, legalább 10 évig fix kamatozásnál.</p>
       </div>
       <div class="calcbody">
@@ -919,7 +990,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
         <div class="res-row"><span>Ehhez tartozó havi törlesztő</span><b id="j_month"></b></div>
           <div class="res-row" id="j_oscap" style="display:none;"><span>⚠️ Otthon Start plafon</span><b class="warn">50 000 000 Ft</b></div>
           <div class="res-note">Ez becslés. A bank ezen felül vizsgálja a munkaviszonyt, a KHR-státuszt, az ingatlan értékbecslését és a saját belső szabályait is.</div>
-          <a href="index.html#advisors" class="res-cta">📅 Pontos számítást kérek</a>
+          <a href="index.html#advisors" class="res-cta"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Pontos számítást kérek</a>
         </div>
       </div>
     </div>
@@ -931,7 +1002,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
   <div class="container">
     <div class="calcbox">
       <div class="calchead">
-        <h3>🔄 Hitelkiváltás megtérülés</h3>
+        <h3><svg class="ic" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-14.6 5.9M3.5 12a8.5 8.5 0 0 1 14.6-5.9"/><path d="M18.1 2.6v3.5h-3.5M5.9 21.4v-3.5h3.5"/></svg> Hitelkiváltás megtérülés</h3>
         <p>Egy új, olcsóbb hitellel kifizeted a régit. Ez nem automatikusan éri meg: a váltásnak egyszeri költségei vannak. Itt megnézheted, mennyit spórolsz, és hány hónap alatt jön vissza a költség.</p>
       </div>
       <div class="calcbody">
@@ -974,7 +1045,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
         <div class="res-row"><span>Összes befizetés – kiváltás után</span><b id="k_tn" class="good"></b></div>
         <div class="res-row"><span>Megtérülési idő</span><b id="k_pb" class="good"></b></div>
           <div class="res-note" id="k_warn" style="display:none;">Ezekkel a paraméterekkel a kiváltás nem hoz megtakarítást. Ez normális: ha a jelenlegi kamatod már alacsony, vagy kevés a hátralévő futamidő, nem éri meg váltani.</div>
-          <a href="index.html#advisors" class="res-cta">📅 Átnézzük a szerződésed</a>
+          <a href="index.html#advisors" class="res-cta"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Átnézzük a szerződésed</a>
         </div>
       </div>
     </div>
@@ -986,7 +1057,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
   <div class="container">
     <div class="calcbox">
       <div class="calchead">
-        <h3>🏦 Bankszámla költség</h3>
+        <h3><svg class="ic" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 9.6L12 4l8.8 5.6"/><path d="M5.4 9.9v8.2M9.8 9.9v8.2M14.2 9.9v8.2M18.6 9.9v8.2"/><path d="M3 20.6h18"/></svg> Bankszámla költség</h3>
         <p>A számlavezetés önmagában kis tétel, de évekre vetítve összeadódik. Ha nem tudod a pontos éves díjadat, a netbankban az éves számlakivonatban megtalálod egy összegben.</p>
       </div>
       <div class="calcbody">
@@ -1023,7 +1094,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
         <div class="res-row"><span>Jelenlegi számla összesen</span><b id="b_tn"></b></div>
         <div class="res-row"><span>Új számla összesen</span><b id="b_tw" class="good"></b></div>
           <div class="res-note">A számlacsomagok díjai és a kedvezmények feltételei bankonként eltérnek, és a legjobb ajánlatok gyakran jövedelem-jóváíráshoz vagy kártyahasználathoz kötöttek.</div>
-          <a href="index.html#advisors" class="res-cta">📅 Megnézzük a számládat</a>
+          <a href="index.html#advisors" class="res-cta"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Megnézzük a számládat</a>
         </div>
       </div>
     </div>
@@ -1042,7 +1113,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;flex-shrink:0;">
           <div class="apt-btn-wrap">
-            <a href="index.html#advisors" class="apt-btn-inner" style="padding:1rem 2rem;">📅 Tanácsadót választok</a>
+            <a href="index.html#advisors" class="apt-btn-inner" style="padding:1rem 2rem;"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Tanácsadót választok</a>
           </div>
         </div>
       </div>
