@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 ╔══════════════════════════════════════════════════════════════════════════╗
-║  EAGLZ — céges tanácsadói oldal                                          ║
+║  EAGLZ - céges tanácsadói oldal                                          ║
 ║  Alap: Gentischer Richárd személyes oldala, céges (T/1) hangnemre írva.  ║
 ╠══════════════════════════════════════════════════════════════════════════╣
 ║  MIT KELL KITÖLTENI ÉLESÍTÉS ELŐTT (keresd rá: "_IDE")                   ║
@@ -10,7 +10,7 @@
 ║   EAGLZ_MNB_ADAT_IDE   – "Miért mi?" szekció, ellenőrzött kártya         ║
 ║   INFO_EMAIL_IDE       – footer kapcsolat + impresszum                   ║
 ║   IMPRESSZUM           – a lap alján, OVB adatokkal. Compliance-re!      ║
-║   KARRIER_OLDAL_URL_IDE– Rólunk + footer karrier link                    ║
+║   http://eaglzcareer.hu– Rólunk + footer karrier link                    ║
 ║   NÉV_IDE / EMAIL_IDE / TELEFON_IDE / BOOKING_URL_IDE / LINKEDIN_URL_IDE ║
 ║                        – a lap alján lévő ADVISORS tömbben               ║
 ║                                                                          ║
@@ -43,18 +43,18 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:url" content="https://eaglz.hu/kalkulator.html">
-<meta property="og:title" content="Kalkulátorok — EAGLZ Finance">
+<meta property="og:title" content="Kalkulátorok - EAGLZ Finance">
 <meta property="og:description" content="Törlesztő és kamatkülönbség, mennyi hitelt kaphatok (JTM), hitelkiváltás megtérülés és bankszámla költség. Azonnali eredmény, adatbekérés nélkül.">
 <meta property="og:image" content="https://eaglz.hu/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="EAGLZ Finance — független pénzügyi tanácsadás">
+<meta property="og:image:alt" content="EAGLZ Finance - független pénzügyi tanácsadás">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kalkulátorok — EAGLZ Finance">
+<meta name="twitter:title" content="Kalkulátorok - EAGLZ Finance">
 <meta name="twitter:description" content="Törlesztő és kamatkülönbség, mennyi hitelt kaphatok (JTM), hitelkiváltás megtérülés és bankszámla költség. Azonnali eredmény, adatbekérés nélkül.">
 <meta name="twitter:image" content="https://eaglz.hu/og-image.png">
 
-<title>Kalkulátorok — EAGLZ Finance</title>
+<title>Kalkulátorok - EAGLZ Finance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -139,14 +139,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,32,53,.96
 .hero-trust-item{display:flex;align-items:center;gap:.35rem;font-family:var(--fb);font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);}
 .hero-trust-item span{color:var(--teal);}
 
-/* PHOTO — kerek + szonár */
+/* PHOTO - kerek + szonár */
 .photo-wrap{position:relative;display:flex;align-items:center;justify-content:center;padding:2.5rem;}
 .sonar-sweep{position:absolute;top:50%;left:50%;width:258px;height:258px;transform:translate(-50%,-50%) rotate(0deg);border-radius:50%;background:conic-gradient(from 0deg,rgba(125,200,192,.9) 0deg,rgba(125,200,192,.45) 30deg,rgba(125,200,192,0) 80deg,rgba(125,200,192,0) 320deg,rgba(125,200,192,.5) 360deg);-webkit-mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);animation:radarSpin 3s linear infinite;pointer-events:none;z-index:1;}
 @keyframes radarSpin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
 .photo-circle{position:relative;z-index:2;width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid rgba(125,200,192,.6);box-shadow:0 0 0 6px rgba(125,200,192,.12),0 0 48px rgba(125,200,192,.22);}
 .photo-circle img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 
-/* SERVICES — accordion */
+/* SERVICES - accordion */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
 .svc-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
 .svc-card.open{border-color:rgba(125,200,192,.45);box-shadow:0 6px 24px rgba(27,56,88,.09);}
@@ -548,7 +548,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 .svc-modal-step { font-size:.84rem; color:var(--navy); line-height:1.5; padding-left:1.1rem; position:relative; }
 .svc-modal-step::before { content:"→"; position:absolute; left:0; color:var(--teal); font-weight:700; }
 
-/* Floating 💸 — clustered around the process section */
+/* Floating 💸 - clustered around the process section */
 #how { position:relative; }
 .money-float { position:absolute; font-size:1.5rem; pointer-events:none; user-select:none; opacity:.65; animation:mFloat var(--d,4s) ease-in-out var(--dl,0s) infinite; }
 @keyframes mFloat { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
@@ -783,7 +783,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 <section class="sub-hero">
   <div class="container">
     <a href="index.html" class="sub-back">← Vissza a főoldalra</a>
-    <h1 class="sub-h1">Kalkulátorok — <em>számold ki a saját helyzetedre</em></h1>
+    <h1 class="sub-h1">Kalkulátorok - <em>számold ki a saját helyzetedre</em></h1>
     <p class="sub-lead">Négy eszköz a leggyakoribb kérdésekre. Mindegyik azonnal számol, semmit nem kell megadnod magadról, és nem kérünk regisztrációt. A kalkulátor becslés: a pontos számokat egy díjmentes átvilágításon nézzük meg.</p>
     <div class="sub-chips">
       <div class="sub-chip">⚡ Azonnali eredmény</div>
@@ -1085,7 +1085,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
       <div class="footer-links">
         <a href="mailto:INFO_EMAIL_IDE">Kapcsolat</a>
         <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener">Időpontfoglalás</a>
-        <a href="KARRIER_OLDAL_URL_IDE" target="_blank">Karrier</a>
+        <a href="http://eaglzcareer.hu" target="_blank">Karrier</a>
         <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
       </div>
     </div>
@@ -1093,7 +1093,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 </footer>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     IMPRESSZUM — footer linkről nyílik. A _IDE végű helyeket töltsd ki!
+     IMPRESSZUM - footer linkről nyílik. A _IDE végű helyeket töltsd ki!
      FONTOS: élesítés előtt futtasd át az OVB compliance-en.
      ══════════════════════════════════════════════════════════════════════ -->
 <div class="imp-overlay" id="impOverlay">
@@ -1142,7 +1142,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
     <h4>Panaszkezelés</h4>
     <p>Panaszt szóban (személyesen vagy telefonon) és írásban (e-mailben, postai úton) is előterjeszthetsz. A panaszkezelés menetét az OVB Allfinanz Magyarország Kft. panaszkezelési szabályzata tartalmazza.</p>
     <ul>
-      <li>Első fokon: OVB Allfinanz Magyarország Kft. — OVB_PANASZ_ELERHETOSEG_IDE</li>
+      <li>Első fokon: OVB Allfinanz Magyarország Kft. - OVB_PANASZ_ELERHETOSEG_IDE</li>
       <li>Fogyasztói jogvita esetén: <b>Pénzügyi Békéltető Testület</b> (1013 Budapest, Krisztina krt. 55.)</li>
       <li>Fogyasztóvédelmi eljárás: <b>Magyar Nemzeti Bank</b> ügyfélszolgálata</li>
       <li>Vagy bírósági út</li>
@@ -1178,7 +1178,7 @@ if(location.hash === '#impresszum') openImp();
 
 <script>
 /* ══════════════════════════════════════════════════════════════════════
-   KAMATOK — EGY HELYEN. Ezt a blokkot frissítsd negyedévente.
+   KAMATOK - EGY HELYEN. Ezt a blokkot frissítsd negyedévente.
    ══════════════════════════════════════════════════════════════════════ */
 var RATES = { advertised: 7.49, best: 5.59, otthonStart: 3.00, updated: '2026. augusztus' };
 /* JTM (MNB adósságfék) 2026: 800 e Ft nettó alatt 50%, felette 60% */
@@ -1281,7 +1281,7 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
     $('k_years_v').textContent   = y + ' év';
     $('k_rate_v').textContent    = pct(r);
     $('k_cost_v').textContent    = huf(cost);
-    $('k_big').textContent  = save > 0 ? huf(save) : '—';
+    $('k_big').textContent  = save > 0 ? huf(save) : '-';
     $('k_new').textContent  = huf(newM);
     $('k_sm').textContent   = (saveM>0?'−':'+') + huf(Math.abs(saveM));
     $('k_to').textContent   = huf(totalOld);
