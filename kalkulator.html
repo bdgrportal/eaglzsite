@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  EAGLZ — céges tanácsadói oldal                                          ║
+║  Alap: Gentischer Richárd személyes oldala, céges (T/1) hangnemre írva.  ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║  MIT KELL KITÖLTENI ÉLESÍTÉS ELŐTT (keresd rá: "_IDE")                   ║
+║                                                                          ║
+║   CSAPATFOTO_URL_IDE   – hero kör hátoldala (hoverre fordul)             ║
+║   EAGLZ_MNB_ADAT_IDE   – "Miért mi?" szekció, ellenőrzött kártya         ║
+║   INFO_EMAIL_IDE       – footer kapcsolat + impresszum                   ║
+║   IMPRESSZUM           – a lap alján, OVB adatokkal. Compliance-re!      ║
+║   KARRIER_OLDAL_URL_IDE– Rólunk + footer karrier link                    ║
+║   NÉV_IDE / EMAIL_IDE / TELEFON_IDE / BOOKING_URL_IDE / LINKEDIN_URL_IDE ║
+║                        – a lap alján lévő ADVISORS tömbben               ║
+║                                                                          ║
+║  TANÁCSADÓ FELVÉTELE: görgess a fájl aljára az ADVISORS tömbhöz,         ║
+║  másolj le egy { ... } blokkot, írd át. Semmi mást nem kell módosítani.  ║
+║                                                                          ║
+║  Ami nincs kitöltve, az nem törik el: a hiányzó foglalólink a közös      ║
+║  EAGLZ naptárra esik vissza, a hiányzó email/telefon gomb nem jelenik    ║
+║  meg, a kitöltetlen bemutatkozó sárga placeholder-dobozként látszik.     ║
+╚══════════════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulátorok — EAGLZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1B3858; --navy-deep:#0f2035;
+  --teal:#7DC8C0; --purple:#8B6CB5; --pink:#E8457A; --gold:#F0B429;
+  --green:#22c55e; --bg:#F6F8FB; --gray:#6B7A8D;
+  --border:rgba(27,56,88,.10);
+  --fb:'Space Grotesk',sans-serif; --fd:'Poppins',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fd);background:var(--bg);color:var(--navy);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,32,53,.96);backdrop-filter:blur(14px);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--fb);font-size:.9rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.35;}
+.nav-logo span{color:var(--teal);}
+.nav-links{display:flex;gap:1.1rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,.72);font-size:.75rem;text-decoration:none;font-family:var(--fb);font-weight:600;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-cta{background:var(--teal);color:var(--navy)!important;padding:.4rem 1rem;border-radius:8px;font-weight:700!important;}
+.nav-cta:hover{background:#6ab8b0!important;}
+@media(max-width:700px){.nav-links{display:none;}}
+
+/* TEAM SECTION */
+#team{background:var(--navy-deep);position:relative;overflow:hidden;}
+#team::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(125,200,192,.06) 0%,transparent 60%,rgba(139,108,181,.05) 100%);}
+.team-toggle{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:opacity .2s;user-select:none;}
+.team-toggle:hover{opacity:.85;}
+.team-toggle-left{display:flex;align-items:center;gap:1rem;}
+.team-toggle-label{font-family:var(--fb);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.3rem;}
+.team-toggle-title{font-family:var(--fb);font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:800;color:#fff;}
+.team-toggle-chevron{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s;}
+.team-toggle.open .team-toggle-chevron{background:rgba(125,200,192,.15);border-color:rgba(125,200,192,.3);transform:rotate(180deg);}
+.team-body{display:none;padding:2rem 0 2.5rem;}
+.team-body.open{display:block;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:680px){.team-grid{grid-template-columns:1fr;}}
+.team-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:16px;padding:1.4rem 1.3rem;transition:border-color .2s,background .2s;}
+.team-card:hover{background:rgba(255,255,255,.07);border-color:rgba(125,200,192,.25);}
+.team-card-top{display:flex;align-items:center;gap:.85rem;margin-bottom:.85rem;}
+.team-avatar{width:54px;height:54px;border-radius:50%;background:rgba(125,200,192,.12);border:2px solid rgba(125,200,192,.25);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.9rem;font-weight:800;color:var(--teal);overflow:hidden;position:relative;}
+.team-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.team-name{font-family:var(--fb);font-size:.9rem;font-weight:700;color:#fff;}
+.team-role{font-size:.72rem;color:rgba(255,255,255,.42);margin-top:.1rem;}
+.team-spec{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:1rem;}
+.team-book{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem 1rem;border-radius:8px;background:rgba(125,200,192,.14);border:1px solid rgba(125,200,192,.28);color:var(--teal);font-family:var(--fb);font-size:.72rem;font-weight:700;text-decoration:none;transition:background .2s;}
+.team-book:hover{background:rgba(125,200,192,.24);}
+
+/* LAYOUT */
+.container{max-width:1040px;margin:0 auto;padding:0 1.5rem;}
+.section{padding:5rem 0;}
+.graph-dark{background-color:var(--navy);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 44px);}
+.graph-light{background-color:var(--bg);background-image:repeating-linear-gradient(0deg,rgba(27,56,88,.05) 0,rgba(27,56,88,.05) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(27,56,88,.05) 0,rgba(27,56,88,.05) 1px,transparent 1px,transparent 44px);}
+.label-chip{display:inline-block;font-family:var(--fb);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .75rem;border-radius:100px;margin-bottom:.85rem;}
+.chip-teal{background:rgba(125,200,192,.12);color:var(--teal);border:1px solid rgba(125,200,192,.3);}
+.chip-purple{background:rgba(139,108,181,.12);color:var(--purple);border:1px solid rgba(139,108,181,.25);}
+.chip-gold{background:rgba(240,180,41,.1);color:#b07800;border:1px solid rgba(240,180,41,.3);}
+.section-title{font-family:var(--fb);font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:800;line-height:1.18;margin-bottom:.85rem;}
+.section-sub{font-size:.9rem;color:var(--gray);line-height:1.75;max-width:560px;margin-bottom:2rem;}
+
+/* CTA BUTTON */
+.apt-btn-wrap{position:relative;display:inline-block;border-radius:12px;padding:2px;background:#fff;overflow:hidden;}
+.apt-btn-wrap::before{content:'';position:absolute;width:200%;height:200%;top:-50%;left:-50%;background:conic-gradient(#22c55e 25deg,transparent 110deg);animation:apt-spin 2.2s linear infinite;}
+@keyframes apt-spin{to{transform:rotate(360deg);}}
+.apt-btn-inner{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.9rem;border-radius:10px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.92rem;font-weight:600;text-decoration:none;transition:background .2s;}
+.apt-btn-inner:hover{background:#22376a;}
+
+/* HERO */
+#hero{padding:7rem 0 5rem;position:relative;overflow:hidden;}
+.hero-video-bg{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.hero-video-bg iframe{position:absolute;top:50%;left:50%;width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;transform:translate(-50%,-50%);border:0;}
+.hero-video-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(15,32,53,.88) 0%,rgba(15,32,53,.75) 60%,rgba(15,32,53,.60) 100%);}
+.hero-grid{position:relative;z-index:2;}
+.hero-grid{display:grid;grid-template-columns:1fr 480px;gap:3rem;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.45rem;background:rgba(125,200,192,.12);border:1px solid rgba(125,200,192,.22);border-radius:100px;padding:.3rem .85rem;font-family:var(--fb);font-size:.68rem;font-weight:700;color:var(--teal);letter-spacing:.04em;text-transform:uppercase;margin-bottom:1rem;}
+.hero-title{font-family:var(--fb);font-size:clamp(1.9rem,4.2vw,2.8rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:.85rem;}
+.hero-title em{color:var(--teal);font-style:normal;}
+.hero-lead{font-size:.93rem;color:rgba(255,255,255,.68);line-height:1.78;margin-bottom:1.8rem;max-width:460px;}
+.hero-trust{display:flex;gap:1.3rem;flex-wrap:wrap;margin-top:1.4rem;}
+.hero-trust-item{display:flex;align-items:center;gap:.35rem;font-family:var(--fb);font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);}
+.hero-trust-item span{color:var(--teal);}
+
+/* PHOTO — kerek + szonár */
+.photo-wrap{position:relative;display:flex;align-items:center;justify-content:center;padding:2.5rem;}
+.sonar-sweep{position:absolute;top:50%;left:50%;width:258px;height:258px;transform:translate(-50%,-50%) rotate(0deg);border-radius:50%;background:conic-gradient(from 0deg,rgba(125,200,192,.9) 0deg,rgba(125,200,192,.45) 30deg,rgba(125,200,192,0) 80deg,rgba(125,200,192,0) 320deg,rgba(125,200,192,.5) 360deg);-webkit-mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);animation:radarSpin 3s linear infinite;pointer-events:none;z-index:1;}
+@keyframes radarSpin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+.photo-circle{position:relative;z-index:2;width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid rgba(125,200,192,.6);box-shadow:0 0 0 6px rgba(125,200,192,.12),0 0 48px rgba(125,200,192,.22);}
+.photo-circle img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+
+/* SERVICES — accordion */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.svc-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.svc-card.open{border-color:rgba(125,200,192,.45);box-shadow:0 6px 24px rgba(27,56,88,.09);}
+.svc-header{display:flex;align-items:center;gap:.7rem;padding:1.2rem 1.1rem;cursor:pointer;user-select:none;}
+.svc-icon{font-size:1.45rem;flex-shrink:0;}
+.svc-title{font-family:var(--fb);font-size:.87rem;font-weight:700;color:var(--navy);flex:1;}
+.svc-arrow{font-size:.75rem;color:var(--teal);transition:transform .22s;flex-shrink:0;}
+.svc-card.open .svc-arrow{transform:rotate(180deg);}
+.svc-body{display:none;padding:0 1.1rem 1.1rem;}
+.svc-card.open .svc-body{display:block;}
+.svc-desc{font-size:.76rem;color:var(--gray);line-height:1.55;margin-bottom:.75rem;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.svc-tag{font-family:var(--fb);font-size:.65rem;font-weight:600;background:rgba(27,56,88,.06);color:var(--navy);border:1px solid rgba(27,56,88,.1);border-radius:100px;padding:.22rem .65rem;white-space:nowrap;}
+
+/* HOW */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2rem;}
+.step-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.6rem 1.4rem;}
+.step-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.82rem;font-weight:800;color:#fff;margin-bottom:.9rem;}
+.step-title{font-family:var(--fb);font-size:.93rem;font-weight:700;color:var(--navy);margin-bottom:.38rem;}
+.step-text{font-size:.8rem;color:var(--gray);line-height:1.62;}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin-top:1.5rem;}
+.why-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;display:flex;gap:.85rem;align-items:flex-start;transition:border-color .2s;}
+.why-card:hover{border-color:rgba(125,200,192,.4);}
+.why-icon{font-size:1.25rem;flex-shrink:0;margin-top:.05rem;}
+.why-title{font-family:var(--fb);font-size:.87rem;font-weight:700;color:var(--navy);margin-bottom:.22rem;}
+.why-text{font-size:.8rem;color:var(--gray);line-height:1.6;}
+
+/* STATS */
+/* ═══════════ EAGLZ HERO EMBLÉMA / CSAPATFOTÓ PLACEHOLDER ═══════════ */
+.eaglz-mark{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(150deg,#16304d,#0b1a2c);}
+.eaglz-word{font-family:var(--fb);font-size:1.5rem;font-weight:800;letter-spacing:.16em;color:#fff;}
+.eaglz-photo-ph{display:flex;align-items:center;justify-content:center;}
+.eaglz-photo-ph .ph-hint{display:none;flex-direction:column;align-items:center;gap:.3rem;text-align:center;font-family:var(--fb);font-size:.78rem;font-weight:700;color:rgba(255,255,255,.6);padding:1rem;}
+.eaglz-photo-ph .ph-hint span{font-size:1.6rem;}
+.eaglz-photo-ph .ph-hint small{font-size:.6rem;font-weight:600;color:rgba(255,255,255,.32);letter-spacing:.04em;}
+.eaglz-photo-ph.empty .ph-hint{display:flex;}
+
+
+
+/* ═══════════ IMPRESSZUM ═══════════ */
+.imp-overlay{position:fixed;inset:0;background:rgba(8,18,32,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:500;display:none;align-items:center;justify-content:center;padding:1.2rem;}
+.imp-overlay.active{display:flex;}
+.imp-modal{background:#fff;border-radius:20px;max-width:760px;width:100%;max-height:88vh;overflow-y:auto;padding:2.4rem 2.2rem 2rem;position:relative;text-align:left;animation:advIn .28s cubic-bezier(.2,.8,.3,1);}
+.imp-modal h3{font-family:var(--fb);font-size:1.45rem;font-weight:800;color:var(--navy);margin-bottom:.35rem;}
+.imp-modal .imp-lead{font-size:.85rem;color:var(--gray);margin-bottom:1.6rem;line-height:1.6;}
+.imp-modal h4{font-family:var(--fb);font-size:.85rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin:1.5rem 0 .55rem;padding-top:1.1rem;border-top:1px solid var(--border);}
+.imp-modal h4:first-of-type{border-top:none;padding-top:0;margin-top:1rem;}
+.imp-modal p{font-size:.83rem;line-height:1.75;color:var(--gray);margin-bottom:.7rem;}
+.imp-modal p:last-child{margin-bottom:0;}
+.imp-modal b{color:var(--navy);}
+.imp-modal ul{margin:.2rem 0 .8rem 1.1rem;}
+.imp-modal li{font-size:.83rem;line-height:1.7;color:var(--gray);margin-bottom:.3rem;}
+.imp-key{background:rgba(125,200,192,.09);border:1px solid rgba(125,200,192,.3);border-radius:12px;padding:1rem 1.2rem;margin:.6rem 0 1rem;}
+.imp-key p{margin-bottom:.6rem;}
+.imp-key p:last-child{margin-bottom:0;}
+.imp-data{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;font-size:.82rem;line-height:1.65;margin:.4rem 0 .6rem;}
+.imp-data dt{color:var(--navy);font-weight:700;}
+.imp-data dd{color:var(--gray);}
+.imp-close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.2rem;color:var(--gray);cursor:pointer;line-height:1;padding:.35rem .5rem;border-radius:8px;transition:background .18s,color .18s;}
+.imp-close:hover{background:rgba(27,56,88,.06);color:var(--navy);}
+.imp-note{margin-top:1.4rem;font-size:.72rem;color:var(--gray);opacity:.8;line-height:1.6;}
+@media(max-width:1000px){ .imp-modal,.imp-modal p,.imp-modal li,.imp-modal h3,.imp-modal h4,.imp-modal .imp-lead{text-align:left;} }
+@media(max-width:560px){ .imp-modal{padding:2rem 1.3rem 1.5rem;} .imp-data{grid-template-columns:1fr;gap:.1rem;} .imp-data dd{margin-bottom:.5rem;} }
+
+/* ═══════════ ÖSSZEHASONLÍTÓ TÁBLA A MIÉRT MI? SZEKCIÓBAN ═══════════ */
+.why-compare{margin-top:2.6rem;}
+.why-compare-head{text-align:center;font-family:var(--fb);font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:1.2rem;}
+#why .compare-table{border-color:var(--border);background:#fff;}
+#why .compare-col-label.alone{background:#eef2f7;color:var(--gray);}
+#why .compare-col-label.with{background:rgba(125,200,192,.2);color:#31766f;}
+#why .compare-icon-x{background:rgba(27,56,88,.1);color:var(--gray);}
+#why .compare-icon-check{background:rgba(125,200,192,.35);color:#2c6b64;}
+#why .compare-row{border-top:1px solid var(--border);}
+#why .compare-cell.alone{color:var(--gray);background:#f7f9fc;}
+#why .compare-cell.alone::before{color:rgba(27,56,88,.25);}
+#why .compare-cell.with{color:var(--navy);background:rgba(125,200,192,.07);}
+#why .compare-cell.with::before{color:#2c6b64;}
+#why .compare-row:nth-child(even) .compare-cell.alone{background:#eff3f8;}
+#why .compare-row:nth-child(even) .compare-cell.with{background:rgba(125,200,192,.13);}
+
+/* ═══════════ ÜGYFÉLVIDEÓK ═══════════ */
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem auto 0;max-width:1000px;}
+@media(max-width:900px){ .vid-grid{grid-template-columns:1fr;max-width:520px;} }
+
+/* ═══════════ HERO GOMBSÁV ═══════════ */
+.hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;max-width:460px;margin-top:1.6rem;}
+.hact{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1rem;border-radius:12px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9);font-family:var(--fb);font-size:.85rem;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;}
+.hact:hover{background:rgba(255,255,255,.15);border-color:rgba(125,200,192,.55);transform:translateY(-2px);}
+.hact span{font-size:1rem;line-height:1;}
+.hact-primary{background:var(--teal);border-color:var(--teal);color:var(--navy-deep);}
+.hact-primary:hover{background:#6ab8b0;border-color:#6ab8b0;color:var(--navy-deep);}
+@media(max-width:1000px){ .hero-actions{margin-left:auto;margin-right:auto;} }
+@media(max-width:420px){ .hero-actions{grid-template-columns:1fr;} }
+
+.nav-logo.brandmark{display:flex;flex-direction:column;gap:.18rem;line-height:1;}
+.nav-logo.brandmark img{height:23px;width:auto;display:block;}
+@media(max-width:560px){ .nav-logo.brandmark img{height:19px;} }
+
+/* ═══════════ HERO PARTNER-ORBIT ═══════════ */
+.eo-wrap{--s:.6;width:calc(800px*var(--s));height:calc(684px*var(--s));flex:none;position:relative;}
+.eo-field{position:relative;width:800px;height:684px;transform:scale(var(--s));transform-origin:top left;}
+.eo-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.24);}
+.eo-halo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(125,200,192,.18),rgba(125,200,192,0) 70%);}
+.eo-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:176px;height:176px;border-radius:50%;overflow:hidden;border:5px solid rgba(255,255,255,.92);box-shadow:0 16px 40px rgba(0,0,0,.42),0 0 0 11px rgba(125,200,192,.1);}
+.eo-hub img{width:100%;height:100%;object-fit:cover;display:block;}
+.eo-tile{position:absolute;left:var(--x);top:var(--y);z-index:3;transform:translate(-50%,-50%) translate(var(--rx,0px),var(--ry,0px));transition:transform .38s cubic-bezier(.2,.8,.3,1);}
+.eo-tile > span{display:flex;align-items:center;justify-content:center;height:64px;min-width:64px;padding:0 16px;border-radius:15px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.3);animation:var(--path,eoA) var(--bt,18s) ease-in-out var(--bd,0s) infinite;}
+.eo-tile.inner > span{height:76px;min-width:76px;padding:0 18px;border-radius:17px;}
+.eo-tile img{display:block;max-height:23px;max-width:128px;width:auto;height:auto;}
+.eo-tile.sq img{max-height:32px;max-width:58px;}
+.eo-tile.inner.sq img{max-height:44px;max-width:96px;}
+.eo-tile.inner.small > span{height:61px;min-width:61px;padding:0 14px;border-radius:14px;}
+.eo-tile.inner.small.sq img{max-height:35px;max-width:77px;}
+@keyframes eoA{0%,100%{transform:translate(0,0);}50%{transform:translate(0,-5px);}}
+@keyframes eoB{0%,100%{transform:translate(0,0);}50%{transform:translate(4px,3px);}}
+@keyframes eoC{0%,100%{transform:translate(0,0);}50%{transform:translate(-4px,4px);}}
+@keyframes eoD{0%,100%{transform:translate(0,0);}50%{transform:translate(3px,-4px);}}
+@media(max-width:1200px){ .hero-grid{grid-template-columns:1fr 400px;gap:2rem;} .eo-wrap{--s:.5;} }
+@media(max-width:1000px){ .hero-grid{grid-template-columns:1fr;} .eo-wrap{--s:.52;margin:0 auto;} }
+@media(max-width:560px){ .eo-wrap{--s:.4;} }
+@media(prefers-reduced-motion:reduce){ .eo-tile > span{animation:none;} }
+
+/* ═══════════ TANÁCSADÓI RÁCS ═══════════ */
+#advisors{background:#fff;padding:5rem 0;}
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem;}
+
+/* a kártya maga a 3D-színpad */
+.adv-card{height:308px;perspective:1200px;cursor:pointer;background:none;border:none;padding:0;}
+.adv-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.adv-card:hover .adv-inner.has-flip{transform:rotateY(180deg);}
+.adv-side{position:absolute;inset:0;border-radius:16px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+
+/* ELŐLAP */
+.adv-front{background:#fff;border:1.5px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1.2rem;text-align:center;transition:border-color .25s,box-shadow .25s;}
+.adv-card:hover .adv-front{border-color:rgba(125,200,192,.5);box-shadow:0 10px 30px rgba(27,56,88,.09);}
+.adv-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;position:relative;margin:0 auto .9rem;background:rgba(125,200,192,.12);border:2px solid rgba(125,200,192,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:1.3rem;font-weight:800;color:var(--teal);}
+.adv-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.adv-name{font-family:var(--fb);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+.adv-role{font-size:.78rem;color:#3f8f87;font-weight:600;line-height:1.4;min-height:2.2em;}
+.adv-more{margin-top:.85rem;display:inline-flex;align-items:center;gap:.35rem;font-family:var(--fb);font-size:.74rem;font-weight:700;color:var(--gray);transition:color .2s;}
+.adv-card:hover .adv-more{color:var(--teal);}
+
+/* HÁTLAP */
+.adv-back{transform:rotateY(180deg);background:var(--navy-deep);border:1.5px solid rgba(240,180,41,.45);}
+.adv-back img{width:100%;height:100%;object-fit:cover;display:block;}
+.adv-back-cap{position:absolute;left:0;right:0;bottom:0;padding:1.5rem .9rem .85rem;background:linear-gradient(to top,rgba(8,18,32,.9) 35%,rgba(8,18,32,0));font-family:var(--fb);font-size:.88rem;font-weight:700;color:#fff;text-align:center;letter-spacing:.01em;}
+.adv-back-cap small{display:block;font-size:.7rem;font-weight:600;color:var(--gold);margin-top:.15rem;}
+
+/* ÜRES HELY */
+.adv-card.is-empty .adv-front{border-style:dashed;border-color:rgba(27,56,88,.18);background:var(--bg);}
+.adv-card.is-empty .adv-photo{border-style:dashed;color:rgba(27,56,88,.3);background:rgba(27,56,88,.03);border-color:rgba(27,56,88,.16);}
+.adv-card.is-empty .adv-name{color:rgba(27,56,88,.45);}
+.adv-card.is-empty .adv-role{color:rgba(27,56,88,.3);}
+.adv-hint{margin-top:1.8rem;text-align:center;font-size:.75rem;color:var(--gray);}
+
+/* ═══════════ TANÁCSADÓ POPUP ═══════════ */
+.adv-overlay{position:fixed;inset:0;background:rgba(8,18,32,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:400;display:none;align-items:center;justify-content:center;padding:1.2rem;}
+.adv-overlay.active{display:flex;}
+.adv-modal{background:#fff;border-radius:22px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;padding:2.2rem 1.9rem 1.9rem;position:relative;animation:advIn .28s cubic-bezier(.2,.8,.3,1);}
+@keyframes advIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.adv-close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.2rem;color:var(--gray);cursor:pointer;line-height:1;padding:.35rem .5rem;border-radius:8px;transition:background .18s,color .18s;}
+.adv-close:hover{background:rgba(27,56,88,.06);color:var(--navy);}
+.adv-m-photo{width:112px;height:112px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;position:relative;border:3px solid rgba(125,200,192,.5);box-shadow:0 0 0 6px rgba(125,200,192,.1);display:flex;align-items:center;justify-content:center;background:rgba(125,200,192,.1);font-family:var(--fb);font-size:1.6rem;font-weight:800;color:var(--teal);}
+.adv-m-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.adv-m-name{font-family:var(--fb);font-size:1.35rem;font-weight:800;color:var(--navy);text-align:center;}
+.adv-m-role{font-family:var(--fb);font-size:.85rem;font-weight:600;color:var(--teal);text-align:center;margin-top:.2rem;}
+.adv-m-tags{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.9rem;}
+.adv-m-tag{background:rgba(125,200,192,.16);color:#3f8f87;font-family:var(--fb);font-size:.68rem;font-weight:700;padding:.28rem .6rem;border-radius:100px;}
+.adv-m-bio{margin-top:1.2rem;font-size:.87rem;line-height:1.72;color:var(--gray);}
+.adv-m-bio.is-ph{background:rgba(240,180,41,.08);border:1px dashed rgba(240,180,41,.45);border-radius:12px;padding:.9rem 1rem;color:#8a6d1f;font-size:.82rem;}
+.adv-m-contact{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.3rem;}
+.adv-cbtn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .9rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);color:var(--navy);font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;transition:background .18s,border-color .18s;}
+.adv-cbtn:hover{background:#e9eef5;border-color:rgba(27,56,88,.2);}
+.adv-m-book{margin-top:1.3rem;}
+.adv-m-book a{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.95rem 1.2rem;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:700;text-decoration:none;transition:background .18s;}
+.adv-m-book a:hover{background:#22376a;}
+.adv-m-note{margin-top:.7rem;text-align:center;font-size:.7rem;color:var(--gray);opacity:.75;}
+
+@media(max-width:900px){ .adv-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:560px){ .adv-grid{grid-template-columns:1fr;} .adv-modal{padding:2rem 1.3rem 1.5rem;} }
+
+/* ===== SAVINGS ===== */
+#savings{background-color:var(--navy-deep);position:relative;overflow:hidden;}
+#savings::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px);pointer-events:none;}
+#savings .container{position:relative;z-index:1;}
+#savings .section-title{color:#fff;}
+#savings .section-sub{color:rgba(255,255,255,.55);}
+.sav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 2.4rem;margin-top:2.2rem;}
+.sav-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem .7rem;margin:0 -.7rem;border-radius:12px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .25s;}
+.sav-item:hover{background:rgba(240,180,41,.05);animation:savWobble .5s cubic-bezier(.36,.07,.19,.97);}
+.sav-item:hover .sav-badge{box-shadow:0 6px 20px rgba(240,180,41,.35);}
+@keyframes savWobble{0%{transform:translateX(0)}20%{transform:translateX(5px)}45%{transform:translateX(-4px)}70%{transform:translateX(2px)}100%{transform:translateX(0)}}
+.sav-badge{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--gold),#dd9a10);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fb);font-size:1.15rem;font-weight:800;color:var(--navy-deep);box-shadow:0 4px 14px rgba(240,180,41,.18);}
+.sav-text{font-size:.93rem;line-height:1.6;color:rgba(255,255,255,.68);padding-top:.15rem;}
+.sav-text .hl{color:var(--gold);font-weight:700;}
+.sav-text b{color:#fff;font-weight:700;}
+.sav-note{margin-top:2rem;padding:1rem 1.25rem;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);font-size:.72rem;line-height:1.65;color:rgba(255,255,255,.4);}
+.sav-note b{color:rgba(255,255,255,.6);font-weight:700;}
+
+/* ===== FAQ ===== */
+#faq{background:#fff;}
+.faq-list{max-width:820px;margin:2.2rem auto 0;display:flex;flex-direction:column;gap:.7rem;}
+.faq-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .22s,box-shadow .22s;}
+.faq-item:hover{border-color:rgba(139,108,181,.28);}
+.faq-item[open]{border-color:rgba(139,108,181,.42);box-shadow:0 8px 28px rgba(27,56,88,.07);}
+.faq-q{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.35rem;font-family:var(--fb);font-size:.95rem;font-weight:700;color:var(--navy);}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q::marker{content:'';}
+.faq-chev{flex-shrink:0;color:var(--purple);transition:transform .25s;}
+.faq-item[open] .faq-chev{transform:rotate(180deg);}
+.faq-a{padding:0 1.35rem 1.3rem;font-size:.875rem;line-height:1.72;color:var(--gray);}
+.faq-a p{margin-bottom:.75rem;}
+.faq-a p:last-child{margin-bottom:0;}
+.faq-cta{max-width:820px;margin:1.8rem auto 0;text-align:center;}
+#stats{padding:0;background:var(--navy-deep);position:relative;overflow:hidden;}
+#stats::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(125,200,192,.08) 0%,transparent 50%,rgba(139,108,181,.06) 100%);}
+.stats-inner{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.stat-item{padding:2.2rem 2rem;text-align:center;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.1);}
+.stat-num{font-family:var(--fb);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:800;color:var(--teal);line-height:1.2;margin-bottom:.5rem;letter-spacing:-0.02em;min-height:3.5rem;display:flex;align-items:center;justify-content:center;}
+.stat-num .suffix{font-size:clamp(1.4rem,2.5vw,2rem);color:rgba(125,200,192,.7);}
+.stat-label{font-family:var(--fb);font-size:.75rem;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;line-height:1.4;}
+@media(max-width:680px){
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .stat-item:nth-child(2)::after,.stat-item:nth-child(4)::after{display:none;}
+  .stat-item{padding:2rem 1rem;}
+}
+
+/* PARTNERS MARQUEE */
+#partners{background:#fff;padding:1.1rem 0;overflow:hidden;border-top:1px solid rgba(27,56,88,.08);border-bottom:1px solid rgba(27,56,88,.08);}
+.marquee-track{display:flex;width:max-content;animation:mq-scroll 60s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-img{height:34px;width:auto;display:block;opacity:.78;flex-shrink:0;}
+@keyframes mq-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+
+/* COMPARE */
+.compare-wrap{max-width:760px;margin:0 auto;}
+.compare-table{border-radius:20px;overflow:hidden;border:1.5px solid rgba(255,255,255,.1);}
+.compare-header{display:grid;grid-template-columns:1fr 1fr;}
+.compare-col-label{padding:1rem 1.5rem;font-family:var(--fb);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:.5rem;}
+.compare-col-label.alone{background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);}
+.compare-col-label.with{background:rgba(125,200,192,.18);color:var(--teal);}
+.compare-icon-x{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);font-size:.65rem;color:rgba(255,255,255,.4);}
+.compare-icon-check{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(125,200,192,.25);font-size:.65rem;color:var(--teal);}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.06);}
+.compare-row:nth-child(even) .compare-cell.alone{background:rgba(255,255,255,.02);}
+.compare-row:nth-child(even) .compare-cell.with{background:rgba(125,200,192,.08);}
+.compare-cell{padding:.95rem 1.5rem;font-size:.87rem;line-height:1.55;display:flex;align-items:center;gap:.65rem;}
+.compare-cell.alone{color:rgba(255,255,255,.45);background:rgba(255,255,255,.03);}
+.compare-cell.alone::before{content:'–';font-weight:700;color:rgba(255,255,255,.2);flex-shrink:0;}
+.compare-cell.with{color:#fff;background:rgba(125,200,192,.06);}
+.compare-cell.with::before{content:'✓';font-weight:800;color:var(--teal);flex-shrink:0;}
+@media(max-width:560px){.compare-cell{padding:.8rem 1rem;font-size:.8rem;}}
+
+/* FOR WHOM */
+.fw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:760px;margin:0 auto;}
+.fw-card{background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--teal);border-radius:14px;padding:1.2rem 1.3rem;transition:box-shadow .2s,transform .2s;}
+.fw-card:hover{box-shadow:0 6px 22px rgba(27,56,88,.09);transform:translateY(-2px);}
+.fw-card-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.45rem;}
+.fw-emoji{font-size:1.15rem;line-height:1;}
+.fw-title{font-family:var(--fb);font-size:.88rem;font-weight:700;color:var(--navy);}
+.fw-text{font-size:.78rem;color:var(--gray);line-height:1.6;}
+@media(max-width:560px){.fw-grid{grid-template-columns:1fr;}}
+
+/* RÓLAM */
+#about{background:var(--bg);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2.5rem;}
+.about-bio{font-size:.97rem;color:var(--navy);line-height:1.88;position:relative;padding-left:1.5rem;}
+.about-bio::before{content:'';position:absolute;left:0;top:.2rem;bottom:.2rem;width:3px;border-radius:2px;background:linear-gradient(180deg,var(--teal),var(--purple));}
+.milestones{display:flex;flex-direction:column;gap:.55rem;}
+.milestone{display:flex;gap:.75rem;align-items:flex-start;}
+.ms-year{font-family:var(--fb);font-size:.7rem;font-weight:800;color:var(--teal);letter-spacing:.04em;min-width:36px;padding-top:.3rem;}
+.ms-content{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.6rem .85rem;flex:1;}
+.ms-title{font-family:var(--fb);font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:.12rem;}
+.ms-text{font-size:.72rem;color:var(--gray);line-height:1.5;}
+@media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:2rem;}}
+
+/* VIDEO TESTIMONIAL */
+#video-testimonial{background:var(--bg);}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.video-embed{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(27,56,88,.13);aspect-ratio:16/9;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-reviews-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem 1.4rem;border-radius:100px;background:#fff;border:1.5px solid var(--border);color:#444;font-family:var(--fb);font-size:.82rem;font-weight:600;text-decoration:none;box-shadow:0 1px 8px rgba(27,56,88,.07);transition:box-shadow .2s;}
+.video-reviews-btn:hover{box-shadow:0 4px 18px rgba(27,56,88,.13);}
+@media(max-width:680px){.video-grid{grid-template-columns:1fr;}}
+
+/* CTA */
+#cta{padding:4rem 0;background:var(--bg);}
+.cta-box{background:linear-gradient(135deg,var(--navy),#1e4268);border-radius:22px;overflow:hidden;position:relative;}
+.cta-box::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px);}
+.cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;padding:3rem 3.5rem;}
+.cta-title{font-family:var(--fb);font-size:clamp(1.4rem,2.8vw,1.9rem);font-weight:800;color:#fff;margin-bottom:.55rem;}
+.cta-sub{font-size:.88rem;color:rgba(255,255,255,.62);line-height:1.68;max-width:480px;}
+.cta-free{display:inline-flex;align-items:center;gap:.38rem;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.28);border-radius:100px;padding:.26rem .75rem;font-family:var(--fb);font-size:.68rem;font-weight:700;color:#4ade80;margin-bottom:.7rem;}
+.cta-note{font-size:.7rem;color:rgba(255,255,255,.38);text-align:center;margin-top:.6rem;}
+
+/* FOOTER */
+footer{background:var(--navy-deep);padding:2.2rem 0;}
+.footer-social{display:flex;justify-content:center;gap:.65rem;margin-bottom:1.6rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.fsoc-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;transition:background .2s,color .2s,border-color .2s;}
+.fsoc-btn:hover{background:rgba(125,200,192,.18);border-color:rgba(125,200,192,.4);color:var(--teal);}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:var(--fb);font-size:.88rem;font-weight:700;color:#fff;}
+.footer-brand span{color:var(--teal);}
+.footer-sub{font-size:.7rem;color:rgba(255,255,255,.32);margin-top:.18rem;}
+.footer-links{display:flex;gap:1.1rem;}
+.footer-links a{font-size:.7rem;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal);}
+
+/* HAMBURGER */
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;gap:5px;flex-direction:column;align-items:center;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.82);border-radius:2px;transition:all .25s;}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;background:rgba(11,24,42,.97);backdrop-filter:blur(16px);z-index:199;padding:1rem 1.5rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.mobile-menu.open{display:block;}
+.mobile-menu ul{list-style:none;}
+.mobile-menu li{border-bottom:1px solid rgba(255,255,255,.06);}
+.mobile-menu li:last-child{border-bottom:none;margin-top:.7rem;}
+.mobile-menu a{display:block;padding:.75rem 0;color:rgba(255,255,255,.78);font-size:.95rem;font-family:var(--fb);font-weight:600;text-decoration:none;}
+.mobile-menu .nav-cta{display:inline-flex;background:var(--teal);color:var(--navy)!important;padding:.6rem 1.3rem;border-radius:8px;font-weight:700;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:2rem;}
+  .photo-wrap{padding:1.5rem;order:-1;}
+  .photo-circle{width:170px;height:170px;}
+  @keyframes sonar{0%{width:170px;height:170px;opacity:.75;}100%{width:310px;height:310px;opacity:0;}}
+  .sonar-ring{width:170px;height:170px;}
+  .cta-inner{grid-template-columns:1fr;padding:2.2rem 1.8rem;text-align:center;}
+  .cta-sub{margin:0 auto;}
+}
+@media(max-width:700px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+}
+@media(max-width:680px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .sav-grid{grid-template-columns:1fr;gap:0;}
+}
+@media(max-width:600px){
+  .section{padding:3.2rem 0;}
+  #cta{padding:2.5rem 0;}
+  .section-title{font-size:clamp(1.45rem,5vw,2rem);}
+  .steps-grid{grid-template-columns:1fr;}
+  .compare-cell{padding:.7rem .85rem;font-size:.78rem;}
+  .compare-col-label{padding:.75rem 1rem;font-size:.74rem;}
+  .apt-btn-inner{padding:.75rem 1.4rem;font-size:.84rem;}
+  .cta-inner{padding:1.8rem 1.2rem;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;}
+  .footer-links{justify-content:center;}
+  .footer-social{flex-wrap:wrap;}
+  .milestone{flex-direction:column;gap:.3rem;}
+  .ms-year{padding-top:0;}
+}
+@media(max-width:420px){
+  .services-grid{grid-template-columns:1fr;}
+  .fw-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .stat-item{padding:1.4rem .8rem;}
+  .stat-num{font-size:2rem;}
+  .hero-trust{gap:.8rem;}
+  .compare-wrap{overflow-x:auto;}
+  .compare-table{min-width:300px;}
+}
+
+/* Green pulse on hover */
+@keyframes greenPulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(52,211,153,0); background:#fff; }
+  45%     { box-shadow:0 0 0 10px rgba(52,211,153,.13); background:rgba(52,211,153,.07); }
+}
+.svc-card:hover { animation:greenPulse 1.8s ease-in-out infinite; }
+
+/* Modal overlay */
+.svc-overlay { display:none; position:fixed; inset:0; z-index:900; background:rgba(15,32,53,.55); backdrop-filter:blur(5px); align-items:center; justify-content:center; padding:1rem; }
+.svc-overlay.active { display:flex; animation:ovFadeIn .2s ease; }
+@keyframes ovFadeIn { from{opacity:0} to{opacity:1} }
+.svc-modal { background:#fff; border-radius:20px; max-width:520px; width:100%; max-height:88vh; overflow-y:auto; padding:2rem; position:relative; animation:modSlideUp .26s cubic-bezier(.22,.61,.36,1); box-shadow:0 28px 64px rgba(15,32,53,.24); }
+@keyframes modSlideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.svc-modal-close { position:absolute; top:.9rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#9aabb8; line-height:1; padding:.2rem .4rem; border-radius:6px; }
+.svc-modal-close:hover { color:var(--navy); background:rgba(27,56,88,.06); }
+.svc-modal-icon { font-size:2rem; margin-bottom:.5rem; }
+.svc-modal-title { font-family:var(--fb); font-size:1.2rem; font-weight:800; color:var(--navy); margin-bottom:.35rem; }
+.svc-modal-desc { font-size:.86rem; color:var(--gray); margin-bottom:.9rem; line-height:1.6; }
+.svc-modal-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:1.1rem; }
+.svc-modal-tag { background:rgba(125,200,192,.12); border:1px solid rgba(125,200,192,.3); color:var(--teal); font-size:.74rem; font-weight:600; padding:.22rem .65rem; border-radius:100px; font-family:var(--fb); }
+.svc-modal-why { font-size:.84rem; color:var(--navy); line-height:1.75; margin-bottom:1.1rem; padding:.85rem 1rem; background:rgba(125,200,192,.08); border-left:3px solid var(--teal); border-radius:0 10px 10px 0; }
+.svc-modal-plabel { font-family:var(--fb); font-size:.7rem; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.5rem; }
+.svc-modal-steps { display:flex; flex-direction:column; gap:.4rem; }
+.svc-modal-step { font-size:.84rem; color:var(--navy); line-height:1.5; padding-left:1.1rem; position:relative; }
+.svc-modal-step::before { content:"→"; position:absolute; left:0; color:var(--teal); font-weight:700; }
+
+/* Floating 💸 — clustered around the process section */
+#how { position:relative; }
+.money-float { position:absolute; font-size:1.5rem; pointer-events:none; user-select:none; opacity:.65; animation:mFloat var(--d,4s) ease-in-out var(--dl,0s) infinite; }
+@keyframes mFloat { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
+
+/* Termék-részletek modal */
+.svc-modal-tag{cursor:pointer;transition:background .2s,transform .15s;}
+.svc-modal-tag:hover{background:rgba(125,200,192,.28);transform:translateY(-1px);}
+.prod-faq{margin-top:1rem;}
+.prod-faq details{border:1.5px solid var(--border);border-radius:10px;margin-bottom:.5rem;overflow:hidden;}
+.prod-faq summary{padding:.7rem .9rem;font-family:var(--fb);font-size:.8rem;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.prod-faq summary::-webkit-details-marker{display:none;}
+.prod-faq summary::after{content:'▾';color:var(--teal);transition:transform .2s;}
+.prod-faq details[open] summary::after{transform:rotate(180deg);}
+.prod-faq details[open] summary{border-bottom:1px solid var(--border);background:rgba(125,200,192,.06);}
+.prod-faq-a{padding:.7rem .9rem;font-size:.8rem;color:var(--gray);line-height:1.65;}
+.prod-cta-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;padding:.75rem 1.6rem;border-radius:10px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.85rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:background .2s;}
+.prod-cta-btn:hover{background:#22376a;}
+.prod-back{background:none;border:none;color:var(--teal);font-family:var(--fb);font-size:.76rem;font-weight:700;cursor:pointer;padding:0;margin-bottom:.7rem;}
+
+/* Lead form */
+#lead{background:var(--bg);padding:4.5rem 0;}
+.lead-box{max-width:640px;margin:0 auto;background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 10px 40px rgba(27,56,88,.08);}
+.lead-title{font-family:var(--fb);font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:800;color:var(--navy);margin-bottom:.4rem;}
+.lead-sub{font-size:.85rem;color:var(--gray);line-height:1.7;margin-bottom:1.5rem;}
+.lead-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+@media(max-width:560px){.lead-row{grid-template-columns:1fr;}.lead-box{padding:1.6rem 1.2rem;}}
+.lead-field{margin-bottom:.8rem;}
+.lead-field label{display:block;font-family:var(--fb);font-size:.72rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.lead-field input,.lead-field textarea{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:.65rem .85rem;font-size:.85rem;font-family:var(--fd);color:var(--navy);outline:none;transition:border-color .2s;background:var(--bg);}
+.lead-field input:focus,.lead-field textarea:focus{border-color:var(--teal);background:#fff;}
+.lead-gdpr{display:flex;gap:.55rem;align-items:flex-start;font-size:.72rem;color:var(--gray);line-height:1.55;margin:.9rem 0 1.1rem;}
+.lead-gdpr input{margin-top:.2rem;flex-shrink:0;}
+.lead-send{width:100%;padding:.9rem;border:none;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.92rem;font-weight:800;cursor:pointer;transition:background .2s;}
+.lead-send:hover{background:#22376a;}
+.lead-send:disabled{opacity:.6;cursor:default;}
+.lead-status{text-align:center;font-family:var(--fb);font-size:.8rem;font-weight:700;margin-top:.7rem;min-height:1.2rem;}
+.lead-trust{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.1rem;font-family:var(--fb);font-size:.7rem;font-weight:600;color:var(--gray);}
+.lead-trust span{color:var(--green);}
+
+/* Hero photo 3D flip */
+.photo-wrap { perspective: 600px; }
+.photo-flip-inner { position: relative; width: 220px; height: 220px; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.4,0,.2,1); border-radius: 50%; margin: 0 auto; }
+.photo-wrap:hover .photo-flip-inner { transform: rotateY(180deg); }
+.photo-flip-front, .photo-flip-back { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.photo-flip-front { border: 3px solid rgba(125,200,192,.6); box-shadow: 0 0 0 6px rgba(125,200,192,.12), 0 0 48px rgba(125,200,192,.22); }
+.photo-flip-back { transform: rotateY(180deg); background: #1a1a2e; border: 3px solid rgba(125,200,192,.6); box-shadow: 0 0 0 6px rgba(125,200,192,.12), 0 0 48px rgba(125,200,192,.22); }
+.photo-flip-back img { width: 100%; height: 100%; object-fit: cover; }
+/* ════════════════════════════════════════════════════════════════════
+   TABLET + MOBIL: minden középre zárva (1000px alatt)
+   ════════════════════════════════════════════════════════════════════ */
+@media(max-width:1000px){
+  /* tableten is hamburger menü, különben szétesik a fejléc */
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .mobile-menu ul{text-align:center;}
+  .mobile-menu a{justify-content:center;}
+
+  .container{text-align:center;}
+  .section-title,.section-sub,.hero-title,.hero-lead,.cta-title,.cta-sub,
+  .lead-title,.lead-sub,.about-bio,.faq-a,.faq-a p,.step-text,.step-title,
+  .fw-text,.why-title,.why-text,.svc-desc,.ms-title,.ms-text,.adv-role,
+  .sav-text,.sav-note,.badgeclaim,.footer-brand,.footer-sub{text-align:center;}
+
+  /* minden max-width-es szövegblokk vízszintesen is középre */
+  .section-sub,.hero-lead,.cta-sub,.lead-sub,.about-bio,.sav-note,
+  .faq-a,.step-text,.fw-text,.why-text{margin-left:auto;margin-right:auto;}
+  .label-chip{margin-left:auto;margin-right:auto;}
+  .apt-btn-wrap{margin-left:auto;margin-right:auto;}
+
+  /* hero */
+  .hero-grid{justify-items:center;}
+  .hero-trust{justify-content:center;}
+
+  /* kinek? / miért mi? / területek / folyamat kártyák */
+  .fw-card{border-left:1.5px solid var(--border);border-top:3px solid var(--teal);}
+  .fw-card-top{justify-content:center;}
+  .why-card{flex-direction:column;align-items:center;text-align:center;}
+  .svc-header{justify-content:center;text-align:center;}
+  .step-card{display:flex;flex-direction:column;align-items:center;}
+
+  /* spórolás */
+  .sav-item{flex-direction:column;align-items:center;text-align:center;gap:.6rem;}
+
+  /* rólunk idővonal */
+  .about-grid{gap:2.4rem;}
+  .about-bio{padding-left:0;padding-top:1.1rem;}
+  .about-bio::before{left:50%!important;transform:translateX(-50%)!important;top:0!important;bottom:auto!important;width:56px!important;height:3px!important;}
+  .milestone{flex-direction:column;align-items:center;gap:.4rem;}
+  .ms-year{min-width:0;padding-top:0;}
+
+  /* összehasonlítás */
+  .compare-cell{justify-content:center;text-align:center;}
+  .compare-col-label{justify-content:center;text-align:center;}
+
+  /* GYIK */
+  .faq-q{justify-content:center;gap:.6rem;text-align:center;}
+
+  /* CTA + lead + footer */
+  .cta-inner{flex-direction:column;align-items:center;text-align:center;}
+  .lead-field label{display:block;text-align:center;}
+  .lead-gdpr{text-align:left;}
+  .footer-inner{flex-direction:column;justify-content:center;text-align:center;}
+  .footer-links{justify-content:center;flex-wrap:wrap;}
+  .footer-social{justify-content:center;}
+
+  /* online szerződések csempék */
+  #online .container a[style*="display:flex"]{justify-content:center;text-align:center;}
+}
+@media(max-width:1000px) and (min-width:1px){
+  /* űrlapmezők szövege maradjon balra, hogy gépelni normális legyen */
+  .lead-field input,.lead-field textarea{text-align:left;}
+}
+
+/* ═══════════ ALOLDAL VÁZ ═══════════ */
+.sub-hero{background:var(--navy-deep);position:relative;overflow:hidden;padding:4.5rem 0 3.4rem;}
+.sub-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px);pointer-events:none;}
+.sub-hero .container{position:relative;z-index:1;text-align:center;}
+.sub-h1{font-family:var(--fb);font-size:clamp(1.75rem,4vw,2.6rem);font-weight:800;color:#fff;line-height:1.18;max-width:860px;margin:0 auto .9rem;}
+.sub-h1 em{font-style:normal;color:var(--teal);}
+.sub-lead{font-size:.94rem;color:rgba(255,255,255,.68);line-height:1.78;max-width:720px;margin:0 auto;}
+.sub-chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.6rem;}
+.sub-chip{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border-radius:100px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);font-family:var(--fb);font-size:.76rem;font-weight:700;color:rgba(255,255,255,.85);}
+.sub-chip b{color:var(--teal);}
+.quicknav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;max-width:760px;margin:1.8rem auto 0;}
+.qn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.8rem .8rem;border-radius:12px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9);font-family:var(--fb);font-size:.82rem;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;}
+.qn:hover{background:rgba(255,255,255,.15);border-color:rgba(125,200,192,.55);transform:translateY(-2px);}
+.qn.on{background:var(--teal);border-color:var(--teal);color:var(--navy-deep);}
+.qn.on:hover{background:#6ab8b0;border-color:#6ab8b0;}
+@media(max-width:820px){ .quicknav{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:420px){ .quicknav{grid-template-columns:1fr;} }
+
+.sub-toc{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:60;}
+.sub-toc-inner{display:flex;gap:.3rem;overflow-x:auto;padding:.6rem 0;scrollbar-width:none;}
+.sub-toc-inner::-webkit-scrollbar{display:none;}
+.sub-toc a{flex:none;padding:.42rem .8rem;border-radius:100px;font-family:var(--fb);font-size:.76rem;font-weight:700;color:var(--gray);text-decoration:none;transition:background .18s,color .18s;white-space:nowrap;}
+.sub-toc a:hover{background:var(--bg);color:var(--navy);}
+@media(max-width:1000px){ .sub-toc{display:none;} }
+
+.sub-note{margin-top:1.2rem;padding:.9rem 1.15rem;border-radius:12px;background:var(--bg);border:1px solid var(--border);font-size:.75rem;line-height:1.65;color:var(--gray);}
+.sub-note b{color:var(--navy);}
+.upd{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;border-radius:100px;background:rgba(240,180,41,.14);border:1px solid rgba(240,180,41,.35);font-family:var(--fb);font-size:.68rem;font-weight:700;color:#8a6d1f;margin-bottom:.9rem;}
+.sub-back{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fb);font-size:.8rem;font-weight:700;color:var(--teal);text-decoration:none;margin-bottom:1rem;}
+.sub-back:hover{text-decoration:underline;}
+
+/* ═══════════ KALKULÁTOROK ═══════════ */
+.calcgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;max-width:1000px;margin:2rem auto 0;}
+.calctile{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.4rem 1.2rem;text-align:center;text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s;display:block;}
+.calctile:hover{transform:translateY(-4px);border-color:rgba(125,200,192,.5);box-shadow:0 10px 30px rgba(27,56,88,.09);}
+.calctile .ct-i{font-size:1.9rem;line-height:1;margin-bottom:.7rem;}
+.calctile .ct-t{font-family:var(--fb);font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.calctile .ct-d{font-size:.76rem;line-height:1.55;color:var(--gray);}
+@media(max-width:900px){ .calcgrid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:480px){ .calcgrid{grid-template-columns:1fr;} }
+
+.calcbox{max-width:920px;margin:0 auto;background:#fff;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;}
+.calcbody{display:grid;grid-template-columns:1.05fr 1fr;}
+.calcin{padding:1.8rem;border-right:1.5px solid var(--border);}
+.calcout{padding:1.8rem;background:var(--navy-deep);position:relative;}
+@media(max-width:820px){ .calcbody{grid-template-columns:1fr;} .calcin{border-right:none;border-bottom:1.5px solid var(--border);} }
+
+.fld{margin-bottom:1.25rem;}
+.fld:last-child{margin-bottom:0;}
+.fld-l{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.45rem;}
+.fld-l label{font-family:var(--fb);font-size:.82rem;font-weight:700;color:var(--navy);}
+.fld-v{font-family:var(--fb);font-size:.9rem;font-weight:800;color:var(--teal);white-space:nowrap;}
+.fld input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:100px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) var(--p,50%),#e3e9f1 var(--p,50%),#e3e9f1 100%);outline:none;}
+.fld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--teal);cursor:pointer;box-shadow:0 2px 8px rgba(27,56,88,.2);}
+.fld input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--teal);cursor:pointer;}
+.fld input[type=number],.fld select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--border);border-radius:10px;font-family:var(--fd);font-size:.9rem;color:var(--navy);background:#fff;}
+.fld input[type=number]:focus,.fld select:focus{outline:none;border-color:var(--teal);}
+.fld-h{font-size:.73rem;color:var(--gray);line-height:1.5;margin-top:.35rem;}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+@media(max-width:480px){ .fld-row{grid-template-columns:1fr;} }
+.tog{display:flex;gap:.4rem;background:var(--bg);border-radius:12px;padding:.3rem;margin-bottom:1.3rem;}
+.tog button{flex:1;padding:.55rem .6rem;border:none;border-radius:9px;background:none;font-family:var(--fb);font-size:.79rem;font-weight:700;color:var(--gray);cursor:pointer;transition:background .18s,color .18s;}
+.tog button.on{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(27,56,88,.08);}
+
+.res-main{text-align:center;padding-bottom:1.3rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.2rem;}
+.res-lbl{font-family:var(--fb);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:.5rem;}
+.res-big{font-family:var(--fb);font-size:clamp(1.6rem,5vw,2.35rem);font-weight:800;color:var(--gold);line-height:1.05;}
+.res-sub{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.5rem;line-height:1.55;}
+.res-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.6rem 0;border-top:1px solid rgba(255,255,255,.07);}
+.res-row:first-of-type{border-top:none;}
+.res-row span{font-size:.83rem;color:rgba(255,255,255,.6);}
+.res-row b{font-family:var(--fb);font-size:.95rem;font-weight:700;color:#fff;white-space:nowrap;}
+.res-row b.good{color:var(--teal);}
+.res-row b.warn{color:var(--gold);}
+.res-note{margin-top:1.2rem;padding:.75rem .9rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.72rem;line-height:1.6;color:rgba(255,255,255,.5);}
+.res-cta{display:flex;align-items:center;justify-content:center;gap:.45rem;width:100%;margin-top:1.1rem;padding:.8rem 1rem;border-radius:11px;background:var(--teal);color:var(--navy-deep);font-family:var(--fb);font-size:.85rem;font-weight:700;text-decoration:none;transition:background .18s;}
+.res-cta:hover{background:#6ab8b0;}
+
+.calchead{padding:1.5rem 1.8rem 0;}
+.calchead h3{font-family:var(--fb);font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:.3rem;}
+.calchead p{font-size:.85rem;line-height:1.65;color:var(--gray);}
+.calcsec{scroll-margin-top:90px;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo brandmark" href="index.html"><img src="data:image/png;base64,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" alt="EAGLZ"><span>powered by OVB Gentischer Direction</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Főoldal</a></li>
+    <li><a href="lakashitel-folyamat.html">Lakásfinanszírozás</a></li>
+    <li><a href="kalkulator.html" style="color:var(--teal);">Kalkulátorok</a></li>
+    <li><a href="kviz.html">Jár nekem?</a></li>
+    <li><a href="index.html#advisors">Tanácsadóink</a></li>
+    <li><a href="index.html#advisors" class="nav-cta">Időpontot foglalok</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html" class="mm-link">Főoldal</a></li>
+    <li><a href="lakashitel-folyamat.html" class="mm-link">Lakásfinanszírozás</a></li>
+    <li><a href="kalkulator.html" class="mm-link">Kalkulátorok</a></li>
+    <li><a href="kviz.html" class="mm-link">Jár nekem?</a></li>
+    <li><a href="index.html#advisors" class="mm-link">Tanácsadóink</a></li>
+    <li><a href="index.html#advisors" class="nav-cta mm-link">Időpontot foglalok</a></li>
+  </ul>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu');
+  btn.addEventListener('click',function(){menu.classList.toggle('open');});
+  document.querySelectorAll('.mm-link').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+})();
+</script>
+
+
+<section class="sub-hero">
+  <div class="container">
+    <a href="index.html" class="sub-back">← Vissza a főoldalra</a>
+    <h1 class="sub-h1">Kalkulátorok — <em>számold ki a saját helyzetedre</em></h1>
+    <p class="sub-lead">Négy eszköz a leggyakoribb kérdésekre. Mindegyik azonnal számol, semmit nem kell megadnod magadról, és nem kérünk regisztrációt. A kalkulátor becslés: a pontos számokat egy díjmentes átvilágításon nézzük meg.</p>
+    <div class="sub-chips">
+      <div class="sub-chip">⚡ Azonnali eredmény</div>
+      <div class="sub-chip">🔒 <b>Nincs adatbekérés</b></div>
+      <div class="sub-chip">📅 Adatok: <b data-upd></b></div>
+    </div>
+    <div class="quicknav">
+      <a href="kalkulator.html" class="qn on"><span>🧮</span>Számolok</a>
+      <a href="kviz.html" class="qn"><span>✅</span>Jár nekem?</a>
+      <a href="lakashitel-folyamat.html" class="qn"><span>🏠</span>Lakásfinanszírozás</a>
+      <a href="index.html#advisors" class="qn"><span>📅</span>Időpontot foglalok</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;padding-top:3rem;padding-bottom:1rem;">
+  <div class="container">
+    <div class="calcgrid">
+      <a href="#torleszto" class="calctile"><div class="ct-i">🧮</div><div class="ct-t">Törlesztő és kamatkülönbség</div><div class="ct-d">Mennyi lenne a havi törlesztőd, és mennyit hoz egy jobb kamat</div></a>
+      <a href="#jtm" class="calctile"><div class="ct-i">📊</div><div class="ct-t">Mennyi hitelt kaphatok?</div><div class="ct-d">Az MNB adósságfék-szabálya szerint, Otthon Start módban is</div></a>
+      <a href="#kivaltas" class="calctile"><div class="ct-i">🔄</div><div class="ct-t">Hitelkiváltás megtérülés</div><div class="ct-d">Megéri-e váltani, és hány hónap alatt jön vissza a költség</div></a>
+      <a href="#bankszamla" class="calctile"><div class="ct-i">🏦</div><div class="ct-t">Bankszámla költség</div><div class="ct-d">Mennyit spórolsz, ha kedvezőbb számlacsomagra váltasz</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 1. TÖRLESZTŐ ═══ -->
+<section id="torleszto" class="section calcsec" style="background:#fff;padding-top:2.5rem;">
+  <div class="container">
+    <div class="calcbox">
+      <div class="calchead">
+        <h3>🧮 Törlesztő és kamatkülönbség</h3>
+        <p>Írd be a hitelösszeget és a futamidőt. Megmutatja, mennyi lenne a havi törlesztőd, és mekkora a különbség a hirdetett és az egyedi bírálattal elérhető kamat között.</p>
+      </div>
+      <div class="calcbody">
+        <div class="calcin">
+        <div class="fld">
+          <div class="fld-l"><label for="t_amount">Hitelösszeg</label><span class="fld-v" id="t_amount_v"></span></div>
+          <input type="range" id="t_amount" min="1000000" max="100000000" step="500000" value="30000000">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="t_years">Futamidő</label><span class="fld-v" id="t_years_v"></span></div>
+          <input type="range" id="t_years" min="5" max="30" step="1" value="25">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="t_r1">Hirdetett kamat</label><span class="fld-v" id="t_r1_v"></span></div>
+          <input type="range" id="t_r1" min="1" max="15" step="0.01" value="7.49">
+          <div class="fld-h">Amit jellemzően kapsz, ha bemész a bankba</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="t_r2">Elérhető kamat</label><span class="fld-v" id="t_r2_v"></span></div>
+          <input type="range" id="t_r2" min="1" max="15" step="0.01" value="5.59">
+          <div class="fld-h">Több bank versenyeztetésével, egyedi bírálattal*</div>
+        </div>
+        </div>
+        <div class="calcout">
+          <div class="res-main">
+            <div class="res-lbl">Különbség a teljes futamidőn</div>
+            <div class="res-big" id="t_big"></div>
+            <div class="res-sub">ennyivel fizetnél kevesebbet ugyanarra a hitelre</div>
+          </div>
+        <div class="res-row"><span>Havi törlesztő – hirdetett</span><b id="t_m1"></b></div>
+        <div class="res-row"><span>Havi törlesztő – egyedi</span><b id="t_m2" class="good"></b></div>
+        <div class="res-row"><span>Havi különbség</span><b id="t_md" class="good"></b></div>
+        <div class="res-row"><span>Teljes visszafizetés – hirdetett</span><b id="t_t1"></b></div>
+        <div class="res-row"><span>Teljes visszafizetés – egyedi</span><b id="t_t2" class="good"></b></div>
+        <div class="res-row"><span>Kamat összesen – hirdetett</span><b id="t_int1"></b></div>
+        <div class="res-row"><span>Kamat összesen – egyedi</span><b id="t_int2" class="good"></b></div>
+          <a href="index.html#advisors" class="res-cta">📅 Nézzük meg a te esetedre</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. JTM ═══ -->
+<section id="jtm" class="section calcsec graph-light">
+  <div class="container">
+    <div class="calcbox">
+      <div class="calchead">
+        <h3>📊 Mennyi hitelt kaphatok?</h3>
+        <p>Az MNB adósságfék-szabálya (JTM) szerint számol: havi 800 ezer forint nettó jövedelem alatt a jövedelmed 50%-a, afölött 60%-a mehet el törlesztésre, legalább 10 évig fix kamatozásnál.</p>
+      </div>
+      <div class="calcbody">
+        <div class="calcin">
+          <div class="tog" id="j_tog">
+            <button class="on" data-os="0">Piaci lakáshitel</button>
+            <button data-os="1">Otthon Start</button>
+          </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_income">Nettó jövedelmed</label><span class="fld-v" id="j_income_v"></span></div>
+          <input type="range" id="j_income" min="200000" max="3000000" step="10000" value="600000">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_income2">Adóstárs jövedelme</label><span class="fld-v" id="j_income2_v"></span></div>
+          <input type="range" id="j_income2" min="0" max="3000000" step="10000" value="0">
+          <div class="fld-h">Ha egyedül igényelsz, hagyd nullán</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_debt">Meglévő havi törlesztőid</label><span class="fld-v" id="j_debt_v"></span></div>
+          <input type="range" id="j_debt" min="0" max="1000000" step="5000" value="0">
+          <div class="fld-h">Személyi kölcsön, autóhitel, egyéb</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_card">Hitelkártya- és folyószámlahitel-keret</label><span class="fld-v" id="j_card_v"></span></div>
+          <input type="range" id="j_card" min="0" max="10000000" step="50000" value="0">
+          <div class="fld-h">Ennek 5%-a számít be havi teherként, akkor is, ha nem használod</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_years">Futamidő</label><span class="fld-v" id="j_years_v"></span></div>
+          <input type="range" id="j_years" min="5" max="30" step="1" value="25">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="j_rate">Kamat</label><span class="fld-v" id="j_rate_v"></span></div>
+          <input type="range" id="j_rate" min="1" max="15" step="0.01" value="5.59">
+          
+        </div>
+        </div>
+        <div class="calcout">
+          <div class="res-main">
+            <div class="res-lbl">Elérhető hitelösszeg</div>
+            <div class="res-big" id="j_big"></div>
+            <div class="res-sub">becsült felső határ a jövedelmed alapján</div>
+          </div>
+        <div class="res-row"><span>Alkalmazott JTM-limit</span><b id="j_ratio"></b></div>
+        <div class="res-row"><span>Maximálisan törleszthető</span><b id="j_cap"></b></div>
+        <div class="res-row"><span>Meglévő terheid</span><b id="j_load"></b></div>
+        <div class="res-row"><span>Szabad törlesztőkeret</span><b id="j_free" class="good"></b></div>
+        <div class="res-row"><span>Ehhez tartozó havi törlesztő</span><b id="j_month"></b></div>
+          <div class="res-row" id="j_oscap" style="display:none;"><span>⚠️ Otthon Start plafon</span><b class="warn">50 000 000 Ft</b></div>
+          <div class="res-note">Ez becslés. A bank ezen felül vizsgálja a munkaviszonyt, a KHR-státuszt, az ingatlan értékbecslését és a saját belső szabályait is.</div>
+          <a href="index.html#advisors" class="res-cta">📅 Pontos számítást kérek</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. HITELKIVÁLTÁS ═══ -->
+<section id="kivaltas" class="section calcsec" style="background:#fff;">
+  <div class="container">
+    <div class="calcbox">
+      <div class="calchead">
+        <h3>🔄 Hitelkiváltás megtérülés</h3>
+        <p>Egy új, olcsóbb hitellel kifizeted a régit. Ez nem automatikusan éri meg: a váltásnak egyszeri költségei vannak. Itt megnézheted, mennyit spórolsz, és hány hónap alatt jön vissza a költség.</p>
+      </div>
+      <div class="calcbody">
+        <div class="calcin">
+        <div class="fld">
+          <div class="fld-l"><label for="k_balance">Fennálló tartozás</label><span class="fld-v" id="k_balance_v"></span></div>
+          <input type="range" id="k_balance" min="500000" max="100000000" step="100000" value="18000000">
+          <div class="fld-h">A banki appban vagy az éves elszámolóban találod</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="k_month">Jelenlegi havi törlesztő</label><span class="fld-v" id="k_month_v"></span></div>
+          <input type="range" id="k_month" min="10000" max="1000000" step="1000" value="165000">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="k_years">Hátralévő futamidő</label><span class="fld-v" id="k_years_v"></span></div>
+          <input type="range" id="k_years" min="1" max="30" step="1" value="15">
+          
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="k_rate">Új kamat</label><span class="fld-v" id="k_rate_v"></span></div>
+          <input type="range" id="k_rate" min="1" max="15" step="0.01" value="5.59">
+          <div class="fld-h">Egyedi bírálattal elérhető szint*</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="k_cost">Egyszeri költségek</label><span class="fld-v" id="k_cost_v"></span></div>
+          <input type="range" id="k_cost" min="0" max="1500000" step="10000" value="350000">
+          <div class="fld-h">Értékbecslés, közjegyző, földhivatal, végtörlesztési díj</div>
+        </div>
+        </div>
+        <div class="calcout">
+          <div class="res-main">
+            <div class="res-lbl">Megtakarítás a hátralévő futamidőn</div>
+            <div class="res-big" id="k_big"></div>
+            <div class="res-sub">az egyszeri költségek levonása után</div>
+          </div>
+        <div class="res-row"><span>Új havi törlesztő</span><b id="k_new" class="good"></b></div>
+        <div class="res-row"><span>Havi változás</span><b id="k_sm" class="good"></b></div>
+        <div class="res-row"><span>Összes befizetés – jelenlegi</span><b id="k_to"></b></div>
+        <div class="res-row"><span>Összes befizetés – kiváltás után</span><b id="k_tn" class="good"></b></div>
+        <div class="res-row"><span>Megtérülési idő</span><b id="k_pb" class="good"></b></div>
+          <div class="res-note" id="k_warn" style="display:none;">Ezekkel a paraméterekkel a kiváltás nem hoz megtakarítást. Ez normális: ha a jelenlegi kamatod már alacsony, vagy kevés a hátralévő futamidő, nem éri meg váltani.</div>
+          <a href="index.html#advisors" class="res-cta">📅 Átnézzük a szerződésed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. BANKSZÁMLA ═══ -->
+<section id="bankszamla" class="section calcsec graph-light">
+  <div class="container">
+    <div class="calcbox">
+      <div class="calchead">
+        <h3>🏦 Bankszámla költség</h3>
+        <p>A számlavezetés önmagában kis tétel, de évekre vetítve összeadódik. Ha nem tudod a pontos éves díjadat, a netbankban az éves számlakivonatban megtalálod egy összegben.</p>
+      </div>
+      <div class="calcbody">
+        <div class="calcin">
+        <div class="fld">
+          <div class="fld-l"><label for="b_now">Jelenlegi éves számlaköltséged</label><span class="fld-v" id="b_now_v"></span></div>
+          <input type="range" id="b_now" min="0" max="300000" step="1000" value="60000">
+          <div class="fld-h">Számlavezetés, utalások, kártyadíj, készpénzfelvétel együtt</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="b_new">Új számla éves költsége</label><span class="fld-v" id="b_new_v"></span></div>
+          <input type="range" id="b_new" min="0" max="300000" step="1000" value="12000">
+          <div class="fld-h">Kedvezményes csomagokkal jellemzően ide esik</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="b_cash">Éves cashback / jóváírás</label><span class="fld-v" id="b_cash_v"></span></div>
+          <input type="range" id="b_cash" min="0" max="200000" step="1000" value="0">
+          <div class="fld-h">Ha az új számlához visszatérítés is jár</div>
+        </div>
+        <div class="fld">
+          <div class="fld-l"><label for="b_years">Időtáv</label><span class="fld-v" id="b_years_v"></span></div>
+          <input type="range" id="b_years" min="1" max="20" step="1" value="10">
+          
+        </div>
+        </div>
+        <div class="calcout">
+          <div class="res-main">
+            <div class="res-lbl">Megtakarítás a választott időtávon</div>
+            <div class="res-big" id="b_big"></div>
+            <div class="res-sub">a számlaköltség különbsége és a cashback együtt</div>
+          </div>
+        <div class="res-row"><span>Éves megtakarítás</span><b id="b_year" class="good"></b></div>
+        <div class="res-row"><span>Havi megtakarítás</span><b id="b_month" class="good"></b></div>
+        <div class="res-row"><span>Jelenlegi számla összesen</span><b id="b_tn"></b></div>
+        <div class="res-row"><span>Új számla összesen</span><b id="b_tw" class="good"></b></div>
+          <div class="res-note">A számlacsomagok díjai és a kedvezmények feltételei bankonként eltérnek, és a legjobb ajánlatok gyakran jövedelem-jóváíráshoz vagy kártyahasználathoz kötöttek.</div>
+          <a href="index.html#advisors" class="res-cta">📅 Megnézzük a számládat</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-inner">
+        <div>
+          <div class="cta-free">✓ Kötelezettségektől mentes és díjmentes</div>
+          <h2 class="cta-title">Nézzük meg a te számaidat.</h2>
+          <p class="cta-sub">A kalkulátor becslés. A te helyzetedre szabott, pontos számokat egy díjmentes, kötelezettség nélküli átvilágításon tudjuk megnézni.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;flex-shrink:0;">
+          <div class="apt-btn-wrap">
+            <a href="index.html#advisors" class="apt-btn-inner" style="padding:1rem 2rem;">📅 Tanácsadót választok</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg);padding-top:2.4rem;padding-bottom:2.4rem;">
+  <div class="container">
+    <div class="sub-note" style="max-width:900px;margin:0 auto;font-size:.72rem;">
+      <b>*</b> A kalkulátorok egyszerűsített, annuitásos modellen alapuló, tájékoztató jellegű becslést adnak. Nem minősülnek ajánlatnak, ajánlattételi felhívásnak vagy THM-tájékoztatásnak, és nem tartalmazzák a hitel járulékos költségeit (folyósítási jutalék, értékbecslés, közjegyzői és földhivatali díjak, kötelező biztosítások). A ténylegesen elérhető kamat, hitelösszeg és a teljes hiteldíj-mutató (THM) minden esetben egyedi banki bírálat alapján dől el. A JTM-számítás az MNB adósságfék-szabályának általános logikáját követi; az egyes bankok ettől eltérő, szigorúbb belső szabályokat is alkalmazhatnak. Adatok érvényessége: <b data-upd></b>.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-social">
+      <a href="#" class="fsoc-btn" title="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="fsoc-btn" title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" class="fsoc-btn" title="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0f2035"/></svg>
+      </a>
+      <a href="#" class="fsoc-btn" title="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" class="fsoc-btn" title="Google">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </a>
+    </div>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">EAGLZ · <span>független pénzügyi tanácsadó csapat</span></div>
+        <div class="footer-sub">OVB Allfinanz Magyarország · Budapest, XI. kerület · MNB-nyilvántartott közvetítők</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:INFO_EMAIL_IDE">Kapcsolat</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener">Időpontfoglalás</a>
+        <a href="KARRIER_OLDAL_URL_IDE" target="_blank">Karrier</a>
+        <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     IMPRESSZUM — footer linkről nyílik. A _IDE végű helyeket töltsd ki!
+     FONTOS: élesítés előtt futtasd át az OVB compliance-en.
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="imp-overlay" id="impOverlay">
+  <div class="imp-modal" role="dialog" aria-modal="true" aria-labelledby="impTitle">
+    <button class="imp-close" onclick="closeImp()" aria-label="Bezárás">✕</button>
+    <h3 id="impTitle">Impresszum és jogi tájékoztató</h3>
+    <p class="imp-lead">Utolsó frissítés: FRISSITES_DATUMA_IDE</p>
+
+    <h4>Az EAGLZ és az OVB kapcsolata</h4>
+    <div class="imp-key">
+      <p>Az <b>EAGLZ</b> egy csapatmegnevezés és márkanév, amely az <b>OVB Allfinanz Magyarország Kft.</b> szerződött pénzügyi közvetítőinek egy csoportját jelöli.</p>
+      <p>Az EAGLZ <b>nem önálló jogi személy</b>, nem pénzügyi intézmény, nem biztosító, nem befektetési szolgáltató és nem önálló pénzügyi közvetítő. Az EAGLZ önmagában semmilyen pénzügyi szolgáltatást nem nyújt, szerződést nem köt és pénzt nem kezel.</p>
+      <p>Az ezen az oldalon bemutatkozó tanácsadók a pénzügyi és biztosításközvetítői tevékenységüket <b>kizárólag az OVB Allfinanz Magyarország Kft. nevében és javára, annak közvetítőjeként</b> végzik, a rájuk vonatkozó jogszabályi és belső szabályzati keretek között.</p>
+    </div>
+
+    <h4>A közvetítő adatai</h4>
+    <dl class="imp-data">
+      <dt>Cégnév</dt><dd>OVB Allfinanz Magyarország Kft.</dd>
+      <dt>Székhely</dt><dd>OVB_SZEKHELY_IDE</dd>
+      <dt>Cégjegyzékszám</dt><dd>OVB_CEGJEGYZEKSZAM_IDE</dd>
+      <dt>Adószám</dt><dd>OVB_ADOSZAM_IDE</dd>
+      <dt>Felügyeleti szerv</dt><dd>Magyar Nemzeti Bank (MNB)</dd>
+      <dt>MNB nyilvántartási szám</dt><dd>OVB_MNB_SZAM_IDE</dd>
+      <dt>Tevékenységi minőség</dt><dd>többes ügynök / többes biztosításközvetítő</dd>
+    </dl>
+    <p>A közvetítő és a közvetítők nyilvántartási adatai az MNB nyilvános piaci szereplő keresőjében ellenőrizhetők: <a href="https://intezmenykereso.mnb.hu" target="_blank" rel="noopener">intezmenykereso.mnb.hu</a></p>
+
+    <h4>Az oldal üzemeltetője</h4>
+    <dl class="imp-data">
+      <dt>Üzemeltető</dt><dd>UZEMELTETO_NEV_IDE</dd>
+      <dt>Kapcsolat</dt><dd>INFO_EMAIL_IDE</dd>
+      <dt>Iroda</dt><dd>Budapest, Kelenhegyi út 43., 1118</dd>
+      <dt>Tárhelyszolgáltató</dt><dd>TARHELYSZOLGALTATO_IDE</dd>
+    </dl>
+
+    <h4>A tanácsadás díjazása</h4>
+    <p>A tanácsadás és a közvetítés az ügyfél számára <b>díjmentes</b>. A közvetítő a tevékenységéért a szerződés létrejötte esetén a pénzügyi szolgáltatótól (banktól, biztosítótól, pénztártól) részesül jutalékban. Ez a jutalék a termék árába előre beépített, azaz a közvetítőn keresztül kötött szerződés az ügyfél számára nem drágább, mintha közvetlenül az adott szolgáltatónál kötné meg.</p>
+    <p>Az ügyfél a szerződéskötést megelőzően jogosult tájékoztatást kérni a közvetítő javadalmazásának jellegéről, valamint arról, hogy a közvetítő mely szolgáltatókkal áll szerződéses kapcsolatban.</p>
+
+    <h4>A weboldal tartalmának jogi jellege</h4>
+    <p>A weboldalon szereplő információk <b>tájékoztató jellegűek</b>. A tartalom nem minősül ajánlattételnek, ajánlattételi felhívásnak, befektetési tanácsadásnak, adótanácsadásnak, jogi tanácsadásnak, sem személyre szabott pénzügyi ajánlásnak.</p>
+    <p>A megtakarítási, hozam- és költségértékek, valamint a bemutatott nagyságrendek piaci összehasonlításokon alapuló, tájékoztató becslések. A ténylegesen elérhető eredmény minden esetben az egyedi feltételektől függ (összeg, futamidő, jövedelem, kockázati besorolás, választott konstrukció, mindenkori kondíciók), és kizárólag személyre szabott igényfelmérés és kalkuláció alapján határozható meg.</p>
+    <p>A múltbeli hozam nem jelent garanciát a jövőbeli hozamra. A befektetési és biztosítási termékek kockázatot hordoznak, ideértve a befektetett tőke részleges vagy teljes elvesztésének kockázatát is. Szerződéskötés előtt minden esetben olvasd el az adott termék hivatalos dokumentációját (terméktájékoztató, kiemelt információkat tartalmazó dokumentum, ügyfél-tájékoztató, üzletszabályzat, általános és különös feltételek).</p>
+    <p>A weboldalon szereplő pénzintézeti és biztosítói logók az adott vállalatok tulajdonát képezik, megjelenítésük a partneri kapcsolat szemléltetését szolgálja.</p>
+
+    <h4>Panaszkezelés</h4>
+    <p>Panaszt szóban (személyesen vagy telefonon) és írásban (e-mailben, postai úton) is előterjeszthetsz. A panaszkezelés menetét az OVB Allfinanz Magyarország Kft. panaszkezelési szabályzata tartalmazza.</p>
+    <ul>
+      <li>Első fokon: OVB Allfinanz Magyarország Kft. — OVB_PANASZ_ELERHETOSEG_IDE</li>
+      <li>Fogyasztói jogvita esetén: <b>Pénzügyi Békéltető Testület</b> (1013 Budapest, Krisztina krt. 55.)</li>
+      <li>Fogyasztóvédelmi eljárás: <b>Magyar Nemzeti Bank</b> ügyfélszolgálata</li>
+      <li>Vagy bírósági út</li>
+    </ul>
+
+    <h4>Adatkezelés</h4>
+    <p>A weboldalon keresztül megadott adatokat (név, telefonszám, e-mail cím, üzenet) kizárólag a kapcsolatfelvétel és az időpontegyeztetés céljából kezeljük, az érintett hozzájárulása alapján. Az adatokat harmadik félnek marketing célból nem adjuk át. Az adatkezeléssel kapcsolatos jogaidról (hozzáférés, helyesbítés, törlés, korlátozás, tiltakozás, adathordozhatóság) a részletes adatkezelési tájékoztató rendelkezik: ADATKEZELESI_TAJEKOZTATO_URL_IDE</p>
+    <p>Az időpontfoglalás a Google Naptár időpontfoglaló szolgáltatásán keresztül történik, amelyre a Google adatkezelési feltételei is irányadók.</p>
+
+    <h4>Szerzői jog</h4>
+    <p>A weboldal szövegei, grafikai elemei és arculata szerzői jogi védelem alatt állnak. Bármely elem másolása, többszörözése vagy nyilvános felhasználása kizárólag előzetes írásbeli engedéllyel lehetséges.</p>
+
+    <p class="imp-note">Ha a fentiekkel kapcsolatban kérdésed van, írj az INFO_EMAIL_IDE címre.</p>
+  </div>
+</div>
+
+<script>
+function openImp(){
+  document.getElementById('impOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  if(history.replaceState) history.replaceState(null,'','#impresszum');
+}
+function closeImp(){
+  document.getElementById('impOverlay').classList.remove('active');
+  document.body.style.overflow='';
+  if(history.replaceState) history.replaceState(null,'',location.pathname);
+}
+document.getElementById('impOverlay').addEventListener('click', function(e){ if(e.target===this) closeImp(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeImp(); });
+if(location.hash === '#impresszum') openImp();
+</script>
+
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   KAMATOK — EGY HELYEN. Ezt a blokkot frissítsd negyedévente.
+   ══════════════════════════════════════════════════════════════════════ */
+var RATES = { advertised: 7.49, best: 5.59, otthonStart: 3.00, updated: '2026. augusztus' };
+/* JTM (MNB adósságfék) 2026: 800 e Ft nettó alatt 50%, felette 60% */
+var JTM = { threshold: 800000, low: 0.50, high: 0.60, cardRate: 0.05 };
+var OS  = { maxAmount: 50000000, maxYears: 25 };
+
+function huf(v){ return Math.round(v).toLocaleString('hu-HU') + ' Ft'; }
+function hufM(v){ return (Math.round(v/100000)/10).toLocaleString('hu-HU') + ' M Ft'; }
+function pct(v){ return v.toFixed(2).replace('.',',') + '%'; }
+function annuity(L,r,y){ var i=r/100/12,n=y*12; return i===0? L/n : L*i/(1-Math.pow(1+i,-n)); }
+function principal(M,r,y){ var i=r/100/12,n=y*12; return i===0? M*n : M*(1-Math.pow(1+i,-n))/i; }
+function $(id){ return document.getElementById(id); }
+function bindRange(el){
+  function paint(){ var p=(el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--p',p+'%'); }
+  el.addEventListener('input',paint); paint();
+}
+document.querySelectorAll('input[type=range]').forEach(bindRange);
+document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RATES.updated; });
+
+/* ─────────── 1. TÖRLESZTŐ ÉS KAMATKÜLÖNBSÉG ─────────── */
+(function(){
+  var A=$('t_amount'), Y=$('t_years'), R1=$('t_r1'), R2=$('t_r2');
+  if(!A) return;
+  R1.value = RATES.advertised; R2.value = RATES.best;
+  function calc(){
+    var a=+A.value, y=+Y.value, r1=+R1.value, r2=+R2.value, n=y*12;
+    var m1=annuity(a,r1,y), m2=annuity(a,r2,y);
+    $('t_amount_v').textContent = hufM(a);
+    $('t_years_v').textContent  = y + ' év';
+    $('t_r1_v').textContent = pct(r1);
+    $('t_r2_v').textContent = pct(r2);
+    $('t_big').textContent  = huf((m1-m2)*n);
+    $('t_m1').textContent   = huf(m1);
+    $('t_m2').textContent   = huf(m2);
+    $('t_md').textContent   = '−' + huf(m1-m2);
+    $('t_t1').textContent   = huf(m1*n);
+    $('t_t2').textContent   = huf(m2*n);
+    $('t_int1').textContent = huf(m1*n-a);
+    $('t_int2').textContent = huf(m2*n-a);
+  }
+  [A,Y,R1,R2].forEach(function(e){ e.addEventListener('input',calc); });
+  calc();
+})();
+
+/* ─────────── 2. MENNYI HITELT KAPHATOK (JTM) ─────────── */
+(function(){
+  var I=$('j_income'), I2=$('j_income2'), D=$('j_debt'), C=$('j_card'), Y=$('j_years'), R=$('j_rate');
+  if(!I) return;
+  var osMode=false;
+  document.querySelectorAll('#j_tog button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#j_tog button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); osMode = b.dataset.os==='1';
+      if(osMode){ R.value=RATES.otthonStart; if(+Y.value>OS.maxYears) Y.value=OS.maxYears; }
+      else { R.value=RATES.best; }
+      R.disabled = osMode; Y.max = osMode ? OS.maxYears : 30;
+      calc();
+    });
+  });
+  R.value = RATES.best;
+  function calc(){
+    var inc=(+I.value)+(+I2.value), debt=+D.value, card=+C.value, y=+Y.value, r=+R.value;
+    var ratio = inc < JTM.threshold ? JTM.low : JTM.high;
+    var cap = inc*ratio;
+    var free = Math.max(0, cap - debt - card*JTM.cardRate);
+    var L = principal(free, r, y);
+    var capped = osMode ? Math.min(L, OS.maxAmount) : L;
+    $('j_income_v').textContent = huf(+I.value);
+    $('j_income2_v').textContent= huf(+I2.value);
+    $('j_debt_v').textContent   = huf(debt);
+    $('j_card_v').textContent   = huf(card);
+    $('j_years_v').textContent  = y + ' év';
+    $('j_rate_v').textContent   = pct(r);
+    $('j_big').textContent  = huf(capped);
+    $('j_ratio').textContent= Math.round(ratio*100) + '%';
+    $('j_cap').textContent  = huf(cap);
+    $('j_load').textContent = huf(debt + card*JTM.cardRate);
+    $('j_free').textContent = huf(free);
+    $('j_month').textContent= huf(annuity(capped,r,y));
+    $('j_oscap').style.display = (osMode && L > OS.maxAmount) ? 'flex' : 'none';
+  }
+  [I,I2,D,C,Y,R].forEach(function(e){ e.addEventListener('input',calc); });
+  calc();
+})();
+
+/* ─────────── 3. HITELKIVÁLTÁS ─────────── */
+(function(){
+  var B=$('k_balance'), M=$('k_month'), Y=$('k_years'), R=$('k_rate'), C=$('k_cost');
+  if(!B) return;
+  R.value = RATES.best;
+  function calc(){
+    var bal=+B.value, oldM=+M.value, y=+Y.value, r=+R.value, cost=+C.value, n=y*12;
+    var newM = annuity(bal, r, y);
+    var saveM = oldM - newM;
+    var totalOld = oldM*n, totalNew = newM*n + cost;
+    var save = totalOld - totalNew;
+    var payback = saveM > 0 ? Math.ceil(cost/saveM) : null;
+    $('k_balance_v').textContent = hufM(bal);
+    $('k_month_v').textContent   = huf(oldM);
+    $('k_years_v').textContent   = y + ' év';
+    $('k_rate_v').textContent    = pct(r);
+    $('k_cost_v').textContent    = huf(cost);
+    $('k_big').textContent  = save > 0 ? huf(save) : '—';
+    $('k_new').textContent  = huf(newM);
+    $('k_sm').textContent   = (saveM>0?'−':'+') + huf(Math.abs(saveM));
+    $('k_to').textContent   = huf(totalOld);
+    $('k_tn').textContent   = huf(totalNew);
+    $('k_pb').textContent   = payback ? (payback + ' hónap') : 'nem térül meg';
+    $('k_pb').className     = payback && payback<=24 ? 'good' : 'warn';
+    $('k_warn').style.display = save > 0 ? 'none' : 'block';
+  }
+  [B,M,Y,R,C].forEach(function(e){ e.addEventListener('input',calc); });
+  calc();
+})();
+
+/* ─────────── 4. BANKSZÁMLA ─────────── */
+(function(){
+  var A=$('b_now'), B=$('b_new'), C=$('b_cash'), Y=$('b_years');
+  if(!A) return;
+  function calc(){
+    var now=+A.value, nw=+B.value, cash=+C.value, y=+Y.value;
+    var yearly = now - nw + cash;
+    var total = yearly*y;
+    $('b_now_v').textContent  = huf(now);
+    $('b_new_v').textContent  = huf(nw);
+    $('b_cash_v').textContent = huf(cash);
+    $('b_years_v').textContent= y + ' év';
+    $('b_big').textContent    = huf(total);
+    $('b_year').textContent   = huf(yearly);
+    $('b_month').textContent  = huf(yearly/12);
+    $('b_tn').textContent     = huf(now*y);
+    $('b_tw').textContent     = huf(nw*y - cash*y);
+  }
+  [A,B,C,Y].forEach(function(e){ e.addEventListener('input',calc); });
+  calc();
+})();
+</script>
+
+</body>
+</html>
