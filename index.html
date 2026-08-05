@@ -186,6 +186,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,32,53,.96
 @media(max-width:1000px){ .imp-modal,.imp-modal p,.imp-modal li,.imp-modal h3,.imp-modal h4,.imp-modal .imp-lead{text-align:left;} }
 @media(max-width:560px){ .imp-modal{padding:2rem 1.3rem 1.5rem;} .imp-data{grid-template-columns:1fr;gap:.1rem;} .imp-data dd{margin-bottom:.5rem;} }
 
+/* ═══════════ ÖSSZEHASONLÍTÓ TÁBLA A MIÉRT MI? SZEKCIÓBAN ═══════════ */
+.why-compare{margin-top:2.6rem;}
+.why-compare-head{text-align:center;font-family:var(--fb);font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:1.2rem;}
+#why .compare-table{border-color:var(--border);background:#fff;}
+#why .compare-col-label.alone{background:#eef2f7;color:var(--gray);}
+#why .compare-col-label.with{background:rgba(125,200,192,.2);color:#31766f;}
+#why .compare-icon-x{background:rgba(27,56,88,.1);color:var(--gray);}
+#why .compare-icon-check{background:rgba(125,200,192,.35);color:#2c6b64;}
+#why .compare-row{border-top:1px solid var(--border);}
+#why .compare-cell.alone{color:var(--gray);background:#f7f9fc;}
+#why .compare-cell.alone::before{color:rgba(27,56,88,.25);}
+#why .compare-cell.with{color:var(--navy);background:rgba(125,200,192,.07);}
+#why .compare-cell.with::before{color:#2c6b64;}
+#why .compare-row:nth-child(even) .compare-cell.alone{background:#eff3f8;}
+#why .compare-row:nth-child(even) .compare-cell.with{background:rgba(125,200,192,.13);}
+
 .nav-logo.brandmark{display:flex;flex-direction:column;gap:.18rem;line-height:1;}
 .nav-logo.brandmark img{height:23px;width:auto;display:block;}
 @media(max-width:560px){ .nav-logo.brandmark img{height:19px;} }
@@ -929,7 +945,7 @@ function toggleTeam(){
     </div>
     <div style="text-align:center;margin-top:2.2rem;">
       <div class="apt-btn-wrap">
-        <a href="#advisors" class="apt-btn-inner">📅 Számoljuk ki a te esetedre</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener" class="apt-btn-inner">📅 Számoljuk ki a te esetedre</a>
       </div>
     </div>
   </div>
@@ -964,54 +980,6 @@ function toggleTeam(){
         <div class="step-num">04</div>
         <div class="step-title">Szerviz</div>
         <div class="step-text">Évente legalább egyszer konzultálunk és frissítünk a folyamatainkon, hogy mindig a legjobb megoldásod legyen.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="compare" class="section" style="background:var(--navy-deep);position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 44px);pointer-events:none;"></div>
-  <div class="container" style="position:relative;z-index:1;">
-    <div style="text-align:center;margin-bottom:2.8rem;">
-      <div class="label-chip chip-teal" style="margin-bottom:.85rem;">Összehasonlítás</div>
-      <h2 class="section-title" style="color:#fff;text-align:center;">Miért ne egyedül dönts?</h2>
-    </div>
-    <div class="compare-wrap">
-      <div class="compare-table">
-        <div class="compare-header">
-          <div class="compare-col-label alone">
-            <span class="compare-icon-x">✕</span> Egyedül
-          </div>
-          <div class="compare-col-label with">
-            <span class="compare-icon-check">✓</span> Velünk
-          </div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell alone">termékek között keresgélsz</div>
-          <div class="compare-cell with">célokból indulunk ki</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell alone">reklámokra és ajánlatokra támaszkodsz</div>
-          <div class="compare-cell with">teljes képet nézünk</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell alone">nehéz összehasonlítani</div>
-          <div class="compare-cell with">érthető rendszerben látod</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell alone">később derül ki a hiba</div>
-          <div class="compare-cell with">előre modellezünk forgatókönyveket</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-cell alone">egyszeri döntés</div>
-          <div class="compare-cell with">hosszú távú utánkövetés</div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <p style="font-family:var(--fb);font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:1.1rem;">Tedd próbára: egy konzultáció semmire nem kötelez.</p>
-      <div class="apt-btn-wrap">
-        <a href="#advisors" class="apt-btn-inner">📅 Konzultáció foglalása</a>
       </div>
     </div>
   </div>
@@ -1096,6 +1064,48 @@ function toggleTeam(){
       <div class="why-card"><div class="why-icon">🤝</div><div><div class="why-title">Nincs nyomás</div><div class="why-text">Kiszámolunk mindent, és közösen alátámasztjuk. A döntés mindig a tiéd.</div></div></div>
       <div class="why-card"><div class="why-icon">🆓</div><div><div class="why-title">Teljesen díjmentes</div><div class="why-text">A tanácsadói díj be van építve a szolgáltatók díjazásába, így számodra a konzultációk díjmentesek és azok is maradnak.</div></div></div>
     </div>
+
+    <div class="why-compare">
+      <div class="why-compare-head">Egyedül vagy velünk?</div>
+      <div class="compare-wrap">
+      <div class="compare-table">
+        <div class="compare-header">
+          <div class="compare-col-label alone">
+            <span class="compare-icon-x">✕</span> Egyedül
+          </div>
+          <div class="compare-col-label with">
+            <span class="compare-icon-check">✓</span> Velünk
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell alone">termékek között keresgélsz</div>
+          <div class="compare-cell with">célokból indulunk ki</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell alone">reklámokra és ajánlatokra támaszkodsz</div>
+          <div class="compare-cell with">teljes képet nézünk</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell alone">nehéz összehasonlítani</div>
+          <div class="compare-cell with">érthető rendszerben látod</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell alone">később derül ki a hiba</div>
+          <div class="compare-cell with">előre modellezünk forgatókönyveket</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell alone">egyszeri döntés</div>
+          <div class="compare-cell with">hosszú távú utánkövetés</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div style="text-align:center;margin-top:2.2rem;">
+      <p style="font-family:var(--fb);font-size:.85rem;color:var(--gray);margin-bottom:1.1rem;">Tedd próbára: egy konzultáció semmire nem kötelez.</p>
+      <div class="apt-btn-wrap">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener" class="apt-btn-inner">📅 Konzultáció foglalása</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1110,7 +1120,7 @@ function toggleTeam(){
     </div>
     <div style="text-align:center;margin-top:2rem;">
 <div class="apt-btn-wrap">
-        <a href="#advisors" class="apt-btn-inner">📅 Konzultáció foglalása</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener" class="apt-btn-inner">📅 Konzultáció foglalása</a>
       </div>
     </div>
   </div>
@@ -1209,7 +1219,7 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
     </div>
     <div class="faq-cta">
       <div class="apt-btn-wrap">
-        <a href="#advisors" class="apt-btn-inner">📅 Van még kérdésem? Foglalok időpontot</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener" class="apt-btn-inner">📅 Van még kérdésem? Foglalok időpontot</a>
       </div>
     </div>
   </div>
@@ -1226,7 +1236,7 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;flex-shrink:0;">
           <div class="apt-btn-wrap">
-            <a href="#advisors" class="apt-btn-inner" style="padding:1rem 2rem;">📅 Időpontot foglalok</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener" class="apt-btn-inner" style="padding:1rem 2rem;">📅 Időpontot foglalok</a>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Budapest,+Kelenhegyi+út+43,+1118" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1.2rem;border-radius:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-family:var(--fb);font-size:.78rem;font-weight:600;text-decoration:none;transition:all .2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1295,7 +1305,7 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
       </div>
       <div class="footer-links">
         <a href="mailto:INFO_EMAIL_IDE">Kapcsolat</a>
-        <a href="#advisors">Időpontfoglalás</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener">Időpontfoglalás</a>
         <a href="KARRIER_OLDAL_URL_IDE" target="_blank">Karrier</a>
         <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
       </div>
