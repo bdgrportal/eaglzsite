@@ -786,6 +786,110 @@ html,body{overflow-x:hidden;}
   .adv-grid{gap:.5rem!important;}
 }
 
+
+/* ═══════════ JOGI LÁBLÉC ═══════════ */
+.footer-legal{margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.08);}
+.footer-legal-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.4rem;}
+.footer-copy{font-family:var(--fb);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55);}
+.footer-copy b{color:#fff;font-weight:700;}
+.footer-legal-links{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;}
+.footer-legal-links a{font-size:.76rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+.footer-legal-links a:hover{color:var(--teal-lite);}
+.footer-fine{margin-top:1rem;font-size:.7rem;line-height:1.75;color:rgba(255,255,255,.34);max-width:900px;}
+.footer-fine b{color:rgba(255,255,255,.5);font-weight:600;}
+@media(max-width:1000px){
+  .footer-legal-top{flex-direction:column;text-align:center;}
+  .footer-legal-links{justify-content:center;}
+  .footer-fine{text-align:center;margin-left:auto;margin-right:auto;}
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   SZÉLESKÉPERNYŐ: tágabb konténer, középre zárt tartalom, kevesebb görgetés
+   (a mobil és tablet elrendezés érintetlen marad)
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1001px){
+  .container{max-width:1240px;text-align:center;}
+  .section{padding:3.6rem 0;}
+  #advisors{padding:3.6rem 0;}
+  #cta{padding:3rem 0;}
+
+  /* minden szekciófejléc és szövegblokk középen (a hero kivételével) */
+  .section-title,.section-sub,.cta-title,.cta-sub,.lead-title,.lead-sub,
+  .about-bio,.faq-a,.faq-a p,.step-text,.step-title,.fw-text,.why-title,.why-text,
+  .svc-desc,.ms-title,.ms-text,.adv-role,.sav-text,.sav-note,.sub-note,
+  .st-d,.st-t,.ki-d,.ki-t,.docitem b,.docitem span,.progbox p,.warnbox li,
+  .calccta-t,.calccta-d,.footer-brand,.footer-sub{text-align:center;}
+  .label-chip{margin-left:auto;margin-right:auto;}
+  .section-sub{max-width:760px;margin-left:auto;margin-right:auto;}
+  .apt-btn-wrap{margin-left:auto;margin-right:auto;}
+  .why-grid,.sav-grid,.services-grid,.fw-grid,.adv-grid,.steps-grid{margin-left:auto;margin-right:auto;}
+
+  /* kártyák belseje középre, ikon a szöveg fölé */
+  .why-card{flex-direction:column;align-items:center;padding:1.5rem 1.3rem;}
+  .sav-item{flex-direction:column;align-items:center;gap:.7rem;text-align:center;}
+  .fw-card{border-left:1.5px solid var(--border);border-top:3px solid var(--teal);}
+  .fw-card-top{justify-content:center;}
+  .svc-header{justify-content:center;}
+  .step-card{display:flex;flex-direction:column;align-items:center;}
+  .milestone{flex-direction:column;align-items:center;gap:.4rem;}
+  .ms-year{min-width:0;padding-top:0;}
+  .about-bio{padding-left:0;padding-top:1.1rem;max-width:760px;margin-left:auto;margin-right:auto;}
+  .about-bio::before{left:50%!important;transform:translateX(-50%)!important;top:0!important;bottom:auto!important;width:56px!important;height:3px!important;}
+  .compare-cell,.compare-col-label{justify-content:center;text-align:center;}
+  .faq-q{justify-content:center;text-align:center;gap:.6rem;}
+  .cta-inner{flex-direction:column;align-items:center;text-align:center;gap:1.6rem;}
+  .footer-inner{flex-direction:column;justify-content:center;text-align:center;}
+  .footer-links{justify-content:center;}
+  .trow span:first-child{justify-content:center;}
+  .warnbox h4,.docbox h4,.calchead h3{justify-content:center;}
+  .lead-field label{display:block;text-align:center;}
+  .lead-field input,.lead-field textarea{text-align:left;}
+  .lead-gdpr{text-align:left;max-width:640px;margin-left:auto;margin-right:auto;}
+  .footer-fine{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* szélesebb belső dobozok, hogy ne legyen "cső" */
+  .faq-list,.compare-wrap,.steps-grid,.lead-box,.qz,.calcbox,.ttable,.ctab,
+  .imp-modal,.doccol,.prog2,.warn2,.klist,.bignum{max-width:940px;}
+  .fw-grid{max-width:1180px;}
+  .why-compare{max-width:940px;margin-left:auto;margin-right:auto;}
+}
+
+/* nagyon széles kijelző: még egy fokozat */
+@media(min-width:1600px){
+  .container{max-width:1360px;}
+  .why-grid{grid-template-columns:repeat(3,1fr);}
+  .sav-grid{grid-template-columns:repeat(3,1fr);gap:.4rem 2rem;}
+  .faq-list,.compare-wrap,.steps-grid,.lead-box,.qz,.calcbox{max-width:1020px;}
+  .section-title{font-size:2.4rem!important;}
+}
+
+
+/* széles kijelző finomhangolás: rendes oldalmargó + több oszlop hamarabb */
+@media(min-width:1001px){ .container{padding:0 2.5rem;} }
+@media(min-width:1200px){
+  .why-grid{grid-template-columns:repeat(3,1fr);}
+  .sav-grid{grid-template-columns:repeat(3,1fr);gap:.3rem 1.8rem;}
+  .sav-item{padding:1.1rem .8rem;}
+  .prog2,.warn2,.doccol{max-width:1040px;}
+  .klist{grid-template-columns:repeat(4,1fr);max-width:1100px;}
+  .video-embed{max-width:none;}
+}
+@media(min-width:1600px){
+  .container{padding:0 3rem;}
+  .services-grid{grid-template-columns:repeat(4,1fr);}
+}
+
+
+/* széles kijelzőn a tanácsadó-kártya arányosabb: nagyobb fotó, kevesebb üres hely */
+@media(min-width:1001px){
+  .adv-card{height:286px;}
+  .adv-photo{width:118px;height:118px;margin-bottom:1rem;}
+  .adv-front{padding:1.6rem 1.3rem;}
+  .adv-more{margin-top:1rem;}
+}
+@media(min-width:1600px){ .adv-card{height:300px;} .adv-photo{width:128px;height:128px;} }
+
 </style>
 </head>
 <body>
@@ -1223,7 +1327,7 @@ function toggleTeam(){
       <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="M15.6 15.6L20.5 20.5"/></svg></div><div><div class="why-title">Teljes piac áttekintés</div><div class="why-text">Nem egy termék, nem egy bank, hanem a legjobb ajánlat elérése a cél.</div></div></div>
       <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg></div><div><div class="why-title">Őszinte értékelés</div><div class="why-text">Ha a meglévő szerződésed tökéletes, azt is megmondjuk.</div></div></div>
       <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M12 6.8V12l3.4 2"/></svg></div><div><div class="why-title">Az értékes időd védelme</div><div class="why-text">Amíg mi keresgélünk és ügyeket intézünk, te a számodra fontos dolgokkal foglalkozol.</div></div></div>
-      <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.9l7.4 3v5.5c0 4.4-3 8.1-7.4 9.7-4.4-1.6-7.4-5.3-7.4-9.7V5.9z"/><path d="M8.7 11.9l2.3 2.3 4.3-4.4"/></svg></div><div><div class="why-title">Ellenőrzött</div><div class="why-text">Minden tanácsadónk MNB-nyilvántartásban szereplő, ellenőrizhető szakember. Cégazonosító: <b>EAGLZ_MNB_ADAT_IDE</b></div></div></div>
+      <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.9l7.4 3v5.5c0 4.4-3 8.1-7.4 9.7-4.4-1.6-7.4-5.3-7.4-9.7V5.9z"/><path d="M8.7 11.9l2.3 2.3 4.3-4.4"/></svg></div><div><div class="why-title">Ellenőrzött</div><div class="why-text">Minden tanácsadónk MNB-nyilvántartásban szereplő, ellenőrizhető szakember. Az OVB Vermögensberatung Kft. MNB nyilvántartási száma: <b>206012405527</b></div></div></div>
       <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.2" cy="8.2" r="3.5"/><path d="M2.9 20.4a6.4 6.4 0 0 1 12.6 0"/><path d="M16.4 5.1a3.5 3.5 0 0 1 0 6.7M17.6 14.6a6.4 6.4 0 0 1 3.5 5.8"/></svg></div><div><div class="why-title">Nincs nyomás</div><div class="why-text">Kiszámolunk mindent, és közösen alátámasztjuk. A döntés mindig a tiéd.</div></div></div>
       <div class="why-card"><div class="why-icon ic-box"><svg class="ic-lg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.6 2.9H4.4a1.5 1.5 0 0 0-1.5 1.5v7.2c0 .4.16.78.44 1.06l8.1 8.1a1.5 1.5 0 0 0 2.12 0l7.2-7.2a1.5 1.5 0 0 0 0-2.12l-8.1-8.1a1.5 1.5 0 0 0-1.06-.44z"/><circle cx="7.6" cy="7.6" r="1.35"/></svg></div><div><div class="why-title">Teljesen díjmentes</div><div class="why-text">A tanácsadói díj be van építve a szolgáltatók díjazásába, így számodra a konzultációk díjmentesek és azok is maradnak.</div></div></div>
     </div>
@@ -1488,6 +1592,23 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
         <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
       </div>
     </div>
+    <div class="footer-legal">
+      <div class="footer-legal-top">
+        <div class="footer-copy">&copy; 2026 <b>EAGLZ Finance</b>. Minden jog fenntartva.</div>
+        <div class="footer-legal-links">
+          <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
+          <a href="https://www.ovb.hu/szerviz/adatkezelesi-szabalyzat.html" target="_blank" rel="noopener">Adatkezelési tájékoztató</a>
+          <a href="#impresszum" onclick="openImp();return false;">Panaszkezelés</a>
+          <a href="https://intezmenykereso.mnb.hu" target="_blank" rel="noopener">MNB nyilvántartás</a>
+        </div>
+      </div>
+      <div class="footer-fine">
+        Az <b>EAGLZ</b> márkanév, nem önálló jogi személy. Az itt bemutatkozó tanácsadók pénzügyi és biztosításközvetítői tevékenységüket az <b>OVB Vermögensberatung Kft.</b> (1138 Budapest, Váci út 140. · cégjegyzékszám: 01-09-724845 · MNB nyilvántartási szám: 206012405527) nevében és javára, annak <b>többes ügynökeként</b> végzik. Felügyeleti szerv: <b>Magyar Nemzeti Bank</b>.
+        A weboldal tartalma tájékoztató jellegű, nem minősül ajánlattételnek, ajánlattételi felhívásnak, THM-tájékoztatásnak, befektetési, adó- vagy jogi tanácsadásnak. A múltbeli hozam nem jelent garanciát a jövőbeli hozamra.
+        Az oldalon szereplő pénzintézeti és biztosítói nevek, logók és védjegyek a jogtulajdonosaik tulajdonát képezik, megjelenítésük a partneri kapcsolat szemléltetését szolgálja. A weboldal szövegei, grafikai elemei és arculata szerzői jogi védelem alatt állnak; másolásuk vagy nyilvános felhasználásuk kizárólag előzetes írásbeli engedéllyel lehetséges.
+      </div>
+    </div>
+
   </div>
 </footer>
 
@@ -1968,24 +2089,26 @@ document.addEventListener('keydown', function(e){
   <div class="imp-modal" role="dialog" aria-modal="true" aria-labelledby="impTitle">
     <button class="imp-close" onclick="closeImp()" aria-label="Bezárás">✕</button>
     <h3 id="impTitle">Impresszum és jogi tájékoztató</h3>
-    <p class="imp-lead">Utolsó frissítés: FRISSITES_DATUMA_IDE</p>
+    <p class="imp-lead">Utolsó frissítés: 2026. augusztus 6.</p>
 
     <h4>Az EAGLZ és az OVB kapcsolata</h4>
     <div class="imp-key">
-      <p>Az <b>EAGLZ</b> egy csapatmegnevezés és márkanév, amely az <b>OVB Allfinanz Magyarország Kft.</b> szerződött pénzügyi közvetítőinek egy csoportját jelöli.</p>
+      <p>Az <b>EAGLZ</b> egy csapatmegnevezés és márkanév, amely az <b>OVB Vermögensberatung Kft.</b> (OVB Allfinanz csoport) szerződött pénzügyi közvetítőinek egy csoportját jelöli.</p>
       <p>Az EAGLZ <b>nem önálló jogi személy</b>, nem pénzügyi intézmény, nem biztosító, nem befektetési szolgáltató és nem önálló pénzügyi közvetítő. Az EAGLZ önmagában semmilyen pénzügyi szolgáltatást nem nyújt, szerződést nem köt és pénzt nem kezel.</p>
-      <p>Az ezen az oldalon bemutatkozó tanácsadók a pénzügyi és biztosításközvetítői tevékenységüket <b>kizárólag az OVB Allfinanz Magyarország Kft. nevében és javára, annak közvetítőjeként</b> végzik, a rájuk vonatkozó jogszabályi és belső szabályzati keretek között.</p>
+      <p>Az ezen az oldalon bemutatkozó tanácsadók a pénzügyi és biztosításközvetítői tevékenységüket <b>kizárólag az OVB Vermögensberatung Kft. nevében és javára, annak többes ügynökeként</b> végzik, a rájuk vonatkozó jogszabályi és belső szabályzati keretek között.</p>
     </div>
 
     <h4>A közvetítő adatai</h4>
     <dl class="imp-data">
-      <dt>Cégnév</dt><dd>OVB Allfinanz Magyarország Kft.</dd>
-      <dt>Székhely</dt><dd>OVB_SZEKHELY_IDE</dd>
-      <dt>Cégjegyzékszám</dt><dd>OVB_CEGJEGYZEKSZAM_IDE</dd>
-      <dt>Adószám</dt><dd>OVB_ADOSZAM_IDE</dd>
+      <dt>Cégnév</dt><dd>OVB Vermögensberatung Általános Biztosítási és Pénzügyi Szolgáltató Kft.</dd>
+      <dt>Székhely</dt><dd>1138 Budapest, Váci út 140.</dd>
+      <dt>Cégjegyzékszám</dt><dd>01-09-724845</dd>
+      <dt>Adószám</dt><dd>13231796-2-41</dd>
       <dt>Felügyeleti szerv</dt><dd>Magyar Nemzeti Bank (MNB)</dd>
-      <dt>MNB nyilvántartási szám</dt><dd>OVB_MNB_SZAM_IDE</dd>
-      <dt>Tevékenységi minőség</dt><dd>többes ügynök / többes biztosításközvetítő</dd>
+      <dt>MNB nyilvántartási szám</dt><dd>biztosításközvetítői: 206012405527<br>pénzügyi szolgáltatás közvetítői: 13231796</dd>
+      <dt>Tevékenységi minőség</dt><dd>többes ügynök</dd>
+      <dt>Felügyeleti engedélyek</dt><dd>biztosításközvetítés: E-II/273/2005<br>pénzügyi szolgáltatás közvetítése: EN-I-722/2010, H-EN-156/2017</dd>
+      <dt>Központi elérhetőség</dt><dd>+36 1 231 0670 · ovb@office.ovb.hu</dd>
     </dl>
     <p>A közvetítő és a közvetítők nyilvántartási adatai az MNB nyilvános piaci szereplő keresőjében ellenőrizhetők: <a href="https://intezmenykereso.mnb.hu" target="_blank" rel="noopener">intezmenykereso.mnb.hu</a></p>
 
@@ -1993,7 +2116,7 @@ document.addEventListener('keydown', function(e){
     <dl class="imp-data">
       <dt>Üzemeltető</dt><dd>UZEMELTETO_NEV_IDE</dd>
       <dt>Kapcsolat</dt><dd>INFO_EMAIL_IDE</dd>
-      <dt>Iroda</dt><dd>Budapest, Kelenhegyi út 43., 1118</dd>
+      <dt>Iroda</dt><dd>1118 Budapest, Kelenhegyi út 43.</dd>
       <dt>Tárhelyszolgáltató</dt><dd>TARHELYSZOLGALTATO_IDE</dd>
     </dl>
 
@@ -2010,14 +2133,14 @@ document.addEventListener('keydown', function(e){
     <h4>Panaszkezelés</h4>
     <p>Panaszt szóban (személyesen vagy telefonon) és írásban (e-mailben, postai úton) is előterjeszthetsz. A panaszkezelés menetét az OVB Allfinanz Magyarország Kft. panaszkezelési szabályzata tartalmazza.</p>
     <ul>
-      <li>Első fokon: OVB Allfinanz Magyarország Kft. - OVB_PANASZ_ELERHETOSEG_IDE</li>
+      <li>Első fokon a közvetítőnél: <b>OVB Vermögensberatung Kft.</b>, 1138 Budapest, Váci út 140. · +36 1 231 0670 · ovb@office.ovb.hu, valamint az eljáró tanácsadónál, illetve az EAGLZ irodájában: 1118 Budapest, Kelenhegyi út 43.</li>
       <li>Fogyasztói jogvita esetén: <b>Pénzügyi Békéltető Testület</b> (1013 Budapest, Krisztina krt. 55.)</li>
-      <li>Fogyasztóvédelmi eljárás: <b>Magyar Nemzeti Bank</b> ügyfélszolgálata</li>
+      <li>Fogyasztóvédelmi eljárás: <b>Magyar Nemzeti Bank</b> (1054 Budapest, Szabadság tér 8-9.), ügyfélszolgálat: 1013 Budapest, Krisztina körút 55., +36 80 203 776</li>
       <li>Vagy bírósági út</li>
     </ul>
 
     <h4>Adatkezelés</h4>
-    <p>A weboldalon keresztül megadott adatokat (név, telefonszám, e-mail cím, üzenet) kizárólag a kapcsolatfelvétel és az időpontegyeztetés céljából kezeljük, az érintett hozzájárulása alapján. Az adatokat harmadik félnek marketing célból nem adjuk át. Az adatkezeléssel kapcsolatos jogaidról (hozzáférés, helyesbítés, törlés, korlátozás, tiltakozás, adathordozhatóság) a részletes adatkezelési tájékoztató rendelkezik: ADATKEZELESI_TAJEKOZTATO_URL_IDE</p>
+    <p>A weboldalon keresztül megadott adatokat (név, telefonszám, e-mail cím, üzenet) kizárólag a kapcsolatfelvétel és az időpontegyeztetés céljából kezeljük, az érintett hozzájárulása alapján. Az adatokat harmadik félnek marketing célból nem adjuk át. Az adatkezeléssel kapcsolatos jogaidról (hozzáférés, helyesbítés, törlés, korlátozás, tiltakozás, adathordozhatóság) a részletes adatkezelési tájékoztató rendelkezik: <a href="https://www.ovb.hu/szerviz/adatkezelesi-szabalyzat.html" target="_blank" rel="noopener">ovb.hu/szerviz/adatkezelesi-szabalyzat.html</a></p>
     <p>Az időpontfoglalás a Google Naptár időpontfoglaló szolgáltatásán keresztül történik, amelyre a Google adatkezelési feltételei is irányadók.</p>
 
     <h4>Szerzői jog</h4>
