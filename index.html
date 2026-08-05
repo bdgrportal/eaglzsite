@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 ╔══════════════════════════════════════════════════════════════════════════╗
-║  EAGLZ — céges tanácsadói oldal                                          ║
+║  EAGLZ - céges tanácsadói oldal                                          ║
 ║  Alap: Gentischer Richárd személyes oldala, céges (T/1) hangnemre írva.  ║
 ╠══════════════════════════════════════════════════════════════════════════╣
 ║  MIT KELL KITÖLTENI ÉLESÍTÉS ELŐTT (keresd rá: "_IDE")                   ║
@@ -10,7 +10,7 @@
 ║   EAGLZ_MNB_ADAT_IDE   – "Miért mi?" szekció, ellenőrzött kártya         ║
 ║   INFO_EMAIL_IDE       – footer kapcsolat + impresszum                   ║
 ║   IMPRESSZUM           – a lap alján, OVB adatokkal. Compliance-re!      ║
-║   KARRIER_OLDAL_URL_IDE– Rólunk + footer karrier link                    ║
+║   http://eaglzcareer.hu– Rólunk + footer karrier link                    ║
 ║   NÉV_IDE / EMAIL_IDE / TELEFON_IDE / BOOKING_URL_IDE / LINKEDIN_URL_IDE ║
 ║                        – a lap alján lévő ADVISORS tömbben               ║
 ║                                                                          ║
@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://eaglz.hu/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="EAGLZ Finance — független pénzügyi tanácsadás">
+<meta property="og:image:alt" content="EAGLZ Finance - független pénzügyi tanácsadás">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EAGLZ Finance">
 <meta name="twitter:description" content="Független pénzügyi tanácsadás: lakáshitel, megtakarítás, nyugdíj, biztosítás. Válassz tanácsadót a csapatból és foglalj díjmentes, kötelezettség nélküli időpontot.">
@@ -139,14 +139,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,32,53,.96
 .hero-trust-item{display:flex;align-items:center;gap:.35rem;font-family:var(--fb);font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);}
 .hero-trust-item span{color:var(--teal);}
 
-/* PHOTO — kerek + szonár */
+/* PHOTO - kerek + szonár */
 .photo-wrap{position:relative;display:flex;align-items:center;justify-content:center;padding:2.5rem;}
 .sonar-sweep{position:absolute;top:50%;left:50%;width:258px;height:258px;transform:translate(-50%,-50%) rotate(0deg);border-radius:50%;background:conic-gradient(from 0deg,rgba(125,200,192,.9) 0deg,rgba(125,200,192,.45) 30deg,rgba(125,200,192,0) 80deg,rgba(125,200,192,0) 320deg,rgba(125,200,192,.5) 360deg);-webkit-mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);mask:radial-gradient(circle at center,transparent 103px,#000 105px,#000 129px,transparent 130px);animation:radarSpin 3s linear infinite;pointer-events:none;z-index:1;}
 @keyframes radarSpin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
 .photo-circle{position:relative;z-index:2;width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid rgba(125,200,192,.6);box-shadow:0 0 0 6px rgba(125,200,192,.12),0 0 48px rgba(125,200,192,.22);}
 .photo-circle img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 
-/* SERVICES — accordion */
+/* SERVICES - accordion */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
 .svc-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
 .svc-card.open{border-color:rgba(125,200,192,.45);box-shadow:0 6px 24px rgba(27,56,88,.09);}
@@ -361,7 +361,7 @@ div[style*="text-align:center"] > .section-sub{margin-left:auto;margin-right:aut
 .sav-item:hover{background:rgba(240,180,41,.05);animation:savWobble .5s cubic-bezier(.36,.07,.19,.97);}
 .sav-item:hover .sav-badge{box-shadow:0 6px 20px rgba(240,180,41,.35);}
 @keyframes savWobble{0%{transform:translateX(0)}20%{transform:translateX(5px)}45%{transform:translateX(-4px)}70%{transform:translateX(2px)}100%{transform:translateX(0)}}
-.sav-badge{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--gold),#dd9a10);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fb);font-size:1.15rem;font-weight:800;color:var(--navy-deep);box-shadow:0 4px 14px rgba(240,180,41,.18);}
+.sav-badge{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#dd9a10);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.35rem;line-height:1;box-shadow:0 4px 14px rgba(240,180,41,.18);}
 .sav-text{font-size:.93rem;line-height:1.6;color:rgba(255,255,255,.68);padding-top:.15rem;}
 .sav-text .hl{color:var(--gold);font-weight:700;}
 .sav-text b{color:#fff;font-weight:700;}
@@ -425,7 +425,7 @@ div[style*="text-align:center"] > .section-sub{margin-left:auto;margin-right:aut
 @media(max-width:560px){.compare-cell{padding:.8rem 1rem;font-size:.8rem;}}
 
 /* FOR WHOM */
-.fw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:760px;margin:0 auto;}
+.fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto;}
 .fw-card{background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--teal);border-radius:14px;padding:1.2rem 1.3rem;transition:box-shadow .2s,transform .2s;}
 .fw-card:hover{box-shadow:0 6px 22px rgba(27,56,88,.09);transform:translateY(-2px);}
 .fw-card-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.45rem;}
@@ -562,7 +562,7 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
 .svc-modal-step { font-size:.84rem; color:var(--navy); line-height:1.5; padding-left:1.1rem; position:relative; }
 .svc-modal-step::before { content:"→"; position:absolute; left:0; color:var(--teal); font-weight:700; }
 
-/* Floating 💸 — clustered around the process section */
+/* Floating 💸 - clustered around the process section */
 #how { position:relative; }
 .money-float { position:absolute; font-size:1.5rem; pointer-events:none; user-select:none; opacity:.65; animation:mFloat var(--d,4s) ease-in-out var(--dl,0s) infinite; }
 @keyframes mFloat { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
@@ -675,6 +675,28 @@ footer{background:var(--navy-deep);padding:2.2rem 0;}
   /* űrlapmezők szövege maradjon balra, hogy gépelni normális legyen */
   .lead-field input,.lead-field textarea{text-align:left;}
 }
+
+/* ═══════════ RÁCSOK TABLETEN ÉS MOBILON ═══════════ */
+@media(max-width:900px){ .fw-grid{grid-template-columns:repeat(2,1fr)!important;} }
+@media(max-width:560px){ .fw-grid{grid-template-columns:repeat(2,1fr)!important;gap:.6rem;}
+  .fw-card{padding:.95rem 1rem;}
+  .fw-title{font-size:.86rem;}
+  .fw-text{font-size:.78rem;line-height:1.5;} }
+@media(max-width:420px){ .fw-grid{grid-template-columns:repeat(2,1fr)!important;} }
+/* tanácsadó csempék: tableten és mobilon is kettesével */
+@media(max-width:560px){ .adv-grid{grid-template-columns:repeat(2,1fr)!important;gap:.6rem;}
+  .adv-card{height:250px;}
+  .adv-photo{width:74px;height:74px;}
+  .adv-name{font-size:.85rem;}
+  .adv-role{font-size:.68rem;}
+  .adv-more{font-size:.65rem;margin-top:.6rem;}
+  .adv-front{padding:1.1rem .7rem;}
+  .adv-back-cap{font-size:.75rem;padding:1.2rem .5rem .7rem;}
+  .adv-back-cap small{font-size:.62rem;} }
+@media(max-width:380px){ .adv-card{height:232px;} .adv-photo{width:64px;height:64px;} }
+
+
+.career-cta{display:flex;justify-content:center;margin-top:2.2rem;}
 </style>
 </head>
 <body>
@@ -842,11 +864,11 @@ function toggleTeam(){
     <div class="fw-grid">
       <div class="fw-card">
         <div class="fw-card-top"><span class="fw-emoji">🎯</span><span class="fw-title">Pályakezdők</span></div>
-        <div class="fw-text">Akik rendszert akarnak felépíteni a pénzügyeikben — nem csak "félretenni valamit".</div>
+        <div class="fw-text">Akik rendszert akarnak felépíteni a pénzügyeikben - nem csak "félretenni valamit".</div>
       </div>
       <div class="fw-card">
         <div class="fw-card-top"><span class="fw-emoji">💑</span><span class="fw-title">Fiatal párok</span></div>
-        <div class="fw-text">Akik közös jövőt terveznek — lakás, gyermek, biztonság — és szeretnék jól indítani.</div>
+        <div class="fw-text">Akik közös jövőt terveznek - lakás, gyermek, biztonság - és szeretnék jól indítani.</div>
       </div>
       <div class="fw-card">
         <div class="fw-card-top"><span class="fw-emoji">🏠</span><span class="fw-title">Lakásvásárlás előtt állók</span></div>
@@ -862,7 +884,7 @@ function toggleTeam(){
       </div>
       <div class="fw-card">
         <div class="fw-card-top"><span class="fw-emoji">🔍</span><span class="fw-title">Akik összezavarodtak</span></div>
-        <div class="fw-text">Több biztosítás, hitel, megtakarítás — de senki nem rakta össze a teljes képet.</div>
+        <div class="fw-text">Több biztosítás, hitel, megtakarítás - de senki nem rakta össze a teljes képet.</div>
       </div>
     </div>
   </div>
@@ -875,16 +897,16 @@ function toggleTeam(){
     <p class="section-sub">Átnézzük, ami már megvan, és megkeressük, hogy mi hiányzik a terveidhez.</p>
     <div class="services-grid">
 
-      <div class="svc-card" data-why="A lakásvásárlás a legtöbb ember életének legnagyobb pénzügyi döntése — egy rosszul megválasztott hitel évtizedekig húzza a zsebből a pénzt. Több bank ajánlatát egyszerre látjuk, és megtaláljuk a számodra legkedvezőbbet." data-steps="Igényfelmérés||Banki ajánlatok összehasonlítása||Dokumentumok összeállítása||Bankkal való ügyintézés végigkísérése||Szerződéskötés" onclick="openSvc(this)">
+      <div class="svc-card" data-why="A lakásvásárlás a legtöbb ember életének legnagyobb pénzügyi döntése - egy rosszul megválasztott hitel évtizedekig húzza a zsebből a pénzt. Több bank ajánlatát egyszerre látjuk, és megtaláljuk a számodra legkedvezőbbet." data-steps="Igényfelmérés||Banki ajánlatok összehasonlítása||Dokumentumok összeállítása||Bankkal való ügyintézés végigkísérése||Szerződéskötés" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">🏠</span><span class="svc-title">Lakásfinanszírozás</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
-          <div class="svc-desc">Hitel, CSOK Plusz, jelzálog, kiváltás — a teljes piac legjobb ajánlatával.</div>
+          <div class="svc-desc">Hitel, CSOK Plusz, jelzálog, kiváltás - a teljes piac legjobb ajánlatával.</div>
           <div class="svc-tags">
             <span class="svc-tag">Otthon Start 3%</span><span class="svc-tag">Lakáshitel</span><span class="svc-tag">Építési hitelek</span><span class="svc-tag">Személyi kölcsön</span><span class="svc-tag">Babaváró</span><span class="svc-tag">CSOK Plusz</span><span class="svc-tag">Falusi CSOK</span>          </div>
         </div>
       </div>
 
-      <div class="svc-card" data-why="Egy baleset, betegség vagy kár az előkészületleneket anyagilag padlóra küldheti. A megfelelő biztosítási csomag nem luxus — hanem egy olyan háló, ami visszahozza a nyugalmadat." data-steps="Meglévő szerződések áttekintése||Lefedetlen kockázatok azonosítása||Személyre szabott javaslat||Online vagy személyes szerződéskötés" onclick="openSvc(this)">
+      <div class="svc-card" data-why="Egy baleset, betegség vagy kár az előkészületleneket anyagilag padlóra küldheti. A megfelelő biztosítási csomag nem luxus - hanem egy olyan háló, ami visszahozza a nyugalmadat." data-steps="Meglévő szerződések áttekintése||Lefedetlen kockázatok azonosítása||Személyre szabott javaslat||Online vagy személyes szerződéskötés" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">🛡️</span><span class="svc-title">Biztosítások</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
           <div class="svc-desc">30+ biztosítót vizsgálunk meg: élet, baleset, egészség, vagyon.</div>
@@ -897,24 +919,24 @@ function toggleTeam(){
       <div class="svc-card" data-why="Az állami nyugdíj várhatóan az aktív kereset 40–60%-a lesz. Minél korábban kezdesz el gondolkodni, annál kevesebbet kell félretenni ugyanakkora eredményért." data-steps="Jelenlegi megtakarítások felmérése||Nyugdíjcél meghatározása||Optimális konstrukció kiválasztása (NYESZ, nyugdíjbiztosítás, önkéntes pénztár)||Szerződéskötés és éves felülvizsgálat" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">🌅</span><span class="svc-title">Nyugdíj</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
-          <div class="svc-desc">Tervezz előre, míg megéri — az adóvisszatérítéssel együtt.</div>
+          <div class="svc-desc">Tervezz előre, míg megéri - az adóvisszatérítéssel együtt.</div>
           <div class="svc-tags">
             <span class="svc-tag">Nyugdíjbiztosítás</span><span class="svc-tag">TBSZ</span><span class="svc-tag">Nyugdíjpénztár</span><span class="svc-tag">Befektetési alapok</span><span class="svc-tag">UL</span>
           </div>
         </div>
       </div>
 
-      <div class="svc-card" data-why="Egy gyerek számára az egyik legnagyobb ajándék, ha felnőttként nem nulláról kell kezdenie. Akár tanulmányokra, akár első lakásra gyűjtesz — az idő most a legjobb szövetségesed." data-steps="Célösszeg és időtáv meghatározása||Megtakarítási forma kiválasztása||Állami támogatások (pl. TBSZ, babakötvény) beépítése||Szerződéskötés" onclick="openSvc(this)">
+      <div class="svc-card" data-why="Egy gyerek számára az egyik legnagyobb ajándék, ha felnőttként nem nulláról kell kezdenie. Akár tanulmányokra, akár első lakásra gyűjtesz - az idő most a legjobb szövetségesed." data-steps="Célösszeg és időtáv meghatározása||Megtakarítási forma kiválasztása||Állami támogatások (pl. TBSZ, babakötvény) beépítése||Szerződéskötés" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">👶</span><span class="svc-title">Gyermekjövő</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
-          <div class="svc-desc">A legjobb start — babakötvénytől az oktatási alapig.</div>
+          <div class="svc-desc">A legjobb start - babakötvénytől az oktatási alapig.</div>
           <div class="svc-tags">
             <span class="svc-tag">Babakötvény</span><span class="svc-tag">Babaváró</span><span class="svc-tag">Diákszámla</span><span class="svc-tag">Szülési segély</span><span class="svc-tag">GYES/GYED kiegészítés</span>
           </div>
         </div>
       </div>
 
-      <div class="svc-card" data-why="A legtöbb ember nem tudja, hogy a bankja mennyivel drágább a piaci átlagnál — számlavezetési díj, hitelkártyák, folyószámlahitel. Megmutatjuk, mi érhető el jobban." data-steps="Jelenlegi bankszámla és hiteltermékek áttekintése||Jobb ajánlat azonosítása||Váltás segítése, dokumentáció||Online aktiválás vagy fióki ügyintézés" onclick="openSvc(this)">
+      <div class="svc-card" data-why="A legtöbb ember nem tudja, hogy a bankja mennyivel drágább a piaci átlagnál - számlavezetési díj, hitelkártyák, folyószámlahitel. Megmutatjuk, mi érhető el jobban." data-steps="Jelenlegi bankszámla és hiteltermékek áttekintése||Jobb ajánlat azonosítása||Váltás segítése, dokumentáció||Online aktiválás vagy fióki ügyintézés" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">🏦</span><span class="svc-title">Banki termékek</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
           <div class="svc-desc">Valóban a legjobb-e, ahol most vagy? Megnézzük.</div>
@@ -924,17 +946,17 @@ function toggleTeam(){
         </div>
       </div>
 
-      <div class="svc-card" data-why="CSOK, babaváró, falusi CSOK, otthonfelújítási támogatás — rengeteg pénz elérhető, de a feltételek és határidők bonyolultak. Segítünk eligazodni és maximálisan kihasználni." data-steps="Jogosultság felmérése||Igénybe vehető támogatások listája||Szükséges dokumentumok összeállítása||Bankkal vagy hatósággal való ügyintézés" onclick="openSvc(this)">
+      <div class="svc-card" data-why="CSOK, babaváró, falusi CSOK, otthonfelújítási támogatás - rengeteg pénz elérhető, de a feltételek és határidők bonyolultak. Segítünk eligazodni és maximálisan kihasználni." data-steps="Jogosultság felmérése||Igénybe vehető támogatások listája||Szükséges dokumentumok összeállítása||Bankkal vagy hatósággal való ügyintézés" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">💰</span><span class="svc-title">Állami támogatások</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
-          <div class="svc-desc">Amit sokan nem ismernek vagy nem igényelnek — megtaláljuk együtt.</div>
+          <div class="svc-desc">Amit sokan nem ismernek vagy nem igényelnek - megtaláljuk együtt.</div>
           <div class="svc-tags">
             <span class="svc-tag">CSOK Plusz</span><span class="svc-tag">Falusi CSOK</span><span class="svc-tag">Felújítási támogatás</span><span class="svc-tag">Szülési segély</span><span class="svc-tag">GYES/GYED kiegészítés</span>
           </div>
         </div>
       </div>
 
-      <div class="svc-card" data-why="Vállalkozóként más kockázatokkal nézel szembe — és más lehetőségeid is vannak. Cafeteria, csoportos biztosítás, céges hitel — ezeket érdemes szakértővel optimalizálni." data-steps="Vállalkozás helyzetének felmérése||Igényekhez illő termékek azonosítása||Ajánlatok összehasonlítása||Szerződéskötés és adminisztráció segítése" onclick="openSvc(this)">
+      <div class="svc-card" data-why="Vállalkozóként más kockázatokkal nézel szembe - és más lehetőségeid is vannak. Cafeteria, csoportos biztosítás, céges hitel - ezeket érdemes szakértővel optimalizálni." data-steps="Vállalkozás helyzetének felmérése||Igényekhez illő termékek azonosítása||Ajánlatok összehasonlítása||Szerződéskötés és adminisztráció segítése" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">🏢</span><span class="svc-title">Vállalati termékek</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
           <div class="svc-desc">Céges biztosítások, adómentes juttatások, vállalkozói megoldások.</div>
@@ -944,10 +966,10 @@ function toggleTeam(){
         </div>
       </div>
 
-      <div class="svc-card" data-why="Az infláció a pénzed értékét folyamatosan csökkenti — aki nem fektet be, az valójában veszít. Megtaláljuk az egyéniségeddel, kockázatvállalási hajlandóságoddal és céloddal legjobban illő megoldást." data-steps="Kockázati profil meghatározása||Befektetési cél és időtáv||Portfólió javaslat||Rendszeres felülvizsgálat" onclick="openSvc(this)">
+      <div class="svc-card" data-why="Az infláció a pénzed értékét folyamatosan csökkenti - aki nem fektet be, az valójában veszít. Megtaláljuk az egyéniségeddel, kockázatvállalási hajlandóságoddal és céloddal legjobban illő megoldást." data-steps="Kockázati profil meghatározása||Befektetési cél és időtáv||Portfólió javaslat||Rendszeres felülvizsgálat" onclick="openSvc(this)">
         <div class="svc-header"><span class="svc-icon">📈</span><span class="svc-title">Befektetések</span><span class="svc-arrow">▼</span></div>
         <div class="svc-body">
-          <div class="svc-desc">Az igényedhez igazítva, nem az ajánlott — alapoktól a private bankingig.</div>
+          <div class="svc-desc">Az igényedhez igazítva, nem az ajánlott - alapoktól a private bankingig.</div>
           <div class="svc-tags">
             <span class="svc-tag">Állampapír</span><span class="svc-tag">Befektetési alapok</span><span class="svc-tag">TBSZ</span><span class="svc-tag">UL</span><span class="svc-tag">Értékpapírszámla</span><span class="svc-tag">Lakástakarékpénztár</span><span class="svc-tag">Egészségpénztár</span><span class="svc-tag">Önsegélyező pénztár</span>
           </div>
@@ -962,7 +984,7 @@ function toggleTeam(){
 <!-- ══════════════════════════════════════════════════════════════════════
      TANÁCSADÓI RÁCS
      A kártyák NEM itt szerkesztendők! Az adatok a lap alján lévő
-     ADVISORS tömbben vannak — ott vegyél fel / módosíts embert.
+     ADVISORS tömbben vannak - ott vegyél fel / módosíts embert.
      ══════════════════════════════════════════════════════════════════════ -->
 <section id="advisors">
   <div class="container">
@@ -997,12 +1019,12 @@ function toggleTeam(){
     <h2 class="section-title">Ennyi pénzt spórolhatsz meg.</h2>
     <p class="section-sub">Ugyanaz a cél, más konstrukció, és a különbség sokszor egy egész évi megtakarítás.</p>
     <div class="sav-grid">
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb lakáshitel</span> választásával <b>több millió forinttal</b> kevesebb lehet a teljes visszafizetésed</div></div>
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb bankszámlával</span> évente akár <b>20–100 ezer forint</b> maradhat a zsebedben</div></div>
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb nyugdíjcélú megtakarítással</span> <b>200–800 ezer forintot</b> spórolhatsz a költségeken, és több hozamra is szert tehetsz</div></div>
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb megtakarítási formával</span> <b>+1–2% hozamelőnyre</b> tehetsz szert</div></div>
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb lakástakarékkal</span> <b>több százezer forint</b> kamatbónuszt érhetsz el, és rajtunk keresztül <b>számlanyitási díj nélkül</b> indíthatsz LTP-t</div></div>
-      <div class="sav-item"><div class="sav-badge">%</div><div class="sav-text">A <span class='hl'>legjobb személyi kölcsönnel</span> <b>200–300 ezer forinttal</b> olcsóbban zárhatod a futamidőt</div></div>
+      <div class="sav-item"><div class="sav-badge">🏠</div><div class="sav-text">A <span class='hl'>legjobb lakáshitel</span> választásával <b>több millió forinttal</b> kevesebb lehet a teljes visszafizetésed</div></div>
+      <div class="sav-item"><div class="sav-badge">🏦</div><div class="sav-text">A <span class='hl'>legjobb bankszámlával</span> évente akár <b>20–100 ezer forint</b> maradhat a zsebedben</div></div>
+      <div class="sav-item"><div class="sav-badge">🌅</div><div class="sav-text">A <span class='hl'>legjobb nyugdíjcélú megtakarítással</span> <b>200–800 ezer forintot</b> spórolhatsz a költségeken, és több hozamra is szert tehetsz</div></div>
+      <div class="sav-item"><div class="sav-badge">📈</div><div class="sav-text">A <span class='hl'>legjobb megtakarítási formával</span> <b>+1–2% hozamelőnyre</b> tehetsz szert</div></div>
+      <div class="sav-item"><div class="sav-badge">🔑</div><div class="sav-text">A <span class='hl'>legjobb lakástakarékkal</span> <b>több százezer forint</b> kamatbónuszt érhetsz el, és rajtunk keresztül <b>számlanyitási díj nélkül</b> indíthatsz LTP-t</div></div>
+      <div class="sav-item"><div class="sav-badge">💳</div><div class="sav-text">A <span class='hl'>legjobb személyi kölcsönnel</span> <b>200–300 ezer forinttal</b> olcsóbban zárhatod a futamidőt</div></div>
     </div>
     <div class="sav-note">
       <b>Fontos:</b> a fenti értékek tájékoztató jellegű, piaci összehasonlításokon alapuló nagyságrendek, nem ígéret és nem ajánlat. A ténylegesen elérhető megtakarítás minden esetben az egyedi feltételektől függ (összeg, futamidő, jövedelem, választott konstrukció, mindenkori kondíciók), és kizárólag személyre szabott kalkuláció során határozható meg.
@@ -1199,11 +1221,6 @@ function toggleTeam(){
 2021-ben kezdtük el a tudást átadni: azóta építjük a csapatot és az irodahálózatot. Ma egy 30 fős szakértői csapat vagyunk, ahol a tanácsadóink különböző területekre specializálódtak, így az ügyfeleink nem egy általános válaszra, hanem az adott témában legjobban felkészült kollégára találnak.
 
 Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az, hogy évek múlva is elégedett legyél azzal, amit választottál.</p>
-      <div style="text-align:center;margin-top:1.4rem;">
-        <a href="KARRIER_OLDAL_URL_IDE" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.55rem;padding:.69rem 1.5rem;border-radius:100px;background:rgba(139,108,181,.14);border:1px solid rgba(139,108,181,.3);color:var(--purple);font-family:var(--fb);font-size:1.06rem;font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(139,108,181,.26)'" onmouseout="this.style.background='rgba(139,108,181,.14)'">
-          🚀 Megnézem a karrier oldalt
-        </a>
-      </div>
       </div>
       <div class="milestones">
         <div class="milestone">
@@ -1236,6 +1253,12 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
         </div>
       </div>
     </div>
+    <div class="career-cta">
+      <a href="http://eaglzcareer.hu" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.55rem;padding:.69rem 1.5rem;border-radius:100px;background:rgba(139,108,181,.14);border:1px solid rgba(139,108,181,.3);color:var(--purple);font-family:var(--fb);font-size:1.06rem;font-weight:700;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(139,108,181,.26)'" onmouseout="this.style.background='rgba(139,108,181,.14)'">
+          🚀 Megnézem a karrier oldalt
+        </a>
+    </div>
+
   </div>
 </section>
 
@@ -1274,7 +1297,7 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
         <summary class="faq-q">Miért éri meg egyáltalán tanácsadóval dolgoznom?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
         <div class="faq-a">
         <p>A legnagyobb előnye az, hogy gyorsan és egyszerűen eljutsz a hozzád legjobban illő ajánlatokhoz, olyanokhoz, amiket egyedül nagy eséllyel nem találnál meg. Ráadásul a szerződéskötés után is számíthatsz ránk, bármilyen pénzügyi kérdésed merül fel.</p>
-        <p>Olyan csapathoz fordulsz, amelyik évek óta minden munkanapját azzal tölti, hogy a megtakarítási és biztosítási, valamint hiteltermékeket a lehető legalaposabban megismerje és összehasonlítsa. Több ezer ügyfélen keresztül szereztünk tapasztalatot, ismerjük a feltételeket, a jogi szövegeket, az apróbetűs részeket, az előnyöket és a hátrányokat, és speciális kalkulátorokkal tudjuk ezeket számszerűen egymás mellé tenni neked.</p>
+        <p>Olyan csapathoz fordulsz, amelyik évek óta minden munkanapját azzal tölti, hogy a megtakarítási és biztosítási, valamint hiteltermékeket a lehető legalaposabban megismerje és összehasonlítsa. Több ezer ügyfélen keresztül szereztünk tapasztalatot, ismerjük a feltételeket, a jogi szövegeket, az apró betűs részeket, az előnyöket és a hátrányokat, és speciális kalkulátorokkal tudjuk ezeket számszerűen egymás mellé tenni neked.</p>
         <p>Ezen felül olyan partneri kedvezményeket és alkupozíciót tudunk kialakítani az ügyfeleink számára, amelyeket normál esetben, az utcáról besétálva nem érnének el.</p>
         </div>
       </details>
@@ -1377,7 +1400,7 @@ Az alapelvünk azóta sem változott: nem egy termék eladása a cél, hanem az,
       <div class="footer-links">
         <a href="mailto:INFO_EMAIL_IDE">Kapcsolat</a>
         <a href="#advisors">Időpontfoglalás</a>
-        <a href="KARRIER_OLDAL_URL_IDE" target="_blank">Karrier</a>
+        <a href="http://eaglzcareer.hu" target="_blank">Karrier</a>
         <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
       </div>
     </div>
@@ -1445,89 +1468,89 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closePro
 
 // ── TERMÉK-RÉSZLETEK ────────────────────────────────────────────────────────
 var PRODUCT_INFO = {
-'Otthon Start 3%': {icon:'🏠', desc:'Államilag támogatott lakáshitel, végig fix 3%-os kamattal — első lakásukat megszerzőknek. Akár 50 millió Ft, legfeljebb 25 éves futamidőre, így a törlesztőrészlet a teljes futamidő alatt kiszámítható.', faq:[
+'Otthon Start 3%': {icon:'🏠', desc:'Államilag támogatott lakáshitel, végig fix 3%-os kamattal - első lakásukat megszerzőknek. Akár 50 millió Ft, legfeljebb 25 éves futamidőre, így a törlesztőrészlet a teljes futamidő alatt kiszámítható.', faq:[
 ['Ki veheti igénybe?','Alapesetben az igényelhet, akinek az elmúlt 10 évben nem volt saját belterületi lakóingatlana (van néhány kivétel, pl. 15 millió Ft alatti értékű vagy haszonélvezettel terhelt ingatlan). Legalább 180 nap TB-jogviszony és megfelelő igazolt jövedelem is szükséges.'],
 ['Milyen ingatlanra?','Lakásnál legfeljebb 100 millió Ft, családi háznál 150 millió Ft lehet a vételár, és a négyzetméterár nem haladhatja meg az 1,5 millió Ft-ot.'],
 ['Hányszor igényelhető?','Életedben egyszer. Éppen ezért érdemes szakértővel átgondolni, mikor és mire használod fel.'],
-['Kombinálható más támogatással?','Bizonyos feltételekkel igen — pl. CSOK Plusszal. Ez az egyik legfontosabb kérdés, amiben egyénileg érdemes számolni.']]},
-'Lakáshitel': {icon:'🏠', desc:'Hosszú távú, ingatlanfedezetű kölcsön vásárlásra, építésre, felújításra vagy bővítésre. A bankok kondíciói jelentősen eltérnek — ugyanarra a hitelre akár milliós különbség is lehet a teljes visszafizetésben.', faq:[
+['Kombinálható más támogatással?','Bizonyos feltételekkel igen - pl. CSOK Plusszal. Ez az egyik legfontosabb kérdés, amiben egyénileg érdemes számolni.']]},
+'Lakáshitel': {icon:'🏠', desc:'Hosszú távú, ingatlanfedezetű kölcsön vásárlásra, építésre, felújításra vagy bővítésre. A bankok kondíciói jelentősen eltérnek - ugyanarra a hitelre akár milliós különbség is lehet a teljes visszafizetésben.', faq:[
 ['Mennyi önerő kell?','Jellemzően az ingatlan értékének 20%-a, de banktól és élethelyzettől függően ez eltérhet. Bizonyos esetekben kiegészítő fedezettel csökkenthető.'],
 ['Fix vagy változó kamat?','Ma a legtöbben hosszabb kamatperiódust vagy végig fix kamatot választanak a kiszámíthatóság miatt. A helyes válasz a futamidőtől és a kockázattűrésedtől függ.'],
 ['Mi az a JTM?','A jövedelemarányos törlesztési mutató: azt szabályozza, a nettó jövedelmed mekkora része mehet hiteltörlesztésre. Minden meglévő hiteled beleszámít.'],
-['Mennyi idő az ügyintézés?','Átlagosan 1–1,5 hónap a teljes folyamat az igényléstől a folyósításig — jó előkészítéssel rövidíthető.']]},
-'CSOK Plusz': {icon:'👨‍👩‍👧', desc:'Kamattámogatott lakáshitel gyermeket vállaló házaspároknak, legfeljebb 3%-os kamattal. Az igényelhető összeg a vállalt gyermekek számától függ — akár 50 millió Ft is lehet.', faq:[
+['Mennyi idő az ügyintézés?','Átlagosan 1–1,5 hónap a teljes folyamat az igényléstől a folyósításig - jó előkészítéssel rövidíthető.']]},
+'CSOK Plusz': {icon:'👨‍👩‍👧', desc:'Kamattámogatott lakáshitel gyermeket vállaló házaspároknak, legfeljebb 3%-os kamattal. Az igényelhető összeg a vállalt gyermekek számától függ - akár 50 millió Ft is lehet.', faq:[
 ['Mekkora összeg igényelhető?','Egy gyermeknél legfeljebb 15, kettőnél 30, három vagy több gyermeknél 50 millió Ft.'],
 ['Kik igényelhetik?','Házaspárok, ahol a feleség 41 év alatti, és legalább egy (további) gyermeket vállalnak. Az igényléshez TB-jogviszony is szükséges.'],
 ['Mi történik, ha megszületik a gyermek?','Minden újabb gyermek után 10 millió Ft tőketartozás-elengedés jár (a második gyermektől).'],
-['Használt lakásra is jó?','Igen, vásárolható belőle használt és új ingatlan is, illetve építkezésre is felhasználható — értékhatárok mellett.']]},
+['Használt lakásra is jó?','Igen, vásárolható belőle használt és új ingatlan is, illetve építkezésre is felhasználható - értékhatárok mellett.']]},
 'Falusi CSOK': {icon:'🏡', desc:'Vissza nem térítendő állami támogatás preferált kistelepüléseken történő ingatlanvásárlásra és korszerűsítésre. A gyermekszámtól függő összeg fele vásárlásra, fele felújításra fordítható.', faq:[
-['Mely településeken érhető el?','A kormányrendeletben felsorolt preferált kistelepüléseken — a lista időről időre módosul, ezért igénylés előtt mindig ellenőrizzük.'],
-['Mire használható?','Ingatlan vásárlására és/vagy korszerűsítésére, bővítésére — akár kombinálva is.'],
+['Mely településeken érhető el?','A kormányrendeletben felsorolt preferált kistelepüléseken - a lista időről időre módosul, ezért igénylés előtt mindig ellenőrizzük.'],
+['Mire használható?','Ingatlan vásárlására és/vagy korszerűsítésére, bővítésére - akár kombinálva is.'],
 ['Kell hozzá gyermek?','Igen, az összeg a meglévő és vállalt gyermekek számától függ.'],
-['Kombinálható más támogatással?','Igen, például falusi CSOK mellé kamattámogatott hitel is igényelhető — a részleteket egyénileg érdemes átszámolni.']]},
+['Kombinálható más támogatással?','Igen, például falusi CSOK mellé kamattámogatott hitel is igényelhető - a részleteket egyénileg érdemes átszámolni.']]},
 'Babaváró': {icon:'👶', desc:'Szabad felhasználású, akár 11 millió Ft-os kölcsön fiatal házaspároknak, amely kamatmentessé válik, ha az első gyermek az igénylést követő 5 éven belül megszületik.', faq:[
 ['Mennyi a törlesztőrészlet?','A kamattámogatott időszakban legfeljebb kb. 51 000 Ft havonta, az állami kezességvállalási díjjal együtt.'],
 ['Mi jár a gyermekek után?','Az első gyermeknél a törlesztés 3 évre szüneteltethető, a másodiknál a tartozás 30%-át elengedik, a harmadiknál a teljes fennmaradó tartozás megszűnhet.'],
 ['Mi történik, ha nem születik gyermek 5 éven belül?','A kamattámogatást vissza kell fizetni, és a hitel piaci kamatozásúvá válik. Önhibán kívüli esetben (pl. egészségügyi ok) méltányosság kérhető.'],
-['Lakásvásárlásra használható?','Igen — szabad felhasználású, és bizonyos feltételekkel önerőként is beszámítható.']]},
-'Személyi kölcsön': {icon:'💳', desc:'Gyors, fedezet nélküli kölcsön szabad felhasználásra — jellemzően pár napon belül folyósítják. Az ára magasabb, mint a jelzáloghiteleké, ezért a futamidőt és az összeget érdemes okosan megválasztani.', faq:[
+['Lakásvásárlásra használható?','Igen - szabad felhasználású, és bizonyos feltételekkel önerőként is beszámítható.']]},
+'Személyi kölcsön': {icon:'💳', desc:'Gyors, fedezet nélküli kölcsön szabad felhasználásra - jellemzően pár napon belül folyósítják. Az ára magasabb, mint a jelzáloghiteleké, ezért a futamidőt és az összeget érdemes okosan megválasztani.', faq:[
 ['Mekkora összeg érhető el?','Bankonként eltérő, jellemzően 300 ezer és 10 millió Ft között, a jövedelemtől függően.'],
 ['Mi kell hozzá?','Igazolt, rendszeres jövedelem, pozitív hitelmúlt és bankszámlakivonat. Fedezet és önerő nem szükséges.'],
-['Mennyi idő alatt folyósítják?','A legjobb esetben 1–3 munkanap — ez az egyik leggyorsabb hitelforma.'],
-['Kiválthatom vele a drágább hiteleimet?','Igen, gyakori a hitelkiváltás — ha a meglévő hiteleid drágábbak, összevonással sokat lehet spórolni.']]},
-'KGFB': {icon:'🚗', desc:'Kötelező gépjármű-felelősségbiztosítás — minden autóra kell, de messze nem mindegy, mennyiért. A biztosítók díjai között jelentős különbségek vannak, évente érdemes összehasonlítani.', faq:[
+['Mennyi idő alatt folyósítják?','A legjobb esetben 1–3 munkanap - ez az egyik leggyorsabb hitelforma.'],
+['Kiválthatom vele a drágább hiteleimet?','Igen, gyakori a hitelkiváltás - ha a meglévő hiteleid drágábbak, összevonással sokat lehet spórolni.']]},
+'KGFB': {icon:'🚗', desc:'Kötelező gépjármű-felelősségbiztosítás - minden autóra kell, de messze nem mindegy, mennyiért. A biztosítók díjai között jelentős különbségek vannak, évente érdemes összehasonlítani.', faq:[
 ['Mikor válthatok biztosítót?','Az évfordulón (a legtöbb régi szerződésnél ez naptári évhez kötött), illetve új autó vásárlásakor azonnal. A felmondásnak az évforduló előtt 30 nappal be kell érkeznie.'],
 ['Mi az a bonus-malus?','Károkozás-mentességi fokozat: minél régebb óta vezetsz kár nélkül, annál nagyobb kedvezményt kapsz. Váltásnál a fokozat veled megy.'],
-['Mitől függ a díj?','Életkor, lakóhely, autó teljesítménye, káralakulás — és attól, melyik biztosítónál kötöd. Ugyanarra az autóra akár kétszeres különbség is lehet.']]},
-'CASCO': {icon:'🚙', desc:'A saját autódban keletkezett károkra nyújt fedezetet: töréskár, lopás, üvegkár, elemi kár — olyan esetekre is, amikor te vagy a hibás, vagy nincs kitől kártérítést kérni.', faq:[
+['Mitől függ a díj?','Életkor, lakóhely, autó teljesítménye, káralakulás - és attól, melyik biztosítónál kötöd. Ugyanarra az autóra akár kétszeres különbség is lehet.']]},
+'CASCO': {icon:'🚙', desc:'A saját autódban keletkezett károkra nyújt fedezetet: töréskár, lopás, üvegkár, elemi kár - olyan esetekre is, amikor te vagy a hibás, vagy nincs kitől kártérítést kérni.', faq:[
 ['Kötelező a casco?','Nem, de hitelre vett vagy lízingelt autónál a finanszírozó jellemzően előírja. Értékesebb autónál enélkül nagy kockázatot futsz.'],
-['Mennyi az önrész?','Választható — jellemzően 10% és egy fix minimum összeg. Magasabb önrésszel olcsóbb a díj.'],
-['Részleges casco létezik?','Igen, például csak lopás- és elemikár-fedezettel — idősebb autóknál gyakran ez a racionális választás.']]},
+['Mennyi az önrész?','Választható - jellemzően 10% és egy fix minimum összeg. Magasabb önrésszel olcsóbb a díj.'],
+['Részleges casco létezik?','Igen, például csak lopás- és elemikár-fedezettel - idősebb autóknál gyakran ez a racionális választás.']]},
 'Lakásbiztosítás': {icon:'🏠', desc:'Az otthonod és az ingóságaid védelme tűz, vihar, csőtörés, betörés és számos más kár ellen. A régi, felül nem vizsgált szerződések gyakran alulbiztosítottak vagy túlárazottak.', faq:[
-['Mikor válthatok?','Évfordulón, illetve minden év márciusában a lakásbiztosítási kampányidőszakban is — utóbbit külön erre hozták létre, hogy könnyebb legyen jobb ajánlatra váltani.'],
+['Mikor válthatok?','Évfordulón, illetve minden év márciusában a lakásbiztosítási kampányidőszakban is - utóbbit külön erre hozták létre, hogy könnyebb legyen jobb ajánlatra váltani.'],
 ['Mi az az alulbiztosítottság?','Ha a biztosítási összeg kisebb, mint az ingatlan újjáépítési értéke, kár esetén arányosan kevesebbet fizet a biztosító. Régi szerződéseknél ez gyakori csapda.'],
-['A hitelhez kötött lakásbiztosításom jó?','Nem biztos — a banki minimum gyakran csak a bank érdekét védi. Érdemes felülvizsgálni, mit fedez valójában.']]},
-'Életbiztosítás': {icon:'🛡️', desc:'A családod anyagi biztonsága, ha veled történik valami — illetve megtakarítási elemmel kombinálva hosszú távú célokra is használható. A lényeg a megfelelő összeg és a jó struktúra.', faq:[
-['Kockázati vagy megtakarításos?','A kockázati tisztán védelmet ad alacsony díjért; a megtakarításos befektetést is tartalmaz. A kettő más célt szolgál — gyakran a kombinációjuk az ideális.'],
+['A hitelhez kötött lakásbiztosításom jó?','Nem biztos - a banki minimum gyakran csak a bank érdekét védi. Érdemes felülvizsgálni, mit fedez valójában.']]},
+'Életbiztosítás': {icon:'🛡️', desc:'A családod anyagi biztonsága, ha veled történik valami - illetve megtakarítási elemmel kombinálva hosszú távú célokra is használható. A lényeg a megfelelő összeg és a jó struktúra.', faq:[
+['Kockázati vagy megtakarításos?','A kockázati tisztán védelmet ad alacsony díjért; a megtakarításos befektetést is tartalmaz. A kettő más célt szolgál - gyakran a kombinációjuk az ideális.'],
 ['Mekkora biztosítási összeg kell?','Ökölszabály: a család 3–5 évnyi kiadása plusz a fennálló hitelek. Egyénileg számoljuk ki.'],
-['A hitelemhez kell életbiztosítás?','Jelzáloghitelnél erősen ajánlott — ha a családfenntartóval történik valami, a hitel nem marad a családon.']]},
+['A hitelemhez kell életbiztosítás?','Jelzáloghitelnél erősen ajánlott - ha a családfenntartóval történik valami, a hitel nem marad a családon.']]},
 'Egészségbiztosítás': {icon:'⚕️', desc:'Privát egészségügyi ellátás várólisták nélkül: gyors diagnosztika, szakorvos, akár műtéti fedezet. Munkáltatói csomagként is egyre népszerűbb.', faq:[
 ['Mit fedez?','Csomagtól függően: járóbeteg-ellátás, diagnosztika (labor, MR, CT), szakorvosi konzultáció, egyes csomagoknál műtétek és kórházi ellátás.'],
-['Meglévő betegségre is jó?','A már ismert betegségeket a biztosítók jellemzően kizárják vagy várakozási időt alkalmaznak — ezért érdemes egészségesen kötni.'],
+['Meglévő betegségre is jó?','A már ismert betegségeket a biztosítók jellemzően kizárják vagy várakozási időt alkalmaznak - ezért érdemes egészségesen kötni.'],
 ['Családra is köthető?','Igen, családi csomagok is elérhetők, gyermekekkel együtt.']]},
 'Utasbiztosítás': {icon:'✈️', desc:'Külföldi utazásnál a legolcsóbb tétel, ami a legnagyobb bajtól véd: egy külföldi kórházi számla milliós is lehet. Egyszeri utakra és éves bérletként is köthető.', faq:[
-['Az útlemondásra is van fedezet?','Igen, storno biztosítással — ezt a foglaláskor érdemes megkötni, nem indulás előtt.'],
+['Az útlemondásra is van fedezet?','Igen, storno biztosítással - ezt a foglaláskor érdemes megkötni, nem indulás előtt.'],
 ['Éves vagy egyszeri?','Ha évente többször utazol, az éves bérlet szinte mindig olcsóbb és kényelmesebb.'],
-['A bankkártyám mellé kell?','A kártyás biztosítások fedezete gyakran alacsony és feltételekhez kötött — érdemes megnézni, mit tud valójában.']]},
+['A bankkártyám mellé kell?','A kártyás biztosítások fedezete gyakran alacsony és feltételekhez kötött - érdemes megnézni, mit tud valójában.']]},
 'Nyugdíjbiztosítás': {icon:'🌅', desc:'Hosszú távú nyugdíjcélú megtakarítás, amelyre az állam évi 20% adó-visszatérítést ad (legfeljebb 130 000 Ft-ot). A befizetéseid befektetésre kerülnek, és nyugdíjba vonuláskor egyben vagy járadékként veheted fel.', faq:[
-['Mennyi adót kapok vissza?','A befizetéseid 20%-át, évente legfeljebb 130 000 Ft-ot ír jóvá a NAV a szerződéseden — ez önmagában is kiemelkedő „hozam”.'],
+['Mennyi adót kapok vissza?','A befizetéseid 20%-át, évente legfeljebb 130 000 Ft-ot ír jóvá a NAV a szerződéseden - ez önmagában is kiemelkedő „hozam”.'],
 ['Mikor férek hozzá?','A szerződéskötéskor érvényes nyugdíjkorhatár betöltésekor. Korábbi hozzáférésnél a kedvezményeket vissza kell fizetni.'],
-['Mi történik, ha nem tudom fizetni?','A legtöbb szerződés szüneteltethető vagy díjcsökkenthető — ezt a konstrukció kiválasztásánál előre figyelembe vesszük.']]},
+['Mi történik, ha nem tudom fizetni?','A legtöbb szerződés szüneteltethető vagy díjcsökkenthető - ezt a konstrukció kiválasztásánál előre figyelembe vesszük.']]},
 'Nyugdíjpénztár': {icon:'🌅', desc:'Önkéntes nyugdíjpénztári megtakarítás, 20% adó-visszatérítéssel (évente legfeljebb 150 000 Ft). Rugalmas befizetés, munkáltatói hozzájárulással is kombinálható.', faq:[
-['Miben más, mint a nyugdíjbiztosítás?','Alacsonyabb költségű, rugalmasabb, de kevesebb garanciális elem — a kettő jól kiegészíti egymást, az ideális mix egyéni.'],
-['Választhatok portfóliót?','Igen, kockázatvállalás szerint (klasszikus, kiegyensúlyozott, növekedési) — és később válthatsz is.']]},
+['Miben más, mint a nyugdíjbiztosítás?','Alacsonyabb költségű, rugalmasabb, de kevesebb garanciális elem - a kettő jól kiegészíti egymást, az ideális mix egyéni.'],
+['Választhatok portfóliót?','Igen, kockázatvállalás szerint (klasszikus, kiegyensúlyozott, növekedési) - és később válthatsz is.']]},
 'TBSZ': {icon:'📈', desc:'Tartós befektetési számla: a hozamod 5 év után teljesen adómentes (3 év után kedvezményes). Az egyik leghatékonyabb eszköz középtávú vagyonépítésre.', faq:[
 ['Hogyan működik az adómentesség?','A nyitás évét követő 5. év végéig bent tartott befektetések hozama után nem fizetsz SZJA-t. 3 év után részleges kedvezmény jár.'],
-['Mennyit tehetek be?','A nyitás évében szabadon, utána az adott számlára már nem — ezért évente új TBSZ nyitható.'],
-['Mibe fektethetek rajta?','Állampapír, részvény, befektetési alap — a számlán belül szabadon átrendezheted.']]},
-'Állampapír': {icon:'🏛️', desc:'A magyar állam által garantált, kiszámítható befektetés — lakossági állampapírokkal az inflációt is követheted. Jó alap minden portfólióhoz, de nem mindegy, melyik sorozat.', faq:[
-['Biztonságos?','Az állam garantálja tőkéd és kamatod visszafizetését — a legalacsonyabb kockázatú forintbefektetések közé tartozik.'],
-['Mikor férek hozzá a pénzhez?','Lejárat előtt is visszaváltható, jellemzően kis (kb. 1%) költséggel — így viszonylag likvid.'],
-['Melyik sorozatot válasszam?','Az élethelyzetedtől és a kamatkörnyezettől függ — fix vagy inflációkövető, rövid vagy hosszú. Ebben segítek eligazodni.']]},
+['Mennyit tehetek be?','A nyitás évében szabadon, utána az adott számlára már nem - ezért évente új TBSZ nyitható.'],
+['Mibe fektethetek rajta?','Állampapír, részvény, befektetési alap - a számlán belül szabadon átrendezheted.']]},
+'Állampapír': {icon:'🏛️', desc:'A magyar állam által garantált, kiszámítható befektetés - lakossági állampapírokkal az inflációt is követheted. Jó alap minden portfólióhoz, de nem mindegy, melyik sorozat.', faq:[
+['Biztonságos?','Az állam garantálja tőkéd és kamatod visszafizetését - a legalacsonyabb kockázatú forintbefektetések közé tartozik.'],
+['Mikor férek hozzá a pénzhez?','Lejárat előtt is visszaváltható, jellemzően kis (kb. 1%) költséggel - így viszonylag likvid.'],
+['Melyik sorozatot válasszam?','Az élethelyzetedtől és a kamatkörnyezettől függ - fix vagy inflációkövető, rövid vagy hosszú. Ebben segítek eligazodni.']]},
 'Babakötvény': {icon:'🍼', desc:'Állami megtakarítás a gyermeked jövőjére: a befizetésekre évi 10% állami támogatás jár (legfeljebb 12 000 Ft), a kamat pedig infláció feletti. A gyermek 18 éves korában férhet hozzá.', faq:[
-['Hogyan indul?','Minden 2005 után született gyermek kap 42 500 Ft életkezdési támogatást — ezt Start-számlára helyezve indul a Babakötvény.'],
-['Ki fizethet be rá?','Bárki: szülő, nagyszülő, rokon — évente akár többször is.'],
-['Mire költhető?','A gyermek 18 éves kora után szabadon felhasználhatja — tanulásra, lakhatásra, életkezdésre.']]},
-'Lakástakarékpénztár': {icon:'🏦', desc:'Kiszámítható, államilag szabályozott lakáscélú megtakarítás, amely a futamidő végén kedvezményes lakáshitellel is kombinálható. Lakáscélra — vásárlás, felújítás, hiteltörlesztés — használható fel.', faq:[
-['Mire használható fel?','Lakásvásárlás, építés, felújítás, korszerűsítés, illetve fennálló lakáshitel törlesztése — széles a lakáscél fogalma.'],
-['Mennyire rugalmas?','A havi megtakarítás mértéke szerződéskötéskor rögzített, de a konstrukciók között nagy különbségek vannak — érdemes összehasonlítani.']]},
-'Széchenyi hitelek': {icon:'🏢', desc:'Államilag támogatott, kedvezményes kamatozású hitelprogram vállalkozásoknak — forgóeszközre, beruházásra, folyószámlahitelként. A mindenkori piaci kamatoknál jóval olcsóbb finanszírozás.', faq:[
-['Milyen célra igényelhető?','Forgóeszköz-finanszírozás, beruházás, folyószámlahitel — a program több konstrukcióból áll, célonként eltérő feltételekkel.'],
-['Ki igényelheti?','KKV-k, jellemzően minimum 1 lezárt üzleti évvel. Az igénylés a KAVOSZ-on keresztül zajlik — az előkészítésben segítek.'],
-['Mennyi a kamat?','A konstrukciótól és az aktuális kamattámogatástól függ — jellemzően jelentősen a piaci szint alatt.']]},
-'Cafeteria': {icon:'🎁', desc:'Adóhatékony béren kívüli juttatások a munkavállalóknak — SZÉP-kártyától a csoportos biztosításokig. Jól összeállítva a cégnek olcsóbb, a dolgozónak többet ér, mint a béremelés.', faq:[
-['Mi fér bele?','SZÉP-kártya, csoportos élet- és egészségbiztosítás, nyugdíjpénztári hozzájárulás, egészségpénztár — kedvezményes adózással.'],
-['Megéri a cégnek?','Igen: ugyanakkora nettó juttatás jellemzően kisebb összköltséggel adható, mint bérként — és erősíti a megtartást.']]}
+['Hogyan indul?','Minden 2005 után született gyermek kap 42 500 Ft életkezdési támogatást - ezt Start-számlára helyezve indul a Babakötvény.'],
+['Ki fizethet be rá?','Bárki: szülő, nagyszülő, rokon - évente akár többször is.'],
+['Mire költhető?','A gyermek 18 éves kora után szabadon felhasználhatja - tanulásra, lakhatásra, életkezdésre.']]},
+'Lakástakarékpénztár': {icon:'🏦', desc:'Kiszámítható, államilag szabályozott lakáscélú megtakarítás, amely a futamidő végén kedvezményes lakáshitellel is kombinálható. Lakáscélra - vásárlás, felújítás, hiteltörlesztés - használható fel.', faq:[
+['Mire használható fel?','Lakásvásárlás, építés, felújítás, korszerűsítés, illetve fennálló lakáshitel törlesztése - széles a lakáscél fogalma.'],
+['Mennyire rugalmas?','A havi megtakarítás mértéke szerződéskötéskor rögzített, de a konstrukciók között nagy különbségek vannak - érdemes összehasonlítani.']]},
+'Széchenyi hitelek': {icon:'🏢', desc:'Államilag támogatott, kedvezményes kamatozású hitelprogram vállalkozásoknak - forgóeszközre, beruházásra, folyószámlahitelként. A mindenkori piaci kamatoknál jóval olcsóbb finanszírozás.', faq:[
+['Milyen célra igényelhető?','Forgóeszköz-finanszírozás, beruházás, folyószámlahitel - a program több konstrukcióból áll, célonként eltérő feltételekkel.'],
+['Ki igényelheti?','KKV-k, jellemzően minimum 1 lezárt üzleti évvel. Az igénylés a KAVOSZ-on keresztül zajlik - az előkészítésben segítek.'],
+['Mennyi a kamat?','A konstrukciótól és az aktuális kamattámogatástól függ - jellemzően jelentősen a piaci szint alatt.']]},
+'Cafeteria': {icon:'🎁', desc:'Adóhatékony béren kívüli juttatások a munkavállalóknak - SZÉP-kártyától a csoportos biztosításokig. Jól összeállítva a cégnek olcsóbb, a dolgozónak többet ér, mint a béremelés.', faq:[
+['Mi fér bele?','SZÉP-kártya, csoportos élet- és egészségbiztosítás, nyugdíjpénztári hozzájárulás, egészségpénztár - kedvezményes adózással.'],
+['Megéri a cégnek?','Igen: ugyanakkora nettó juttatás jellemzően kisebb összköltséggel adható, mint bérként - és erősíti a megtartást.']]}
 };
 
 var _prodCurrent = null;
@@ -1605,7 +1628,7 @@ function leadSubmit(e){
 
 <script>
 /* ══════════════════════════════════════════════════════════════════════════
-   EAGLZ — TANÁCSADÓK
+   EAGLZ - TANÁCSADÓK
    ══════════════════════════════════════════════════════════════════════════
    ÚJ TANÁCSADÓ FELVÉTELE:
      Másolj le egy blokkot { ... } alább, és írd át a mezőket. Kész.
@@ -1854,7 +1877,7 @@ document.addEventListener('keydown', function(e){
 
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     IMPRESSZUM — footer linkről nyílik. A _IDE végű helyeket töltsd ki!
+     IMPRESSZUM - footer linkről nyílik. A _IDE végű helyeket töltsd ki!
      FONTOS: élesítés előtt futtasd át az OVB compliance-en.
      ══════════════════════════════════════════════════════════════════════ -->
 <div class="imp-overlay" id="impOverlay">
@@ -1903,7 +1926,7 @@ document.addEventListener('keydown', function(e){
     <h4>Panaszkezelés</h4>
     <p>Panaszt szóban (személyesen vagy telefonon) és írásban (e-mailben, postai úton) is előterjeszthetsz. A panaszkezelés menetét az OVB Allfinanz Magyarország Kft. panaszkezelési szabályzata tartalmazza.</p>
     <ul>
-      <li>Első fokon: OVB Allfinanz Magyarország Kft. — OVB_PANASZ_ELERHETOSEG_IDE</li>
+      <li>Első fokon: OVB Allfinanz Magyarország Kft. - OVB_PANASZ_ELERHETOSEG_IDE</li>
       <li>Fogyasztói jogvita esetén: <b>Pénzügyi Békéltető Testület</b> (1013 Budapest, Krisztina krt. 55.)</li>
       <li>Fogyasztóvédelmi eljárás: <b>Magyar Nemzeti Bank</b> ügyfélszolgálata</li>
       <li>Vagy bírósági út</li>
