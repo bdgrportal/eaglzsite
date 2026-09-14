@@ -10,19 +10,9 @@ JS  = io.open('portal.js',  encoding='utf-8').read()
 JS_NAV = JS.split('/* ══════════ GYORSKALKULÁTOR ══════════ */')[0] + \
          "document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RATES.updated; });\n})();\n"
 
+# EGYETLEN fejlec-sor: a regi "uhead" segedsor vegleg kikerult, a "Rolunk"
+# menupont (portal.js, key:'ceg') vette at a szerepet.
 HEAD = u'''<div class="ehead" id="ehead">
-  <div class="uhead">
-    <div class="uhead-in">
-      <a href="index.html">← Főoldal</a>
-      <a href="index.html#for-whom">Kinek?</a>
-      <a href="index.html#why">Miért mi?</a>
-      <a href="index.html#about">Rólunk</a>
-      <a href="index.html#faq">GYIK</a>
-      <a href="http://eaglzcareer.hu" target="_blank" rel="noopener">Karrier ↗</a>
-      <span class="u-sep"></span>
-      <a class="u-cta" href="index.html#advisors">📅 Díjmentes konzultáció</a>
-    </div>
-  </div>
   <div class="mhead">
     <div class="mhead-in">
       <a class="elogo" href="index.html" aria-label="EAGLZ Finance">
@@ -115,10 +105,11 @@ for name in ['kalkulator.html', 'kviz.html', 'lakashitel-folyamat.html']:
     # d) JS
     S = S.replace('</body>', '<script>\n' + fix_links(JS_NAV) + '\n</script>\n</body>', 1)
 
-    import theme_inject, landing
-    # landing-vaz: bizalmi sav a hero utan, kozbenso CTA a 3. szekcio utan
+    import theme_inject, landing, subhero
+    # kompakt nyitoresz + landing-vaz
     b0 = S.index('<body'); b1 = S.index('</body>')
-    body = landing.inject(S[b0:b1],
+    body = subhero.apply(S[b0:b1])
+    body = landing.inject(body,
         landing.trust_bar(u'Adatok: <b data-upd></b>'),
         landing.mid_cta(u'Kérdésed van ehhez?', u'30 perc, és a saját számaidat látod, nem egy példát.',
                         u'Díjmentes, kötelezettség nélkül. Ha kiderül, hogy a mostani megoldásod jó, azt is megmondjuk.',

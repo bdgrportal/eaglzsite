@@ -933,15 +933,11 @@ nav{display:none!important;}
 /* a fejléc elemeire ne vonatkozzon a régi nav szabály */
 .ehead nav,.mmob nav{position:static;inset:auto;padding:0;background:none;backdrop-filter:none;}
 
-/* ── 1. sáv ── */
+/* ── 1. sáv: MEGSZŰNT ── */
+/* A régi "uhead" segédsor végleg kikerült (a "Rólunk" menüpont vette át).
+   Ha egy régi, gyorsítótárazott HTML-ben mégis benne maradna, itt tűnik el. */
 .ehead{position:sticky;top:0;z-index:300;}
-.uhead{background:var(--navy-deep);border-bottom:1px solid rgba(255,255,255,.07);}
-.uhead-in{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem;height:var(--uh);display:flex;align-items:center;gap:1.35rem;}
-.uhead a{color:rgba(255,255,255,.52);font-family:var(--fb);font-size:.71rem;font-weight:600;text-decoration:none;transition:color .18s;white-space:nowrap;}
-.uhead a:hover{color:var(--teal-lite);}
-.uhead .u-sep{flex:1;}
-.uhead .u-cta{color:var(--navy-deep);background:var(--teal-lite);padding:.28rem .8rem;border-radius:100px;font-weight:700;}
-.uhead .u-cta:hover{background:#fff;color:var(--navy-deep);}
+.uhead,.uhead-in{display:none !important;height:0 !important;}
 
 /* ── 2. sáv ── */
 .mhead{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);transition:box-shadow .25s;}
@@ -1062,7 +1058,7 @@ nav{display:none!important;}
 .hw-q p{font-size:.82rem;color:var(--gray);line-height:1.7;}
 .hw-qlist{list-style:none;text-align:left;display:flex;flex-direction:column;gap:.4rem;margin:.9rem 0 .2rem;padding:0;}
 .hw-qlist li{position:relative;padding-left:1.3rem;font-size:.78rem;color:var(--navy);line-height:1.55;}
-.hw-qlist li::before{content:'✓';position:absolute;left:0;color:var(--teal-ink);font-weight:700;}
+.hw-qlist li::before{content:'';position:absolute;left:0;top:.28em;width:.85em;height:.85em;background:var(--teal-ink);-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;}
 
 /* ══════════ PARTNERSÁV (a hero pálya ide költözött) ══════════ */
 #partners{background:var(--navy-deep);position:relative;overflow:hidden;padding:4rem 0 4.4rem;}
@@ -1098,8 +1094,6 @@ a.hub-c:hover .hub-go{gap:.58rem;}
   .hub{grid-template-columns:1fr 1fr;}
   .pt-in{grid-template-columns:1fr;gap:2rem;justify-items:center;text-align:center;}
   .pt-text{margin:0 auto;}
-  .uhead-in{gap:1rem;overflow-x:auto;scrollbar-width:none;}
-  .uhead-in::-webkit-scrollbar{display:none;}
 }
 @media(max-width:760px){
   #hero{padding:2.4rem 0 2.8rem;text-align:center;}
@@ -1374,6 +1368,8 @@ table.tbl tr.hl td{ background:rgba(95,167,158,.09) !important; }
 /* címsorban kiemelt szó */
 .section-title em,.hero-title em,.tx-teal{ color:var(--teal-ink); font-style:normal; }
 .sub-hero .sub-h1 em,.hero-title em{ color:var(--teal); }
+/* címsorban a kötőjeles szó egyben marad */
+.nb{ white-space:nowrap; }
 
 /* dobozok: bal él a szín, halvány háttér */
 .box.info{ border-left:4px solid var(--teal) !important; }
@@ -1458,7 +1454,8 @@ iframe{ max-width:100%; }
 }
 .trust .container{ display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;align-items:center; }
 .trust-i{ display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--navy);white-space:nowrap; }
-.trust-i::before{ content:'✓';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(95,167,158,.16);color:var(--teal-ink);font-size:.7rem;font-weight:800;flex:none; }
+.trust-i::before{ content:'';display:inline-block;width:20px;height:20px;border-radius:50%;background:rgba(95,167,158,.16);flex:none;position:relative; }
+.trust-i::after{ content:'';position:absolute;width:11px;height:11px;margin-left:-15.5px;margin-top:4.5px;background:var(--teal-ink);-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat; }
 .trust-i.tag{ margin-left:auto;font-weight:500;color:var(--gray); }
 .trust-i.tag::before{ display:none; }
 @media(max-width:1023px){ .trust .container{ justify-content:center; } .trust-i.tag{ margin-left:0;width:100%;justify-content:center; } }
@@ -1530,11 +1527,9 @@ nav#nav{
   .trust-i.tag{ grid-column:1 / -1; }
 }
 
-/* mobilon a felső szolgáltatási sáv elrejtve: a linkek a hamburger-menüben megvannak */
-@media(max-width:760px){
-  .uhead{ display:none !important; }
-  :root{ --uh:0px; }
-}
+/* a régi felső segédsor minden nézetben megszűnt (egyetlen fejléc-sor) */
+.uhead,.uhead-in{ display:none !important; }
+:root{ --uh:0px; }
 /* dekoratív fényfolt sose okozzon vízszintes görgetést */
 .glow{ max-width:100vw; }
 #hero,.sub-hero,.hero{ overflow:hidden; }
@@ -1615,7 +1610,9 @@ section > .container > div:has(> .apt-btn-wrap) p{ text-align:center !important;
 @media(min-width:1700px){ .video-embed{ width:calc((100% - 2.8rem) / 3); } }
 @media(max-width:760px){ .video-embed{ width:86%; } }
 .vid-hint{ display:flex; align-items:center; gap:.5rem; font-family:var(--fb); font-size:.78rem; font-weight:600; color:var(--gray); margin-top:.2rem; }
-.vid-hint::before{ content:'←'; } .vid-hint::after{ content:'→'; }
+.vid-hint::before,.vid-hint::after{ content:'';display:inline-block;width:.95em;height:.95em;vertical-align:-.15em;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain; }
+.vid-hint::before{ -webkit-mask-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H5'/%3E%3Cpath d='m11 18-6-6 6-6'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H5'/%3E%3Cpath d='m11 18-6-6 6-6'/%3E%3C/svg%3E"); }
+.vid-hint::after{ -webkit-mask-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E"); }
 @media(min-width:1700px){ .vid-hint{ display:none; } }
 
 /* Rólunk: két oszlop, bal a történet, jobb az idővonal */
@@ -1714,23 +1711,646 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 .zpage .hero-actions{ display:flex !important; flex-wrap:wrap; gap:.8rem; align-items:center; }
 .zpage .hero-trust{ display:none !important; }
 
+/* ══════════════════════════════════════════════════════════════════════
+   10. DESIGN RENDSZER  ·  egyetlen forras minden oldalhoz
+   ----------------------------------------------------------------------
+   Innentol minden gomb, urlapmezo, tablazat, figyelmeztetes es allapot
+   ugyanabbol a nehany valtozobol epul. Ha valamit at kell allitani az
+   egesz oldalon, azt itt kell megtenni, nem oldalankent.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --ic-chev: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9.5 6 6 6-6'/%3E%3C/svg%3E");
+  /* felulet es szoveg */
+  --ink:        #13263d;   /* fo szoveg vilagos hatteren */
+  --ink-2:      #47566b;   /* masodlagos szoveg */
+  --ink-3:      #59687b;   /* halvany szoveg, mert 4.5:1 feher folott (mert ertek) */
+  --on-dark:    #ffffff;
+  --on-dark-2:  rgba(255,255,255,.80);
+  --on-dark-3:  rgba(255,255,255,.66);
+  --surface:    #ffffff;
+  --surface-2:  #f5f7fa;
+  --line:       rgba(27,56,88,.12);
+  --line-2:     rgba(27,56,88,.22);
+  --line-dark:  rgba(255,255,255,.18);
+  --focus:      #7DC8C0;
+
+  /* sarok, arnyek, ikon, erintesi cel */
+  --r-s: 8px; --r-m: 12px; --r-l: 18px; --r-pill: 100px;
+  --sh-1: 0 1px 2px rgba(15,32,53,.05);
+  --sh-2: 0 2px 6px rgba(15,32,53,.06), 0 10px 24px rgba(15,32,53,.06);
+  --sh-3: 0 12px 34px rgba(15,32,53,.14);
+  --ic-s: 1em; --ic-m: 1.35em; --ic-l: 1.7em;
+  --tap: 44px;
+
+  /* olvasasi sorhossz: kb. 62-70 karakter */
+  --measure: 66ch;
+  --measure-s: 58ch;
+}
+
+/* ── 10.1 alapok ─────────────────────────────────────────────────────── */
+*:focus{ outline:none; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--focus) !important; outline-offset:2px !important; border-radius:4px;
+}
+.graph-dark a:focus-visible,.sub-hero a:focus-visible,footer a:focus-visible,
+#cta a:focus-visible,#cta button:focus-visible{ outline-color:#9fe0d8 !important; }
+::selection{ background:rgba(125,200,192,.32); }
+img,svg,video,iframe{ max-width:100%; }
+
+/* szamok: azonos szelessegu szamjegyek, hogy a tablazat es a kalkulator ne ugraljon */
+.kpi b,.hw-row b,.hw-hero b,.sc-hero-n,table.tbl td,table.tbl th,.res-v,.rv,.ltp-v,
+.stat-num,.count,.num,.fld-v,input[type=number],.calc-out b,.tag-num{
+  font-variant-numeric:tabular-nums; font-feature-settings:'tnum' 1;
+}
+/* penzosszeg es mertekegysege ne toredezzen szet */
+.nowrap,.ft,.money{ white-space:nowrap; }
+
+/* olvashato sorhossz a hosszu szovegekben */
+.art > p,.art > ul,.art > ol,.faq-a p,.box p{ max-width:var(--measure); }
+.section-sub,.hero-lead,.sub-lead,.cta-sub,.lead-sub{ max-width:var(--measure); }
+@media(max-width:1023px){
+  .section-sub,.hero-lead,.sub-lead,.cta-sub,.lead-sub{ margin-left:auto !important; margin-right:auto !important; }
+}
+
+/* ── 10.2 gombok ─────────────────────────────────────────────────────
+   Harom szint: elsodleges (tomor), masodlagos (keretes), szoveges.
+   Minden gomb legalabb 44 px magas, azonos sarokkal es allapotokkal.   */
+.apt-btn-inner,.hact,.qn,.btn,.lead-send,.qz-next,.calccta-b,.res-cta,.adv-m-book a,
+.adv-cbtn,.rz-again,.hw-cta,.mhead-cta,.hub-go,.mbtn,.sub-back,.zpage .btn{
+  font-family:var(--fb); font-weight:600; letter-spacing:.005em;
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  text-decoration:none; cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.apt-btn-inner,.hact,.btn,.lead-send,.qz-next,.calccta-b,.res-cta,.adv-m-book a,
+.adv-cbtn,.rz-again,.hw-cta,.mhead-cta,.zpage .btn{
+  min-height:var(--tap); padding:.78rem 1.6rem; border-radius:var(--r-m) !important;
+}
+.qn,.hub-go,.sub-back{ min-height:38px; }
+/* nyomott allapot: minden gombnal ugyanaz a visszajelzes */
+.apt-btn-inner:active,.hact:active,.btn:active,.lead-send:active,.qz-next:active,
+.calccta-b:active,.res-cta:active,.adv-cbtn:active,.hw-cta:active,.zpage .btn:active{
+  transform:translateY(1px); box-shadow:var(--sh-1) !important;
+}
+/* letiltott */
+.btn[disabled],button[disabled],.lead-send[disabled],.zpage .btn[disabled]{
+  opacity:.55; cursor:not-allowed; transform:none !important; box-shadow:none !important;
+}
+/* vilagos hatteren: masodlagos gomb */
+.btn-outline,.zpage .btn-outline{
+  background:var(--surface) !important; border:1.5px solid var(--line-2) !important;
+  color:var(--ink) !important; box-shadow:var(--sh-1) !important;
+}
+.btn-outline:hover,.zpage .btn-outline:hover{ border-color:var(--teal-ink) !important; color:var(--teal-ink) !important; }
+/* sotet hatteren: masodlagos gomb, olvashato kontraszttal */
+.hact,.btn-ghost,.zpage .btn-ghost,.sub-hero .qn{
+  color:#fff !important; border:1.5px solid rgba(255,255,255,.34) !important;
+  background:rgba(255,255,255,.10) !important;
+}
+.hact:hover,.btn-ghost:hover,.zpage .btn-ghost:hover,.sub-hero .qn:hover{
+  background:rgba(255,255,255,.2) !important; border-color:var(--teal) !important; color:#fff !important;
+}
+.hact-primary,.sub-hero .qn.on{
+  background:var(--teal) !important; border-color:var(--teal) !important; color:#0d2033 !important; font-weight:700;
+}
+.hact-primary:hover,.sub-hero .qn.on:hover{ background:#8fd6cd !important; border-color:#8fd6cd !important; color:#0d2033 !important; }
+.sub-back{ color:#bfe9e3 !important; }
+.sub-back:hover{ color:#fff !important; }
+/* a kiemelt sotetkek gomb (fooldali es aloldali fo CTA) */
+.apt-btn-inner{ background:var(--navy) !important; color:#fff !important; }
+.apt-btn-inner:hover{ background:#24406f !important; }
+
+/* ── 10.3 urlapmezok ─────────────────────────────────────────────────── */
+.lead-field label,.fld-l label,.f-lab,label.fl{
+  display:block; font-family:var(--fb); font-size:.8rem !important; font-weight:700;
+  color:var(--ink); margin-bottom:.35rem; letter-spacing:.01em;
+}
+.lead-field input,.lead-field textarea,.lead-field select,
+.fld input[type=number],.fld input[type=text],input.f-in,select.f-in,textarea.f-in{
+  width:100%; min-height:var(--tap); padding:.7rem .9rem;
+  font-family:var(--fd); font-size:.95rem; color:var(--ink);
+  background:var(--surface); border:1.5px solid var(--line-2); border-radius:var(--r-s);
+  transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
+}
+.lead-field input::placeholder,.lead-field textarea::placeholder{ color:var(--ink-3); }
+.lead-field input:hover,.lead-field textarea:hover{ border-color:var(--line-2); }
+.lead-field input:focus,.lead-field textarea:focus,.fld input:focus{
+  border-color:var(--teal-ink) !important; box-shadow:0 0 0 3px rgba(95,167,158,.22) !important; background:#fff !important;
+}
+/* hibas mezo + mezoszintu uzenet */
+.lead-field input[aria-invalid="true"],.lead-field textarea[aria-invalid="true"],.fld input[aria-invalid="true"]{
+  border-color:#c2453f !important; background:#fff6f5 !important;
+}
+.f-err{ display:none; margin-top:.35rem; font-size:.78rem; font-weight:600; color:#a8332e; }
+.f-err.on{ display:flex; align-items:center; gap:.35rem; }
+.f-hint{ margin-top:.3rem; font-size:.76rem; color:var(--ink-3); }
+.f-req{ color:#a8332e; }
+/* kuldes kozbeni es visszajelzo allapot */
+.f-status{ margin-top:.8rem; font-size:.85rem; font-weight:600; border-radius:var(--r-s); padding:.7rem .9rem; display:none; }
+.f-status.on{ display:block; }
+.f-status.ok{ background:rgba(95,167,158,.14); color:#1f5f57; }
+.f-status.bad{ background:#fdecea; color:#8f2d28; }
+.is-sending{ opacity:.7; pointer-events:none; }
+
+/* ── 10.4 tablazatok ─────────────────────────────────────────────────── */
+.tbl-wrap{ border-radius:var(--r-m); border:1px solid var(--line); background:var(--surface); box-shadow:var(--sh-1); }
+table.tbl{ width:100%; border-collapse:collapse; }
+table.tbl th{ font-family:var(--fb); font-size:.74rem !important; text-transform:uppercase; }
+table.tbl td,table.tbl th{ padding:.85rem 1rem; }
+table.tbl tbody tr + tr td{ border-top:1px solid var(--line); }
+table.tbl tbody tr:hover td{ background:rgba(95,167,158,.05); }
+
+/* ── 10.5 jelzodobozok ───────────────────────────────────────────────── */
+.box{ border-radius:var(--r-m); }
+.box.warn,.warnbox{ background:#fff8ee !important; border-left:4px solid #d99a2b !important; }
+.box.ok{ background:rgba(95,167,158,.10) !important; border-left:4px solid var(--teal-ink) !important; }
+
+/* ── 10.6 dekoracio visszafogasa ─────────────────────────────────────
+   A racsminta maradjon, de csak jelzesszeruen, es ne a hosszu olvasos
+   vagy adatbeviteli feluletek mogott.                                  */
+.graph-light{ background-image:none !important; }
+.graph-dark{
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0,rgba(255,255,255,.022) 1px,transparent 1px,transparent 56px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0,rgba(255,255,255,.022) 1px,transparent 1px,transparent 56px) !important;
+}
+#savings::before,#endmark::before,.cta-box::before{ opacity:.5; }
+.glow{ opacity:.55; }
+
+/* ── 10.7 mozgas csokkentese ─────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+  .reveal{ opacity:1 !important; transform:none !important; }
+}
+/* ha a felderites (reveal) nem indul el, a tartalom akkor is latszik */
+.no-js .reveal,.reveal.is-in,.reveal.in{ opacity:1 !important; transform:none !important; }
+/* JS nelkul is olvashato marad minden felderitendo blokk */
+noscript ~ * .reveal{ opacity:1 !important; transform:none !important; }
+
+/* ── 10.8 MERT KONTRASZT ────────────────────────────────────────────────
+   A szinek nem ranezesre, hanem meressel allnak: minden szoveg eleri a
+   4.5:1 aranyt (nagy szoveg 3:1). Az ertekek a /tmp/contrast.py meresebol
+   jonnek, a paletta hangulata valtozatlan.                              */
+:root{
+  --gray: #5C6B7E;              /* volt #6B7A8D (3.9:1) -> 5.1:1 feheren */
+  --teal-ink: #35706A;          /* linkek es kiemelt szamok: 5.2:1 */
+}
+.zpage{ --gray-soft:#5F7084 !important; }   /* volt #8FA0B3 (2.7:1) */
+
+/* szinezett cimkek: sotetebb betu a halvany hatteren */
+.chip-teal{ color:#2E6B64 !important; border-color:rgba(95,167,158,.42) !important; }
+.chip-purple{ color:#5C4088 !important; border-color:rgba(139,108,181,.38) !important; }
+.chip-gold{ color:#8A6100 !important; border-color:rgba(200,150,30,.42) !important; }
+.eyebrow.gold,.gold-ink{ color:#8A6100 !important; }
+#why .compare-col-label.alone{ color:#4E5C6E !important; }
+
+/* teal szoveg vilagos hatteren mindig a sotetebb arnyalat */
+.ki-v,.rel-t,.tx-teal,.sc-hero-n small,.art .tx-teal,.hub-n,
+.sav-i,.ms-year,.svc-modal-plabel,.team-toggle-label{ color:var(--teal-ink) !important; }
+
+/* sotet hatteren: a masodlagos szoveg se legyen halvanyabb a kelletenel */
+.ben-s{ color:rgba(255,255,255,.76) !important; }
+.sav-note,.endmark-cap,footer .footer-sub,footer .footer-fine,footer .foot-legal,
+.mhead .elogo span,.hero-trust-item{ color:rgba(255,255,255,.72) !important; }
+footer .footer-links a,footer a{ color:rgba(255,255,255,.80); }
+footer .footer-links a:hover{ color:#fff; }
+.cta-free{ color:#9FE6BE !important; }
+
+/* maradek meresi eltéréseket zaro szabalyok */
+.zpage .bk-gift.is-max{ background:#8A6100 !important; color:#fff !important; border-color:#8A6100 !important; }
+.zpage{ --gold-ink:#7E5C00 !important; --purple-ink:#5C4088 !important; }
+.role.r-x,.upd,.upd span{ color:#7E5C00 !important; }
+.step-num,.zpage .step-num{ background:linear-gradient(135deg,#35706A,#5C4088) !important; color:#fff !important; }
+.ms-title,.ms-title a,a.ms-cta,.imp-modal a{ color:#5C4088 !important; }
+/* sotet szekcioban a cimke vilagos */
+.graph-dark .chip-teal,#cta .chip-teal,.midcta .chip-teal,.sub-hero .chip-teal,
+section[style*="var(--navy"] .chip-teal,.tiles.dark .chip-teal{
+  color:#9FE0D8 !important; background:rgba(125,200,192,.14) !important; border-color:rgba(125,200,192,.4) !important;
+}
+.graph-dark .chip-gold,#cta .chip-gold,.midcta .chip-gold,.sub-hero .chip-gold,.tiles.dark .chip-gold{
+  color:#F3C969 !important; background:rgba(240,180,41,.14) !important; border-color:rgba(240,180,41,.4) !important;
+}
+.midcta-k{ color:#9FE0D8 !important; }
+/* vilagos hatteren az inline teal szoveg is a sotetebb arnyalat */
+body:not(.dark) [style*="color:var(--teal)"]{ color:var(--teal-ink) !important; }
+.graph-dark [style*="color:var(--teal)"],#cta [style*="color:var(--teal)"],
+.sub-hero [style*="color:var(--teal)"]{ color:var(--teal-lite) !important; }
+/* halvany feher szovegek sotet hatteren */
+.stat-label,.res-lbl,.hw-fine,.sfx,.mega-m,.mm-m{ color:rgba(255,255,255,.74) !important; }
+.hw-fine{ color:var(--ink-2) !important; }
+.sfx{ color:var(--teal-lite) !important; }
+
+/* sotet szekciok (.dark-sec) cimkei */
+.dark-sec .chip-teal{ color:#9FE0D8 !important; background:rgba(125,200,192,.14) !important; border-color:rgba(125,200,192,.4) !important; }
+.dark-sec .chip-gold{ color:#F3C969 !important; background:rgba(240,180,41,.14) !important; border-color:rgba(240,180,41,.4) !important; }
+.dark-sec .chip-purple{ color:#C4AEE4 !important; background:rgba(139,108,181,.18) !important; border-color:rgba(139,108,181,.4) !important; }
+.dark-sec .section-sub,.dark-sec .tile-d,.dark-sec p{ color:rgba(255,255,255,.80) !important; }
+/* karrier-hivatkozas a lila dobozban */
+.ms-cta,a[style*="rgba(139,108,181"]{ color:#4E3578 !important; }
+/* osszehasonlito tablazat kiemelt cellai (lakashitel-folyamat) */
+.ctab-r span,.ctab-r small,.ctab-r b{ color:var(--teal-ink) !important; }
+.footer-brand span{ color:var(--teal-lite) !important; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   11. FOOLDALI NYITORESZ
+   Rovid cim, ket mondat, egy elsodleges es egy masodlagos gomb. Mobilon
+   a fo gomb az elso kepernyon van, es a video helyett allokep tolt.
+   ══════════════════════════════════════════════════════════════════════ */
+#hero .hero-grid{ align-items:center; gap:clamp(2rem,3.5vw,4rem) !important; }
+.hero-copy{ max-width:40rem; }
+#hero .hero-title{ margin-bottom:1rem !important; }
+#hero .hero-lead{ margin-bottom:1.6rem !important; color:rgba(255,255,255,.88) !important; max-width:52ch; }
+.hero-actions{ display:flex; flex-wrap:wrap; gap:.75rem; margin-bottom:1.5rem; }
+.hero-actions .hact{ padding:.85rem 1.5rem; font-size:.92rem !important; }
+.hero-trust{ gap:1rem 1.6rem !important; margin-top:0 !important; }
+.hero-trust-item{ font-size:.78rem !important; }
+.hero-trust-item span{ display:inline-flex; }
+.hero-trust-item .ic{ width:.95em; height:.95em; color:var(--teal-lite); }
+
+/* hatterkep: a video csak szeles kepernyon tolt be (lasd portal.js) */
+.hero-video-bg{
+  background-image:linear-gradient(rgba(15,32,53,.35),rgba(15,32,53,.35)),url('assets/hero-csalad.jpg');
+  background-size:cover; background-position:center 30%;
+}
+.hero-video-bg iframe{ opacity:0; transition:opacity .8s ease; }
+.hero-video-bg iframe.is-on{ opacity:1; }
+@media(max-width:1000px){
+  .hero-video-bg{ background-position:center 25%; }
+  .hero-video-overlay{ background:linear-gradient(180deg,rgba(15,32,53,.90) 0%,rgba(15,32,53,.93) 60%,rgba(15,32,53,.96) 100%) !important; }
+}
+@media(prefers-reduced-motion:reduce){ .hero-video-bg iframe{ display:none; } }
+
+/* mobil: cim -> bevezeto -> gombok -> bizalmi sor, csak utana a kalkulator */
+@media(max-width:1000px){
+  #hero{ padding-top:2rem !important; padding-bottom:2.6rem !important; }
+  #hero .hero-title{ font-size:clamp(1.85rem,1.3rem + 2.4vw,2.4rem) !important; margin-bottom:.75rem !important; }
+  #hero .hero-lead{ font-size:1rem !important; line-height:1.6 !important; margin-bottom:1.1rem !important; }
+  .hero-actions{ width:100%; flex-direction:column; align-items:stretch; margin-bottom:1.1rem; }
+  .hero-actions .hact{ width:100%; }
+  .hero-trust{ justify-content:center; gap:.5rem 1.1rem !important; }
+  .hero-trust-item{ font-size:.74rem !important; }
+  .hw{ margin-top:1.8rem; }
+}
+@media(max-width:420px){
+  #hero .hero-lead{ font-size:.96rem !important; }
+  .hero-trust-item:nth-child(n+3){ display:none; }   /* az elso kepernyo a gomboke */
+}
+
+/* elonysav a nyitoresz alatt */
+#ben{ border-top:1px solid rgba(255,255,255,.08); }
+.ben-h{
+  font-family:var(--fb); font-size:.72rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:rgba(255,255,255,.62); margin:0 0 1.2rem;
+}
+#ben .ben{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--sp-mod); margin:0 !important; }
+#ben .ben-c{
+  display:flex; align-items:flex-start; gap:.8rem; padding:1rem 1.1rem; text-decoration:none;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:var(--r-m);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+#ben a.ben-c:hover{ background:rgba(255,255,255,.1); border-color:rgba(125,200,192,.5); transform:translateY(-2px); }
+#ben .ben-i{
+  width:34px; height:34px; flex:none; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  background:rgba(125,200,192,.16); color:var(--teal-lite); font-size:1.05rem;
+}
+#ben .ben-t{ font-family:var(--fb); font-size:.88rem; font-weight:700; color:#fff; line-height:1.3; margin-bottom:.2rem; }
+#ben .ben-s{ font-size:.78rem; line-height:1.45; color:rgba(255,255,255,.72) !important; }
+@media(max-width:1023px){ #ben .ben{ grid-template-columns:repeat(2,minmax(0,1fr)); } .ben-h{ text-align:center; } }
+@media(max-width:560px){ #ben .ben{ grid-template-columns:1fr; } #ben .ben-c{ padding:.85rem 1rem; } }
+
+/* a fejlec-CTA es a menusor rejtese eros marad (a gomb-alapszabaly utan) */
+@media(max-width:1150px){ .mhead-cta{ display:none !important; } }
+@media(max-width:980px){ .mnav{ display:none !important; } }
+@media(max-width:1120px){ .mnav > button.sec{ display:none !important; } }
+.mburger{ min-width:var(--tap); min-height:var(--tap); align-items:center; justify-content:center; border-radius:var(--r-s); }
+/* a nyitoresz gombsora ne legyen 460 px-re szoritva (regi szabaly) */
+#hero .hero-actions{ max-width:none !important; display:flex !important; flex-wrap:wrap; }
+/* a hatterkep legyen egyertelmuen dekoracio: a szoveg oldalan eros fedes */
+#hero .hero-video-overlay{
+  background:linear-gradient(100deg,rgba(13,28,47,.96) 0%,rgba(13,28,47,.90) 42%,rgba(13,28,47,.68) 100%) !important;
+}
+@media(max-width:1000px){
+  #hero .hero-actions{ flex-direction:column; }
+}
+
+/* ── 11.2 eszkoztar temak szerint ────────────────────────────────────── */
+.hub-jump{ display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-top:1.4rem; }
+.hub-jump a{
+  font-family:var(--fb); font-size:.82rem; font-weight:700; text-decoration:none;
+  padding:.5rem 1rem; min-height:38px; display:inline-flex; align-items:center;
+  border:1.5px solid var(--line-2); border-radius:var(--r-pill); color:var(--ink);
+  background:var(--surface); transition:border-color .16s,color .16s,background .16s;
+}
+.hub-jump a:hover{ border-color:var(--teal-ink); color:var(--teal-ink); background:rgba(95,167,158,.07); }
+.hub-group + .hub-group{ margin-top:clamp(2.2rem,1.6rem + 1.6vw,3.4rem); }
+.hub-g-head{ margin-bottom:1.3rem; scroll-margin-top:calc(var(--mh,66px) + 18px); }
+.hub-g-lab{
+  display:inline-block; font-family:var(--fb); font-size:.68rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--teal-ink); margin-bottom:.4rem;
+}
+.hub-g-t{ font-family:var(--fb); font-size:1.35rem !important; font-weight:800; letter-spacing:-.015em; color:var(--navy); margin:0 0 .3rem; }
+.hub-g-s{ font-size:.92rem !important; line-height:1.6 !important; color:var(--gray); margin:0; max-width:var(--measure); }
+#hub .hub{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media(min-width:1500px){ #hub .hub{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:1023px){ #hub .hub{ grid-template-columns:repeat(2,minmax(0,1fr)); } .hub-g-head{ text-align:center; } .hub-g-s{ margin-left:auto; margin-right:auto; } }
+@media(max-width:620px){ #hub .hub{ grid-template-columns:1fr; } }
+.hub-top{ align-items:center; }
+.hub-t{ font-size:1rem !important; }
+/* a szekcio horgonyai ne bujjanak a rogzitett fejlec ala */
+section[id],div[id],h2[id],h3[id]{ scroll-margin-top:calc(var(--mh,66px) + 16px); }
+/* harom oszlop: a 6 kartyas csoport igy ket teljes sorra jon ki */
+#hub .hub,.hub-group .hub{ grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+@media(max-width:1023px){ #hub .hub,.hub-group .hub{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; } }
+@media(max-width:620px){ #hub .hub,.hub-group .hub{ grid-template-columns:1fr !important; } }
+@media(min-width:1024px){ .hub-jump{ justify-content:flex-start; } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   12. KOMPAKT ALOLDALI NYITORESZ
+   Rovid cim, ket mondat, harom teny, ket muvelet, egy datumsor.
+   ══════════════════════════════════════════════════════════════════════ */
+.sub-hero .sub-lead{ margin-bottom:1.3rem !important; max-width:58ch; }
+.sub-actions{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.3rem; }
+.sub-actions .hact{ padding:.8rem 1.4rem; }
+.sub-upd{ margin:1rem 0 0 !important; font-size:.78rem !important; line-height:1.6 !important; color:rgba(255,255,255,.66) !important; }
+.sub-chips{ margin-bottom:0 !important; }
+.sub-hero{ padding-top:clamp(2.2rem,1.6rem + 2vw,3.4rem) !important; padding-bottom:clamp(2.2rem,1.6rem + 2vw,3.4rem) !important; }
+@media(max-width:1023px){
+  .sub-actions{ flex-direction:column; align-items:stretch; }
+  .sub-actions .hact{ width:100%; }
+  .sub-upd{ text-align:center; }
+}
+
+/* tartalomjegyzek: osszecsukhato, desktopon tobb oszlopban */
+details.toc{ border-radius:var(--r-m); }
+details.toc > summary{
+  cursor:pointer; list-style:none; display:flex; align-items:center; gap:.5rem;
+  font-family:var(--fb); font-weight:700; min-height:var(--tap);
+}
+details.toc > summary::-webkit-details-marker{ display:none; }
+details.toc > summary::after{
+  content:''; width:1em; height:1em; margin-left:auto; background:currentColor;
+  -webkit-mask:var(--ic-chev) center/contain no-repeat; mask:var(--ic-chev) center/contain no-repeat;
+  transition:transform .2s ease;
+}
+details.toc[open] > summary::after{ transform:rotate(180deg); }
+details.toc ol{ margin-top:.8rem; }
+@media(min-width:900px){
+  details.toc ol{ columns:2; column-gap:2.4rem; }
+}
+@media(min-width:1280px){
+  details.toc ol{ columns:3; }
+}
+details.toc li{ break-inside:avoid; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   13. KALKULATOR-FELULET  ·  csuszka + kozvetlen szambevitel
+   ══════════════════════════════════════════════════════════════════════ */
+.rng-box{
+  display:inline-flex; align-items:center; gap:.3rem; margin-left:auto;
+  background:var(--surface); border:1.5px solid var(--line-2); border-radius:var(--r-s);
+  padding:.12rem .45rem .12rem .5rem; transition:border-color .16s,box-shadow .16s;
+}
+.rng-box:focus-within{ border-color:var(--teal-ink); box-shadow:0 0 0 3px rgba(95,167,158,.22); }
+.rng-num{
+  width:6.6em; min-width:0; border:0; background:none; padding:.3rem 0;
+  font-family:var(--fb); font-size:.95rem; font-weight:700; color:var(--ink);
+  text-align:right; font-variant-numeric:tabular-nums;
+}
+.rng-num:focus{ outline:none !important; }
+.rng-unit{ font-family:var(--fb); font-size:.8rem; font-weight:700; color:var(--ink-3); }
+.rng-orig{ display:none !important; }
+.rng-minmax{
+  display:flex; justify-content:space-between; margin-top:.3rem;
+  font-size:.72rem; color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.scf-top,.hw-lab,.fld-l label{ display:flex !important; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.calc-reset{
+  margin-top:1rem; background:none; border:0; padding:.5rem .1rem; min-height:var(--tap);
+  font-family:var(--fb); font-size:.8rem; font-weight:700; color:var(--ink-3);
+  display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
+}
+.calc-reset:hover{ color:var(--teal-ink); text-decoration:underline; }
+/* a fooldali gyorskalkulator torzse vilagos: ott a sotet szoveg olvashato */
+.hw .rng-box{ background:var(--surface); border-color:var(--line-2); }
+.hw .rng-num{ color:var(--ink); }
+.hw .rng-unit,.hw .rng-minmax{ color:var(--ink-3); }
+.hw .calc-reset{ color:var(--ink-3); }
+.hw .calc-reset:hover{ color:var(--teal-ink); }
+/* sotet panelek (fooldali doboz, eredmenyoldal): vilagos szoveg */
+.hw .f-err,.sc-out .f-err,.graph-dark .f-err{ color:#ffb4ae; }
+.sc-out .rng-box{ background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.26); }
+.sc-out .rng-num{ color:#fff; }
+.sc-out .rng-unit,.sc-out .rng-minmax{ color:rgba(255,255,255,.72); }
+
+/* ── 13.2 tablazat mobilon: jelzett, gorgetheto sav ──────────────────── */
+.tbl-wrap,.ctab-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; position:relative; }
+.tbl-wrap.is-scroll,.ctab-wrap.is-scroll{
+  background-image:linear-gradient(to right,rgba(15,32,53,.10),rgba(15,32,53,0) 22px),
+                   linear-gradient(to left,rgba(15,32,53,.10),rgba(15,32,53,0) 22px);
+  background-position:right center,left center; background-repeat:no-repeat; background-attachment:local,local;
+}
+.tbl-wrap.is-scroll.at-end{ background-image:linear-gradient(to left,rgba(15,32,53,.10),rgba(15,32,53,0) 22px); }
+.tbl-hint{
+  display:flex; align-items:center; gap:.4rem; margin:0 0 .5rem;
+  font-family:var(--fb); font-size:.76rem; font-weight:600; color:var(--ink-3);
+}
+@media(min-width:900px){ .tbl-hint{ display:none; } }
+/* elso oszlop rogzitve, hogy gorgetes kozben is tudd, melyik sort nezed */
+@media(max-width:899px){
+  table.tbl th:first-child,table.tbl td:first-child{
+    position:sticky; left:0; z-index:2; background:var(--surface);
+    box-shadow:1px 0 0 var(--line); min-width:9.5rem;
+  }
+  table.tbl th:first-child{ background:var(--navy) !important; }
+  table.tbl tr.hl td:first-child{ background:#eef6f5 !important; }
+  table.tbl td,table.tbl th{ padding:.7rem .8rem; white-space:nowrap; }
+  table.tbl td:first-child{ white-space:normal; }
+}
+
+/* ── 14. TANACSADOK ES KAPCSOLAT ─────────────────────────────────────── */
+.adv-tags-mini{ display:flex; flex-wrap:wrap; gap:.3rem; justify-content:center; margin-top:.45rem; }
+.adv-tags-mini span{
+  font-family:var(--fb); font-size:.66rem; font-weight:700; letter-spacing:.02em;
+  padding:.16rem .5rem; border-radius:var(--r-pill);
+  background:rgba(95,167,158,.12); color:#2E6B64; border:1px solid rgba(95,167,158,.26);
+}
+.adv-card{ height:330px !important; }
+@media(max-width:760px){ .adv-card{ height:300px !important; } }
+.adv-front{ padding-top:1.2rem !important; padding-bottom:1.2rem !important; }
+.adv-role{ min-height:0 !important; margin-bottom:.1rem; }
+.adv-more{ margin-top:.7rem !important; }
+.adv-help{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.2rem;
+  margin-top:var(--sp-mod); padding:1.4rem 1.6rem;
+  background:var(--navy); border-radius:var(--r-l);
+}
+.adv-help-t{ font-family:var(--fb); font-size:1.02rem; font-weight:800; color:#fff; margin-bottom:.25rem; }
+.adv-help-s{ font-size:.88rem; line-height:1.6; color:rgba(255,255,255,.78); max-width:58ch; }
+.adv-help .hact{ flex:none; }
+@media(max-width:760px){ .adv-help{ flex-direction:column; align-items:stretch; text-align:center; } .adv-help-s{ margin:0 auto; } .adv-help .hact{ width:100%; } }
+/* parbeszedablak: a cim ne legyen ketszer felolvasva */
+.adv-m-photo[aria-hidden="true"]{ }
+#advMName:focus-visible{ outline:3px solid var(--focus); outline-offset:4px; }
+/* urlap */
+.lead-gdpr a{ color:var(--teal-ink); font-weight:700; }
+.lead-field{ margin-bottom:1rem !important; }
+.f-status{ margin-top:1rem; }
+/* a pozicio ket sorba is kifer, a cimkek nem csusznak ra */
+.adv-card{ height:352px !important; }
+@media(max-width:760px){ .adv-card{ height:330px !important; } }
+.adv-role{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+           min-height:2.6em !important; font-size:.8rem !important; }
+.adv-photo{ box-shadow:0 0 0 4px rgba(95,167,158,.10); }
+
+/* ── 15. OLVASHATO MERETEK ───────────────────────────────────────────
+   Nincs 12 px alatti szoveg sehol: a kis cimkek is olvashatoak maradnak. */
+.label-chip,.eyebrow{ font-size:.75rem !important; }
+.rng-minmax,.tbl-hint,.f-hint,.hub-soon{ font-size:.75rem !important; }
+table.tbl th{ font-size:.75rem !important; }
+.midcta-k,.sc-hero-l,.toc-t,details.toc > summary,.pt-lab,.team-toggle-label,
+.stat-label,.hub-n,.svc-modal-plabel,.adv-tags-mini span,.mtop,.hub-g-lab,.ben-h{
+  font-size:.75rem !important;
+}
+.mhead .elogo span{ font-size:.69rem !important; letter-spacing:.1em; }
+@media(max-width:560px){ .mhead .elogo span{ font-size:.66rem !important; } }
+details.toc > summary{ font-size:.95rem !important; }
+/* a rejtett horgony ne befolyasolja az elrendezest */
+.anchor-only{ position:absolute; width:1px; height:1px; overflow:hidden; }
+/* impresszum JS nelkul is megnyithato */
+.imp-overlay:has(#impresszum:target){ display:flex !important; }
+/* a legkisebb szovegek is elerik a 12 px-et */
+.cta-free,.midcta-n,.footer-fine,.foot-legal,.footer-sub,.sub-note,.legal-note,
+.hw-fine,.scf-note,.tbl-note,.foot-sub,.imp-note{ font-size:.75rem !important; }
+footer a,footer .footer-links a{ font-size:.82rem !important; }
+/* bankszamla: az egyszeri bonusz kulon cimket kap */
+.bk-gift{ display:flex !important; flex-direction:column; align-items:center; gap:.1rem; line-height:1.2; padding:.4rem .9rem !important; }
+.bk-gift-l{ font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.8; }
+.bk-facts i{ display:block; font-size:.72rem; font-style:normal; color:var(--ink-3); line-height:1.4; margin-top:.15rem; }
+
+/* a gorgetesi tipp sotet savban is olvashato */
+.tbl-hint{ color:var(--ink-2) !important; }
+.graph-dark .tbl-hint,.dark-sec .tbl-hint,.sc-out .tbl-hint,section[style*="navy"] .tbl-hint{ color:rgba(255,255,255,.82) !important; }
+/* sotet nyitoreszen az elsodleges gomb legyen a hangsulyos: teal tolt */
+#hero .zpage .btn-primary,.zpage #hero .btn-primary,.grid-bg-dark .btn-primary,
+.sub-hero .btn-primary,.graph-dark .btn-primary{
+  background:var(--teal) !important; color:#0d2033 !important; font-weight:700;
+  box-shadow:0 6px 18px rgba(125,200,192,.28) !important;
+}
+#hero .zpage .btn-primary:hover,.grid-bg-dark .btn-primary:hover,.graph-dark .btn-primary:hover{
+  background:#8fd6cd !important; color:#0d2033 !important;
+}
+/* teny-cimke: a szoveg normal sorfolyamban alljon, hogy a magyar toldalek
+   ne szakadjon el a szamtol ("750 M Ft-ig", nem "750 M Ft -ig") */
+.sub-chip{ display:inline-block !important; gap:0 !important; }
+.sub-chip .ic{ margin-right:.42em; vertical-align:-.16em; }
+.sub-chip b{ font-weight:800; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   16. HÁROM KONKRÉT HIBA JAVÍTÁSA
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* 16.1  A fomenuben feher hatteren nem lehet feher betu.
+   A .mega-m korabban a "halvany feher szoveg sotet hatteren" csoportba
+   keveredett, de a lenyilo panel vilagos.                               */
+.mega-m{ color:var(--ink-2) !important; }
+.mega-t{ color:var(--navy) !important; }
+.mega-item{ color:var(--navy); }
+.mega-item:hover .mega-t{ color:var(--teal-ink) !important; }
+
+/* 16.2  Sehol nem latszodhat a bongeszo alapertelmezett kek linkszine.
+   Az ikonok a szovegszint oroklik, ezert minden ilyen helyen az EAGLZ
+   pink a jelolo szin.                                                   */
+:root{ --eaglz-pink:#E8457A; --eaglz-pink-soft:rgba(232,69,122,.12); }
+.mega-item .mega-ico,.mega-item .mega-ico .ic,
+.mm-item .mm-ico,.mm-item .mm-ico .ic,.mm-i,.mm-i .ic,
+.hub-i,.hub-i .ic,
+.rel-i,.rel-i .ic,
+.gd-i,.gd-i .ic{
+  color:var(--eaglz-pink) !important;
+}
+.hub-i,.rel-i,.gd-i,.mega-item .mega-ico,.mm-item .mm-ico{
+  background:var(--eaglz-pink-soft) !important;
+  border-color:rgba(232,69,122,.22) !important;
+}
+/* a mega-menu kartya ikonja ne olvadjon ossze a hatterrel */
+.mega-item:hover .mega-ico{ background:rgba(232,69,122,.2) !important; }
+/* osztaly nelkuli hivatkozasok (online kotes listak) se orokoljek a kek UA-szint */
+a:not([class]),a[class=""]{ color:var(--teal-ink); }
+a:not([class]) .ic,a[class=""] .ic{ color:var(--eaglz-pink); }
+.graph-dark a:not([class]),.dark-sec a:not([class]),#cta a:not([class]),
+footer a:not([class]),.sub-hero a:not([class]){ color:var(--teal-lite); }
+.graph-dark a:not([class]) .ic,.dark-sec a:not([class]) .ic,
+footer a:not([class]) .ic{ color:#FF7EA8; }
+
+/* 16.3  GYIK: a valasz szovege ne erjen a kartya falahoz, es a ket
+   megvalositas (fooldal es atemelt aloldalak) egyformara alljon.        */
+.faq-a{
+  margin:0 !important;
+  padding:1.05rem 1.4rem 1.35rem !important;
+  border-top:1px dashed rgba(27,56,88,.12);
+}
+.faq-a > :first-child{ margin-top:0 !important; }
+.faq-a > :last-child{ margin-bottom:0 !important; }
+.faq-a p + p{ margin-top:.75rem; }
+.faq-a p{ max-width:68ch; }
+.zpage .faq > div,.zpage .faq-a{
+  padding:1.05rem 1.4rem 1.35rem !important;
+  border-top:1px dashed rgba(27,56,88,.12);
+}
+.zpage .faq[open] summary{ color:var(--teal-ink) !important; }
+.faq-item + .faq-item,.zpage .faq + .faq{ margin-top:.7rem; }
+@media(max-width:600px){
+  .faq-q,.zpage .faq summary{ padding:1rem 1.1rem !important; }
+  .faq-a,.zpage .faq > div{ padding:.95rem 1.1rem 1.2rem !important; }
+}
+
+/* 16.4  Mobilon a cimek es a gombok kozepre, de a hosszu magyarazat balra:
+   a kozepre zart bekezdes nehezen olvashato.                             */
+@media(max-width:1023px){
+  .faq-a,.faq-a p,.faq-a li,.zpage .faq > div,.zpage .faq > div p,
+  .art > p,.art > ul,.art > ol,.art li,.box,.box p,.box li,
+  .tbl-note,.scf-note,.sub-note,.legal-note,.bk-lead,.bk-fine,
+  .hub-d,.tile-d,.rel-d,.gd-d,.nstep-d,.midcta-s{
+    text-align:left !important;
+  }
+  .faq-q,.zpage .faq summary{ text-align:left !important; justify-content:space-between !important; }
+}
+/* a GYIK-lista a szekciofejlec vonalaban alljon, ne lebegjen kozepen */
+@media(min-width:1024px){
+  #gyik .faq-list,#faq .faq-list,.zpage .faq-list{ margin-left:0 !important; margin-right:0 !important; max-width:880px !important; }
+}
+/* a fooldali gyorskalkulator torzse vilagos: ott sotet teal a link */
+.hw a:not([class]),.hw-fine a,.sc-in a:not([class]){ color:var(--teal-ink) !important; }
+.hw a:not([class]) .ic,.hw-fine a .ic{ color:var(--eaglz-pink) !important; }
+/* az urlap adatkezelesi hivatkozasa vilagos kartyan all */
+.lead-gdpr a,.lead-box a:not([class]),.cta-right a:not([class]){ color:var(--teal-ink) !important; }
+
+/* ── ikonrendszer: egysegies vonalas ikonok az emojik helyett ── */
+.ic-sprite{position:absolute;width:0;height:0;overflow:hidden;}
+.ic{width:1em;height:1em;flex:0 0 auto;display:inline-block;vertical-align:-.13em;
+    fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;}
+.ic-lg{width:1.35em;height:1.35em;}
+a .ic,button .ic{pointer-events:none;}
+/* ikon + szoveg kozott mindig egyenletes koz */
+.ic + *{margin-left:.1em;}
+/* CSS-bol rajzolt ikon (::before / ::after): a szin oroklodik */
+.ic-m::before,.ic-m::after{background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;}
+/* a kulon ikon-dobozokban (kartyak) az ikon nagy es akcentszinu */
+.hub-i .ic,.tile-i .ic,.rel-i .ic,.ben-i .ic,.hw-q-ico .ic,.mega .i .ic,.mm-i .ic{
+  width:1em;height:1em;stroke-width:1.6;}
+
 </style>
 </head>
 <body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
+<svg xmlns="http://www.w3.org/2000/svg" class="ic-sprite" aria-hidden="true" focusable="false"><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5"/><path d="m11 18-6-6 6-6"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></symbol><symbol id="i-baby" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-bandage" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v8M8 12h8"/></symbol><symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 9.5V19M9.5 9.5V19M14.5 9.5V19M19 9.5V19"/><path d="M3 19h18"/></symbol><symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2.5 5 13.5h6L10.5 21.5 19 10.5h-6Z"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-calculator" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7.5h8"/><path d="M8.5 12h.1M12 12h.1M15.5 12h.1M8.5 16h.1M12 16h.1M15.5 16v.1"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-car" viewBox="0 0 24 24"><path d="M4 15.5v-3l1.8-4.2A2 2 0 0 1 7.6 7h8.8a2 2 0 0 1 1.8 1.3L20 12.5v3"/><path d="M3.5 12.5h17"/><path d="M5 15.5v2h2.5v-2M16.5 15.5v2H19v-2"/><path d="M7 14h.1M17 14h.1"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-chart-bar" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 20v-6M12 20V7M17 20v-9"/></symbol><symbol id="i-chart-down" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="m7 9 3.5 4 3-2.5L19 16"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="7" rx="5.5" ry="2.6"/><path d="M3.5 7v4.5c0 1.4 2.5 2.6 5.5 2.6"/><ellipse cx="15" cy="14" rx="5.5" ry="2.6"/><path d="M9.5 14v3.4c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6V14"/></symbol><symbol id="i-currency" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5h5M9.5 11.5h5"/><path d="M12 15.5v-7"/></symbol><symbol id="i-document" viewBox="0 0 24 24"><path d="M6 3h7.5L19 8.5V21H6Z"/><path d="M13.5 3v5.5H19"/><path d="M9 13h6M9 17h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.5v11"/><path d="m8 11 4 4 4-4"/><path d="M4.5 18.5h15"/></symbol><symbol id="i-family" viewBox="0 0 24 24"><circle cx="8" cy="7.5" r="2.8"/><circle cx="16.5" cy="8" r="2.4"/><path d="M3.5 19v-1.6a4.5 4.5 0 0 1 9 0V19"/><path d="M14 19v-1.8a3.8 3.8 0 0 1 6.5-2.6"/></symbol><symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M8 5v14M16 5v14"/><path d="M3 12h18"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 4.5h11l-2 3.5 2 3.5H6Z"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21c3.3 0 5.5-2.2 5.5-5.2 0-3.6-3.3-5.3-3.3-8.3 0-1.5.6-2.6 1.3-3.5-4 .8-7 4-7 8.2 0 1.4.5 2.4 1.2 3.1-1.3.3-2.2 1.5-2.2 3 0 1.7 1.7 2.7 4.5 2.7Z"/></symbol><symbol id="i-folders" viewBox="0 0 24 24"><path d="M3.5 8.5h6l1.5 2h9.5v9h-17Z"/><path d="M6 8.5v-3h5l1.5 2h6.5v2"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11" rx="2"/><path d="M3.5 13.5h17M12 9v11"/><path d="M12 9c-3.5 0-5-1-5-2.6C7 5.1 8 4 9.3 4 11 4 12 6.2 12 9Zm0 0c3.5 0 5-1 5-2.6C17 5.1 16 4 14.7 4 13 4 12 6.2 12 9Z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol><symbol id="i-handshake" viewBox="0 0 24 24"><path d="m3 12 3.5-3.5 4 1.5 3-1.5L21 12"/><path d="m7 13.5 3 3 2-1.5 2.5 2 2-1.8"/><path d="M3 12v3.5M21 12v3.5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3.5 16.5a8.5 8.5 0 0 1 17 0Z"/><path d="M9.5 8.3V5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2.8"/><path d="M2.5 16.5h19"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-home-coin" viewBox="0 0 24 24"><path d="M3.5 10.5 11 4.5l7.5 6"/><path d="M5.5 12.2V19h7"/><circle cx="17.5" cy="16.5" r="4"/><path d="M17.5 14.6v3.8M16.2 16.5h2.6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h8"/><path d="M17 12v3M20 12v2.5"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M3.5 21h17"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10.5" rx="2.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-money-out" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M7 12h.1M17 12h.1"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z"/></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="M12 3.5 20.5 8v8L12 20.5 3.5 16V8Z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5 9 4l1.2 4-2 1.5a12 12 0 0 0 6.3 6.3l1.5-2 4 1.2.5 2.5-2 1.5C11.5 20.5 3.5 12.5 3.5 5.5Z"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path d="M10.5 3.5 13 4l1 6.5 6-1.8.8 2.2-6 3.2.3 5.4-1.8.8-2-5-4 2.2-.3 2.6-1.6.6-.8-3.6L3 15.6l.6-1.7 2.6-.3 2.2-4-5-2 .8-1.8 5.4.3Z"/></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M9.5 4.5h5v2.2a1.8 1.8 0 1 1 2.8 1.5v1.3h2.2v5h-2.2v4.5h-4.5v-2.2a1.8 1.8 0 1 0-1.5-2.8H9.5v-4.5H7.3A1.8 1.8 0 1 0 9.5 6.7Z"/></symbol><symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.8c0 1.7-2.4 2-2.4 3.6"/><path d="M12 17.2v.1"/></symbol><symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3.5h14v17l-2.3-1.5-2.4 1.5-2.3-1.5-2.4 1.5L7.3 19 5 20.5Z"/><path d="M8.5 8.5h7M8.5 12.5h5"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.5A8 8 0 0 0 6.2 6.6L4 9"/><path d="M4 4.5V9h4.5"/><path d="M4 12.5a8 8 0 0 0 13.8 4.9L20 15"/><path d="M20 19.5V15h-4.5"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M9.5 15.5 4 14l3-4.5C9.5 5.8 13.5 3.5 19 3.5c0 5.5-2.3 9.5-6 12l-4.5 3-1.5-5.5Z"/><circle cx="14.5" cy="9" r="1.8"/><path d="M8.5 16.5 5 20"/></symbol><symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h4M12 16h8"/><circle cx="16" cy="8" r="2"/><circle cx="10" cy="16" r="2"/></symbol><symbol id="i-speech-off" viewBox="0 0 24 24"><path d="M20.5 12.5c0 3.6-3.8 6.5-8.5 6.5-.9 0-1.8-.1-2.6-.3L4 20.5l1.2-3.3C4 16 3.5 14.4 3.5 12.5 3.5 8.9 7.3 6 12 6c1 0 1.9.1 2.8.4"/><path d="M8 12h.1M12 12h.1M16 12h.1"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3.5v5a4 4 0 0 0 8 0v-5"/><path d="M10 16.5v-4"/><path d="M10 16.5a4.5 4.5 0 0 0 9 0v-2"/><circle cx="19" cy="11.5" r="2"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11Z"/><path d="M13.5 10h3.8l3.2 3v3.5h-7Z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></symbol><symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0Z"/><path d="M12 12v6a2.5 2.5 0 0 0 5 0"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20v-1.4A5.6 5.6 0 0 1 10.6 13h2.8a5.6 5.6 0 0 1 5.6 5.6V20"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-wheat" viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M12 9c0-2 1-3.5 2.5-4.5C16 5.5 17 7 17 9c0 2-1 3.5-2.5 4.5C13 12.5 12 11 12 9Z"/><path d="M12 9c0-2-1-3.5-2.5-4.5C8 5.5 7 7 7 9c0 2 1 3.5 2.5 4.5C11 12.5 12 11 12 9Z"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M15.5 3.5a5 5 0 0 0-4.3 7.5L3.5 18.7l1.8 1.8 7.7-7.7a5 5 0 0 0 6.8-6.3l-2.9 2.9-2.6-.6-.6-2.6Z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol></svg>
 
 <div class="ehead" id="ehead">
-  <div class="uhead">
-    <div class="uhead-in">
-      <a href="index.html">← Főoldal</a>
-      <a href="index.html#for-whom">Kinek?</a>
-      <a href="index.html#why">Miért mi?</a>
-      <a href="index.html#about">Rólunk</a>
-      <a href="index.html#faq">GYIK</a>
-      <a href="http://eaglzcareer.hu" target="_blank" rel="noopener">Karrier ↗</a>
-      <span class="u-sep"></span>
-      <a class="u-cta" href="index.html#advisors">📅 Díjmentes konzultáció</a>
-    </div>
-  </div>
   <div class="mhead">
     <div class="mhead-in">
       <a class="elogo" href="index.html" aria-label="EAGLZ Finance">
@@ -1738,7 +2358,7 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
         <span>powered by OVB Gentischer Direction</span>
       </a>
       <div class="mnav" id="mnav" role="navigation" aria-label="Fő navigáció"></div>
-      <a class="mhead-cta" href="index.html#advisors">Időpontot foglalok →</a>
+      <a class="mhead-cta" href="index.html#advisors">Időpontot foglalok <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
       <button class="mburger" id="mburger" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1752,35 +2372,21 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 
 <section class="sub-hero">
   <div class="container">
-    <a href="index.html" class="sub-back">← Vissza a főoldalra</a>
+    <a href="index.html" class="sub-back"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> Vissza a főoldalra</a>
     <h1 class="sub-h1">Jár nekem az <em>Otthon Start</em>?</h1>
-    <p class="sub-lead">Tizenkét kérdés, körülbelül két perc. Végigmegyünk a program feltételein: életkor, első lakásszerzés, TB-jogviszony, hitelcél, ár-plafonok, önerő. A végén megmondja, mi az, ami rendben van, és mi az, amit tisztázni kell.</p>
-    <div class="sub-chips">
-      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M12 6.8V12l3.4 2"/></svg> <b>2 perc</b></div>
-      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M9.5 9.4a2.6 2.6 0 1 1 3.4 2.5c-.6.2-.9.8-.9 1.4v.5"/><path d="M12 17.1h.01"/></svg> <b>12 kérdés</b></div>
-      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.2" rx="2.2"/><path d="M8.2 10.5V7.4a3.8 3.8 0 0 1 7.6 0v3.1"/></svg> Nincs adatbekérés</div>
-      <div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Adatok: <b data-upd></b></div>
-    </div>
-    <div class="quicknav">
-      <a href="kalkulator.html" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h4"/></svg>Számolok</a>
-      <a href="kviz.html" class="qn on"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M8.2 12.2l2.6 2.6 5-5.2"/></svg>Jár nekem?</a>
-      <a href="lakashitel-folyamat.html" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5L12 3.5l8.5 7"/><path d="M5.5 9.6V20a.9.9 0 0 0 .9.9h11.2a.9.9 0 0 0 .9-.9V9.6"/><path d="M9.8 20.9v-6h4.4v6"/></svg>Lakásfinanszírozás</a>
-      <a href="index.html#advisors" class="qn"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Időpontot foglalok</a>
-    </div>
+    <p class="sub-lead">Tizenkét kérdés, körülbelül két perc. Végigmegyünk a program feltételein: életkor, első lakásszerzés, TB-jogviszony, hitelcél, ár-plafonok, önerő.</p>
+    <div class="sub-chips"><div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M12 6.8V12l3.4 2"/></svg> <b>2 perc</b></div><div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M9.5 9.4a2.6 2.6 0 1 1 3.4 2.5c-.6.2-.9.8-.9 1.4v.5"/><path d="M12 17.1h.01"/></svg> <b>12 kérdés</b></div><div class="sub-chip"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.2" rx="2.2"/><path d="M8.2 10.5V7.4a3.8 3.8 0 0 1 7.6 0v3.1"/></svg> Nincs adatbekérés</div></div>
+    <div class="sub-actions"><a class="hact hact-primary" href="index.html#advisors"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg> Díjmentes konzultációt kérek</a><a class="hact" href="#kviz">Jár nekem?</a></div><p class="sub-upd">Az oldalon szereplő adatok a <b data-upd></b> állapotot tükrözik, és tájékoztató jellegűek.</p>
   </div>
 </section>
-<div class="trust" aria-label="Miért érdemes velünk">
-  <div class="container"><span class="trust-i">Díjmentes tanácsadás</span><span class="trust-i">MNB által felügyelt közvetítés</span><span class="trust-i">30+ pénzintézet és biztosító</span><span class="trust-i">Online vagy személyesen</span><span class="trust-i tag">Adatok: <b data-upd></b></span></div>
-</div>
-
 
 <section class="section" style="background:#fff;">
   <div class="container">
-    <div class="qz">
+    <div class="qz" id="kviz">
       <div class="qz-bar"><div class="qz-fill" id="qzFill"></div></div>
       <div class="qz-body" id="qzBody"></div>
       <div class="qz-foot" id="qzFoot">
-        <button class="qz-back" id="qzBack">← Vissza</button>
+        <button class="qz-back" id="qzBack"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> Vissza</button>
         <span class="qz-cnt" id="qzCnt"></span>
       </div>
     </div>
@@ -1809,7 +2415,7 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
         <div class="midcta-t">30 perc, és a saját számaidat látod, nem egy példát.</div>
         <div class="midcta-s">Díjmentes, kötelezettség nélkül. Ha kiderül, hogy a mostani megoldásod jó, azt is megmondjuk.</div>
       </div>
-      <div class="midcta-a"><a class="apt-btn-inner" href="index.html#advisors">📅 Időpontot foglalok</a><span class="midcta-n">Válassz tanácsadót és időpontot</span></div>
+      <div class="midcta-a"><a class="apt-btn-inner" href="index.html#advisors"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg> Időpontot foglalok</a><span class="midcta-n">Válassz tanácsadót és időpontot</span></div>
     </div>
   </div>
 </section>
@@ -1825,30 +2431,14 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 
 <footer>
   <div class="container">
-    <div class="footer-social">
-      <a href="#" class="fsoc-btn" title="Facebook">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-      </a>
-      <a href="#" class="fsoc-btn" title="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" class="fsoc-btn" title="YouTube">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0f2035"/></svg>
-      </a>
-      <a href="#" class="fsoc-btn" title="LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="#" class="fsoc-btn" title="Google">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-      </a>
-    </div>
+    
     <div class="footer-inner">
       <div>
         <div class="footer-brand">EAGLZ <span>Finance</span></div>
         <div class="footer-sub">OVB Allfinanz Magyarország · Budapest, XI. kerület · MNB-nyilvántartott közvetítők</div>
       </div>
       <div class="footer-links">
-        <a href="mailto:INFO_EMAIL_IDE">Kapcsolat</a>
+        <a href="index.html#lead">Kapcsolat</a>
         <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv" target="_blank" rel="noopener">Időpontfoglalás</a>
         <a href="http://eaglzcareer.hu" target="_blank">Karrier</a>
         <a href="#impresszum" onclick="openImp();return false;">Impresszum</a>
@@ -1878,9 +2468,9 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
      IMPRESSZUM - footer linkről nyílik. A _IDE végű helyeket töltsd ki!
      FONTOS: élesítés előtt futtasd át az OVB compliance-en.
      ══════════════════════════════════════════════════════════════════════ -->
-<div class="imp-overlay" id="impOverlay">
+<div class="imp-overlay" id="impOverlay"><span id="impresszum" class="anchor-only" tabindex="-1" aria-hidden="true"></span>
   <div class="imp-modal" role="dialog" aria-modal="true" aria-labelledby="impTitle">
-    <button class="imp-close" onclick="closeImp()" aria-label="Bezárás">✕</button>
+    <button class="imp-close" onclick="closeImp()" aria-label="Bezárás"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></button>
     <h3 id="impTitle">Impresszum és jogi tájékoztató</h3>
     <p class="imp-lead">Utolsó frissítés: 2026. augusztus 6.</p>
 
@@ -1907,10 +2497,10 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 
     <h4>Az oldal üzemeltetője</h4>
     <dl class="imp-data">
-      <dt>Üzemeltető</dt><dd>UZEMELTETO_NEV_IDE</dd>
-      <dt>Kapcsolat</dt><dd>INFO_EMAIL_IDE</dd>
+      
+      
       <dt>Iroda</dt><dd>1118 Budapest, Kelenhegyi út 43.</dd>
-      <dt>Tárhelyszolgáltató</dt><dd>TARHELYSZOLGALTATO_IDE</dd>
+      
     </dl>
 
     <h4>A tanácsadás díjazása</h4>
@@ -1939,7 +2529,7 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
     <h4>Szerzői jog</h4>
     <p>A weboldal szövegei, grafikai elemei és arculata szerzői jogi védelem alatt állnak. Bármely elem másolása, többszörözése vagy nyilvános felhasználása kizárólag előzetes írásbeli engedéllyel lehetséges.</p>
 
-    <p class="imp-note">Ha a fentiekkel kapcsolatban kérdésed van, írj az INFO_EMAIL_IDE címre.</p>
+    <p class="imp-note">Ha a fentiekkel kapcsolatban kérdésed van, keress minket a fenti központi elérhetőségen, vagy a kapcsolati űrlapon.</p>
   </div>
 </div>
 
@@ -2002,7 +2592,7 @@ function render(){
            '<input type="number" id="n_'+n[0]+'" value="'+n[2]+'" min="0" step="100000"></div>';
     });
     h += '</div><div class="qz-calc" id="qzCalc"></div>' +
-         '<button class="qz-next" id="qzNext">Tovább →</button>';
+         '<button class="qz-next" id="qzNext">Tovább <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>';
   } else {
     h += '<div class="qz-opts">';
     q.opts.forEach(function(o, k){
@@ -2070,7 +2660,7 @@ function result(){
 
   var cls, ic, tt, dd;
   if(fails.length){
-    cls='rz-no'; ic='✕';
+    cls='rz-no'; ic='<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>';
     tt = 'Így valószínűleg nem vagy jogosult';
     dd = 'Legalább egy feltétel nem teljesül. Ez nem jelenti azt, hogy nincs megoldás: piaci lakáshitellel, CSOK Plusszal vagy más konstrukcióval sokszor van járható út.';
   } else if(warns.length){
@@ -2078,7 +2668,7 @@ function result(){
     tt = 'Jó eséllyel jogosult lehetsz';
     dd = 'A kizáró okok egyike sem áll fenn, de van pár pont, amit egyedileg meg kell vizsgálni.';
   } else {
-    cls='rz-yes'; ic='✓';
+    cls='rz-yes'; ic='<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>';
     tt = 'Az előszűrés alapján jogosult lehetsz';
     dd = 'Az alapfeltételeknek megfelelsz. A végleges jogosultságot a bank és a jogszabály állapítja meg.';
   }
@@ -2087,7 +2677,7 @@ function result(){
 
   if(fails.length || warns.length){
     h += '<div class="rz-list">';
-    fails.forEach(function(f){ h += '<div class="rz-i bad"><span class="m">✕</span><div><b>'+f.q+'</b><span>'+f.m+'</span></div></div>'; });
+    fails.forEach(function(f){ h += '<div class="rz-i bad"><span class="m"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></span><div><b>'+f.q+'</b><span>'+f.m+'</span></div></div>'; });
     warns.forEach(function(w){ h += '<div class="rz-i warn"><span class="m">!</span><div><b>'+w.q+'</b><span>'+w.m+'</span></div></div>'; });
     h += '</div>';
   }
@@ -2107,7 +2697,7 @@ function result(){
   h += '<div class="sub-note" style="margin-bottom:1.4rem;"><b>Fontos:</b> ez tájékoztató jellegű előszűrés, nem hitelbírálat és nem jogi állásfoglalás. A jogosultságot minden esetben a mindenkori jogszabály és a bank egyedi bírálata állapítja meg, és a program feltételei változhatnak. A számítás egyszerűsített, annuitásos modell, nem tartalmazza a járulékos költségeket.</div>';
   h += '<div class="rz-actions">' +
        '<a href="index.html#advisors" class="qz-next" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;width:auto;padding:.95rem 1.6rem;"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Beszéljük át egy tanácsadóval</a>' +
-       '<button class="rz-again" onclick="restart()">↻ Újrakezdem</button>' +
+       '<button class="rz-again" onclick="restart()"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-refresh"></use></svg> Újrakezdem</button>' +
        '</div>';
   el('qzBody').innerHTML = h;
 }
@@ -2148,82 +2738,82 @@ var NAV = [
          p:'Nem egy pénzintézetnél nézünk körül, hanem az egész piacon. Az ajánlatokat egymás mellé tesszük, és azt visszük végig, amelyik neked a legkedvezőbb. <b>A munkánk díjmentes.</b>',
          bt:'Hitelkalkulátorok', bh:'kalkulator.html', logos:_BANKS },
   items:[
-    {i:'🧮', t:'Lakáshitel kalkulátor',   m:'Hirdetett és egyedi kamat',      h:'kalkulator.html'},
-    {i:'🔁', t:'Hitelkiváltás',           m:'Mennyit hoz a meglévő hiteleden?', h:'kalkulator.html'},
-    {i:'📊', t:'Mennyi hitelt kaphatok?', m:'JTM, az MNB szabálya szerint',   h:'kalkulator.html'},
-    {i:'🔑', t:'Otthon Start 3%',         m:'Jár nekem? 2 perces kvíz',       h:'kviz.html', tag:'ÚJ', tagc:'new'},
-    {i:'🗺️', t:'A lakáshitel folyamata',  m:'Mi történik és mikor',           h:'lakashitel-folyamat.html'},
-    {i:'📅', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calculator"></use></svg>', t:'Lakáshitel kalkulátor',   m:'Hirdetett és egyedi kamat',      h:'kalkulator.html'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-refresh"></use></svg>', t:'Hitelkiváltás',           m:'Mennyit hoz a meglévő hiteleden?', h:'kalkulator.html'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chart-bar"></use></svg>', t:'Mennyi hitelt kaphatok?', m:'JTM, az MNB szabálya szerint',   h:'kalkulator.html'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-key"></use></svg>', t:'Otthon Start 3%',         m:'Jár nekem? 2 perces kvíz',       h:'kviz.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-map"></use></svg>', t:'A lakáshitel folyamata',  m:'Mi történik és mikor',           h:'lakashitel-folyamat.html'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg>', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
   ]},
 { key:'bank', label:'Banki termékek',
   side:{ h:'0 forintos számlavezetés',
          p:'A bankszámla a leggyorsabban javítható tétel a családi költségvetésben. Évi <b>20-100 ezer forint</b> maradhat a zsebedben, a váltás pedig törvény szerint díjmentes.',
          bt:'Bankszámla-díjkimutatás', bh:'https://online.ovb.hu/bankszamladijkimutatas/', logos:_BANKS },
   items:[
-    {i:'🏦', t:'Díjmentes bankszámlák',   m:'A 2026 őszi ajánlatok',          h:'bankszamla.html', tag:'ÚJ', tagc:'new'},
-    {i:'📄', t:'Online díjkimutatás',     m:'Az OVB hivatalos felületén',     h:'https://online.ovb.hu/bankszamladijkimutatas/'},
-    {i:'🔄', t:'Számlaváltás lépésenként',m:'13 munkanap, díjmentesen',       h:'bankszamla.html#valasztas'},
-    {i:'💳', t:'Személyi kölcsön',        m:'Jó és rossz kamat különbsége',   h:'kalkulator.html'},
-    {i:'💠', t:'Csoportos beszedések',    m:'Online átvezetés',               h:'https://online.ovb.hu/csob/'},
-    {i:'📅', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-bank"></use></svg>', t:'Díjmentes bankszámlák',   m:'A 2026 őszi ajánlatok',          h:'bankszamla.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-document"></use></svg>', t:'Online díjkimutatás',     m:'Az OVB hivatalos felületén',     h:'https://online.ovb.hu/bankszamladijkimutatas/'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-refresh"></use></svg>', t:'Számlaváltás lépésenként',m:'13 munkanap, díjmentesen',       h:'bankszamla.html#valasztas'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-card"></use></svg>', t:'Személyi kölcsön',        m:'Jó és rossz kamat különbsége',   h:'kalkulator.html'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-transfer"></use></svg>', t:'Csoportos beszedések',    m:'Online átvezetés',               h:'https://online.ovb.hu/csob/'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg>', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
   ]},
 { key:'megtak', label:'Megtakarítás',
   side:{ h:'Előbb a cél, utána a termék',
          p:'Először az derül ki, mire és mikor kell a pénz, és csak utána, hogy milyen formában. <b>Egy eszköz sem jó mindenre</b>, és ezt meg is mondjuk.',
          bt:'Befektetés és TBSZ', bh:'befektetesek.html', logos:_LTP },
   items:[
-    {i:'🐖', t:'Lakástakarék',            m:'Megéri még támogatás nélkül?',   h:'lakastakarek.html', tag:'ÚJ', tagc:'new'},
-    {i:'📦', t:'Befektetés, TBSZ',        m:'Adómentes hozam 5 év után',      h:'befektetesek.html', tag:'ÚJ', tagc:'new'},
-    {i:'🌅', t:'Nyugdíj-megtakarítás',    m:'20% adó-visszatérítéssel',       h:'nyugdij.html', tag:'ÚJ', tagc:'new'},
-    {i:'👶', t:'Gyermek-megtakarítás',    m:'Babakötvény, oktatási alap',     h:'gyermekjovo.html', tag:'ÚJ', tagc:'new'},
-    {i:'📈', t:'Megtakarítás-kalkulátor', m:'Mennyi lesz belőle?',            h:'index.html#hero'},
-    {i:'📅', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-home-coin"></use></svg>', t:'Lakástakarék',            m:'Megéri még támogatás nélkül?',   h:'lakastakarek.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-package"></use></svg>', t:'Befektetés, TBSZ',        m:'Adómentes hozam 5 év után',      h:'befektetesek.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-sunrise"></use></svg>', t:'Nyugdíj-megtakarítás',    m:'20% adó-visszatérítéssel',       h:'nyugdij.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-baby"></use></svg>', t:'Gyermek-megtakarítás',    m:'Babakötvény, oktatási alap',     h:'gyermekjovo.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chart-line"></use></svg>', t:'Megtakarítás-kalkulátor', m:'Mennyi lesz belőle?',            h:'index.html#hero'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg>', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'index.html#advisors'}
   ]},
 { key:'tamog', label:'Támogatások',
   side:{ h:'Amit sokan nem is igényelnek',
          p:'Az otthonteremtési támogatások feltételrendszere évente változik. Átnézzük, mire vagy jogosult <b>most</b>, és milyen sorrendben érdemes igényelni.',
          bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS.slice(0,5) },
   items:[
-    {i:'🔑', t:'Otthon Start 3%',         m:'Fix kamat, 50 M Ft-ig',          h:'kviz.html', tag:'ÚJ', tagc:'new'},
-    {i:'📋', t:'Támogatások áttekintés',  m:'Mi él 2026-ban és mi nem',       h:'tamogatasok.html', tag:'ÚJ', tagc:'new'},
-    {i:'👨‍👩‍👧', t:'CSOK Plusz',              m:'Gyermekvállaláshoz kötött',      h:'tamogatasok.html#csokplusz'},
-    {i:'🌾', t:'Falusi CSOK',             m:'Preferált kistelepüléseken',     h:'tamogatasok.html#falusi'},
-    {i:'🍼', t:'Babaváró',                m:'Szabad felhasználású',           h:'tamogatasok.html#babavaro'},
-    {i:'✅', t:'Jár nekem? kvíz',          m:'12 kérdés, 2 perc',              h:'kviz.html'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-key"></use></svg>', t:'Otthon Start 3%',         m:'Fix kamat, 50 M Ft-ig',          h:'kviz.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg>', t:'Támogatások áttekintés',  m:'Mi él 2026-ban és mi nem',       h:'tamogatasok.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-family"></use></svg>', t:'CSOK Plusz',              m:'Gyermekvállaláshoz kötött',      h:'tamogatasok.html#csokplusz'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-wheat"></use></svg>', t:'Falusi CSOK',             m:'Preferált kistelepüléseken',     h:'tamogatasok.html#falusi'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-baby"></use></svg>', t:'Babaváró',                m:'Szabad felhasználású',           h:'tamogatasok.html#babavaro'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>', t:'Jár nekem? kvíz',          m:'12 kérdés, 2 perc',              h:'kviz.html'}
   ]},
 { key:'bizt', label:'Biztosítások',
-  side:{ h:'30+ biztosító egy kézben',
+  side:{ h:'30+ pénzintézet és biztosító',
          p:'A biztosítás díja egyéni, ezért itt nincs kalkulátor. Ami van: <b>a teljes paletta átnézése</b>, és több terméknél azonnali online kötés, akár most.',
          bt:'Biztosítási útmutató', bh:'biztositasok.html', logos:_INSUR },
   items:[
-    {i:'🚗', t:'Gépjármű-biztosítás',     m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesKGFB.php?hash=gentischer.richard'},
-    {i:'🏠', t:'Lakásbiztosítás',         m:'Otthon, vagyon, felelősség',     h:'https://online.ovb.hu/lakasbiztositas-informaciok/'},
-    {i:'🛡️', t:'Biztosítási áttekintés',  m:'Mit mikor érdemes kötni',        h:'biztositasok.html', tag:'ÚJ', tagc:'new'},
-    {i:'❤️', t:'Élet és egészség',        m:'Családvédelem, hitelfedezet',    h:'biztositasok.html#szemelyi'},
-    {i:'✈️', t:'Utasbiztosítás',          m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesUtasbiztositas.php?hash=gentischer.richard'},
-    {i:'☂️', t:'Gépjármű-asszisztencia',  m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesAsszisztencia.php?hash=gentischer.richard'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-car"></use></svg>', t:'Gépjármű-biztosítás',     m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesKGFB.php?hash=gentischer.richard'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-home"></use></svg>', t:'Lakásbiztosítás',         m:'Otthon, vagyon, felelősség',     h:'https://online.ovb.hu/lakasbiztositas-informaciok/'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>', t:'Biztosítási áttekintés',  m:'Mit mikor érdemes kötni',        h:'biztositasok.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-heart"></use></svg>', t:'Élet és egészség',        m:'Családvédelem, hitelfedezet',    h:'biztositasok.html#szemelyi'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plane"></use></svg>', t:'Utasbiztosítás',          m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesUtasbiztositas.php?hash=gentischer.richard'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-umbrella"></use></svg>', t:'Gépjármű-asszisztencia',  m:'Online köthető, azonnal',        h:'https://ovbportal.hu/ovbphp/public/onlineKotesAsszisztencia.php?hash=gentischer.richard'}
   ]},
 { key:'ceges', label:'Vállalati',
   side:{ h:'Cégeknek, vállalkozóknak',
          p:'Adóhatékony juttatás, kulcsember-biztosítás, céges vagyonvédelem és vállalkozói finanszírozás. <b>Egy kézben</b>, a magánpénzügyeiddel összehangolva.',
          bt:'Vállalati megoldások', bh:'vallalati.html', logos:_INSUR.slice(0,6) },
   items:[
-    {i:'📊', t:'Vállalati áttekintés',    m:'Hitel, juttatás, védelem',       h:'vallalati.html', tag:'ÚJ', tagc:'new'},
-    {i:'🏦', t:'Széchenyi Kártya Program',m:'Kedvezményes vállalkozói hitel', h:'vallalati.html#szechenyi'},
-    {i:'🎁', t:'Cafeteria, juttatások',   m:'Adóhatékonyan, 2026-os keretek', h:'vallalati.html#cafeteria'},
-    {i:'🏢', t:'Céges biztosítások',      m:'Telephely, gép, felelősség',     h:'vallalati.html#biztositas'},
-    {i:'🤝', t:'Kulcsember-biztosítás',   m:'Ha a cég egy emberen múlik',     h:'vallalati.html#biztositas'},
-    {i:'📋', t:'Céges átvilágítás',       m:'Díjmentes, kötelezettség nélkül',h:'index.html#lead'}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chart-bar"></use></svg>', t:'Vállalati áttekintés',    m:'Hitel, juttatás, védelem',       h:'vallalati.html', tag:'ÚJ', tagc:'new'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-bank"></use></svg>', t:'Széchenyi Kártya Program',m:'Kedvezményes vállalkozói hitel', h:'vallalati.html#szechenyi'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-gift"></use></svg>', t:'Cafeteria, juttatások',   m:'Adóhatékonyan, 2026-os keretek', h:'vallalati.html#cafeteria'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>', t:'Céges biztosítások',      m:'Telephely, gép, felelősség',     h:'vallalati.html#biztositas'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-handshake"></use></svg>', t:'Kulcsember-biztosítás',   m:'Ha a cég egy emberen múlik',     h:'vallalati.html#biztositas'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg>', t:'Céges átvilágítás',       m:'Díjmentes, kötelezettség nélkül',h:'index.html#lead'}
   ]},
 { key:'ceg', label:'Rólunk', simple:true,
   items:[
-    {i:'🎯', t:'Kinek segítünk?',        h:'#for-whom'},
-    {i:'🗺️', t:'Hogyan dolgozunk?',      h:'#how'},
-    {i:'⭐', t:'Miért mi?',              h:'#why'},
-    {i:'🎬', t:'Ügyfélvélemények',       h:'#video-testimonial'},
-    {i:'🏢', t:'Rólunk, röviden',        h:'#about'},
-    {i:'❓', t:'Gyakori kérdések',       h:'#faq'},
-    {i:'🚀', t:'Karrier az EAGLZ-nél',   h:'http://eaglzcareer.hu', ext:true}
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg>', t:'Kinek segítünk?',        h:'#for-whom'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-map"></use></svg>', t:'Hogyan dolgozunk?',      h:'#how'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-star"></use></svg>', t:'Miért mi?',              h:'#why'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-film"></use></svg>', t:'Ügyfélvélemények',       h:'#video-testimonial'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>', t:'Rólunk, röviden',        h:'#about'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg>', t:'Gyakori kérdések',       h:'#faq'},
+    {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-rocket"></use></svg>', t:'Karrier az EAGLZ-nél',   h:'http://eaglzcareer.hu', ext:true}
   ]}
 ];
 
@@ -2250,7 +2840,7 @@ NAV.forEach(function(c, idx){
     panH.push('<div class="mega simple" id="mega-'+c.key+'"><div class="mega-simple"><div class="mega-simple-in">'+
       c.items.map(function(it){
         var ext = it.ext ? ' target="_blank" rel="noopener"' : '';
-        return '<a href="'+HREF(it.h)+'"'+ext+(it.ext?' class="ext"':'')+'><span class="i">'+it.i+'</span>'+esc(it.t)+(it.ext?' ↗':'')+'</a>';
+        return '<a href="'+HREF(it.h)+'"'+ext+(it.ext?' class="ext"':'')+'><span class="i">'+it.i+'</span>'+esc(it.t)+(it.ext?' <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>':'')+'</a>';
       }).join('')+'</div></div></div>');
     return;   /* a mobil menuben az extra linkek kulon vannak */
   }
@@ -2274,7 +2864,7 @@ NAV.forEach(function(c, idx){
   panH.push('<div class="mega" id="mega-'+c.key+'"><div class="mega-in">'+
     '<div class="mega-list">'+items+'</div>'+
     '<div class="mega-side"><h4>'+esc(c.side.h)+'</h4><p>'+c.side.p+'</p>'+
-    '<a class="mbtn" href="'+HREF(c.side.bh)+'"'+sext+'>'+esc(c.side.bt)+' →</a>'+
+    '<a class="mbtn" href="'+HREF(c.side.bh)+'"'+sext+'>'+esc(c.side.bt)+' <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>'+
     '<div class="mega-logos">'+logos+'</div></div></div></div>');
 
   mobH.push('<details'+(idx===0?' open':'')+'><summary>'+esc(c.label)+'</summary><div class="mmob-sub">'+
@@ -2348,6 +2938,218 @@ window.addEventListener('scroll', function(){
 }, {passive:true});
 
 document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RATES.updated; });
+})();
+
+</script>
+<script id="eaglz-ui">
+/* ══════════════════════════════════════════════════════════════════════
+   EAGLZ kozos viselkedesreteg  ·  minden oldalon ugyanaz
+   ----------------------------------------------------------------------
+   1. kalkulatorok: csuszka + kozvetlen szambevitel, szinkronban
+   2. ertekhatarok es mertekegyseg lathatoan, ertheto hibaallapottal
+   3. visszaallitas az alapertekekre
+   4. tablazatok mobilon: jelzett, billentyuzettel is gorgetheto sav
+   5. parbeszedablakok: fokusz be, Escape-re zar, fokusz vissza
+   ══════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var HU = function (n, step) {
+    var d = (step && step < 1) ? (String(step).split('.')[1] || '').length : 0;
+    return Number(n).toLocaleString('hu-HU', { minimumFractionDigits: d, maximumFractionDigits: d });
+  };
+  var num = function (s) { return parseFloat(String(s).replace(/[^\d.,-]/g, '').replace(/\s/g, '').replace(',', '.')); };
+
+  /* ── 1-3. kalkulator-mezok ──────────────────────────────────────────── */
+  function unitOf(rng) {
+    var b = document.getElementById(rng.id + '_v');
+    var txt = b ? b.textContent : '';
+    var u = txt.replace(/[\d\s., -]/g, '').trim();
+    if (u === 'MFt' || /M\s*Ft/.test(txt)) u = 'Ft';
+    return { el: b, unit: u };
+  }
+
+  function enhance(rng) {
+    if (rng.dataset.uiDone) return;
+    rng.dataset.uiDone = '1';
+    var lab = document.querySelector('label[for="' + rng.id + '"]') ||
+              (rng.previousElementSibling && rng.previousElementSibling.tagName === 'LABEL'
+                ? rng.previousElementSibling : null);
+    if (!lab) return;
+    var info = unitOf(rng);
+    var min = parseFloat(rng.min), max = parseFloat(rng.max), step = parseFloat(rng.step) || 1;
+
+    var box = document.createElement('span');
+    box.className = 'rng-box';
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.inputMode = 'numeric';
+    inp.className = 'rng-num';
+    inp.id = rng.id + '_num';
+    inp.setAttribute('aria-label', (lab.childNodes[0] ? lab.childNodes[0].textContent.trim() : 'Érték') + ' számmal');
+    inp.value = HU(rng.value, step);
+    box.appendChild(inp);
+    if (info.unit) {
+      var u = document.createElement('span');
+      u.className = 'rng-unit';
+      u.textContent = info.unit;
+      box.appendChild(u);
+    }
+    if (info.el) { info.el.classList.add('rng-orig'); }
+    lab.appendChild(box);
+
+    var host = rng.parentNode;
+    var mm = document.createElement('div');
+    mm.className = 'rng-minmax';
+    mm.innerHTML = '<span>' + HU(min, step) + (info.unit ? ' ' + info.unit : '') + '</span>' +
+                   '<span>' + HU(max, step) + (info.unit ? ' ' + info.unit : '') + '</span>';
+    var err = document.createElement('span');
+    err.className = 'f-err';
+    err.id = rng.id + '_err';
+    if (rng.nextSibling) { host.insertBefore(mm, rng.nextSibling); } else { host.appendChild(mm); }
+    if (mm.nextSibling) { host.insertBefore(err, mm.nextSibling); } else { host.appendChild(err); }
+
+    function say(msg) {
+      err.textContent = msg || '';
+      err.classList.toggle('on', !!msg);
+      inp.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      if (msg) { inp.setAttribute('aria-describedby', err.id); }
+    }
+
+    rng.addEventListener('input', function () {
+      if (document.activeElement !== inp) inp.value = HU(rng.value, step);
+      say('');
+    });
+
+    inp.addEventListener('input', function () {
+      var v = num(inp.value);
+      if (isNaN(v)) { say('Írj be egy számot.'); return; }
+      if (v < min) { say('A legkisebb beállítható érték ' + HU(min, step) + (info.unit ? ' ' + info.unit : '') + '.'); return; }
+      if (v > max) { say('A legnagyobb beállítható érték ' + HU(max, step) + (info.unit ? ' ' + info.unit : '') + '.'); return; }
+      say('');
+      rng.value = Math.round(v / step) * step;
+      rng.dispatchEvent(new Event('input', { bubbles: true }));
+      rng.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    inp.addEventListener('blur', function () {
+      var v = num(inp.value);
+      if (isNaN(v)) v = parseFloat(rng.value);
+      v = Math.min(max, Math.max(min, v));
+      rng.value = (Math.round(v / step) * step).toFixed(String(step).split('.')[1] ? String(step).split('.')[1].length : 0);
+      inp.value = HU(rng.value, step);
+      say('');
+      rng.dispatchEvent(new Event('input', { bubbles: true }));
+      rng.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+
+  function resetButtons() {
+    var groups = [];
+    document.querySelectorAll('input[type=range]').forEach(function (r) {
+      var g = r.closest('.sc-in, .hw-pane, .calc-panel, .calc-in, .fld-wrap, .sc');
+      if (g && groups.indexOf(g) === -1) groups.push(g);
+    });
+    groups.forEach(function (g) {
+      if (g.querySelector('.calc-reset')) return;
+      var fields = [].slice.call(g.querySelectorAll('input[type=range], input[type=number]'));
+      if (!fields.length) return;
+      var defaults = fields.map(function (f) { return f.value; });
+      var segs = [].slice.call(g.querySelectorAll('.sc-seg button, .hw-tabs button'));
+      var segOn = segs.map(function (s) { return s.classList.contains('on'); });
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'calc-reset';
+      b.innerHTML = '<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-refresh"></use></svg> Alapértékek visszaállítása';
+      b.addEventListener('click', function () {
+        fields.forEach(function (f, i) {
+          f.value = defaults[i];
+          f.dispatchEvent(new Event('input', { bubbles: true }));
+          f.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        segs.forEach(function (s, i) { if (segOn[i] && !s.classList.contains('on')) s.click(); });
+      });
+      g.appendChild(b);
+    });
+  }
+
+  /* ── 4. tablazatok mobilon ──────────────────────────────────────────── */
+  function tables() {
+    document.querySelectorAll('.tbl-wrap, .table-wrap, .ctab-wrap').forEach(function (w) {
+      var over = w.scrollWidth > w.clientWidth + 2;
+      w.classList.toggle('is-scroll', over);
+      if (over) {
+        if (!w.hasAttribute('tabindex')) {
+          w.setAttribute('tabindex', '0');
+          w.setAttribute('role', 'region');
+          w.setAttribute('aria-label', 'Táblázat, oldalra görgethető');
+        }
+        if (!w.previousElementSibling || !w.previousElementSibling.classList.contains('tbl-hint')) {
+          var h = document.createElement('div');
+          h.className = 'tbl-hint';
+          h.innerHTML = '<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-transfer"></use></svg> Húzd oldalra a táblázatot a többi oszlopért';
+          w.parentNode.insertBefore(h, w);
+        }
+      } else if (w.previousElementSibling && w.previousElementSibling.classList.contains('tbl-hint')) {
+        w.previousElementSibling.remove();
+      }
+      w.addEventListener('scroll', function () {
+        w.classList.toggle('at-end', w.scrollLeft + w.clientWidth >= w.scrollWidth - 4);
+      }, { passive: true });
+    });
+  }
+
+  /* ── 5. parbeszedablakok ────────────────────────────────────────────── */
+  var lastOpener = null;
+  function dialogs() {
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-adv], [data-page], .adv-card, .svc-card');
+      if (t) lastOpener = t;
+    }, true);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var open = document.querySelector('.adv-modal.on, .svc-modal.on, .imp-modal.on, .modal.on, [data-modal].on');
+      if (open) {
+        var close = open.querySelector('.adv-m-close, .svc-modal-close, .imp-close, .m-close, [data-close]');
+        if (close) close.click();
+      }
+    });
+
+    var mo = new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        var el = m.target;
+        if (!el.classList || !el.classList.contains('on')) return;
+        if (!/modal/.test(el.className)) return;
+        el.setAttribute('role', 'dialog');
+        el.setAttribute('aria-modal', 'true');
+        var f = el.querySelector('h2, h3, .adv-m-name, [tabindex="-1"], button, a');
+        if (f) { try { f.focus({ preventScroll: true }); } catch (x) { f.focus(); } }
+        var back = function () {
+          if (!el.classList.contains('on') && lastOpener) {
+            try { lastOpener.focus(); } catch (x) {}
+            mo2.disconnect();
+          }
+        };
+        var mo2 = new MutationObserver(back);
+        mo2.observe(el, { attributes: true, attributeFilter: ['class'] });
+      });
+    });
+    document.querySelectorAll('[class*="modal"]').forEach(function (el) {
+      mo.observe(el, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+
+  function init() {
+    document.querySelectorAll('input[type=range]').forEach(enhance);
+    resetButtons();
+    tables();
+    dialogs();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  window.addEventListener('resize', function () { clearTimeout(window.__tblT); window.__tblT = setTimeout(tables, 200); });
 })();
 
 </script>

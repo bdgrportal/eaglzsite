@@ -215,3 +215,31 @@ Minden kiadás előtt lefut egy Playwright-os végigjárás mind a 10 oldalon, 1
 - nincs JS hiba és nincs 404-es kép
 - nincs kitöltetlen `{{TOKEN}}`
 - minden belső link létező fájlra és létező horgonyra mutat
+
+---
+
+## 2026. szeptember: designrendszer és felhasználói felület
+
+Ez a kör nem egy-egy oldalt javított, hanem közös rétegeket tett a teljes
+oldalcsalád alá. Ha valamit az egész oldalon kell átállítani, ezekben a
+fájlokban kell megtenni, nem oldalanként.
+
+| Fájl | Mit tartalmaz |
+|---|---|
+| `theme.css` | A közös designrendszer: színek, tipográfia, térköz, sorhossz, sarok, árnyék, ikonméret, 44 px érintési cél. Minden gomb, űrlapmező, táblázat és jelzőbox innen kap stílust, az összes állapotával együtt. |
+| `icons.py` | 78 vonalas SVG ikon egy sprite-ban, plusz az emoji-ikon megfeleltetés. A generálás végén minden emoji ikonra cserélődik, és a szín a szülőelemtől öröklődik. Emojit nem kell kézzel ikonra cserélni, elég a megfeleltetést bővíteni. |
+| `ui.js` | Közös viselkedés: csúszka és közvetlen számbevitel szinkronban, értékhatár és mértékegység, hibaállapot, alapértékek visszaállítása, mobil táblázat-görgetés rögzített első oszloppal, párbeszédablak-fókusz. |
+| `subhero.py` | Kompakt aloldali nyitórész: rövid cím, két mondat, három tény-címke, egy elsődleges és egy másodlagos művelet, egy dátumsor. A bevezető többi mondata a tartalom élére kerül, nem vész el. |
+| `cleanup.py` | Záró takarítás: nem működő hivatkozás és kitöltetlen helyőrző nem maradhat aktív, a számlálók animáció nélkül is a valódi értéket mutatják. |
+
+### Ellenőrzések, amiket a build és a szkriptek futtatnak
+
+- `build_all.sh` leáll, ha bármelyik oldalra visszakerülne a régi felső linksor.
+- `build_all.sh` kiírja, ha élő tartalomban maradt kitöltetlen helyőrző.
+- Kontrasztmérés: minden szöveg eléri a WCAG AA szintet (4,5:1, nagy szövegnél 3:1).
+- Elrendezés-ellenőrzés 360, 390, 768, 1024 és 1440 px-en, mind a 12 oldalon.
+
+### Betűtípus visszaállítása
+
+A `theme.css` elején a két csillagos sor (`--fb`, `--fd`) átírásával lehet
+visszatérni a korábbi Space Grotesk + Poppins párosra. Más nem változik.

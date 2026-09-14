@@ -260,3 +260,25 @@ tabs.forEach(function(b){
 });
 document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RATES.updated; });
 })();
+
+/* ── hatter-video: csak szeles kepernyon, mozgascsokkentes nelkul ── */
+(function(){
+  var box = document.querySelector('.hero-video-bg[data-vimeo]');
+  if(!box) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || window.innerWidth < 1000) return;          /* mobilon allokep marad */
+  function load(){
+    if(box.querySelector('iframe')) return;
+    var f = document.createElement('iframe');
+    f.src = 'https://player.vimeo.com/video/' + box.dataset.vimeo +
+            '?background=1&autoplay=1&muted=1&loop=1&byline=0&title=0';
+    f.setAttribute('allow','autoplay; fullscreen');
+    f.setAttribute('title','EAGLZ');
+    f.setAttribute('tabindex','-1');
+    f.setAttribute('aria-hidden','true');
+    f.loading = 'lazy';
+    f.addEventListener('load', function(){ f.classList.add('is-on'); });
+    box.appendChild(f);
+  }
+  if('requestIdleCallback' in window) requestIdleCallback(load, {timeout:2200}); else setTimeout(load, 1200);
+})();

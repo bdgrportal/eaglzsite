@@ -12,15 +12,11 @@ nav{display:none!important;}
 /* a fejléc elemeire ne vonatkozzon a régi nav szabály */
 .ehead nav,.mmob nav{position:static;inset:auto;padding:0;background:none;backdrop-filter:none;}
 
-/* ── 1. sáv ── */
+/* ── 1. sáv: MEGSZŰNT ── */
+/* A régi "uhead" segédsor végleg kikerült (a "Rólunk" menüpont vette át).
+   Ha egy régi, gyorsítótárazott HTML-ben mégis benne maradna, itt tűnik el. */
 .ehead{position:sticky;top:0;z-index:300;}
-.uhead{background:var(--navy-deep);border-bottom:1px solid rgba(255,255,255,.07);}
-.uhead-in{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem;height:var(--uh);display:flex;align-items:center;gap:1.35rem;}
-.uhead a{color:rgba(255,255,255,.52);font-family:var(--fb);font-size:.71rem;font-weight:600;text-decoration:none;transition:color .18s;white-space:nowrap;}
-.uhead a:hover{color:var(--teal-lite);}
-.uhead .u-sep{flex:1;}
-.uhead .u-cta{color:var(--navy-deep);background:var(--teal-lite);padding:.28rem .8rem;border-radius:100px;font-weight:700;}
-.uhead .u-cta:hover{background:#fff;color:var(--navy-deep);}
+.uhead,.uhead-in{display:none !important;height:0 !important;}
 
 /* ── 2. sáv ── */
 .mhead{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);transition:box-shadow .25s;}
@@ -141,7 +137,7 @@ nav{display:none!important;}
 .hw-q p{font-size:.82rem;color:var(--gray);line-height:1.7;}
 .hw-qlist{list-style:none;text-align:left;display:flex;flex-direction:column;gap:.4rem;margin:.9rem 0 .2rem;padding:0;}
 .hw-qlist li{position:relative;padding-left:1.3rem;font-size:.78rem;color:var(--navy);line-height:1.55;}
-.hw-qlist li::before{content:'✓';position:absolute;left:0;color:var(--teal-ink);font-weight:700;}
+.hw-qlist li::before{content:'';position:absolute;left:0;top:.28em;width:.85em;height:.85em;background:var(--teal-ink);-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;}
 
 /* ══════════ PARTNERSÁV (a hero pálya ide költözött) ══════════ */
 #partners{background:var(--navy-deep);position:relative;overflow:hidden;padding:4rem 0 4.4rem;}
@@ -177,8 +173,6 @@ a.hub-c:hover .hub-go{gap:.58rem;}
   .hub{grid-template-columns:1fr 1fr;}
   .pt-in{grid-template-columns:1fr;gap:2rem;justify-items:center;text-align:center;}
   .pt-text{margin:0 auto;}
-  .uhead-in{gap:1rem;overflow-x:auto;scrollbar-width:none;}
-  .uhead-in::-webkit-scrollbar{display:none;}
 }
 @media(max-width:760px){
   #hero{padding:2.4rem 0 2.8rem;text-align:center;}

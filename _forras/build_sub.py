@@ -18,6 +18,10 @@ HEADER = SRC[i:j]
 f0 = SRC.index('<footer>')
 f1 = SRC.index('</footer>') + len('</footer>')
 FOOTER = SRC[f0:f1]
+# aloldalon nincs impresszum-ablak: a hivatkozas a fooldali horgonyra megy
+FOOTER = FOOTER.replace('href="#impresszum" onclick="openImp();return false;"',
+                        'href="index.html#impresszum"')
+FOOTER = FOOTER.replace('onclick="openImp();return false;"', '')
 
 # a fejlec-JS (mega-menu): az a script blokk, amelyik a megaHost-ot tolti
 NAVJS = None
@@ -95,6 +99,8 @@ MID_BTN = (u'<a class="apt-btn-inner" href="index.html#advisors">📅 Időpontot
 def build(slug, title, desc, body, legal, cta_title, cta_sub, extra_js='', mid=None, extra_css='', use_landing=True):
     canonical = 'https://eaglz.hu/%s' % slug
     mid = mid or {}
+    import subhero
+    body = subhero.apply(body)            # kompakt nyitoresz + osszecsukhato tartalomjegyzek
     if use_landing:
       body = landing.inject(
           body,
@@ -110,6 +116,8 @@ def build(slug, title, desc, body, legal, cta_title, cta_sub, extra_js='', mid=N
             (CTA % (cta_title, cta_sub)) + (LEGAL_WRAP % legal) + '\n' + FOOTER + '\n' +
             NAVJS + '\n' + (('<script>\n' + extra_js + '\n</script>\n') if extra_js else '') +
             '</body>\n</html>\n')
+    import theme_inject
+    page = theme_inject.finish(page)   # cimsor-tordeles + ikonrendszer
     io.open(slug, 'w', encoding='utf-8').write(page)
     left = re.findall(r'\{\{[A-Z0-9_]+\}\}', page)
     print('%-26s %5d KB%s' % (slug, len(page)//1024, '   ⚠ ' + str(set(left)) if left else ''))

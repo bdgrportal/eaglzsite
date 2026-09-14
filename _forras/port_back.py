@@ -97,6 +97,8 @@ SHELL_JS = u"""
       setTimeout(function(){x.classList.add('in');},Math.min(i*60,240));io.unobserve(x);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
     rv.forEach(function(e){io.observe(e);});
   }
+  /* biztonsagi halo: ha a felderites barmiert nem indul el, a tartalom akkor is latszik */
+  setTimeout(function(){ rv.forEach(function(e){ e.classList.add('in'); }); }, 2500);
   var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
 })();
 """

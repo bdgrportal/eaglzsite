@@ -15,7 +15,7 @@
 .art li{font-size:.92rem;line-height:1.8;color:var(--gray);margin-bottom:.4rem;}
 .art ul.clean{list-style:none;padding-left:0;}
 .art ul.clean li{position:relative;padding-left:1.55rem;}
-.art ul.clean li::before{content:'✓';position:absolute;left:0;top:0;color:var(--teal-ink);font-weight:700;}
+.art ul.clean li::before{content:'';position:absolute;left:0;top:.3em;width:.85em;height:.85em;background:var(--teal-ink);-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E") center/contain no-repeat;}
 .art ul.cross li::before{content:'✕';color:#C2456B;}
 .art .lead{font-size:1rem;line-height:1.85;color:var(--navy);}
 

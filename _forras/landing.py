@@ -35,24 +35,28 @@ def mid_cta(kicker, title, sub, btn_html, note=u''):
 
 def inject(body, trust_html, mid_html, after_section=3):
     """
-    trust: az elso </section> (a hero) utan
-    mid:   az N-edik </section> utan, de sosem a GYIK ele kozvetlenul,
-           es ha van kalkulator (id="kalk" vagy .sc), akkor az azt tartalmazo
-           szekcio utan.
+    A bizalmi sav mar nem kerul kulon savba: ugyanazt a datumot es
+    dijmentesseg-allitast ismetelte, amit a nyitoresz es a zaro CTA is kimond.
+    Csak a kozbenso felhivast tesszuk be, es azt sem ott, ahol a kalkulatornak
+    mar van sajat konzultacios gombja: egy donteshez egy felhivas tartozik.
     """
-    ends = [m.end() for m in re.finditer(r'</section>', body)]
-    if not ends:
-        return body
-    out = body[:ends[0]] + trust_html + body[ends[0]:]
-
+    out = body
     ends = [m.end() for m in re.finditer(r'</section>', out)]
-    # kalkulator-szekcio vege
+    if not ends:
+        return out
+
     k = None
     m = re.search(r'<div class="sc(?: reveal)?" id=', out)
     if m:
         k = out.find('</section>', m.start())
         if k != -1:
             k += len('</section>')
+            seg = out[m.start():k]
+            # ha a kalkulator sajat maga kinal konzultaciot, a kozbenso CTA
+            # eggyel lejjebb csuszik, hogy ne ket felhivas alljon egymas alatt
+            if 'index.html#advisors' in seg or 'calccta' in seg:
+                nxt = out.find('</section>', k)
+                k = (nxt + len('</section>')) if nxt != -1 else k
     if k is None:
         idx = min(after_section, len(ends) - 2)   # a GYIK es a hero kozott maradjon
         k = ends[idx]
