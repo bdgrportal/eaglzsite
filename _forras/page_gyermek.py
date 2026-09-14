@@ -130,7 +130,7 @@ BODY = u'''
           <thead><tr><th>Paraméter</th><th>Érték</th></tr></thead>
           <tbody>
             <tr><td>Állami támogatás</td><td>a befizetések <b>10 százaléka</b>, évente legfeljebb <b>12 000 Ft</b></td></tr>
-            <tr><td>Emelt támogatás</td><td><b>20 százalék</b>, max. 24 000 Ft/év — rendszeres gyermekvédelmi kedvezményben részesülő, illetve nevelésbe vett gyermeknél</td></tr>
+            <tr><td>Emelt támogatás</td><td><b>20 százalék</b>, max. 24 000 Ft/év, rendszeres gyermekvédelmi kedvezményben részesülő, illetve nevelésbe vett gyermeknél</td></tr>
             <tr><td>Ehhez éves befizetés</td><td>120 000 Ft, vagyis havi 10 000 Ft</td></tr>
             <tr><td>A támogatás jóváírása</td><td>évente egyszer, <b>április 15-én</b>, automatikusan</td></tr>
             <tr class="hl"><td>Kamat</td><td>előző évi átlagos infláció <b>+ 3 százalékpont</b>, február 1-jén fordul. 2026-ban: <b>7,4%</b></td></tr>
@@ -322,7 +322,7 @@ BODY = BODY.replace('__FAQ__', faq_html(FAQ))
 
 JS = u'''
 (function(){
-/* ══ GYERMEK-MEGTAKARÍTÁS — karbantartás: csak a BK blokk ══ */
+/* ══ GYERMEK-MEGTAKARÍTÁS, karbantartás: csak a BK blokk ══ */
 var BK = {
   tamogatasPct: 10,        /* állami támogatás a befizetésre, %      */
   tamogatasMax: 12000,     /* éves maximum, Ft                        */
@@ -360,7 +360,7 @@ function calc(){
   el('g_sub').textContent  = huf(m) + ' / hó · ' + ev + ' éven át · ' +
                              (forma === 'bk' ? 'babakötvény' : 'egyéb megtakarítás');
   el('g_bef').textContent  = huf(bef);
-  el('g_allam').textContent = allam > 0 ? '+' + huf(allam) : '—';
+  el('g_allam').textContent = allam > 0 ? '+' + huf(allam) : '-';
   el('g_kam').textContent  = '+' + huf(Math.max(0, veg - bef - allam));
   el('g_evi').textContent  = forma === 'bk' ? huf(evi) : 'nem jár';
   el('g_ev').textContent   = ev + ' év';

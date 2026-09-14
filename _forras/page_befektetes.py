@@ -125,7 +125,7 @@ BODY = u'''
           <tbody>
             <tr><td>A gyűjtőévet követő <b>3 éven belül</b></td><td><b>15% szja + 13% szocho</b> (összesen 28%)</td><td><b>15% szja</b>, szocho nélkül</td></tr>
             <tr><td><b>3 és 5 év között</b></td><td><b>10% szja + 8% szocho</b> (összesen 18%)</td><td><b>10% szja</b>, szocho nélkül</td></tr>
-            <tr class="hl"><td><b>5 év után, a lekötés végén</b></td><td><b>0%</b> – se szja, se szocho</td><td><b>0%</b></td></tr>
+            <tr class="hl"><td><b>5 év után, a lekötés végén</b></td><td><b>0%</b>: se szja, se szocho</td><td><b>0%</b></td></tr>
           </tbody>
         </table>
         <div class="tbl-note">A táblázat a hozamra vonatkozó adókulcsokat mutatja. A befizetett tőkéd után nincs adó, azt már egyszer leadóztad.</div>
@@ -255,9 +255,9 @@ BODY = u'''
       <h2>A költség, ami elviszi a hozam egy részét</h2>
       <p>Alapoknál három költségtípussal találkozol. Ezek kis számoknak látszanak, de évtizedes távon összeadódnak, és a különbség jelentős.</p>
       <ul class="clean">
-        <li><b>Alapkezelési díj</b> – évente, a kezelt vagyon százalékában. Ezt az árfolyamból automatikusan levonják, nem külön terheléssel, ezért sokan észre sem veszik.</li>
-        <li><b>Vételi vagy visszaváltási jutalék</b> – egyszeri, a tranzakcióra. Sok alapnál nincs, de van, ahol rövid tartás esetén büntetőjelleggel megjelenik.</li>
-        <li><b>Számlavezetési és letétkezelési díj</b> – a szolgáltatónál, az egész portfóliódra. Kis összegeknél ez arányaiban sokat nyom.</li>
+        <li><b>Alapkezelési díj</b>: évente, a kezelt vagyon százalékában. Ezt az árfolyamból automatikusan levonják, nem külön terheléssel, ezért sokan észre sem veszik.</li>
+        <li><b>Vételi vagy visszaváltási jutalék</b>: egyszeri, a tranzakcióra. Sok alapnál nincs, de van, ahol rövid tartás esetén büntetőjelleggel megjelenik.</li>
+        <li><b>Számlavezetési és letétkezelési díj</b>: a szolgáltatónál, az egész portfóliódra. Kis összegeknél ez arányaiban sokat nyom.</li>
       </ul>
 
       <div class="kpis">

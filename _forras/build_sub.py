@@ -88,9 +88,25 @@ CTA = u'''
 </section>
 '''
 
-def build(slug, title, desc, body, legal, cta_title, cta_sub, extra_js=''):
+import landing
+
+MID_BTN = (u'<a class="apt-btn-inner" href="index.html#advisors">📅 Időpontot foglalok</a>')
+
+def build(slug, title, desc, body, legal, cta_title, cta_sub, extra_js='', mid=None, extra_css='', use_landing=True):
     canonical = 'https://eaglz.hu/%s' % slug
-    page = (head(title, desc, canonical) + '\n\n' + HEADER + '\n' + body + '\n' +
+    mid = mid or {}
+    if use_landing:
+      body = landing.inject(
+          body,
+          landing.trust_bar(u'Adatok: <b data-upd></b>'),
+          landing.mid_cta(mid.get('k', u'Kérdésed van ehhez?'),
+                          mid.get('t', u'30 perc, és a saját számaidat látod, nem egy példát.'),
+                          mid.get('s', u'Díjmentes, kötelezettség nélkül. Ha kiderül, hogy a mostani megoldásod jó, azt is megmondjuk.'),
+                          MID_BTN, u'Válassz tanácsadót és időpontot'))
+    hd = head(title, desc, canonical)
+    if extra_css:
+        hd = hd.replace('<style id="eaglz-theme">', '<style id="page-css">\n' + extra_css + '\n</style>\n<style id="eaglz-theme">', 1)
+    page = (hd + '\n\n' + HEADER + '\n' + body + '\n' +
             (CTA % (cta_title, cta_sub)) + (LEGAL_WRAP % legal) + '\n' + FOOTER + '\n' +
             NAVJS + '\n' + (('<script>\n' + extra_js + '\n</script>\n') if extra_js else '') +
             '</body>\n</html>\n')

@@ -27,8 +27,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mennyit ad az állam a babakötvényhez, mennyi gyűlik össze 18 éves korára, és mikor jobb a TBSZ? Kalkulátorral és 2026-os adatokkal.">
-<link rel="canonical" href="https://eaglz.hu/gyermekjovo.html">
+<meta name="description" content="Lakástakarék állami támogatás nélkül: hogyan működik, mire használható, mit hoz valójában. Kalkulátor, ami a díjak levonása után évesített hozamot számol.">
+<link rel="canonical" href="https://eaglz.hu/lakastakarek.html">
 
 <!-- Favicon: inline, így külön fájl nélkül is működik -->
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -42,9 +42,9 @@
 <meta property="og:site_name" content="EAGLZ Finance">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
-<meta property="og:url" content="https://eaglz.hu/gyermekjovo.html">
-<meta property="og:title" content="Gyermek-megtakarítás 2026: babakötvény, Start-számla, TBSZ | EAGLZ Finance">
-<meta property="og:description" content="Mennyit ad az állam a babakötvényhez, mennyi gyűlik össze 18 éves korára, és mikor jobb a TBSZ? Kalkulátorral és 2026-os adatokkal.">
+<meta property="og:url" content="https://eaglz.hu/lakastakarek.html">
+<meta property="og:title" content="Lakástakarék 2026: megéri még állami támogatás nélkül? | EAGLZ Finance">
+<meta property="og:description" content="Lakástakarék állami támogatás nélkül: hogyan működik, mire használható, mit hoz valójában. Kalkulátor, ami a díjak levonása után évesített hozamot számol.">
 <meta property="og:image" content="https://eaglz.hu/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -54,7 +54,7 @@
 <meta name="twitter:description" content="Törlesztő és kamatkülönbség, mennyi hitelt kaphatok (JTM), hitelkiváltás megtérülés és bankszámla költség. Azonnali eredmény, adatbekérés nélkül.">
 <meta name="twitter:image" content="https://eaglz.hu/og-image.png">
 
-<title>Gyermek-megtakarítás 2026: babakötvény, Start-számla, TBSZ | EAGLZ Finance</title>
+<title>Lakástakarék 2026: megéri még állami támogatás nélkül? | EAGLZ Finance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1276,6 +1276,568 @@ table.tbl td b{color:var(--navy);}
 }
 
 </style>
+<style id="page-css">
+
+.zpage{
+  --navy-soft:#22436a; --teal-soft:#E8F5F3; --purple-ink:#6E4E9A; --gold-ink:#9A7100;
+  --bg-alt:#FFFFFF; --gray-soft:#8FA0B3; --border-strong:rgba(27,56,88,.16);
+  --shadow-sm:0 1px 2px rgba(12,29,48,.04),0 2px 8px rgba(12,29,48,.05);
+  --shadow-md:0 4px 12px rgba(12,29,48,.06),0 12px 32px rgba(12,29,48,.07);
+  --shadow-lg:0 8px 24px rgba(12,29,48,.09),0 24px 60px rgba(12,29,48,.10);
+  --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:26px; --nav-h:0px;
+}
+.zpage .section-sm{ padding-top:2.4rem; padding-bottom:2.4rem; }
+.zpage *,.zpage *::before,.zpage *::after{box-sizing:border-box;margin:0;padding:0;}
+.zpage{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%;}
+.zpage{font-family:var(--fd);background:var(--bg);color:var(--navy);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.zpage img{max-width:100%;display:block;}
+.zpage a{color:inherit;}
+.zpage :focus-visible{outline:2.5px solid var(--teal-ink);outline-offset:3px;border-radius:4px;}
+.zpage .container{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem;}
+.zpage .section{padding:5.5rem 0;position:relative;}
+.zpage .section-sm{padding:3.5rem 0;}
+.zpage .grid-bg{background-image:repeating-linear-gradient(0deg,rgba(19,44,70,.045) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(19,44,70,.045) 0 1px,transparent 1px 46px);}
+.zpage .grid-bg-dark{background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 46px);}
+.zpage .dark{background:var(--navy-deep);color:#fff;}
+.zpage .dark .section-title{color:#fff;}
+.zpage .dark .section-sub{color:rgba(255,255,255,.58);}
+.zpage .eyebrow{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fb);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.34rem .8rem;border-radius:100px;margin-bottom:1rem;}
+.zpage .eyebrow.teal{background:var(--teal-soft);color:var(--teal-ink);border:1px solid rgba(44,138,128,.22);}
+.zpage .eyebrow.purple{background:rgba(139,108,181,.10);color:var(--purple-ink);border:1px solid rgba(139,108,181,.22);}
+.zpage .eyebrow.gold{background:rgba(240,180,41,.12);color:var(--gold-ink);border:1px solid rgba(240,180,41,.32);}
+.zpage .dark .eyebrow.teal{background:rgba(125,200,192,.12);color:var(--teal);border-color:rgba(125,200,192,.28);}
+.zpage .dark .eyebrow.gold{background:rgba(240,180,41,.12);color:var(--gold);border-color:rgba(240,180,41,.3);}
+.zpage .section-title{font-family:var(--fb);font-size:clamp(1.65rem,3.4vw,2.35rem);font-weight:700;line-height:1.16;letter-spacing:-.02em;margin-bottom:.75rem;}
+.zpage .section-sub{font-size:.95rem;color:var(--gray);line-height:1.78;max-width:56ch;margin-bottom:2.6rem;}
+.zpage .head-center{text-align:center;}
+.zpage .head-center .section-sub{margin-left:auto;margin-right:auto;}
+.zpage .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--fb);font-weight:600;text-decoration:none;border-radius:12px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;cursor:pointer;border:none;}
+.zpage .btn:hover{transform:translateY(-2px);}
+.zpage .btn-primary{background:var(--navy);color:#fff;padding:.92rem 1.9rem;font-size:.94rem;box-shadow:0 6px 18px rgba(19,44,70,.22);}
+.zpage .btn-primary:hover{background:var(--navy-soft);box-shadow:0 10px 26px rgba(19,44,70,.28);}
+.zpage .btn-teal{background:var(--teal);color:var(--navy-deep);padding:.9rem 1.8rem;font-size:.92rem;box-shadow:0 6px 18px rgba(125,200,192,.32);}
+.zpage .btn-teal:hover{background:#6FBEB5;}
+.zpage .btn-ghost{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);padding:.72rem 1.4rem;font-size:.82rem;}
+.zpage .btn-ghost:hover{background:rgba(255,255,255,.13);}
+.zpage .btn-outline{background:#fff;border:1.5px solid var(--border-strong);color:var(--navy);padding:.72rem 1.5rem;font-size:.85rem;box-shadow:var(--shadow-sm);}
+.zpage .cta-ring{position:relative;display:inline-block;border-radius:14px;padding:2px;background:linear-gradient(#fff,#fff);overflow:hidden;}
+.zpage .cta-ring::before{content:'';position:absolute;width:220%;height:220%;top:-60%;left:-60%;background:conic-gradient(var(--green) 22deg,transparent 105deg);animation:ringSpin 2.4s linear infinite;}
+.zpage .cta-ring > *{position:relative;z-index:1;}
+@keyframes ringSpin{to{transform:rotate(360deg);}}
+@keyframes mmIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+.zpage #hero{position:relative;padding:calc(var(--nav-h) + 4.5rem) 0 4.5rem;background:var(--navy-deep);overflow:hidden;}
+.zpage .hero-aurora{position:absolute;inset:0;pointer-events:none;}
+.zpage .hero-aurora::before,.zpage .hero-aurora::after{content:'';position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;}
+.zpage .hero-aurora::before{width:560px;height:560px;background:radial-gradient(circle,rgba(125,200,192,.42),transparent 68%);top:-160px;right:-120px;animation:floaty 14s ease-in-out infinite;}
+.zpage .hero-aurora::after{width:520px;height:520px;background:radial-gradient(circle,rgba(139,108,181,.34),transparent 68%);bottom:-220px;left:-140px;animation:floaty 18s ease-in-out infinite reverse;}
+@keyframes floaty{0%,100%{transform:translate(0,0);}50%{transform:translate(28px,-26px);}}
+.zpage .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr minmax(360px,448px);gap:3rem;align-items:center;}
+.zpage .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(125,200,192,.12);border:1px solid rgba(125,200,192,.26);border-radius:100px;padding:.36rem .9rem;font-family:var(--fb);font-size:.68rem;font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.15rem;}
+.zpage .hero-badge i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulseDot 2s infinite;}
+@keyframes pulseDot{70%{box-shadow:0 0 0 7px rgba(34,197,94,0);}100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
+.zpage .hero-title{font-family:var(--fb);font-size:clamp(1.95rem,4.3vw,2.95rem);font-weight:700;color:#fff;line-height:1.14;letter-spacing:-.025em;margin-bottom:1rem;}
+.zpage .hero-title em{font-style:normal;background:linear-gradient(100deg,var(--teal),#A8D9D3);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.zpage .hero-lead{font-size:.98rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:2rem;max-width:48ch;}
+.zpage .hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.zpage .hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.09);}
+.zpage .hero-trust div{display:flex;align-items:center;gap:.45rem;font-family:var(--fb);font-size:.76rem;font-weight:600;color:rgba(255,255,255,.55);}
+.zpage .hero-trust span{color:var(--teal);font-weight:700;}
+.zpage .eo-wrap{--s:.56;width:calc(800px*var(--s));height:calc(684px*var(--s));position:relative;margin-left:auto;}
+.zpage .eo-field{position:relative;width:800px;height:684px;transform:scale(var(--s));transform-origin:top left;}
+.zpage .eo-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.2);}
+.zpage .eo-halo{position:absolute;left:50%;top:50%;width:530px;height:530px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(125,200,192,.2),rgba(125,200,192,0) 70%);}
+.zpage .eo-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:262px;height:262px;perspective:1200px;}
+.zpage .eo-flip{position:relative;width:100%;height:100%;border-radius:50%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.zpage .eo-hub:hover .eo-flip{transform:rotateY(180deg);}
+.zpage .eo-face{position:absolute;inset:0;border-radius:50%;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:6px solid rgba(255,255,255,.92);box-shadow:0 18px 46px rgba(0,0,0,.45),0 0 0 14px rgba(125,200,192,.1);background:#12283F;}
+.zpage .eo-face img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;}
+.zpage .eo-back{transform:rotateY(180deg);}
+.zpage .eo-back img{object-position:center 12%;}
+.zpage .eo-tile{position:absolute;left:var(--x);top:var(--y);z-index:3;transform:translate(-50%,-50%) translate(var(--rx,0px),var(--ry,0px));transition:transform .38s cubic-bezier(.2,.8,.3,1);}
+.zpage .eo-tile > span{display:flex;align-items:center;justify-content:center;height:55px;min-width:55px;padding:0 13px;border-radius:13px;background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.28);animation:var(--path,eoA) var(--bt,18s) ease-in-out var(--bd,0s) infinite;}
+.zpage .eo-tile.inner > span{height:65px;min-width:65px;padding:0 15px;border-radius:15px;}
+.zpage .eo-tile.inner.small > span{height:53px;min-width:53px;padding:0 12px;border-radius:13px;}
+.zpage .eo-tile img{display:block;max-height:20px;max-width:110px;width:auto;height:auto;}
+.zpage .eo-tile.sq img{max-height:28px;max-width:50px;}
+.zpage .eo-tile.inner.sq img{max-height:38px;max-width:82px;}
+.zpage .eo-tile.inner.small.sq img{max-height:30px;max-width:66px;}
+@keyframes eoA{0%,100%{transform:translate(0,0);}50%{transform:translate(0,-5px);}}
+@keyframes eoB{0%,100%{transform:translate(0,0);}50%{transform:translate(4px,3px);}}
+@keyframes eoC{0%,100%{transform:translate(0,0);}50%{transform:translate(-4px,4px);}}
+@keyframes eoD{0%,100%{transform:translate(0,0);}50%{transform:translate(3px,-4px);}}
+.zpage #stats{background:var(--navy);position:relative;overflow:hidden;}
+.zpage #stats::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(125,200,192,.10),transparent 55%,rgba(139,108,181,.09));}
+.zpage .stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);}
+.zpage .stat{padding:2.4rem 1.4rem;text-align:center;position:relative;}
+.zpage .stat:not(:last-child)::after{content:'';position:absolute;right:0;top:22%;height:56%;width:1px;background:rgba(255,255,255,.11);}
+.zpage .stat-num{font-family:var(--fb);font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:700;color:var(--teal);line-height:1.1;letter-spacing:-.03em;margin-bottom:.45rem;}
+.zpage .stat-num .sfx{font-size:.6em;color:rgba(125,200,192,.72);}
+.zpage .stat-label{font-family:var(--fb);font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;line-height:1.45;}
+@media(prefers-reduced-motion:reduce){
+.zpage .hero-aurora::before,.zpage .hero-aurora::after{animation:none;}
+.zpage .cta-ring::before{animation:none;}
+.zpage .eo-tile > span{animation:none;}
+}
+.zpage .card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+.zpage .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(44,138,128,.3);}
+.zpage .fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.zpage .fw-card{padding:1.5rem 1.4rem;border-left:3px solid var(--teal);}
+.zpage .fw-icon{width:42px;height:42px;border-radius:12px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:.85rem;}
+.zpage .fw-title{font-family:var(--fb);font-size:.94rem;font-weight:700;margin-bottom:.3rem;}
+.zpage .fw-text{font-size:.83rem;color:var(--gray);line-height:1.68;}
+.zpage .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.zpage .svc-card{padding:1.4rem 1.25rem;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.zpage .svc-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform .28s ease;}
+.zpage .svc-card:hover::after{transform:scaleX(1);}
+.zpage .svc-icon{font-size:1.6rem;margin-bottom:.7rem;}
+.zpage .svc-title{font-family:var(--fb);font-size:.92rem;font-weight:700;margin-bottom:.35rem;}
+.zpage .svc-desc{font-size:.79rem;color:var(--gray);line-height:1.6;margin-bottom:.85rem;}
+.zpage .svc-more{font-family:var(--fb);font-size:.72rem;font-weight:700;color:var(--teal-ink);display:inline-flex;align-items:center;gap:.3rem;margin-top:auto;}
+.zpage .svc-card:hover .svc-more{gap:.55rem;}
+.zpage .svc-tags{display:none;}
+.zpage .sav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.3rem 2.4rem;}
+.zpage .sav-item{display:flex;gap:1rem;align-items:flex-start;padding:1.05rem .8rem;margin:0 -.8rem;border-radius:var(--r-md);border-bottom:1px solid rgba(255,255,255,.07);transition:background .22s;}
+.zpage .sav-item:hover{background:rgba(240,180,41,.06);}
+.zpage .sav-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--gold),#DC9A0E);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fb);font-size:1.05rem;font-weight:700;color:var(--navy-deep);box-shadow:0 6px 16px rgba(240,180,41,.22);}
+.zpage .sav-text{font-size:.92rem;line-height:1.65;color:rgba(255,255,255,.7);}
+.zpage .sav-text .hl{color:var(--gold);font-weight:600;}
+.zpage .sav-text b{color:#fff;font-weight:600;}
+.zpage .sav-note{margin-top:2rem;padding:1.05rem 1.3rem;border-radius:var(--r-md);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);font-size:.73rem;line-height:1.7;color:rgba(255,255,255,.42);}
+.zpage .sav-note b{color:rgba(255,255,255,.62);}
+.zpage .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;counter-reset:s;}
+.zpage .step{padding:1.7rem 1.4rem;position:relative;}
+.zpage .step-num{width:40px;height:40px;border-radius:13px;background:linear-gradient(140deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.85rem;font-weight:700;color:#fff;margin-bottom:1rem;box-shadow:0 6px 16px rgba(139,108,181,.24);}
+.zpage .step-title{font-family:var(--fb);font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
+.zpage .step-text{font-size:.82rem;color:var(--gray);line-height:1.68;}
+.zpage .compare{max-width:760px;margin:0 auto;border-radius:var(--r-xl);overflow:hidden;border:1.5px solid rgba(255,255,255,.1);}
+.zpage .cmp-head,.zpage .cmp-row{display:grid;grid-template-columns:1fr 1fr;}
+.zpage .cmp-label{padding:1rem 1.5rem;font-family:var(--fb);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;display:flex;align-items:center;gap:.55rem;}
+.zpage .cmp-label.a{background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);}
+.zpage .cmp-label.b{background:rgba(125,200,192,.18);color:var(--teal);}
+.zpage .cmp-row{border-top:1px solid rgba(255,255,255,.07);}
+.zpage .cmp-cell{padding:.95rem 1.5rem;font-size:.87rem;line-height:1.55;display:flex;align-items:center;gap:.6rem;}
+.zpage .cmp-cell.a{color:rgba(255,255,255,.45);background:rgba(255,255,255,.03);}
+.zpage .cmp-cell.a::before{content:'•';font-weight:700;color:rgba(255,255,255,.22);}
+.zpage .cmp-cell.b{color:#fff;background:rgba(125,200,192,.07);}
+.zpage .cmp-cell.b::before{content:'✓';font-weight:700;color:var(--teal);}
+.zpage .online-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+.zpage .online-card{display:flex;align-items:center;gap:.85rem;padding:.95rem 1.15rem;border-radius:var(--r-md);text-decoration:none;background:#fff;border:1.5px solid var(--border);box-shadow:var(--shadow-sm);transition:transform .18s,box-shadow .18s,border-color .18s;}
+.zpage .online-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:rgba(44,138,128,.4);}
+.zpage .online-emoji{width:38px;height:38px;border-radius:11px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;transition:background .18s;}
+.zpage .online-card:hover .online-emoji{background:#D6ECE9;}
+.zpage .online-label{font-family:var(--fb);font-size:.8rem;font-weight:700;color:var(--navy);line-height:1.35;}
+.zpage .online-arrow{margin-left:auto;color:var(--teal-ink);font-weight:700;flex-shrink:0;opacity:.55;transition:transform .18s,opacity .18s;}
+.zpage .online-card:hover .online-arrow{transform:translateX(3px);opacity:1;}
+.zpage .online-help{margin-top:1.5rem;padding:1.3rem 1.5rem;border-radius:var(--r-lg);background:linear-gradient(135deg,var(--teal-soft),rgba(139,108,181,.08));border:1px solid rgba(44,138,128,.18);text-align:center;}
+.zpage .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.zpage .why-card{padding:1.5rem 1.4rem;}
+.zpage .why-icon{font-size:1.4rem;margin-bottom:.7rem;}
+.zpage .why-title{font-family:var(--fb);font-size:.92rem;font-weight:700;margin-bottom:.3rem;}
+.zpage .why-text{font-size:.83rem;color:var(--gray);line-height:1.68;}
+.zpage #team{background:var(--navy-deep);position:relative;overflow:hidden;}
+.zpage #team::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(125,200,192,.07),transparent 60%,rgba(139,108,181,.06));}
+.zpage .team-head{position:relative;z-index:1;padding:2.6rem 0 .4rem;}
+.zpage .team-body{padding:1.4rem 0 3rem;position:relative;z-index:1;}
+.zpage .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.zpage .team-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);border-radius:var(--r-lg);padding:1.3rem;display:flex;align-items:center;gap:.9rem;transition:background .2s,border-color .2s;}
+.zpage .team-card:hover{background:rgba(255,255,255,.07);border-color:rgba(125,200,192,.25);}
+.zpage .team-avatar{width:54px;height:54px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(125,200,192,.28);background:rgba(125,200,192,.12);}
+.zpage .team-avatar img{width:100%;height:100%;object-fit:cover;}
+.zpage .team-name{font-family:var(--fb);font-size:.9rem;font-weight:700;color:#fff;}
+.zpage .team-role{font-size:.72rem;color:rgba(255,255,255,.44);margin-top:.1rem;line-height:1.4;}
+.zpage .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:.7rem;}
+.zpage .faq{background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.zpage .faq[open]{border-color:rgba(139,108,181,.4);box-shadow:var(--shadow-md);}
+.zpage .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.4rem;font-family:var(--fb);font-size:.95rem;font-weight:700;text-align:left;}
+.zpage .faq summary::-webkit-details-marker{display:none;}
+.zpage .faq summary svg{flex-shrink:0;color:var(--purple);transition:transform .25s;}
+.zpage .faq[open] summary svg{transform:rotate(180deg);}
+.zpage .faq-a{padding:0 1.4rem 1.35rem;font-size:.88rem;line-height:1.8;color:var(--gray);text-align:left;}
+.zpage .faq-a p+p{margin-top:.75rem;}
+.zpage #career{background:linear-gradient(135deg,var(--purple),#6E4E9A);position:relative;overflow:hidden;}
+.zpage #career::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 46px);}
+.zpage .career-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding:2.6rem 0;}
+.zpage .career-title{font-family:var(--fb);font-size:clamp(1.25rem,2.6vw,1.65rem);font-weight:700;color:#fff;margin-bottom:.3rem;}
+.zpage .career-sub{font-size:.88rem;color:rgba(255,255,255,.78);max-width:52ch;}
+.zpage #cta{padding:4.5rem 0;background:var(--bg);}
+.zpage .cta-box{background:linear-gradient(135deg,var(--navy),#20456B);border-radius:var(--r-xl);overflow:hidden;position:relative;box-shadow:var(--shadow-lg);}
+.zpage .cta-box::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 46px),repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 46px);}
+.zpage .cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;padding:3rem 3.4rem;}
+.zpage .cta-free{display:inline-flex;align-items:center;gap:.4rem;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.3);border-radius:100px;padding:.3rem .85rem;font-family:var(--fb);font-size:.68rem;font-weight:700;color:#4ADE80;margin-bottom:.9rem;}
+.zpage .cta-title{font-family:var(--fb);font-size:clamp(1.35rem,2.7vw,1.85rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:.6rem;letter-spacing:-.02em;}
+.zpage .cta-sub{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.7;max-width:46ch;}
+.zpage .cta-side{display:flex;flex-direction:column;align-items:center;gap:.8rem;}
+.zpage #lead{background:var(--bg);padding:0 0 5rem;}
+.zpage .lead-box{max-width:660px;margin:0 auto;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-xl);padding:2.6rem 2.8rem;box-shadow:var(--shadow-md);}
+.zpage .lead-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+.zpage .field{margin-bottom:.85rem;text-align:left;}
+.zpage .field label{display:block;font-family:var(--fb);font-size:.73rem;font-weight:700;margin-bottom:.35rem;}
+.zpage .field input,.zpage .field textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.7rem .9rem;font-size:.88rem;font-family:var(--fd);color:var(--navy);background:var(--bg);outline:none;transition:border-color .18s,background .18s;}
+.zpage .field input:focus,.zpage .field textarea:focus{border-color:var(--teal-ink);background:#fff;}
+.zpage .gdpr{display:flex;gap:.6rem;align-items:flex-start;font-size:.74rem;color:var(--gray);line-height:1.6;margin:1rem 0 1.2rem;text-align:left;}
+.zpage .gdpr input{margin-top:.25rem;flex-shrink:0;width:16px;height:16px;accent-color:var(--teal-ink);}
+.zpage .gdpr a{color:var(--teal-ink);font-weight:600;}
+.zpage .lead-send{width:100%;padding:.95rem;border:none;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.94rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.zpage .lead-send:hover{background:var(--navy-soft);}
+.zpage .lead-send:disabled{opacity:.6;cursor:default;}
+.zpage .lead-status{text-align:center;font-family:var(--fb);font-size:.82rem;font-weight:700;margin-top:.8rem;min-height:1.3rem;}
+.zpage .lead-trust{display:flex;justify-content:center;gap:1.3rem;flex-wrap:wrap;margin-top:1.2rem;font-family:var(--fb);font-size:.72rem;font-weight:600;color:var(--gray);}
+.zpage .lead-trust span{color:var(--green);}
+.zpage .fs{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;transition:all .2s;}
+.zpage .fs:hover{background:rgba(125,200,192,.18);border-color:rgba(125,200,192,.4);color:var(--teal);}
+.zpage .overlay{display:none;position:fixed;inset:0;z-index:900;background:rgba(12,29,48,.6);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem;}
+.zpage .overlay.active{display:flex;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.zpage .modal{background:#fff;border-radius:var(--r-xl);max-width:540px;width:100%;max-height:88vh;overflow-y:auto;padding:2.2rem;position:relative;box-shadow:var(--shadow-lg);animation:slideUp .28s cubic-bezier(.22,.61,.36,1);text-align:left;}
+@keyframes slideUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+.zpage .modal-close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.35rem;cursor:pointer;color:var(--gray-soft);line-height:1;padding:.2rem .45rem;border-radius:8px;}
+.zpage .modal-close:hover{color:var(--navy);background:rgba(19,44,70,.06);}
+.zpage .modal-icon{font-size:2rem;margin-bottom:.5rem;}
+.zpage .modal-title{font-family:var(--fb);font-size:1.25rem;font-weight:700;margin-bottom:.4rem;}
+.zpage .modal-desc{font-size:.87rem;color:var(--gray);line-height:1.7;margin-bottom:1rem;}
+.zpage .modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem;}
+.zpage .modal-why{font-size:.86rem;line-height:1.78;margin-bottom:1.2rem;padding:.9rem 1.1rem;background:var(--teal-soft);border-left:3px solid var(--teal-ink);border-radius:0 12px 12px 0;}
+.zpage .modal-plabel{font-family:var(--fb);font-size:.7rem;font-weight:700;color:var(--teal-ink);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.55rem;}
+.zpage .modal-steps{display:flex;flex-direction:column;gap:.45rem;}
+.zpage .modal-back{background:none;border:none;color:var(--teal-ink);font-family:var(--fb);font-size:.78rem;font-weight:700;cursor:pointer;padding:0;margin-bottom:.75rem;}
+.zpage .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.zpage .reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+.zpage .reveal{opacity:1;transform:none;transition:none;}
+}
+@media(max-width:1000px){
+.zpage .svc-grid{grid-template-columns:repeat(2,1fr);}
+.zpage .steps{grid-template-columns:repeat(2,1fr);}
+.zpage .fw-grid,.zpage .why-grid,.zpage .team-grid,.zpage .online-grid{grid-template-columns:repeat(2,1fr);}
+.zpage .hero-inner{grid-template-columns:1fr 380px;gap:2rem;}
+.zpage .eo-wrap{--s:.47;}
+}
+@media(max-width:820px){
+.zpage .hero-inner{grid-template-columns:1fr;gap:1.5rem;}
+.zpage .hero-photo{order:-1;}
+.zpage .eo-wrap{--s:.46;margin:0 auto;}
+.zpage .cta-inner{grid-template-columns:1fr;padding:2.4rem 1.8rem;}
+.zpage .sav-grid{grid-template-columns:1fr;gap:0;}
+.zpage .compare{max-width:100%;}
+}
+@media(max-width:760px){
+.zpage .eo-wrap{--s:.42;}
+.zpage .section{padding:3.6rem 0;}
+.zpage .container{padding:0 1.15rem;}
+.zpage #hero,.zpage #stats,.zpage #partners,.zpage #for-whom,.zpage #services,.zpage #savings,.zpage #how,.zpage #compare,.zpage #online,.zpage #why,.zpage #faq,.zpage #cta,.zpage #lead,.zpage #career{text-align:center;}
+.zpage .section-sub,.zpage .hero-lead,.zpage .cta-sub,.zpage .career-sub{margin-left:auto;margin-right:auto;text-align:center;}
+.zpage .hero-actions,.zpage .hero-trust{justify-content:center;}
+.zpage .hero-trust{gap:1rem 1.4rem;}
+.zpage .fw-grid,.zpage .why-grid,.zpage .svc-grid,.zpage .steps,.zpage .online-grid,.zpage .team-grid{grid-template-columns:1fr;}
+.zpage .fw-card{border-left:none;border-top:3px solid var(--teal);}
+.zpage .fw-icon,.zpage .step-num{margin-left:auto;margin-right:auto;}
+.zpage .svc-icon,.zpage .why-icon{font-size:1.7rem;}
+.zpage .sav-item{flex-direction:column;align-items:center;text-align:center;gap:.6rem;}
+.zpage .team-card{flex-direction:column;text-align:center;gap:.7rem;}
+.zpage .team-head{padding:2.2rem 0 .4rem;}
+.zpage .cmp-cell{padding:.8rem .9rem;font-size:.8rem;}
+.zpage .cmp-label{padding:.8rem .9rem;font-size:.72rem;justify-content:center;}
+.zpage .cta-side{width:100%;}
+.zpage .cta-side .cta-ring,.zpage .cta-side .btn{width:100%;}
+.zpage .lead-box{padding:1.8rem 1.3rem;}
+.zpage .lead-row{grid-template-columns:1fr;}
+.zpage .field,.zpage .gdpr,.zpage .faq summary,.zpage .faq-a{text-align:left;}
+.zpage .career-inner{flex-direction:column;text-align:center;padding:2.2rem 0;}
+.zpage .modal{padding:1.6rem 1.3rem;}
+}
+@media(max-width:520px){
+.zpage .stats-grid{grid-template-columns:1fr 1fr;}
+.zpage .stat:nth-child(2)::after{display:none;}
+.zpage .stat{padding:1.7rem .8rem;}
+.zpage .stat:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.1);}
+.zpage .hero-title{font-size:1.85rem;}
+.zpage .eo-wrap{--s:.365;}
+}
+.zpage #hero{padding:calc(var(--nav-h) + 4rem) 0 3.6rem;}
+.zpage .bk-hero{position:relative;z-index:2;max-width:760px;}
+.zpage .bk-hero .hero-title{font-size:clamp(1.85rem,4vw,2.7rem);}
+.zpage .bk-hero .hero-lead{max-width:60ch;}
+.zpage .bk-split{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.zpage .bk-panel{padding:1.9rem 1.8rem;display:flex;flex-direction:column;}
+.zpage .bk-panel-icon{font-size:1.8rem;margin-bottom:.7rem;}
+.zpage .bk-panel-title{font-family:var(--fb);font-size:1.05rem;font-weight:700;margin-bottom:.5rem;}
+.zpage .bk-panel-text{font-size:.88rem;color:var(--gray);line-height:1.75;margin-bottom:1.2rem;}
+.zpage .bk-panel .btn{align-self:flex-start;margin-top:auto;}
+.zpage .bk-panel-note{font-size:.78rem;color:var(--gray);line-height:1.7;margin-top:1rem;}
+.zpage .bk-ladder{display:flex;flex-direction:column;gap:.5rem;}
+.zpage .bk-rung{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-radius:var(--r-md);background:var(--bg);border:1.5px solid var(--border);}
+.zpage .bk-rung.is-top{background:rgba(240,180,41,.1);border-color:rgba(240,180,41,.35);}
+.zpage .bk-rung b{font-family:var(--fb);font-size:1rem;font-weight:700;}
+.zpage .bk-rung.is-top b{color:var(--gold-ink);}
+.zpage .bk-rung-y{font-family:var(--fb);font-size:.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;}
+.zpage .bk-offers{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.zpage .bk-offer{overflow:hidden;}
+.zpage .bk-offer summary{list-style:none;cursor:pointer;padding:1.5rem 1.6rem;display:block;}
+.zpage .bk-offer summary::-webkit-details-marker{display:none;}
+.zpage .bk-offer[open]{border-color:rgba(44,138,128,.4);box-shadow:var(--shadow-md);}
+.zpage .bk-offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem;margin-bottom:1.2rem;}
+.zpage .bk-bank{display:flex;align-items:center;justify-content:center;min-height:36px;}
+.zpage .bk-bank img{height:28px;width:auto;max-width:160px;display:block;margin:0 auto;}
+.zpage .bk-bank img[src*="erste"]{height:35px;}
+.zpage .bk-bank img[src*="raiffeisen"]{height:31px;}
+.zpage .bk-tlogo{display:inline-flex;align-items:center;justify-content:center;width:34px;height:26px;border-radius:7px;background:#fff;margin-right:.6rem;vertical-align:middle;flex-shrink:0;}
+.zpage .bk-tlogo img{max-height:15px;max-width:28px;width:auto;height:auto;display:block;}
+.zpage .bk-table td:first-child{display:flex;align-items:center;}
+.zpage .bk-pkg{font-size:.82rem;color:var(--gray);margin-top:.3rem;}
+.zpage .bk-gift{flex-shrink:0;font-family:var(--fb);font-size:.86rem;font-weight:700;color:var(--gold-ink);background:rgba(240,180,41,.13);border:1px solid rgba(240,180,41,.35);border-radius:100px;padding:.35rem .85rem;white-space:nowrap;}
+.zpage .bk-gift.is-max{color:#fff;background:linear-gradient(135deg,var(--gold),#DC9A0E);border-color:transparent;box-shadow:0 5px 14px rgba(240,180,41,.3);}
+.zpage .bk-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;padding-top:1rem;border-top:1px solid var(--border);}
+.zpage .bk-facts > div{display:flex;flex-direction:column;gap:.1rem;align-items:center;text-align:center;}
+.zpage .bk-facts span{font-family:var(--fb);font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--gray-soft);}
+.zpage .bk-facts b{font-family:var(--fb);font-size:.92rem;font-weight:700;}
+.zpage .bk-facts i{font-style:normal;font-size:.7rem;color:var(--gray);}
+.zpage .bk-open{display:flex;align-items:center;justify-content:center;gap:.35rem;margin-top:1.2rem;font-family:var(--fb);font-size:.76rem;font-weight:700;color:var(--teal-ink);}
+.zpage .bk-open svg{transition:transform .25s;}
+.zpage .bk-offer[open] .bk-open svg{transform:rotate(180deg);}
+.zpage .bk-body{padding:0 1.6rem 1.7rem;text-align:left;}
+.zpage .bk-lead{font-size:.85rem;color:var(--gray);line-height:1.75;padding:1rem 1.1rem;background:var(--bg);border-radius:var(--r-md);margin-bottom:1.3rem;}
+.zpage .bk-h{font-family:var(--fb);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--teal-ink);margin:1.2rem 0 .6rem;}
+.zpage .bk-h:first-of-type{margin-top:0;}
+.zpage .bk-list{list-style:none;display:flex;flex-direction:column;gap:.42rem;}
+.zpage .bk-list li{position:relative;padding-left:1.25rem;font-size:.84rem;line-height:1.6;color:var(--navy);}
+.zpage .bk-list li::before{content:'•';position:absolute;left:.25rem;color:var(--gray-soft);font-weight:700;}
+.zpage .bk-list.ok li::before{content:'✓';left:0;color:var(--teal-ink);font-size:.8rem;}
+.zpage .bk-tip{margin-top:1.2rem;padding:.9rem 1.1rem;border-radius:0 12px 12px 0;background:var(--teal-soft);border-left:3px solid var(--teal-ink);font-size:.83rem;line-height:1.7;}
+.zpage .bk-fine{margin-top:.9rem;font-size:.74rem;line-height:1.65;color:var(--gray-soft);}
+.zpage .bk-warn{margin-top:1.6rem;padding:1.1rem 1.4rem;border-radius:var(--r-lg);background:rgba(240,180,41,.09);border:1px solid rgba(240,180,41,.32);font-size:.86rem;line-height:1.7;}
+.zpage .bk-table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid rgba(255,255,255,.11);}
+.zpage .bk-table{width:100%;border-collapse:collapse;min-width:640px;}
+.zpage .bk-table th{text-align:left;font-family:var(--fb);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--teal);padding:.9rem 1.1rem;background:rgba(125,200,192,.1);}
+.zpage .bk-table td{padding:.85rem 1.1rem;font-size:.85rem;color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.07);}
+.zpage .bk-table td:first-child{font-family:var(--fb);font-weight:700;color:#fff;}
+.zpage .bk-yn{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+.zpage .bk-yn-col{padding:1.4rem 1.5rem;border-radius:var(--r-lg);border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);}
+.zpage .bk-yn-col.ok{border-color:rgba(125,200,192,.3);background:rgba(125,200,192,.07);}
+.zpage .bk-yn-col.no{border-color:rgba(234,65,145,.25);background:rgba(234,65,145,.06);}
+.zpage .bk-yn-h{font-family:var(--fb);font-size:.88rem;font-weight:700;margin-bottom:.8rem;color:#fff;}
+.zpage .bk-yn-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.zpage .bk-yn-col li{font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.7);padding-left:1rem;position:relative;}
+.zpage .bk-yn-col li::before{content:'•';position:absolute;left:0;color:rgba(255,255,255,.28);}
+.zpage .bk-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;padding-top:2.4rem;border-top:1px solid var(--border);}
+.zpage .bk-step{display:flex;gap:1rem;align-items:flex-start;}
+.zpage .bk-step .step-num{margin-bottom:0;flex-shrink:0;}
+.zpage .bk-faq-note{max-width:820px;margin:1.8rem auto 0;text-align:center;font-size:.83rem;color:var(--gray);line-height:1.75;}
+@media(max-width:900px){
+.zpage .bk-offers,.zpage .bk-split,.zpage .bk-yn{grid-template-columns:1fr;}
+.zpage .bk-steps{grid-template-columns:1fr;}
+.zpage .bk-steps{gap:1.2rem;}
+}
+@media(max-width:760px){
+.zpage #hero,.zpage #stats,.zpage #dijkimutatas,.zpage #ajanlatok,.zpage #jovairas,.zpage #valasztas,.zpage #faq,.zpage #cta{text-align:center;}
+.zpage .bk-hero{margin:0 auto;}
+.zpage .bk-panel .btn{align-self:center;}
+.zpage .bk-panel-icon{text-align:center;}
+.zpage .bk-offer summary{padding:1.3rem 1.2rem;}
+.zpage .bk-body{padding:0 1.2rem 1.4rem;}
+.zpage .bk-facts{grid-template-columns:1fr;gap:.75rem;text-align:left;}
+.zpage .bk-list li,.zpage .bk-yn-col li,.zpage .bk-tip,.zpage .bk-fine,.zpage .bk-lead{text-align:left;}
+.zpage .bk-step{flex-direction:column;align-items:center;}
+.zpage .bk-step .step-num{margin:0 auto;}
+}
+.zpage{padding-top:0;}
+.zpage #intro{padding-top:3.4rem;padding-bottom:1rem;}
+.zpage .section-title.big{font-size:clamp(1.9rem,4.4vw,3rem);}
+.zpage .section-sub.wide{max-width:74ch;}
+.zpage .calc-sec{padding-top:3.6rem;padding-bottom:3.6rem;}
+.zpage .bb-wrap{margin:0 0 1.6rem;}
+.zpage .bb-lab{font-family:var(--fb);font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:.7rem;}
+.zpage .bb-row{display:flex;flex-wrap:wrap;align-items:center;gap:.85rem;}
+.zpage .bb-row.mini{gap:.55rem;}
+.zpage .bb{display:flex;align-items:center;justify-content:center;height:60px;min-width:60px;padding:0 18px;border-radius:15px;background:#fff;border:1px solid var(--border);box-shadow:0 10px 26px rgba(12,29,48,.10);animation:var(--path,eoA) var(--bt,18s) ease-in-out var(--bd,0s) infinite;transition:transform .2s ease,box-shadow .2s ease;}
+.zpage .bb:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(12,29,48,.15);}
+.zpage .bb-row.mini .bb{height:44px;min-width:44px;padding:0 13px;border-radius:12px;box-shadow:0 5px 16px rgba(12,29,48,.08);}
+.zpage .lg{display:block;background-repeat:no-repeat;background-position:center;background-size:contain;}
+.zpage .lg-otp{width:66px;height:16px;background-image:url(assets/logos/otp-bank.png);}
+.zpage .lg-cib{width:83px;height:16px;background-image:url(assets/logos/cib-bank.png);}
+.zpage .lg-raiff{width:56px;height:16px;background-image:url(assets/logos/raiffeisen.png);}
+.zpage .lg-uni{width:76px;height:16px;background-image:url(assets/logos/unicredit.png);}
+.zpage .lg-erste{width:49px;height:23px;background-image:url(assets/logos/erste.png);}
+.zpage .lg-kh{width:29px;height:23px;background-image:url(assets/logos/kandh.png);}
+.zpage .lg-mbh{width:29px;height:23px;background-image:url(assets/logos/mbh-bank.png);}
+@keyframes eoA{0%,100%{transform:translate(0,0);}50%{transform:translate(0,-5px);}}
+@keyframes eoB{0%,100%{transform:translate(0,0);}50%{transform:translate(4px,3px);}}
+@keyframes eoC{0%,100%{transform:translate(0,0);}50%{transform:translate(-4px,4px);}}
+@keyframes eoD{0%,100%{transform:translate(0,0);}50%{transform:translate(3px,-4px);}}
+@media(prefers-reduced-motion:reduce){
+.zpage .bb{animation:none;}
+}
+.zpage .calc{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-md);border:1.5px solid var(--border);}
+.zpage .calc-inputs,.zpage .calc-out{min-width:0;}
+.zpage .calc-inputs{background:#fff;padding:1.9rem 1.8rem;}
+.zpage .calc-out{background:var(--navy-deep);padding:1.9rem 1.8rem;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.zpage .calc-out::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(125,200,192,.10),transparent 55%,rgba(139,108,181,.09));pointer-events:none;}
+.zpage .calc-out > *{position:relative;z-index:1;}
+.zpage .fld{margin-bottom:1.35rem;}
+.zpage .fld:last-child{margin-bottom:0;}
+.zpage .fld-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.55rem;font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--navy);cursor:pointer;}
+.zpage .fld-top b{font-family:var(--fb);font-size:1rem;font-weight:700;color:var(--teal-ink);white-space:nowrap;}
+.zpage .fld-note{display:block;margin-top:.45rem;font-size:.73rem;line-height:1.55;color:var(--gray-soft);}
+.zpage .fld-num{display:flex;align-items:center;gap:.5rem;margin-top:.6rem;}
+.zpage .fld-num input{width:150px;border:1.5px solid var(--border);border-radius:9px;padding:.42rem .6rem;font-family:var(--fb);font-size:.84rem;font-weight:600;color:var(--navy);background:var(--bg);outline:none;transition:border-color .18s,background .18s;}
+.zpage .fld-num input:focus{border-color:var(--teal-ink);background:#fff;}
+.zpage .fld-num input:disabled{opacity:.45;}
+.zpage .fld-num span{font-size:.74rem;color:var(--gray-soft);}
+.zpage .chk{display:flex;align-items:flex-start;gap:.55rem;margin:-.5rem 0 1.2rem;font-size:.8rem;line-height:1.5;color:var(--gray);cursor:pointer;}
+.zpage .chk input{margin-top:.15rem;width:16px;height:16px;accent-color:var(--teal-ink);flex-shrink:0;}
+.zpage input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;outline:none;cursor:pointer;
+  background:linear-gradient(90deg,var(--teal-ink) 0%,var(--teal-ink) var(--p,50%),rgba(19,44,70,.12) var(--p,50%),rgba(19,44,70,.12) 100%);}
+.zpage input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--teal-ink);box-shadow:0 2px 8px rgba(19,44,70,.22);cursor:pointer;transition:transform .12s;}
+.zpage input[type=range]::-webkit-slider-thumb:active{transform:scale(1.12);}
+.zpage input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--teal-ink);box-shadow:0 2px 8px rgba(19,44,70,.22);cursor:pointer;}
+.zpage input[type=range]:disabled{opacity:.4;cursor:not-allowed;}
+.zpage input[type=range]:focus-visible{outline:2.5px solid var(--teal-ink);outline-offset:4px;}
+.zpage .seg{display:flex;gap:.35rem;padding:.3rem;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;margin-bottom:1.5rem;}
+.zpage .seg button{flex:1;padding:.6rem .8rem;border:none;border-radius:9px;background:transparent;font-family:var(--fb);font-size:.82rem;font-weight:700;color:var(--gray);cursor:pointer;transition:background .18s,color .18s;}
+.zpage .seg button.on{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);}
+.zpage .calc-hero{text-align:center;padding:.3rem 0 1.4rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.2rem;}
+.zpage .calc-hero-lab{font-family:var(--fb);font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--teal);margin-bottom:.55rem;}
+.zpage .calc-hero-num{font-family:var(--fb);font-size:clamp(1.65rem,3.4vw,2.4rem);font-weight:700;color:#fff;line-height:1.12;letter-spacing:-.025em;}
+.zpage .calc-hero-sub{font-size:.79rem;color:rgba(255,255,255,.5);margin-top:.45rem;line-height:1.55;}
+.zpage .calc-rows{display:flex;flex-direction:column;}
+.zpage .calc-rows > div{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.zpage .calc-rows > div:last-child{border-bottom:none;}
+.zpage .calc-rows span{font-size:.82rem;color:rgba(255,255,255,.6);}
+.zpage .calc-rows b{font-family:var(--fb);font-size:.88rem;font-weight:700;color:#fff;white-space:nowrap;}
+.zpage .calc-rows .hl b{color:var(--teal);}
+.zpage .calc-rows b.good{color:#4ADE80;}
+.zpage .calc-rows b.warn{color:var(--gold);}
+.zpage .calc-note{display:none;margin-bottom:1rem;padding:.7rem .95rem;border-radius:10px;background:rgba(240,180,41,.12);border:1px solid rgba(240,180,41,.3);font-size:.8rem;color:var(--gold);}
+.zpage .calc-warn{margin-top:auto;padding-top:1.1rem;}
+.zpage .calc-warn{margin-top:1.1rem;padding:.8rem 1rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.76rem;line-height:1.65;color:rgba(255,255,255,.55);}
+.zpage .calc-warn b{color:#fff;}
+.zpage .calc-warn.ok{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.25);}
+.zpage .calc-warn.no{background:rgba(240,180,41,.1);border-color:rgba(240,180,41,.28);}
+.zpage .calc-foot{max-width:70ch;margin:1.5rem 0 0;font-size:.85rem;line-height:1.75;color:var(--gray);}
+.zpage .calc-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;}
+.zpage .chart-box{margin-top:1.3rem;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.4rem 1.5rem 1rem;box-shadow:var(--shadow-sm);}
+.zpage .chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.zpage .chart-title{font-family:var(--fb);font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray-soft);}
+.zpage .chart-legend{display:flex;gap:1.1rem;flex-wrap:wrap;}
+.zpage .chart-legend span{display:inline-flex;align-items:center;gap:.42rem;font-size:.78rem;color:var(--gray);}
+.zpage .sw{width:14px;height:3px;border-radius:2px;display:inline-block;}
+.zpage .sw.a{background:#BE810A;}
+.zpage .sw.b{background:#0FA894;}
+.zpage .chart-wrap{position:relative;}
+.zpage .chart{width:100%;height:auto;display:block;overflow:visible;}
+.zpage .c-ax{font-family:var(--fd);font-size:13px;fill:#8FA0B3;}
+.zpage .c-lab{font-family:var(--fb);font-size:15px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round;}
+.zpage .c-lab.a{fill:#BE810A;}
+.zpage .c-lab.b{fill:#0FA894;}
+.zpage .c-diff{font-family:var(--fb);font-size:19px;font-weight:700;fill:#132C46;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round;}
+.zpage .c-diffs{font-family:var(--fd);font-size:12px;fill:#8FA0B3;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round;}
+.zpage .c-tip{display:none;position:absolute;top:6px;background:rgba(12,29,48,.96);color:#fff;border-radius:10px;padding:.6rem .75rem;font-size:.76rem;line-height:1.5;pointer-events:none;box-shadow:0 10px 28px rgba(12,29,48,.3);min-width:190px;z-index:5;}
+.zpage .c-tip b{display:block;font-family:var(--fb);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:.35rem;}
+.zpage .c-tip span{display:flex;align-items:center;gap:.4rem;}
+.zpage .c-tip i{width:9px;height:9px;border-radius:2px;flex:none;}
+.zpage .c-tip em{margin-left:auto;font-style:normal;font-family:var(--fb);font-weight:700;}
+.zpage .quiz-band{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding:1.8rem 2rem;border-radius:var(--r-xl);background:linear-gradient(135deg,var(--purple),#6E4E9A);box-shadow:var(--shadow-md);}
+.zpage .quiz-lab{font-family:var(--fb);font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.35rem;}
+.zpage .quiz-title{font-family:var(--fb);font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;color:#fff;margin-bottom:.3rem;}
+.zpage .quiz-text{font-size:.86rem;color:rgba(255,255,255,.8);max-width:56ch;}
+.zpage .tipbox{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding:1.2rem 1.5rem;border-radius:var(--r-lg);background:var(--teal-soft);border:1px solid rgba(44,138,128,.2);margin-bottom:1.6rem;font-size:.86rem;line-height:1.7;color:var(--navy);}
+.zpage .tipbox b{display:block;font-family:var(--fb);font-weight:700;margin-bottom:.2rem;}
+.zpage .tipbox .btn{flex:none;}
+.zpage .modal .field{margin-bottom:.85rem;text-align:left;}
+.zpage .modal .field label{display:block;font-family:var(--fb);font-size:.73rem;font-weight:700;margin-bottom:.35rem;}
+.zpage .modal .field input{width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.7rem .9rem;font-size:.88rem;font-family:var(--fd);color:var(--navy);background:var(--bg);outline:none;}
+.zpage .modal .field input:focus{border-color:var(--teal-ink);background:#fff;}
+.zpage .modal .gdpr{display:flex;gap:.6rem;align-items:flex-start;font-size:.74rem;color:var(--gray);line-height:1.6;margin:.9rem 0 1.1rem;text-align:left;}
+.zpage .modal .gdpr input{margin-top:.25rem;width:16px;height:16px;accent-color:var(--teal-ink);flex-shrink:0;}
+.zpage .modal .lead-send{width:100%;padding:.9rem;border:none;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.92rem;font-weight:700;cursor:pointer;}
+.zpage .modal .lead-send:hover{background:var(--navy-soft);}
+.zpage .modal .lead-status{text-align:center;font-family:var(--fb);font-size:.8rem;font-weight:700;margin-top:.7rem;min-height:1.2rem;}
+.zpage .src-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.zpage .src-card{padding:1.6rem 1.5rem;display:flex;flex-direction:column;}
+.zpage .src-icon{font-size:1.7rem;margin-bottom:.75rem;}
+.zpage .src-title{font-family:var(--fb);font-size:.98rem;font-weight:700;margin-bottom:.45rem;}
+.zpage .src-text{font-size:.84rem;color:var(--gray);line-height:1.72;margin-bottom:1rem;}
+.zpage .src-card .btn{align-self:flex-start;margin-top:auto;}
+.zpage .src-meta{margin-top:auto;font-family:var(--fb);font-size:.75rem;font-weight:600;color:var(--gray-soft);}
+.zpage .src-meta b{color:var(--teal-ink);}
+@media(max-width:980px){
+.zpage .calc{grid-template-columns:1fr;}
+.zpage .src-grid{grid-template-columns:1fr;}
+}
+@media(max-width:760px){
+.zpage #intro,.zpage .calc-sec,.zpage #forras,.zpage #feladat{text-align:center;}
+.zpage .section-sub.wide{margin-left:auto;margin-right:auto;}
+.zpage .bb-row{justify-content:center;}
+.zpage .bb-lab{text-align:center;}
+.zpage .calc-inputs,.zpage .calc-out{padding:1.4rem 1.2rem;}
+.zpage .fld-top{flex-wrap:wrap;gap:.35rem 1rem;}
+.zpage .fld-top b{white-space:normal;}
+.zpage .fld-top,.zpage .chk{text-align:left;}
+.zpage .fld-num{justify-content:flex-start;}
+.zpage .calc-rows > div{text-align:left;}
+.zpage .calc-warn,.zpage .calc-note{text-align:left;}
+.zpage .calc-foot{text-align:center;margin-left:auto;margin-right:auto;}
+.zpage .calc-actions{justify-content:center;}
+.zpage .calc-actions .btn{width:100%;}
+.zpage .chart-box{padding:1.1rem 1rem .8rem;}
+.zpage .chart-head{justify-content:center;}
+.zpage .chart-legend{justify-content:center;}
+.zpage .c-ax{font-size:17px;}
+.zpage .c-lab{font-size:18px;}
+.zpage .c-diff{font-size:22px;}
+.zpage .c-diffs{font-size:15px;}
+.zpage .quiz-band{flex-direction:column;text-align:center;padding:1.6rem 1.3rem;}
+.zpage .quiz-text{margin:0 auto;}
+.zpage .tipbox{flex-direction:column;text-align:center;}
+.zpage .src-card{align-items:center;}
+.zpage .src-card .btn,.zpage .src-icon{align-self:center;}
+.zpage .src-text{text-align:center;}
+}
+.zpage .lg-fundamenta{width:45px;height:28px;background-image:url(assets/logos/fundamenta.png);}
+.zpage #ltp .calc-warn{margin-top:auto;}
+.zpage .ltp-prov{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.zpage .ltp-p{padding:1.7rem 1.6rem;display:flex;flex-direction:column;}
+.zpage .ltp-p-logo{height:54px;display:flex;align-items:center;margin-bottom:1.1rem;}
+.zpage .ltp-p-logo img{max-height:34px;max-width:150px;width:auto;height:auto;display:block;}
+.zpage .ltp-p-logo img[alt^="Fundamenta"]{max-height:54px;}
+.zpage .ltp-p-logo img[alt="Erste"]{max-height:40px;}
+.zpage .ltp-p-kind{font-family:var(--fb);font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:.5rem;}
+.zpage .ltp-p-title{font-family:var(--fb);font-size:.98rem;font-weight:700;margin-bottom:.55rem;}
+.zpage .ltp-p-text{font-size:.84rem;color:var(--gray);line-height:1.72;margin-bottom:1rem;}
+.zpage .ltp-p-list{list-style:none;display:flex;flex-direction:column;gap:.42rem;margin-top:auto;padding-top:.9rem;border-top:1px solid var(--border);}
+.zpage .ltp-p-list li{position:relative;padding-left:1.1rem;font-size:.81rem;line-height:1.6;color:var(--navy);}
+.zpage .ltp-p-list li::before{content:'✓';position:absolute;left:0;color:var(--teal-ink);font-size:.78rem;font-weight:700;}
+.zpage .ltp-use{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}
+.zpage .ltp-u{display:flex;gap:.8rem;align-items:flex-start;padding:1.1rem 1.2rem;border-radius:var(--r-lg);background:#fff;border:1.5px solid var(--border);transition:border-color .2s,box-shadow .2s,transform .2s;}
+.zpage .ltp-u:hover{border-color:rgba(44,138,128,.35);box-shadow:var(--shadow-sm);transform:translateY(-2px);}
+.zpage .ltp-u-ico{font-size:1.25rem;flex:none;line-height:1;}
+.zpage .ltp-u-t{font-family:var(--fb);font-size:.87rem;font-weight:700;margin-bottom:.2rem;}
+.zpage .ltp-u-s{font-size:.78rem;color:var(--gray);line-height:1.62;}
+.zpage .ltp-warn{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.zpage .ltp-w{padding:1.4rem 1.5rem;border-radius:var(--r-lg);background:rgba(240,180,41,.07);border:1.5px solid rgba(240,180,41,.28);}
+.zpage .ltp-w-t{font-family:var(--fb);font-size:.92rem;font-weight:700;margin-bottom:.45rem;color:var(--navy);}
+.zpage .ltp-w-x{font-size:.83rem;color:var(--gray);line-height:1.74;}
+.zpage .ltp-w-x b{color:var(--navy);}
+.zpage .ltp-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.6rem;}
+.zpage .ltp-f{padding:1rem 1.1rem;border-radius:var(--r-md);background:var(--teal-soft);border:1px solid rgba(44,138,128,.18);}
+.zpage .ltp-f b{display:block;font-family:var(--fb);font-size:1.05rem;font-weight:700;color:var(--teal-ink);margin-bottom:.15rem;letter-spacing:-.02em;}
+.zpage .ltp-f span{font-size:.75rem;color:var(--gray);line-height:1.5;display:block;}
+@media(max-width:980px){
+.zpage .ltp-prov{grid-template-columns:1fr;}
+.zpage .ltp-use{grid-template-columns:1fr 1fr;}
+.zpage .ltp-warn{grid-template-columns:1fr;}
+.zpage .ltp-facts{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+.zpage #intro,.zpage #mukodes,.zpage #kalkulator,.zpage #mire,.zpage #szolgaltatok,.zpage #figyelj,.zpage #forras{text-align:center;}
+.zpage .ltp-use{grid-template-columns:1fr;}
+.zpage .ltp-u{text-align:left;}
+.zpage .ltp-p{align-items:center;text-align:center;}
+.zpage .ltp-p-logo{justify-content:center;}
+.zpage .ltp-p-list{text-align:left;width:100%;}
+.zpage .ltp-w{text-align:left;}
+.zpage .ltp-f{text-align:center;}
+}
+</style>
 <style id="eaglz-theme">
 /* ══════════════════════════════════════════════════════════════════════
    EAGLZ THEME RÉTEG  ·  minden oldalon az utolsó stíluslap
@@ -1894,23 +2456,15 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 </div>
 <div class="mega-scrim" id="megaScrim"></div>
 <div class="mmob" id="mmob"><div id="mmobHost"></div></div>
-
+<div id="khead" hidden></div><div id="scrollBar" hidden></div><span id="year" hidden></span><nav id="nav" hidden></nav><button id="burger" hidden type="button"></button><div id="mobileMenu" hidden></div>
+<div class="zpage">
 <section class="sub-hero">
   <div class="container">
     <a href="index.html" class="sub-back">← Vissza a főoldalra</a>
-    <h1 class="sub-h1">Gyermek-megtakarítás: <em>18 évre előre</em></h1>
-    <p class="sub-lead">A legnagyobb ajándék egy gyereknek az, ha felnőttként nem nulláról kell kezdenie. Ezen az oldalon végigvesszük, mit ad hozzá az állam a babakötvényhez, mennyit hoz a havi pár ezer forint 18 év alatt, és mikor melyik megtakarítási forma a jobb.</p>
-    <div class="sub-chips">
-      <div class="sub-chip">🏛️ <b>10%</b> állami támogatás</div>
-      <div class="sub-chip">📈 Infláció <b>+3%</b> kamat</div>
-      <div class="sub-chip">📅 Adatok: <b data-upd></b></div>
-    </div>
-    <div class="quicknav">
-      <a href="#kalkulator" class="qn on">📊 Kalkulátor</a>
-      <a href="#babakotveny" class="qn">🏛️ Babakötvény</a>
-      <a href="#melyiket" class="qn">🔍 Melyiket válaszd</a>
-      <a href="index.html#advisors" class="qn">📅 Időpontot foglalok</a>
-    </div>
+    <h1 class="sub-h1">Megéri még a lakástakarék állami támogatás nélkül?</h1>
+    <p class="sub-lead">Az állami támogatás 2018 októberében megszűnt, a lakástakarék viszont nem. Ma a szolgáltató fizet egyszeri kamatbónuszt a befizetéseidre, ezért a termék attól lett érdekes, hogy a bónusz mekkora, a futamidő mennyi, és mennyit visznek el a díjak. Ezen az oldalon kiszámolhatod, hogy a te paramétereiddel mennyi jön ki évesített hozamban, és hogy éri-e meg egyáltalán.</p>
+    <div class="sub-chips"><div class="sub-chip">📅 Adatok: <b data-upd></b></div></div>
+    <div class="quicknav"><a href="#mukodes" class="qn on">Hogyan működik</a><a href="#kalkulator" class="qn">Kalkulátor</a><a href="#mire" class="qn">Mire használható</a><a href="#szolgaltatok" class="qn">A három szolgáltató</a><a href="index.html#advisors" class="qn">📅 Időpontot foglalok</a></div>
   </div>
 </section>
 <div class="trust" aria-label="Miért érdemes velünk">
@@ -1918,98 +2472,131 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 </div>
 
 
-<section class="section" style="background:#fff;padding-bottom:2.4rem;">
+<section id="mukodes" class="section calc-sec" style="background:#fff;">
   <div class="container">
-    <div class="toc">
-      <div class="toc-t">Ezen az oldalon</div>
-      <ol>
-        <li><a href="#miert">Miért az idő a legfontosabb</a></li>
-        <li><a href="#kalkulator">Kalkulátor: mennyi gyűlik össze</a></li>
-        <li><a href="#babakotveny">A babakötvény pontosan</a></li>
-        <li><a href="#melyiket">Babakötvény, TBSZ vagy más?</a></li>
-        <li><a href="#indulas">Hogyan kezdj hozzá</a></li>
-        <li><a href="#hibak">Hat gyakori hiba</a></li>
-        <li><a href="#gyik">Gyakori kérdések</a></li>
-      </ol>
+    <div class="reveal">
+      <div class="eyebrow purple">Hogyan működik</div>
+      <h2 class="section-title">Négy lépés, semmi bűvészkedés</h2>
+      <p class="section-sub">A lakástakarék egy előre lekötött futamidejű, lakáscélhoz kötött megtakarítás. Fix összeget fizetsz be havonta, a végén a befizetéseidet, a betéti kamatot és a szolgáltató egyszeri kamatbónuszát kapod meg.</p>
     </div>
-
-    <div class="art" id="miert">
-      <h2>A gyerekednél az idő többet ér, mint az összeg</h2>
-      <p class="lead">Egy 18 éves időtáv ritka luxus a pénzügyekben. Ennyi idő alatt a kamatos kamat annyit dolgozik, hogy a havi befizetés nagysága másodlagossá válik ahhoz képest, hogy <b>mikor kezdted el</b>.</p>
-      <p>Egy egyszerű összehasonlítás ugyanarra a célösszegre: aki születéskor kezdi, jóval kisebb havi összeggel ér célba, mint aki tíz évvel később. Nem azért, mert okosabban fektet be, hanem mert több éven át kamatozik a pénze.</p>
-
-      <div class="kpis">
-        <div class="kpi"><b>42 500 Ft</b><span>induló életkezdési támogatás, automatikusan</span></div>
-        <div class="kpi"><b>12 000 Ft</b><span>maximális éves állami támogatás</span></div>
-        <div class="kpi"><b>7,4%</b><span>a babakötvény kamata 2026-ban</span></div>
-        <div class="kpi"><b>0%</b><span>adó a babakötvény kamatán</span></div>
+    <div class="steps">
+      <div class="card step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Választasz futamidőt és összeget</div>
+        <div class="step-text">A piacon jellemzően 46-tól 178 hónapig választhatsz futamidőt, a havi befizetés pedig tipikusan 5 000 Ft-tól indul. Mindkettő a szerződés elején eldől, és utána fix.</div>
       </div>
-
-      <div class="box info">
-        <span class="box-t">Amiről sokan nem tudnak</span>
-        Minden 2005. december 31. után született gyermeknek jár egy <b>42 500 forintos induló életkezdési támogatás</b>, amit az állam automatikusan elkülönít. Amíg nem nyitsz Start-számlát, ez az összeg <b>kamat nélkül</b> áll a Kincstárnál. Start-számlára átvezetve viszont azonnal elkezd inflációkövető kamatot fizetni. Sok családnál ez a pénz évekig parlagon hever.
+      <div class="card step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">Fizetsz havonta, fix összeget</div>
+        <div class="step-text">Csoportos beszedéssel vagy utalással. A befizetés nem változtatható szabadon: ha kimaradsz, az a szerződés feltételei szerint szankcionálható, ezért csak olyan összeget vállalj, amit a futamidő végéig biztosan tudsz.</div>
       </div>
+      <div class="card step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">A szolgáltató kamatbónuszt ír jóvá</div>
+        <div class="step-text">Ez a termék lényege. Egyszeri jóváírás a befizetéseidre, a futamidő végén, a szolgáltató zsebéből, nem az államtól. Mértéke a szolgáltatótól és a futamidőtől függ, a piacon jellemzően 5 és 30 százalék között.</div>
+      </div>
+      <div class="card step reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Lakáscélra használod fel</div>
+        <div class="step-text">Vásárlás, építés, felújítás, korszerűsítés, vagy meglévő lakáshitel elő- és végtörlesztése. A 2023 után kötött szerződéseknél jellemzően már nyilatkozat elegendő, nem kell számlákkal igazolni.</div>
+      </div>
+    </div>
+    <div class="tipbox reveal" style="margin-top:1.8rem;margin-bottom:0;">
+      <div><b>A kamat adómentes</b>A lakástakarékon elért kamat mentes a kamatadó és a szocho alól, a befizetéseid pedig az OBA védelme alá tartoznak. Ez a két dolog az állami támogatás megszűnése után is megmaradt.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ KALKULÁTOR ═══ -->
-<section id="kalkulator" class="section graph-light">
+<section id="kalkulator" class="section calc-sec grid-bg" style="background-color:var(--bg);">
   <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-teal">Kalkulátor</div>
-      <h2 class="section-title">Mennyi gyűlik össze 18 éves korára?</h2>
-      <p class="section-sub">Állítsd be a gyermeked mostani életkorát és a havi összeget. A kalkulátor kiszámolja, mennyi lesz a 18. születésnapján, és hogy ebből mennyit tett hozzá az állam.</p>
+    <div class="reveal">
+      <div class="eyebrow teal">Kalkulátor</div>
+      <h2 class="section-title">Mennyi lesz a végén, és mennyi ez évesítve?</h2>
+      <p class="section-sub">Állítsd be a saját paramétereidet. A kalkulátor a díjakat is levonja, és kiszámolja az évesített hozamot, mert ez az egyetlen szám, amivel a lakástakarékot össze tudod hasonlítani bármilyen más megtakarítással.</p>
     </div>
 
-    <div class="sc" id="gy">
-      <div class="sc-in">
-        <div class="sc-seg" role="group" aria-label="Forma">
-          <button type="button" class="on" data-f="bk">Babakötvény</button>
-          <button type="button" data-f="egyeb">Egyéb megtakarítás</button>
-        </div>
-        <div class="scf">
-          <label class="scf-top" for="g_havi">Havi megtakarítás<b id="g_havi_v"></b></label>
-          <input type="range" id="g_havi" min="2000" max="100000" step="1000" value="10000">
-          <span class="scf-note">Babakötvénynél a maximális állami támogatáshoz havi 10 000 Ft (évi 120 000 Ft) befizetés kell.</span>
-        </div>
-        <div class="scf">
-          <label class="scf-top" for="g_kor">A gyermek mostani életkora<b id="g_kor_v"></b></label>
-          <input type="range" id="g_kor" min="0" max="17" step="1" value="0">
-          <span class="scf-note">A számítás a 18. születésnapig tart. Újszülöttnél az induló 42 500 Ft-tal is számolunk.</span>
-        </div>
-        <div class="scf">
-          <label class="scf-top" for="g_kamat">Éves kamat vagy hozam<b id="g_kamat_v"></b></label>
-          <input type="range" id="g_kamat" min="0" max="14" step="0.1" value="7.4">
-          <span class="scf-note" id="g_kamat_note"></span>
-        </div>
-      </div>
-      <div class="sc-out">
-        <div class="sc-hero">
-          <div class="sc-hero-l">A 18. születésnapján</div>
-          <div class="sc-hero-n" id="g_big"></div>
-          <div class="sc-hero-s" id="g_sub"></div>
-        </div>
-        <div class="sc-rows">
-          <div><span>Amit ti fizettek be</span><b id="g_bef"></b></div>
-          <div class="hl"><span>Amit az állam hozzátesz</span><b id="g_allam"></b></div>
-          <div><span>Ebből kamat vagy hozam</span><b id="g_kam"></b></div>
-          <div><span>Évi állami támogatás</span><b id="g_evi"></b></div>
-          <div><span>Hátralévő évek</span><b id="g_ev"></b></div>
-        </div>
-        <div class="sc-warn" id="g_warn"></div>
-      </div>
-    </div>
-    <div class="sc-actions">
-      <a href="index.html#advisors" class="apt-btn-inner" style="padding:.85rem 1.8rem;">📅 Nézzük meg a mi esetünkre</a>
+    <div class="ltp-facts reveal">
+      <div class="ltp-f"><b>3</b><span>szolgáltató van a piacon</span></div>
+      <div class="ltp-f"><b>46-178 hó</b><span>a választható futamidő</span></div>
+      <div class="ltp-f"><b>Egyszeri</b><span>a kamatbónusz, nem évi</span></div>
+      <div class="ltp-f"><b>Adómentes</b><span>a kamat, OBA-védett a betét</span></div>
     </div>
 
-    <div class="art" style="margin-top:2.4rem;">
-      <div class="box warn">
-        <span class="box-t">A kamatról őszintén</span>
-        A babakötvény kamata <b>nem fix</b>: az előző évi átlagos infláció plusz 3 százalékpont, és minden február 1-jén fordul. 2026-ban ez 7,4 százalék. Magas inflációs években ez sokkal több (2024-ben például 20 százalék felett volt), alacsony inflációnál kevesebb. A kalkulátor egyetlen, állandó kamattal számol, tehát a valóság ettől mindkét irányban eltérhet. Amit viszont biztosan tud: <b>az inflációnál mindig 3 százalékponttal többet fizet</b>.
+    <div class="bb-wrap reveal">
+      <div class="bb-lab">A három hazai lakástakarék-szolgáltató</div>
+      <div class="bb-row mini">
+      <span class="bb" style="--path:eoA;--bt:26s;--bd:-0s" role="img" aria-label="Fundamenta-Lakáskassza"><i class="lg lg-fundamenta"></i></span>
+      <span class="bb" style="--path:eoB;--bt:29s;--bd:-4s" role="img" aria-label="OTP Bank"><i class="lg lg-otp"></i></span>
+      <span class="bb" style="--path:eoC;--bt:32s;--bd:-8s" role="img" aria-label="Erste Bank"><i class="lg lg-erste"></i></span>
       </div>
     </div>
+
+    <div id="ltp" class="calc reveal">
+      <div class="calc-inputs">
+      <div class="fld">
+        <label class="fld-top" for="l_month">Havi befizetés<b id="l_month_v"></b></label>
+        <input type="range" id="l_month" min="5000" max="100000" step="1000" value="20000">
+        <div class="fld-num"><input type="number" id="l_month_n" min="5000" max="100000" step="1000" value="20000" inputmode="numeric"><span>Ft / hó</span></div><span class="fld-note">Ez a futamidő végéig fix, ezért inkább alulvállalj</span>
+      </div>
+      <div class="fld">
+        <label class="fld-top" for="l_time">Futamidő<b id="l_time_v"></b></label>
+        <input type="range" id="l_time" min="46" max="178" step="1" value="120">
+        <div class="fld-num"><input type="number" id="l_time_n" min="46" max="178" step="1" value="120" inputmode="numeric"><span>hónap</span></div><span class="fld-note">A gyakori választások: 60, 96 és 120 hónap</span>
+      </div>
+      <div class="fld">
+        <label class="fld-top" for="l_bonus">Kamatbónusz a befizetésekre<b id="l_bonus_v"></b></label>
+        <input type="range" id="l_bonus" min="0" max="40" step="1" value="30">
+        <div class="fld-num"><input type="number" id="l_bonus_n" min="0" max="40" step="1" value="30" inputmode="numeric"><span>%</span></div><span class="fld-note">Egyszeri jóváírás a futamidő végén, a piacon jellemzően 5 és 30 százalék között, szolgáltatótól és futamidőtől függően</span>
+      </div>
+      <div class="fld">
+        <label class="fld-top" for="l_rate">Betéti kamat<b id="l_rate_v"></b></label>
+        <input type="range" id="l_rate" min="0" max="5" step="0.05" value="0.1">
+        <div class="fld-num"><input type="number" id="l_rate_n" min="0" max="5" step="0.05" value="0.1" inputmode="numeric"><span>% / év</span></div><span class="fld-note">A lakástakaréknál ez jellemzően minimális, a hozam nagy része a bónuszból jön</span>
+      </div>
+      <div class="fld">
+        <label class="fld-top" for="l_fee">Havi számlavezetési díj<b id="l_fee_v"></b></label>
+        <input type="range" id="l_fee" min="0" max="600" step="10" value="300">
+        <div class="fld-num"><input type="number" id="l_fee_n" min="0" max="600" step="10" value="300" inputmode="numeric"><span>Ft / hó</span></div><span class="fld-note">A piacon jellemzően 240 és 500 Ft között</span>
+      </div>
+      <div class="fld">
+        <label class="fld-top" for="l_open">Számlanyitási díj<b id="l_open_v"></b></label>
+        <input type="range" id="l_open" min="0" max="2" step="0.1" value="1">
+        <div class="fld-num"><input type="number" id="l_open_n" min="0" max="2" step="0.1" value="1" inputmode="numeric"><span>%</span></div><span class="fld-note">Tipikusan a szerződéses összeg 1 százaléka, de akciókban gyakran elengedik. Állítsd 0-ra, ha nálad így van.</span>
+      </div>
+      </div>
+      <div class="calc-out">
+        <div class="calc-hero">
+          <div class="calc-hero-lab">Amit a futamidő végén kifizetnek</div>
+          <div class="calc-hero-num" id="l_big"></div>
+          <div class="calc-hero-sub" id="l_sub"></div>
+        </div>
+        <div class="calc-rows">
+          <div><span>Összes befizetésed</span><b id="l_dep"></b></div>
+          <div><span>Kamatbónusz</span><b id="l_bonusv"></b></div>
+          <div><span>Betéti kamat</span><b id="l_int"></b></div>
+          <div><span>Díjak összesen</span><b id="l_cost"></b></div>
+          <div class="hl"><span>Nyereség a befizetéseden felül</span><b id="l_profit"></b></div>
+          <div><span>Évesített hozam (ez a lényeg)</span><b id="l_yield"></b></div>
+        </div>
+        <div class="calc-warn" id="l_warn"></div>
+      </div>
+    </div>
+      <div class="chart-box reveal">
+        <div class="chart-head">
+          <div class="chart-title">Befizetés és felhalmozott érték a futamidő alatt</div>
+          <div class="chart-legend">
+            <span><i class="sw a"></i>Amit befizetsz</span>
+            <span><i class="sw b"></i>Amit kapsz</span>
+          </div>
+        </div>
+        <div class="chart-wrap"><svg id="l_chart" class="chart" role="img" aria-label="Befizetés és felhalmozott érték a futamidő alatt"></svg></div>
+      </div>
+    <p class="calc-foot reveal">Próbáld ki: húzd a futamidőt hosszabbra úgy, hogy a bónuszt nem emeled. Az évesített hozam <b>csökkenni</b> fog, mert ugyanaz az egyszeri jóváírás oszlik el több évre. A hosszabb futamidő csak akkor éri meg, ha magasabb kamatbónusz jár hozzá, és a gyakorlatban jellemzően jár is. Pont ezért nem a bónusz százalékát, hanem az évesített hozamot kell nézned.</p>
+    <p class="calc-foot reveal">Egy dolgot érdemes végiggondolni: a lakástakarék pénzed lekötött. Ha a futamidő közepén kell a pénz, hozzájutsz, de a bónuszt a szerződés feltételei szerint elveszítheted, és jellemzően két hónapos kifizetési határidővel kell számolnod. Ezért a lakástakarék jó eszköz egy 4-15 éves lakáscélra, és rossz eszköz vésztartalékra.</p>
+      <div class="calc-actions reveal">
+        <button type="button" class="btn btn-outline" data-mail="Lakástakarék">📧 Kérem e-mailben a számítást</button>
+        <a href="#cta" class="btn btn-primary">Nézzük meg az én esetemre →</a>
+      </div>
   </div>
 </section>
 <section class="midcta section" aria-label="Kapcsolat">
@@ -2026,170 +2613,224 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 </section>
 
 
-<!-- ═══ BABAKÖTVÉNY ═══ -->
-<section id="babakotveny" class="section" style="background:#fff;">
+<section id="mire" class="section calc-sec" style="background:#fff;">
   <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-purple">Részletek</div>
-      <h2 class="section-title">A babakötvény pontosan</h2>
-      <p class="section-sub">Hivatalos nevén Start-értékpapírszámla. Ez az egyetlen gyermek-megtakarítás, amihez az állam közvetlen támogatást ad.</p>
+    <div class="reveal">
+      <div class="eyebrow purple">Mire használható</div>
+      <h2 class="section-title">Lakáscélhoz kötött, de a lakáscél szélesebb, mint gondolnád</h2>
+      <p class="section-sub">Az állami támogatás megszűnése nem oldotta fel a lakáscélt: a megtakarítást ma is lakáscélra kell fordítani. A jó hír, hogy a felhasználható célok listája hosszú, és a legnépszerűbb közülük a meglévő lakáshitel törlesztése.</p>
     </div>
-    <div class="art">
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Paraméter</th><th>Érték</th></tr></thead>
-          <tbody>
-            <tr><td>Állami támogatás</td><td>a befizetések <b>10 százaléka</b>, évente legfeljebb <b>12 000 Ft</b></td></tr>
-            <tr><td>Emelt támogatás</td><td><b>20 százalék</b>, max. 24 000 Ft/év, rendszeres gyermekvédelmi kedvezményben részesülő, illetve nevelésbe vett gyermeknél</td></tr>
-            <tr><td>Ehhez éves befizetés</td><td>120 000 Ft, vagyis havi 10 000 Ft</td></tr>
-            <tr><td>A támogatás jóváírása</td><td>évente egyszer, <b>április 15-én</b>, automatikusan</td></tr>
-            <tr class="hl"><td>Kamat</td><td>előző évi átlagos infláció <b>+ 3 százalékpont</b>, február 1-jén fordul. 2026-ban: <b>7,4%</b></td></tr>
-            <tr><td>Adózás</td><td>a kamat <b>teljesen adómentes</b>, nincs kamatadó és nincs szocho</td></tr>
-            <tr><td>Éves befizetési plafon</td><td><b>1 200 000 Ft</b> gyermekenként, minden befizetőre együttesen</td></tr>
-            <tr><td>Ki fér hozzá</td><td><b>kizárólag a gyermek</b>, a 18. életéve betöltése után, és a számlanyitástól legalább 3 évnek el kell telnie</td></tr>
-            <tr><td>Halasztás</td><td>a lekötés 19 éves korig meghosszabbítható, a kamatozás közben folytatódik</td></tr>
-            <tr><td>Felhasználás</td><td><b>szabadon</b>, nincs célhoz kötés: tanulmány, önerő, autó, bármi</td></tr>
-          </tbody>
-        </table>
+    <div class="ltp-use">
+      <div class="ltp-u reveal"><div class="ltp-u-ico">🏠</div><div><div class="ltp-u-t">Lakás- vagy házvásárlás</div><div class="ltp-u-s">Új és használt ingatlanra egyaránt, önerőként vagy a vételár részeként.</div></div></div>
+      <div class="ltp-u reveal"><div class="ltp-u-ico">🧱</div><div><div class="ltp-u-t">Építés, bővítés</div><div class="ltp-u-s">Új építés, tetőtér-beépítés, hozzáépítés, garázs.</div></div></div>
+      <div class="ltp-u reveal"><div class="ltp-u-ico">🔧</div><div><div class="ltp-u-t">Felújítás, korszerűsítés</div><div class="ltp-u-s">Nyílászáró, fűtés, szigetelés, fürdőszoba, villany- és vízhálózat.</div></div></div>
+      <div class="ltp-u reveal"><div class="ltp-u-ico">☀️</div><div><div class="ltp-u-t">Napelem, energetika</div><div class="ltp-u-s">Napelemes rendszer, hőszivattyú és más energetikai korszerűsítés.</div></div></div>
+      <div class="ltp-u reveal"><div class="ltp-u-ico">💳</div><div><div class="ltp-u-t">Lakáshitel törlesztése</div><div class="ltp-u-s">Meglévő lakáshitel elő- vagy végtörlesztése. A gyakorlatban ez a leggyakoribb felhasználás.</div></div></div>
+      <div class="ltp-u reveal"><div class="ltp-u-ico">👨‍👩‍👧</div><div><div class="ltp-u-t">Közeli hozzátartozó otthona</div><div class="ltp-u-s">Gyermek, szülő, házastárs ingatlanára is fordítható, a szerződés feltételei szerint.</div></div></div>
+    </div>
+    <div class="tipbox reveal" style="margin-top:1.8rem;margin-bottom:0;">
+      <div><b>Ha lakáshitelt törlesztesz vele, kétszer nyersz</b>A bónusszal felhízlalt összeggel előtörlesztve nemcsak a megtakarításon nyersz, hanem a hitel kamatán is megtakarítasz. Ezt a két hatást együtt érdemes nézni, és ehhez a <a href="kalkulator.html#kivaltas">hitelkalkulátorok</a> is segítenek.</div>
+      <a class="btn btn-outline" href="kalkulator.html">Hitelkalkulátorok →</a>
+    </div>
+  </div>
+</section>
+
+<section id="szolgaltatok" class="section calc-sec grid-bg" style="background-color:var(--bg);">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow teal">A piac</div>
+      <h2 class="section-title">Három szolgáltató van, és nem ugyanazt csinálják</h2>
+      <p class="section-sub">Nem írok ide kamatot, bónuszt vagy díjat, mert ezek akciónként és hetente változnak, és egy elavult szám többet árt, mint amennyit segít. Amit érdemes tudni, az a három szolgáltató szerkezeti különbsége: ez az, ami nem változik hetente.</p>
+    </div>
+    <div class="ltp-prov">
+      <div class="card ltp-p reveal">
+        <div class="ltp-p-logo"><img src="assets/logos/fundamenta.png" alt="Fundamenta-Lakáskassza" loading="eager"></div>
+        <div class="ltp-p-kind">Szakosított lakás-takarékpénztár</div>
+        <div class="ltp-p-title">Csak ezzel foglalkozik</div>
+        <div class="ltp-p-text">A piac legrégebbi és legnagyobb szereplője, kizárólag lakás-előtakarékossággal és lakáshitellel foglalkozik. A legszélesebb termékskála és a legtöbb futamidő-variáció jellemzően itt van, és a szerződéses összeg felső korlátja is itt a legnagyobb.</div>
+        <ul class="ltp-p-list">
+          <li>Legtöbb futamidő- és összegvariáció</li>
+          <li>Saját, kapcsolt lakáshitel a megtakarítás mellé</li>
+          <li>Nem kell hozzá ott bankszámlát nyitnod</li>
+        </ul>
       </div>
+      <div class="card ltp-p reveal">
+        <div class="ltp-p-logo"><img src="assets/logos/otp-bank.png" alt="OTP" loading="eager"></div>
+        <div class="ltp-p-kind">Nagybanki háttér</div>
+        <div class="ltp-p-title">Ha már ott bankolsz</div>
+        <div class="ltp-p-text">A legnagyobb hazai bankcsoport lakástakarék-terméke. Az előnye a kényelem: ha a számlád, a hitelkártyád és később a lakáshitelezés is itt van, egy helyen, egy netbankban látod az egészet, és a beszedés is magától megy.</div>
+        <ul class="ltp-p-list">
+          <li>Egy netbankban a többi számláddal</li>
+          <li>Sűrű fiókhálózat, ha a személyes ügyintézés fontos</li>
+          <li>Kényelmes, ha ott lesz majd a lakáshitel is</li>
+        </ul>
+      </div>
+      <div class="card ltp-p reveal">
+        <div class="ltp-p-logo"><img src="assets/logos/erste.png" alt="Erste" loading="eager"></div>
+        <div class="ltp-p-kind">Nagybanki háttér</div>
+        <div class="ltp-p-title">A harmadik opció</div>
+        <div class="ltp-p-text">Szűkebb, de tisztán átlátható termékpalettával versenyez, és rendszeresen fut akciókkal a számlanyitási díjra. Ha ott van a számlád, vagy épp jó akció van, érdemes bekerülnie az összehasonlításba.</div>
+        <ul class="ltp-p-list">
+          <li>Áttekinthető, kevés terméktípus</li>
+          <li>Gyakori számlanyitási díj-akciók</li>
+          <li>Digitális ügyintézés a meglévő ügyfeleknek</li>
+        </ul>
+      </div>
+    </div>
+    <p class="calc-foot reveal">A három szolgáltató aktuális kamatbónuszát, díjait és akcióit én tartom nyomon, és a te futamidődre és összegedre kiszámoljuk mindhármat. Ez a munka nem kerül neked semmibe, és nem kötelez semmire.</p>
+    <div class="calc-actions reveal">
+      <a href="#cta" class="btn btn-primary">Kérem a három ajánlat összehasonlítását →</a>
+      <a class="btn btn-outline" href="https://hitelvalaszto.mnb.hu/termekkereso" target="_blank" rel="noopener">MNB Termékkereső ↗</a>
+    </div>
+  </div>
+</section>
 
-      <h3>Miért ez a kiindulópont?</h3>
-      <p>Három dolog miatt, és mindhárom ritka egy megtakarításnál. Először is <b>az infláció fölött garantáltan 3 százalékponttal</b> kamatozik, tehát a pénz reálértéke nem tud csökkenni. Másodszor a kamat <b>adómentes</b>. Harmadszor az állam <b>hozzátesz</b> a befizetésedhez, ami sehol máshol nincs így.</p>
-      <p>Amit cserébe vállalsz: a pénz 18 éves koráig le van kötve, és nem te fogsz róla dönteni, hanem a gyereked. Ez sokaknak nem előny, hanem hátrány, és ezt érdemes előre végiggondolni.</p>
+<section id="figyelj" class="section calc-sec" style="background:#fff;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow gold">Amire figyelj</div>
+      <h2 class="section-title">Négy dolog, amit a hirdetések nem emelnek ki</h2>
+      <p class="section-sub">A lakástakarék nem rossz termék, csak félreértik. Ez a négy pont dönti el, hogy neked megéri-e.</p>
+    </div>
+    <div class="ltp-warn">
+      <div class="ltp-w reveal">
+        <div class="ltp-w-t">A bónusz százaléka nem éves hozam</div>
+        <div class="ltp-w-x">Ha 30 százalék kamatbónuszt látsz, az <b>egyszeri jóváírás a befizetéseidre</b>, a futamidő végén, nem évi 30 százalék. Tíz év alatt, folyamatosan érkező befizetésekre számolva ez egészen más évesített hozamot ad. A kalkulátor pont ezt mutatja meg.</div>
+      </div>
+      <div class="ltp-w reveal">
+        <div class="ltp-w-t">A díjak arányosan sokat visznek</div>
+        <div class="ltp-w-x">A számlanyitási díj a szerződéses összeg egy százaléka körül van, a havi számlavezetési díj pedig kis befizetésnél a hozam érzékelhető részét elviszi. <b>Kis összegnél és rövid futamidőnél</b> a díjak aránya a legrosszabb, ezért ott romlik el a képlet.</div>
+      </div>
+      <div class="ltp-w reveal">
+        <div class="ltp-w-t">A pénz le van kötve, és lakáscélhoz kötött</div>
+        <div class="ltp-w-x">Ez nem vésztartalék. Idő előtti felmondásnál a pénzedet megkapod, de <b>a bónuszt jellemzően elveszítheted</b>, és a kifizetés is időbe telik. A felhasználás pedig lakáscélhoz kötött, tehát tudnod kell előre, mire fog kelleni.</div>
+      </div>
+      <div class="ltp-w reveal">
+        <div class="ltp-w-t">Csak akkor jó, ha végig tudod fizetni</div>
+        <div class="ltp-w-x">A havi befizetés a futamidő elején eldől, és utána fix. Ha kimaradsz, az a szerződés szerint szankcionálható. <b>Inkább vállalj kevesebbet</b> és fizesd végig, mint sokat és szakadj meg félúton: a végig fizetett kisebb szerződés hoz több pénzt.</div>
+      </div>
+    </div>
+    <div class="tipbox reveal" style="margin-top:1.8rem;margin-bottom:0;">
+      <div><b>Az őszinte összegzés</b>A lakástakarék ma nem csodatermék, hanem egy tisztességes, adómentes, alacsony kockázatú eszköz egy konkrét, 4-15 éves lakáscélra, elsősorban akkor, ha végig ki tudod fizetni, és olyan futamidőt választasz, amihez magas kamatbónusz jár. Ha nem ez a helyzeted, más megtakarítási forma jobban járhat, és ezt is meg fogom mondani.</div>
+    </div>
+  </div>
+</section>
 
-      <div class="box quote">
-        <b>Egy tipikus félreértés:</b> a 10 százalékos állami támogatás nem évi 10 százalék hozam. Egyszeri jóváírás az adott évi befizetésre, és <b>évi 12 000 forintnál megáll</b>. Ha havi 30 000 forintot fizetsz be, a támogatás akkor is 12 000 forint marad. A 12 000 forint feletti rész is gyűlik és kamatozik, csak támogatást már nem hoz rá.
+<section id="feladat" class="section grid-bg" style="background-color:var(--navy-deep);color:#fff;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow teal">A munkamegosztás</div>
+      <h2 class="section-title" style="color:#fff;">Mi lesz a te feladatod?</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.62);">A lakástakarék papírmunkája nem nagy, de a három szolgáltató összehasonlítása időbe telik. Ezt a részt én viszem.</p>
+    </div>
+    <div class="bk-yn">
+      <div class="bk-yn-col ok reveal">
+        <div class="bk-yn-h">✓ Amit tőled kérek</div>
+        <ul>
+          <li>Mondd meg, mire és mikor fog kelleni a pénz</li>
+          <li>Mennyit tudsz havonta biztosan félretenni</li>
+          <li>Van-e most futó lakáshitelünk, amit később törlesztenél</li>
+          <li>Egy 30 perces beszélgetés, online vagy személyesen</li>
+          <li>A döntés, hogy melyik szolgáltatót választod</li>
+        </ul>
+      </div>
+      <div class="bk-yn-col no reveal">
+        <div class="bk-yn-h">✕ Amit nem neked kell csinálnod</div>
+        <ul>
+          <li>A három szolgáltató kondícióinak követése</li>
+          <li>Az évesített hozam kiszámolása szolgáltatónként</li>
+          <li>A futamidő és a havi összeg optimalizálása</li>
+          <li>A szerződés kitöltése és beadása</li>
+          <li>A felhasználási nyilatkozat és az elszámolás a végén</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ MELYIKET ═══ -->
-<section id="melyiket" class="section dark-sec">
+<section id="stats">
   <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-teal">Összehasonlítás</div>
-      <h2 class="section-title">Babakötvény, TBSZ vagy valami más?</h2>
-      <p class="section-sub">A babakötvény jó alap, de nem mindenre jó. Ez a négy szempont dönt.</p>
-    </div>
-    <div class="art wide">
-      <div class="tiles c2">
-        <div class="tile" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);">
-          <div class="tile-i">🎯</div>
-          <div class="tile-t" style="color:#fff;">Mikor kell a pénz?</div>
-          <div class="tile-d" style="color:rgba(255,255,255,.66);">Ha <b style="color:#fff">18 éves korára</b>, a babakötvény illeszkedik. Ha korábban, például 14 évesen egy külföldi nyelvtanuláshoz, akkor nem: onnan addig nem lehet kivenni.</div>
-        </div>
-        <div class="tile" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);">
-          <div class="tile-i">👤</div>
-          <div class="tile-t" style="color:#fff;">Ki döntsön a pénzről?</div>
-          <div class="tile-d" style="color:rgba(255,255,255,.66);">A babakötvényen a gyerek dönt 18 évesen, szabadon. Ha ezt <b style="color:#fff">te akarod kontrollálni</b>, akkor a saját nevedre szóló megtakarítás a jobb, amit majd te adsz oda, amikor jónak látod.</div>
-        </div>
-        <div class="tile" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);">
-          <div class="tile-i">📊</div>
-          <div class="tile-t" style="color:#fff;">Mekkora hozamot vársz?</div>
-          <div class="tile-d" style="color:rgba(255,255,255,.66);">A babakötvény infláció fölött 3 százalékpontot ad, kockázat nélkül. Hosszú távon egy <b style="color:#fff">részvényalapú portfólió</b> ennél többet hozhat, de ingadozik, és veszíthet is.</div>
-        </div>
-        <div class="tile" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);">
-          <div class="tile-i">💰</div>
-          <div class="tile-t" style="color:#fff;">Mennyit tudsz félretenni?</div>
-          <div class="tile-d" style="color:rgba(255,255,255,.66);">Havi 10 000 forintig a babakötvény hozza a maximális állami támogatást. <b style="color:#fff">Efölött</b> már érdemes a többletet más formában elhelyezni, mert ott támogatás úgysem jár rá.</div>
-        </div>
-      </div>
-
-      <div class="box info" style="background:rgba(140,197,189,.1);border-color:rgba(140,197,189,.3);color:rgba(255,255,255,.8);">
-        <span class="box-t" style="color:var(--teal-lite);">A legtöbb családnál a jó válasz: mindkettő</span>
-        Havi 10 000 forint a babakötvénybe, mert ott van az állami támogatás és az inflációvédelem. Az ezen felüli összeg pedig olyan formába, ahol nagyobb hozam is elérhető, és ahol rugalmasabban hozzá lehet férni, ha közben közbejön valami. Ez a felosztás a legtöbb esetben jobb, mint bármelyik forma önmagában.
-      </div>
-
-      <h3 style="margin-top:2rem;">A TBSZ mint kiegészítés</h3>
-      <p>A tartós befektetési számla akkor jön szóba, ha a babakötvény plafonja fölött is tudtok félretenni. A logikája egyszerű: a nyitás évében fizetsz be, utána a pénz dolgozik, és az <b>ötödik teljes év után a hozam adómentes</b>.</p>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Mikor szünteted meg</th><th>Adóteher a hozamon</th></tr></thead>
-          <tbody>
-            <tr><td>3 éven belül</td><td>15% szja + 13% szocho = <b>28%</b></td></tr>
-            <tr><td>3 és 5 év között</td><td>10% szja + 8% szocho = <b>18%</b></td></tr>
-            <tr class="hl"><td>5 teljes év után</td><td><b>0%</b>, teljesen adómentes</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="tbl-note">A táblázat a 2025. január 1. után nyitott számlákra vonatkozik. A korábban nyitottaknál nincs szocho, csak a 15, illetve 10 százalékos szja. Fontos: <b>a TBSZ-t a legtöbb szolgáltatónál nem lehet közvetlenül kiskorú nevére nyitni</b>, ezért a gyermekcélú TBSZ jellemzően a szülő nevén fut, és 18 éves korban kerül át a gyerekhez. Ez szolgáltatónként eltér, ezért mindig egyedileg kell ellenőrizni.</p>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">szolgáltató a piacon</div></div>
+      <div class="stat"><div class="stat-num">46-178</div><div class="stat-label">hónap futamidő</div></div>
+      <div class="stat"><div class="stat-num">0<span class="sfx">%</span></div><div class="stat-label">kamatadó és szocho</div></div>
+      <div class="stat"><div class="stat-num">0 Ft</div><div class="stat-label">amibe a tanácsadás kerül</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ INDULÁS ═══ -->
-<section id="indulas" class="section" style="background:#fff;">
+<section id="forras" class="section" style="background:var(--bg);">
   <div class="container">
-    <div class="art">
-      <h2>Hogyan kezdj hozzá?</h2>
-      <div class="nsteps">
-        <div class="nstep"><div class="nstep-n">1</div><div><div class="nstep-t">Nézd meg, van-e már elkülönített összeg</div><div class="nstep-d">Ha a gyermeked 2005. december 31. után született, jár neki a 42 500 forintos induló támogatás. Ez a Kincstárnál van, és amíg nem nyitsz számlát, nem kamatozik.</div></div></div>
-        <div class="nstep"><div class="nstep-n">2</div><div><div class="nstep-t">Döntsd el a célt és az időtávot</div><div class="nstep-d">Egyetemre? Első lakás önerejére? Autóra? Nem mindegy, mert a 18 éves kötöttség az egyiknél előny, a másiknál akadály.</div></div></div>
-        <div class="nstep"><div class="nstep-n">3</div><div><div class="nstep-t">Nyiss Start-számlát és vezettesd át az induló összeget</div><div class="nstep-d">A Kincstárnál vagy szerződött szolgáltatónál intézhető. Az átvezetéssel a 42 500 forint is elkezd inflációkövető kamatot fizetni.</div></div></div>
-        <div class="nstep"><div class="nstep-n">4</div><div><div class="nstep-t">Állíts be állandó átutalást</div><div class="nstep-d">Havi rendszerességgel, hogy az éves 120 000 forint összejöjjön. Az állami támogatás a ténylegesen befizetett összeg alapján jár, tehát a decemberi pótlás is számít.</div></div></div>
-        <div class="nstep"><div class="nstep-n">5</div><div><div class="nstep-t">A plafon fölötti részt tedd máshová</div><div class="nstep-d">Ha havi 10 000 forintnál többet tudtok félretenni, a többletre már nem jár támogatás. Ott érdemes megnézni, mi hozhat többet.</div></div></div>
+    <div class="head-center reveal">
+      <div class="eyebrow purple">Átláthatóság</div>
+      <h2 class="section-title">Honnan jönnek a kalkulátor számai?</h2>
+      <p class="section-sub">Nem hirdetek szolgáltatói ajánlatot ezen az oldalon, és nem is akarok. A csúszkák alapértéke tájékoztató piaci nagyságrend, amit bármikor átállíthatsz a saját számaidra.</p>
+    </div>
+    <div class="src-grid">
+      <div class="card src-card reveal">
+        <div class="src-icon">📊</div>
+        <div class="src-title">Tájékoztató nagyságrendek</div>
+        <div class="src-text">A kamatbónusz, a betéti kamat és a díjak alapértéke jellemző piaci sáv, nem egy konkrét szolgáltató ajánlata. Mindegyik szabadon állítható, és a számítás azonnal újrafut.</div>
+        <div class="src-meta">Frissítve: <b data-upd></b></div>
       </div>
-      <div class="box info">
-        <span class="box-t">Nagyszülők, keresztszülők</span>
-        A babakötvényre <b>bárki befizethet</b>, nem csak a szülő. Az éves 1,2 millió forintos plafon minden befizetőre együttesen vonatkozik. Sok családnál ez jobb ajándék, mint a sokadik játék: születésnapra és karácsonyra is működik, és 18 év alatt komoly összeggé áll össze.
+      <div class="card src-card reveal">
+        <div class="src-icon">🏛️</div>
+        <div class="src-title">Hivatalos összehasonlítás</div>
+        <div class="src-text">A konkrét, mindig naprakész kondíciókat az MNB saját, ingyenes keresője és a szolgáltatók hatályos hirdetményei mutatják. Érdemes ezekkel is ellenőrizned, amit tőlem kapsz.</div>
+        <a class="btn btn-outline" href="https://hitelvalaszto.mnb.hu/termekkereso" target="_blank" rel="noopener">MNB Termékkereső ↗</a>
+      </div>
+      <div class="card src-card reveal">
+        <div class="src-icon">⚖️</div>
+        <div class="src-title">Jogszabályi keretek</div>
+        <div class="src-text">Az állami támogatás 2018. október 16-tól megszűnt az újonnan kötött szerződéseknél. A lakáscélhoz kötött felhasználás, a kamat adómentessége és az OBA-védelem a lakás-előtakarékossági törvényből következik.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ HIBÁK ═══ -->
-<section id="hibak" class="section graph-light">
+<section id="faq" class="section" style="background:#fff;">
   <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-gold">Amire figyelj</div>
-      <h2 class="section-title">Hat hiba, amit érdemes elkerülni</h2>
+    <div class="head-center reveal">
+      <div class="eyebrow teal">GYIK</div>
+      <h2 class="section-title">Amit a leggyakrabban kérdeznek</h2>
     </div>
-    <div class="art wide">
-      <div class="tiles c2">
-        <div class="tile"><div class="tile-i">😶</div><div class="tile-t">Az induló összeg ottfelejtése</div><div class="tile-d">A 42 500 forint <b>kamat nélkül áll</b>, amíg nem nyitsz Start-számlát. 18 év alatt ez önmagában komoly veszteség.</div></div>
-        <div class="tile"><div class="tile-i">📉</div><div class="tile-t">A támogatási keret kihagyása</div><div class="tile-d">Aki havi 5 000 forintot fizet be, évi 6 000 forint támogatást kap 12 000 helyett. <b>18 év alatt ez több mint 100 000 forint</b> elmaradt támogatás.</div></div>
-        <div class="tile"><div class="tile-i">🏦</div><div class="tile-t">Minden egy helyre</div><div class="tile-d">A támogatási plafon fölött a babakötvény már nem különleges. A többletet <b>érdemes máshová</b> tenni, ahol nagyobb hozam is elérhető.</div></div>
-        <div class="tile"><div class="tile-i">🎁</div><div class="tile-t">A folyószámlán gyűjtés</div><div class="tile-d">Sok családnál a gyereknek szánt pénz a szülő folyószámláján ül. Ott <b>az infláció évről évre eszi</b>, és könnyen el is költik.</div></div>
-        <div class="tile"><div class="tile-i">⏰</div><div class="tile-t">A várakozás a „jobb pillanatra"</div><div class="tile-d">Nincs jobb pillanat. Egy 18 éves időtávon a <b>kezdés dátuma</b> többet számít, mint a havi összeg nagysága.</div></div>
-        <div class="tile"><div class="tile-i">🤐</div><div class="tile-t">A gyerek kihagyása</div><div class="tile-d">18 évesen ő fog dönteni a pénzről. Ha addigra <b>nem beszéltetek róla</b>, nagyobb az esély, hogy egy hét alatt elmegy.</div></div>
-      </div>
+    <div class="faq-list">
+      <details class="faq reveal"><summary>Van még állami támogatás a lakástakarékon?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Nincs. Az újonnan kötött szerződéseknél 2018. október 16-tól megszűnt a 30 százalékos állami támogatás. Ami ma van, az a szolgáltató saját kamatbónusza: hasonlóan működik, de a szolgáltató fizeti, és a mértéke szolgáltatónként és futamidőnként más.</p><p>Ha 2018 ősze előtt kötött szerződésed van, az a régi feltételekkel fut tovább a futamidő végéig. Ezt ne mondd fel anélkül, hogy valaki átszámolta volna.</p></div></details>
+      <details class="faq reveal"><summary>A 30 százalékos bónusz azt jelenti, hogy évi 30 százalékot hoz?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Nem, és ez a leggyakoribb félreértés. A bónusz egyszeri jóváírás a befizetéseidre, a futamidő végén. Mivel a pénzed nem egyszerre, hanem havonta, folyamatosan érkezik be, és a díjakat is le kell vonni, az évesített hozam ennél jóval kisebb.</p><p>A kalkulátor pont ezért számol évesített hozamot: ez az egyetlen szám, amivel a lakástakarékot össze tudod hasonlítani egy állampapírral, egy betéttel vagy bármi mással.</p></div></details>
+      <details class="faq reveal"><summary>Mindenképpen lakásra kell elköltenem?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Igen, a felhasználás lakáscélhoz kötött. A lista viszont hosszú: vásárlás, építés, bővítés, felújítás, korszerűsítés, napelem, és meglévő lakáshitel elő- vagy végtörlesztése is beletartozik, sőt közeli hozzátartozó ingatlanára is fordítható.</p><p>A 2023 után kötött szerződéseknél jellemzően már nyilatkozat elegendő, nem kell számlákkal igazolni a felhasználást. A pontos feltételt mindig a te szerződésed szabályozza.</p></div></details>
+      <details class="faq reveal"><summary>Mi van, ha félúton kell a pénz?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>A befizetett pénzedet nem veszíted el, a szerződést fel tudod mondani. A kamatbónuszt viszont a szerződés feltételei szerint elveszítheted, és a kifizetés jellemzően nem azonnali, hanem néhány hónap.</p><p>Ezért a lakástakarék soha nem a vésztartalékod helye. A vésztartalék legyen 3-6 havi kiadásnyi, azonnal hozzáférhető pénz, és a lakástakarék csak ezen felül induljon.</p></div></details>
+      <details class="faq reveal"><summary>Hány szerződést köthetek egyszerre?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Több szerződés egyszerre is futhat, és a családban több személy nevére is lehet szerződést kötni. A gyakorlatban ez akkor jön jól, ha a havi félretenni tudott összeg nagyobb, mint amit egy szerződésen belül érdemes beállítani, vagy ha különböző időpontokra akarsz lejáratokat.</p><p>Az, hogy neked egy vagy több szerződés a jó, a célodtól és a havi keretedtől függ. Ezt együtt érdemes átgondolni.</p></div></details>
+      <details class="faq reveal"><summary>Biztonságban van a pénzem?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>A lakástakarék betét, ezért az Országos Betétbiztosítási Alap (OBA) védelme alá tartozik, a mindenkori jogszabályi összeghatárig. A megtakarításon elért kamat mentes a kamatadó és a szocho alól.</p><p>Árfolyamkockázatod nincs: a befizetéseid és a bónusz forintban, előre kiszámolható módon gyűlnek. Amit vállalsz, az nem piaci kockázat, hanem a lekötöttség.</p></div></details>
+      <details class="faq reveal"><summary>Kaphatok hozzá lakáshitelt is?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Igen, a lakástakarékhoz jellemzően kapcsolt lakáshitel is köthető, és a megtakarítás önerőként is beszámítható. Azt viszont mindig érdemes megnézni, hogy a kapcsolt hitel kondíciója jobb-e, mint amit a piacon egyedi bírálattal el tudsz érni.</p><p>Ezt a két utat én párhuzamosan is ki tudom számolni. A lakáshitel oldalát a <a href="kalkulator.html">hitelkalkulátorokon</a> tudod addig magad is megnézni.</p></div></details>
+      <details class="faq reveal"><summary>Miért nem írsz ki konkrét bónuszt és díjat erre az oldalra?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Mert ezek akciónként változnak, és egy két hónappal korábbi szám félrevezetne. Inkább csúszkát adok, amiben a saját számaidat állítod be, és mellé a hivatalos forrást, ahol a naprakész kondíciót ellenőrizni tudod.</p><p>A három szolgáltató aktuális ajánlatát én tartom nyomon, és a te futamidődre és összegedre kiszámoljuk mindhármat. Ez a munka díjmentes.</p></div></details>
     </div>
+    <p class="bk-faq-note reveal">Nem találtad meg a kérdésed? Írj rám e-mailben vagy foglalj egy díjmentes beszélgetést, és végigmegyünk rajta.</p>
   </div>
 </section>
 
-<section id="gyik" class="section" style="background:#fff;">
-  <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-purple">GYIK</div>
-      <h2 class="section-title">Gyakori kérdések</h2>
-    </div>
-    <div class="faq-list" style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:.7rem;">
-      <details class="faq-item"><summary class="faq-q">Mikor érdemes elkezdeni?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Amint megvan az adóazonosító jel, tehát gyakorlatilag a születés után pár héttel. Nem azért, mert sürget valami, hanem mert a 18 éves időtávból minden elvesztett év sokat számít.</p><p>Ha a gyereked már nagyobb, attól még van értelme: nyolc- vagy tízéves időtávon is érdemben gyűlik a pénz, csak nagyobb havi összeggel jön ki ugyanaz a végeredmény.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Tényleg csak a gyerek férhet hozzá?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Igen, és ez a babakötvény legfontosabb tulajdonsága. A pénzhez <b>kizárólag a gyermek juthat hozzá, a 18. életéve betöltése után</b>, és a számlanyitástól is el kell telnie legalább három évnek.</p><p>Szülőként te nem tudod feltörni, még vészhelyzetben sem. Ezért fontos, hogy csak olyan összeget tegyél bele, amire biztosan nem lesz szükségetek közben.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Mi történik, ha a gyerek 18 évesen rosszul költi el?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Jogilag semmi: a pénz az övé, szabadon felhasználható. Ez a konstrukció valódi kockázata, és nem lehet szerződéssel kivédeni.</p><p>Amit tehetsz: időben beszélni róla. A 16-17 éves korban elkezdett beszélgetés arról, hogy mire lehetne használni, többet ér, mint bármilyen jogi korlát. És ha ez a kockázat számodra vállalhatatlan, akkor a saját nevedre szóló megtakarítás a jobb megoldás, még ha állami támogatás nem is jár rá.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Befizethetnek a nagyszülők is?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Igen, bárki befizethet a gyermek Start-számlájára. Az állami támogatás a <b>befizetések összegére</b> jár, nem személyenként, és az éves 1,2 millió forintos plafon is minden befizetőre együttesen vonatkozik.</p><p>A gyakorlatban ez azt jelenti, hogy egy nagyszülői születésnapi befizetés ugyanúgy hozza a 10 százalékot, mint a szülői állandó átutalás.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Mi a különbség a babakötvény és a Start-számla között?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Gyakorlatilag ugyanazt jelenti a két szó. A Start-értékpapírszámla a hivatalos elnevezés, a babakötvény pedig az a speciális állampapír, amit ezen a számlán tartanak. A köznyelv a kettőt felváltva használja.</p><p>A lényeg, hogy a számla nyitása nélkül az induló 42 500 forint nem kamatozik, tehát a számlanyitás az első érdemi lépés.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Elveszik a támogatás, ha egy évben nem fizetünk be?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Nem, csak arra az évre nem jár. A számla megmarad, a már benne lévő pénz tovább kamatozik, és a következő évben ott folytathatjátok, ahol abbahagytátok.</p><p>Nincs szankció és nincs minimális befizetési kötelezettség. Ez az egyik oka annak, hogy a babakötvény jól viseli a hullámzó jövedelmet.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Nyithatok TBSZ-t a gyerekem nevére?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>A legtöbb szolgáltatónál nem közvetlenül. A gyakorlatban a gyermekcélú TBSZ <b>a szülő nevén fut</b>, a szülő kezeli, és 18 éves korban kerül át a gyerekhez ajándékozással vagy átutalással.</p><p>Ez szolgáltatónként eltér, és kiskorú vagyonával való rendelkezéshez gyámhatósági jóváhagyás is kellhet. Konkrét banknál vagy brókernél mindig egyedileg kell ellenőrizni.</p></div></details>
-      <details class="faq-item"><summary class="faq-q">Mennyivel jobb ez, mint a bankbetét?<svg class="faq-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="faq-a"><p>Két dologban. Egyrészt a babakötvény <b>kamata az inflációt követi plusz 3 százalékpont</b>, tehát reálértéken nem tud veszíteni, míg egy lekötött betét magas infláció idején simán veszít. Másrészt a betét kamata adóköteles, a babakötvényé nem.</p><p>Harmadikként pedig a betétre nincs állami támogatás. A három együtt 18 éves távon nagyon nagy különbséget ad.</p></div></details>
-    </div>
-  </div>
-</section>
 
-<section class="section graph-light" style="padding-top:3rem;padding-bottom:3rem;">
-  <div class="container">
-    <div class="sec-head" style="margin-bottom:1.6rem;">
-      <h2 class="section-title" style="font-size:1.35rem;">Kapcsolódó oldalak</h2>
-    </div>
-    <div class="rel">
-      <a class="rel-c" href="tamogatasok.html"><div class="rel-i">💰</div><div><div class="rel-t">Állami támogatások</div><div class="rel-d">CSOK Plusz, Babaváró, Otthon Start</div></div></a>
-      <a class="rel-c" href="befektetesek.html"><div class="rel-i">📈</div><div><div class="rel-t">Befektetések</div><div class="rel-d">TBSZ és alapok, adóhatékonyan</div></div></a>
-      <a class="rel-c" href="nyugdij.html"><div class="rel-i">🌅</div><div><div class="rel-t">Nyugdíj-megtakarítás</div><div class="rel-d">20% adó-visszatérítéssel</div></div></a>
-    </div>
-  </div>
-</section>
 
+<div class="overlay" id="mailOverlay" role="dialog" aria-modal="true" aria-labelledby="mailTitle">
+  <div class="modal">
+    <button class="modal-close" id="mailClose" aria-label="Bezárás">✕</button>
+    <div class="modal-icon">📧</div>
+    <div class="modal-title" id="mailTitle">Elküldöm e-mailben a számítást</div>
+    <div class="modal-desc" id="mailDesc"></div>
+    <form id="mailForm">
+      <div class="field"><label for="mlName">Név *</label><input type="text" id="mlName" required autocomplete="name"></div>
+      <div class="field"><label for="mlEmail">E-mail cím *</label><input type="email" id="mlEmail" required autocomplete="email"></div>
+      <div class="field"><label for="mlPhone">Telefonszám</label><input type="tel" id="mlPhone" autocomplete="tel"></div>
+      <input type="text" id="mlHp" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="gdpr"><input type="checkbox" id="mlGdpr" required>
+        <span>Hozzájárulok, hogy a megadott adataimat a kapcsolatfelvétel céljából kezeljék. Részletek az <a href="https://www.ovb.hu/szerviz/adatkezelesi-szabalyzat.html" target="_blank" rel="noopener">adatkezelési tájékoztatóban</a>.</span></label>
+      <button type="submit" class="lead-send" id="mlBtn">Kérem a számítást</button>
+      <div class="lead-status" id="mlStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+
+</div>
 
 <section id="cta">
   <div class="container">
@@ -2197,8 +2838,8 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
       <div class="cta-inner">
         <div>
           <div class="cta-free">✓ Kötelezettségektől mentes és díjmentes</div>
-          <h2 class="cta-title">Nézzük meg, mi illik a ti helyzetetekhez.</h2>
-          <p class="cta-sub">Egy díjmentes beszélgetésen végigvesszük a célt, az időtávot és a havi keretet, és kiszámoljuk, hogyan érdemes felosztani a babakötvény és más formák között.</p>
+          <h2 class="cta-title">A kalkulátor becslés. A három ajánlat konkrét.</h2>
+          <p class="cta-sub">Egy rövid beszélgetésen megnézzük, mire és mikor fog kelleni a pénz, és hogy a lakástakarék-e ehhez a jó eszköz. Ha igen, mind a három szolgáltatót kiszámoljuk. Ha nem, azt is megmondjuk.</p>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;flex-shrink:0;">
           <div class="apt-btn-wrap">
@@ -2212,7 +2853,7 @@ footer .footer-fine{ text-align:left !important; margin:1rem 0 0 !important; max
 
 <section class="section" style="background:var(--bg);padding-top:2.4rem;padding-bottom:2.4rem;">
   <div class="container">
-    <div class="sub-note" style="max-width:900px;margin:0 auto;font-size:.72rem;"><b>*</b> Az oldalon szereplő adatok tájékoztató jellegűek, nem minősülnek befektetési tanácsadásnak, ajánlattételnek vagy adótanácsadásnak. A kalkulátor egyszerűsített modellel dolgozik: a havi befizetéseket a hónap elején, az állami támogatást évente egy összegben veszi figyelembe, és a teljes futamidőre egyetlen, állandó kamattal számol. A babakötvény kamata ezzel szemben <b>évente változik</b>: az előző évi átlagos fogyasztóiár-index és 3 százalékpont kamatprémium összege, amely minden év február 1-jén fordul; a 2026-os 7,4 százalékos érték a 2025-ös átlagos infláción alapul. A tényleges végösszeg ezért a kalkulátor eredményétől mindkét irányban eltérhet. Az „egyéb megtakarítás" módban megadott hozam nem garantált, és negatív is lehet. Az állami támogatás mértéke (a befizetések 10 százaléka, évente legfeljebb 12 000 Ft, emelt esetben 20 százalék és 24 000 Ft), az induló életkezdési támogatás (42 500 Ft), az éves befizetési plafon (1 200 000 Ft gyermekenként) és a hozzáférés feltételei (a 18. életév betöltése és a számlanyitástól számított legalább 3 év) a 2026. szeptemberi jogszabályi állapotot tükrözik; a mindenkori hatályos szabályozás az irányadó. A tartós befektetési számla adókulcsai a 2025. január 1. után nyitott számlákra vonatkoznak. Adatok érvényessége: <b data-upd></b>.</div>
+    <div class="sub-note" style="max-width:900px;margin:0 auto;font-size:.72rem;"><b>*</b> Az oldalon szereplő adatok tájékoztató jellegűek, a <b>2026. szeptemberi</b> állapotot tükrözik, és nem minősülnek ajánlattételnek, ajánlattételi felhívásnak vagy befektetési tanácsadásnak. A kalkulátor egyszerűsített modellel számol: a kamatbónusz, a betéti kamat, a számlanyitási és a havi díjak alapértéke tájékoztató piaci nagyságrend, amit a látogató szabadon átállíthat; egyik érték sem egy konkrét lakás-takarékpénztár ajánlata. A lakás-takarékpénztári szerződések feltételeit (bónusz mértéke és feltételei, megtakarítási idő, díjak, lakáscélú felhasználás szabályai) a mindenkori üzletszabályzatok és általános szerződési feltételek tartalmazzák. Az újonnan kötött szerződésekhez 2018. október 16-tól állami támogatás nem jár. A logók az adott vállalatok tulajdonát képezik. Adatok érvényessége: <b data-upd></b>.</div>
   </div>
 </section>
 
@@ -2497,91 +3138,245 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
 </script>
 <script>
 
-(function(){
-/* ══ GYERMEK-MEGTAKARÍTÁS, karbantartás: csak a BK blokk ══ */
-var BK = {
-  tamogatasPct: 10,        /* állami támogatás a befizetésre, %      */
-  tamogatasMax: 12000,     /* éves maximum, Ft                        */
-  indulo:       42500,     /* induló életkezdési támogatás, Ft        */
-  kamat2026:    7.4        /* a babakötvény kamata 2026-ban, %        */
+/* ══════════════════════════════════════════════════════════════════════
+   LAKÁSTAKARÉK ALAPÉRTÉKEK, EGY HELYEN.
+   HAVONTA CSAK EZT A BLOKKOT KELL ÁTÍRNI, MÁST SEMMIT.
+   Egyik érték sem egy konkrét szolgáltató ajánlata, mind tájékoztató
+   piaci nagyságrend, és a látogató mindegyiket átállíthatja.
+   ══════════════════════════════════════════════════════════════════════ */
+var LTP = {
+  bonus:      30,      /* jellemző kamatbónusz, a befizetésekre, % */
+  deposit:    0.10,    /* betéti kamat, éves %, jellemzően minimális */
+  monthFee:   300,     /* havi számlavezetési díj, Ft */
+  openFeePct: 1.0,     /* számlanyitási díj a szerződéses összeg %-ában */
+  updated: '2026. szeptember'
 };
 
 function el(id){ return document.getElementById(id); }
 function huf(v){ return Math.round(v).toLocaleString('hu-HU') + ' Ft'; }
-function pc(v){ return (+v).toFixed(1).replace('.',',') + '%'; }
-function paint(e){ e.style.setProperty('--p', (e.value-e.min)/(e.max-e.min)*100 + '%'); }
+function hufM(v){ return (Math.round(v/100000)/10).toLocaleString('hu-HU') + ' M Ft'; }
+function pct(v){ return (+v).toFixed(2).replace('.',',') + '%'; }
+function pct0(v){ var n=+v; return (n%1===0 ? String(n) : n.toFixed(1).replace('.',',')) + '%'; }
+function mon(v){ return v + ' hónap'; }
+function paint(e){ var p=(e.value-e.min)/(e.max-e.min)*100; e.style.setProperty('--p',p+'%'); }
+function txt(id,v){ var e=el(id); if(e) e.textContent=v; }
 
-var forma = 'bk';
-
-function calc(){
-  var m = +el('g_havi').value, kor = +el('g_kor').value, r = +el('g_kamat').value/100;
-  var ev = 18 - kor;
-  var mr = r/12, n = ev*12;
-
-  /* havi befizetések jövőértéke, hó eleji befizetéssel */
-  var fvBef = mr === 0 ? m*n : m*((Math.pow(1+mr,n)-1)/mr)*(1+mr);
-
-  var evi = 0, fvTam = 0, induloFv = 0;
-  if(forma === 'bk'){
-    evi = Math.min(m*12*BK.tamogatasPct/100, BK.tamogatasMax);
-    var yr = Math.pow(1+mr,12)-1;
-    fvTam = yr === 0 ? evi*ev : evi*((Math.pow(1+yr,ev)-1)/yr);
-    if(kor === 0) induloFv = BK.indulo*Math.pow(1+r,ev);
-  }
-
-  var bef = m*12*ev, allam = evi*ev + (kor === 0 && forma === 'bk' ? BK.indulo : 0);
-  var veg = fvBef + fvTam + induloFv;
-
-  el('g_big').textContent  = huf(veg);
-  el('g_sub').textContent  = huf(m) + ' / hó · ' + ev + ' éven át · ' +
-                             (forma === 'bk' ? 'babakötvény' : 'egyéb megtakarítás');
-  el('g_bef').textContent  = huf(bef);
-  el('g_allam').textContent = allam > 0 ? '+' + huf(allam) : '-';
-  el('g_kam').textContent  = '+' + huf(Math.max(0, veg - bef - allam));
-  el('g_evi').textContent  = forma === 'bk' ? huf(evi) : 'nem jár';
-  el('g_ev').textContent   = ev + ' év';
-
-  var w = el('g_warn');
-  if(forma !== 'bk'){
-    w.className = 'sc-warn';
-    w.innerHTML = 'Ezen a formán <b>nincs állami támogatás</b>, és a hozam sem garantált. Cserébe rugalmasabb: nincs 18 éves kötöttség, és te döntesz a felhasználásról. A babakötvény melletti kiegészítésnek jellemzően ez a jó helye.';
-  } else if(m*12*BK.tamogatasPct/100 > BK.tamogatasMax + 1){
-    w.className = 'sc-warn';
-    w.innerHTML = 'Az állami támogatás <b>évi ' + huf(BK.tamogatasMax) + '</b>-nál megáll. Havi ' +
-      huf(BK.tamogatasMax/(BK.tamogatasPct/100)/12) + ' fölött a többletre már nem jár. Az e fölötti részt érdemes olyan formába tenni, ahol nagyobb hozam is elérhető.';
-  } else if(m*12*BK.tamogatasPct/100 < BK.tamogatasMax - 1){
-    var kell = BK.tamogatasMax/(BK.tamogatasPct/100)/12 - m;
-    w.className = 'sc-warn';
-    w.innerHTML = 'Havi <b>' + huf(kell) + '</b> további befizetésig még nő az állami támogatás. Ez ' + ev +
-      ' év alatt összesen <b>' + huf((BK.tamogatasMax - m*12*BK.tamogatasPct/100)*ev) + '</b> elmaradó támogatás.';
-  } else {
-    w.className = 'sc-warn ok';
-    w.innerHTML = 'Pontosan kihasználjátok a keretet: <b>' + huf(BK.tamogatasMax) + '</b> állami támogatás jár évente. Ez a maximum.';
-  }
-
-  el('g_kamat_note').innerHTML = forma === 'bk'
-    ? 'A babakötvény kamata az előző évi átlagos infláció + 3 százalékpont, 2026-ban <b>' + pc(BK.kamat2026) + '</b>. A csúszkával óvatosabb és derűlátóbb forgatókönyvet is megnézhetsz.'
-    : 'Egyéb megtakarításnál a hozam <b>nem garantált</b>, és a választott eszköztől függ. Óvatosabb forgatókönyvre is állítsd be.';
+function link(ids, fmt, onChange){
+  ids.forEach(function(id){
+    var r=el(id), n=el(id+'_n'), v=el(id+'_v');
+    if(!r) return;
+    function show(){ paint(r); if(v) v.textContent=(fmt[id]||function(x){return x;})(+r.value); onChange(); }
+    r.addEventListener('input',function(){ if(n) n.value=r.value; show(); });
+    if(n){
+      n.addEventListener('input',function(){
+        if(n.value==='') return; var val=+n.value; if(isNaN(val)) return;
+        r.value=Math.min(+r.max,Math.max(+r.min,val)); show();
+      });
+      n.addEventListener('blur',function(){ n.value=r.value; show(); });
+      n.value=r.value;
+    }
+    show();
+  });
 }
 
-['g_havi','g_kor','g_kamat'].forEach(function(id){
-  var r = el(id), v = el(id+'_v');
-  var fmt = { g_havi:function(x){return huf(x)+' / hó';},
-              g_kor:function(x){return x === 0 ? 'újszülött' : x+' éves';},
-              g_kamat:pc }[id];
-  function show(){ paint(r); v.textContent = fmt(+r.value); calc(); }
-  r.addEventListener('input', show); show();
-});
+/* ── belső megtérülési ráta, hogy lássuk az évesített hozamot ── */
+function irr(flows){          /* flows[i] = i. hónap végi pénzáram */
+  function npv(rate){
+    var s=0; for(var i=0;i<flows.length;i++) s += flows[i]/Math.pow(1+rate,i);
+    return s;
+  }
+  var lo=-0.9, hi=1.0;
+  if(npv(lo)*npv(hi) > 0) return null;
+  for(var k=0;k<200;k++){
+    var mid=(lo+hi)/2;
+    if(npv(lo)*npv(mid) <= 0) hi=mid; else lo=mid;
+  }
+  return (lo+hi)/2;
+}
 
-document.querySelectorAll('#gy .sc-seg button').forEach(function(b){
-  b.addEventListener('click', function(){
-    document.querySelectorAll('#gy .sc-seg button').forEach(function(x){ x.classList.remove('on'); });
-    b.classList.add('on'); forma = b.dataset.f;
-    if(forma === 'bk'){ el('g_kamat').value = BK.kamat2026; paint(el('g_kamat'));
-                        el('g_kamat_v').textContent = pc(BK.kamat2026); }
-    calc();
+/* ══════════ KALKULÁTOR ══════════ */
+var series={dep:[],val:[],years:0};
+function calc(){
+  var m=+el('l_month').value, n=+el('l_time').value, b=+el('l_bonus').value,
+      r=+el('l_rate').value, f=+el('l_fee').value, of=+el('l_open').value;
+
+  var deposits=m*n;
+  var openFee=deposits*(1+b/100)*of/100;      /* a szerződéses összeg közelítése */
+  var bal=0, interest=0, i=r/100/12;
+  var flows=[-openFee], depCum=[0], valCum=[0];
+  for(var k=1;k<=n;k++){
+    bal+=m;
+    var ic=bal*i; interest+=ic; bal+=ic;
+    bal-=f;
+    flows.push(-(m+f));
+    if(k%12===0 || k===n){ depCum.push(m*k); valCum.push(bal + deposits*(b/100)*(k/n)); }
+  }
+  var bonus=deposits*(b/100);
+  var costs=f*n+openFee;
+  var payout=deposits+interest+bonus-costs;
+  var profit=payout-deposits;
+
+  flows[flows.length-1]+=payout;
+  var mr=irr(flows);
+  var yearly = mr===null ? null : (Math.pow(1+mr,12)-1)*100;
+
+  txt('l_big', huf(payout));
+  txt('l_sub', huf(m)+' / hó · '+n+' hónap · '+pct0(b)+' kamatbónusz');
+  txt('l_dep', huf(deposits));
+  txt('l_bonusv', '+'+huf(bonus));
+  txt('l_int', '+'+huf(interest));
+  txt('l_cost', '−'+huf(costs));
+  txt('l_profit', (profit>=0?'+':'−')+huf(Math.abs(profit)));
+  txt('l_yield', yearly===null ? '-' : pct(yearly));
+  var yv=el('l_yield'); if(yv) yv.className = (yearly!==null && yearly>=4) ? 'good' : 'warn';
+
+  var warn=el('l_warn');
+  if(yearly!==null && yearly < 3){
+    warn.className='calc-warn no';
+    warn.innerHTML='Ezekkel a paraméterekkel az <b>évesített hozam '+pct(yearly)+'</b>, ami alacsony. Két dolog javít rajta: magasabb kamatbónusz, és alacsonyabb díjak. Vigyázz: ha a bónusz százaléka nem nő a futamidővel, a hosszabb futamidő önmagában <b>rontja</b> az évesített hozamot, mert ugyanaz az egyszeri jóváírás oszlik el több évre.';
+  } else {
+    warn.className='calc-warn ok';
+    warn.innerHTML='A <b>'+pct0(b)+'-os kamatbónusz nem évi '+pct0(b)+' hozam.</b> Egyszeri jóváírás a befizetéseidre, a futamidő végén. Ami valóban számít, az az évesített hozam: most <b>'+(yearly===null?'nincs':pct(yearly))+'</b>, a díjak levonása után.';
+  }
+
+  series={dep:depCum, val:valCum, years:Math.ceil(n/12)};
+  drawLine('l_chart', depCum.length-1, depCum, valCum, 'Amit befizetsz', 'Amit kapsz', 'a hozamod a futamidő végén');
+}
+
+/* ══════════ VONALDIAGRAM ══════════ */
+var CHART={a:'#BE810A',b:'#0FA894'};
+function drawLine(id, steps, sa, sb, labA, labB, fmtEnd){
+  var svg=el(id); if(!svg) return;
+  var W=900,H=320,PL=86,PR=104,PT=20,PB=38;
+  var max=Math.max(sa[sa.length-1], sb[sb.length-1], 1);
+  var nice=Math.pow(10,Math.floor(Math.log10(max)));
+  var top=Math.ceil(max/nice*1.02)*nice;
+  function X(i){ return PL + (W-PL-PR)*(i/steps); }
+  function Y(v){ return PT + (H-PT-PB)*(1-v/top); }
+  function path(s){ return s.map(function(v,i){ return (i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1); }).join(' '); }
+  var g=[],i;
+  for(i=1;i<=4;i++){
+    var v=top*i/4, y=Y(v);
+    g.push('<line x1="'+PL+'" y1="'+y.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+y.toFixed(1)+'" stroke="rgba(19,44,70,.10)" stroke-width="1"/>');
+    g.push('<text x="'+(PL-12)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" class="c-ax">'+hufM(v)+'</text>');
+  }
+  var st=Math.max(1,Math.round(steps/5));
+  for(i=st;i<=steps;i+=st) g.push('<text x="'+X(i).toFixed(1)+'" y="'+(H-12)+'" text-anchor="middle" class="c-ax">'+i+'. év</text>');
+  g.push('<line x1="'+PL+'" y1="'+Y(0)+'" x2="'+(W-PR)+'" y2="'+Y(0)+'" stroke="rgba(19,44,70,.18)" stroke-width="1"/>');
+  var area=path(sb)+' L'+X(steps).toFixed(1)+' '+Y(sa[steps]).toFixed(1)+' '+
+           sa.slice().reverse().map(function(v,k){ return 'L'+X(steps-k).toFixed(1)+' '+Y(v).toFixed(1); }).join(' ')+' Z';
+  g.push('<path d="'+area+'" fill="'+CHART.b+'" opacity=".10"/>');
+  g.push('<path d="'+path(sa)+'" fill="none" stroke="'+CHART.a+'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>');
+  g.push('<path d="'+path(sb)+'" fill="none" stroke="'+CHART.b+'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>');
+  g.push('<circle cx="'+X(steps).toFixed(1)+'" cy="'+Y(sa[steps]).toFixed(1)+'" r="4.5" fill="'+CHART.a+'" stroke="#fff" stroke-width="2"/>');
+  g.push('<circle cx="'+X(steps).toFixed(1)+'" cy="'+Y(sb[steps]).toFixed(1)+'" r="4.5" fill="'+CHART.b+'" stroke="#fff" stroke-width="2"/>');
+  g.push('<text x="'+(X(steps)+10)+'" y="'+(Y(sa[steps])+4).toFixed(1)+'" class="c-lab a">'+hufM(sa[steps])+'</text>');
+  g.push('<text x="'+(X(steps)+10)+'" y="'+(Y(sb[steps])+4).toFixed(1)+'" class="c-lab b">'+hufM(sb[steps])+'</text>');
+  var d=sb[steps]-sa[steps];
+  if(Math.abs(d)>1){
+    var my=(Y(sa[steps])+Y(sb[steps]))/2;
+    g.push('<text x="'+(X(steps)-26)+'" y="'+(my-6).toFixed(1)+'" text-anchor="end" class="c-diff">'+(d>0?'+':'−')+hufM(Math.abs(d))+'</text>');
+    g.push('<text x="'+(X(steps)-26)+'" y="'+(my+10).toFixed(1)+'" text-anchor="end" class="c-diffs">'+fmtEnd+'</text>');
+  }
+  g.push('<line id="'+id+'_cross" x1="0" y1="'+PT+'" x2="0" y2="'+(H-PB)+'" stroke="rgba(19,44,70,.28)" stroke-width="1" style="display:none"/>');
+  g.push('<rect id="'+id+'_hit" x="'+PL+'" y="'+PT+'" width="'+(W-PL-PR)+'" height="'+(H-PT-PB)+'" fill="transparent"/>');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.innerHTML=g.join('');
+
+  var wrap=svg.parentElement, tip=wrap.querySelector('.c-tip');
+  if(!tip){ tip=document.createElement('div'); tip.className='c-tip'; wrap.appendChild(tip); }
+  var hit=el(id+'_hit'), cross=el(id+'_cross');
+  hit.addEventListener('mousemove',function(e){
+    var r=svg.getBoundingClientRect(), px=(e.clientX-r.left)/r.width*W;
+    var i=Math.min(steps,Math.max(0,Math.round((px-PL)/(W-PL-PR)*steps)));
+    cross.style.display='block'; cross.setAttribute('x1',X(i)); cross.setAttribute('x2',X(i));
+    tip.style.display='block';
+    tip.innerHTML='<b>'+i+'. év</b><span><i style="background:'+CHART.a+'"></i>'+labA+'<em>'+huf(sa[i])+'</em></span><span><i style="background:'+CHART.b+'"></i>'+labB+'<em>'+huf(sb[i])+'</em></span>';
+    var lx=X(i)/W*r.width;
+    tip.style.left=Math.min(r.width-tip.offsetWidth-6, Math.max(6, lx-tip.offsetWidth/2))+'px';
   });
-});
+  hit.addEventListener('mouseleave',function(){ cross.style.display='none'; tip.style.display='none'; });
+}
+
+/* ══════════ INDÍTÁS ══════════ */
+el('l_bonus').value=LTP.bonus;
+el('l_rate').value=LTP.deposit;
+el('l_fee').value=LTP.monthFee;
+el('l_open').value=LTP.openFeePct;
+link(['l_month','l_time','l_bonus','l_rate','l_fee','l_open'],
+     { l_month:function(v){return huf(v)+' / hó';}, l_time:mon, l_bonus:pct0, l_rate:pct,
+       l_fee:function(v){return huf(v)+' / hó';}, l_open:pct0 },
+     calc);
+calc();
+document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = LTP.updated; });
+
+
+/* ── e-mailben kérem ── */
+var LEAD_URL='https://spczsywkyblwhkutltxx.supabase.co/rest/v1/web_leads';
+var LEAD_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwY3pzeXdreWJsd2hrdXRsdHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5MTU5NDksImV4cCI6MjA5ODQ5MTk0OX0.npj-z1dCkdE0xdf2pJx40oxe20zwTq5xu-V96NbB4Og';
+var LEAD_ADVISOR='eaglz';
+(function(){
+  var ov=el('mailOverlay');
+  function snap(){
+    var out=[];
+    document.querySelectorAll('#ltp .fld').forEach(function(f){
+      var lab=f.querySelector('.fld-top'), val=f.querySelector('.fld-top b');
+      if(lab&&val) out.push(lab.childNodes[0].textContent.trim()+': '+val.textContent);
+    });
+    out.unshift('Kifizetett összeg: '+el('l_big').textContent+' | Évesített hozam: '+el('l_yield').textContent);
+    return out.join(' | ');
+  }
+  document.querySelectorAll('[data-mail]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      el('mailDesc').textContent='Elküldöm a lakástakarék-számításodat és azt, hogy a három szolgáltató közül melyik illik a te céljaidhoz.';
+      el('mlStatus').textContent='';
+      ov.classList.add('active'); document.body.style.overflow='hidden';
+      setTimeout(function(){ el('mlName').focus(); },80);
+    });
+  });
+  function close(){ ov.classList.remove('active'); document.body.style.overflow=''; }
+  el('mailClose').addEventListener('click',close);
+  ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  el('mailForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(el('mlHp').value) return;
+    var st=el('mlStatus'), btn=el('mlBtn');
+    var name=el('mlName').value.trim(), email=el('mlEmail').value.trim();
+    if(!name||!email||!el('mlGdpr').checked){
+      st.textContent='Kérlek töltsd ki a csillaggal jelölt mezőket és fogadd el az adatkezelést.';
+      st.style.color='#EF4444'; return;
+    }
+    btn.disabled=true; st.textContent='⏳ Küldés...'; st.style.color='var(--gray)';
+    var base={name:name,email:email,phone:el('mlPhone').value.trim(),
+              topic:'Kalkuláció: Lakástakarék', message:snap()};
+    function post(p){
+      return fetch(LEAD_URL,{method:'POST',headers:{'apikey':LEAD_KEY,'Authorization':'Bearer '+LEAD_KEY,
+        'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(p)});
+    }
+    post(Object.assign({},base,{advisor:LEAD_ADVISOR,source:'eaglz-ltp'})).then(function(r){
+      if(r.ok) return r;
+      return post(Object.assign({},base,{topic:base.topic+' ['+LEAD_ADVISOR+']'}));
+    }).then(function(r){
+      if(r.ok){ st.textContent='✓ Megkaptam, 24 órán belül küldjük e-mailben!'; st.style.color='var(--green)';
+                el('mailForm').reset(); setTimeout(close,2200); }
+      else { st.textContent='Hiba történt, próbáld újra, vagy írj e-mailt.'; st.style.color='#EF4444'; }
+      btn.disabled=false;
+    }).catch(function(){ st.textContent='Hálózati hiba, próbáld újra.'; st.style.color='#EF4444'; btn.disabled=false; });
+  });
+})();
+
+
+/* EAGLZ-vaz: reveal, datum, ev */
+(function(){
+  var rv=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ rv.forEach(function(e){e.classList.add('in');}); }
+  else{
+    var io=new IntersectionObserver(function(en){en.forEach(function(e,i){if(e.isIntersecting){var x=e.target;
+      setTimeout(function(){x.classList.add('in');},Math.min(i*60,240));io.unobserve(x);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    rv.forEach(function(e){io.observe(e);});
+  }
+  var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
 })();
 
 </script>

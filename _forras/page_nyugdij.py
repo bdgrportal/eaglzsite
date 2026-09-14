@@ -364,7 +364,7 @@ BODY = BODY.replace('__FAQ__', faq_html(FAQ))
 
 JS = u'''
 (function(){
-/* ══ NYUGDÍJ KALKULÁTOR — karbantartás: csak a PLAFON blokk ══ */
+/* ══ NYUGDÍJ KALKULÁTOR, karbantartás: csak a PLAFON blokk ══ */
 var PLAFON = { nyb:130000, onyp:150000, nyesz:100000 };   /* éves adó-visszatérítés maximuma, Ft */
 var RATE   = 0.20;                                         /* a visszatérítés mértéke */
 var NEV    = { nyb:'Nyugdíjbiztosítás', onyp:'Önkéntes nyugdíjpénztár', nyesz:'NYESZ' };

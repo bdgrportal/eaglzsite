@@ -115,5 +115,16 @@ for name in ['kalkulator.html', 'kviz.html', 'lakashitel-folyamat.html']:
     # d) JS
     S = S.replace('</body>', '<script>\n' + fix_links(JS_NAV) + '\n</script>\n</body>', 1)
 
+    import theme_inject, landing
+    # landing-vaz: bizalmi sav a hero utan, kozbenso CTA a 3. szekcio utan
+    b0 = S.index('<body'); b1 = S.index('</body>')
+    body = landing.inject(S[b0:b1],
+        landing.trust_bar(u'Adatok: <b data-upd></b>'),
+        landing.mid_cta(u'Kérdésed van ehhez?', u'30 perc, és a saját számaidat látod, nem egy példát.',
+                        u'Díjmentes, kötelezettség nélkül. Ha kiderül, hogy a mostani megoldásod jó, azt is megmondjuk.',
+                        u'<a class="apt-btn-inner" href="index.html#advisors">📅 Időpontot foglalok</a>',
+                        u'Válassz tanácsadót és időpontot'), after_section=2)
+    S = S[:b0] + body + S[b1:]
+    S = theme_inject.apply(S)
     io.open(name.replace('.html', '_portal.html'), 'w', encoding='utf-8').write(S)
     print('%-26s -> %-32s %4d KB (+%d kep)' % (name, name.replace('.html','_portal.html'), len(S)//1024, extra[0]))

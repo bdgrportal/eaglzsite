@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════
-   EAGLZ PORTÁL-RÉTEG — KARBANTARTÁSI BLOKK
+   EAGLZ PORTÁL-RÉTEG, KARBANTARTÁSI BLOKK
    NEGYEDÉVENTE CSAK EZT A KÉT OBJEKTUMOT KELL ÁTNÉZNI, MÁST SEMMIT.
    Egyik érték sem egy konkrét pénzintézet ajánlata: mind tájékoztató
    piaci nagyságrend, és a látogató mindegyiket átállíthatja a csúszkán.
@@ -35,9 +35,9 @@ var NAV = [
          p:'A bankszámla a leggyorsabban javítható tétel a családi költségvetésben. Évi <b>20-100 ezer forint</b> maradhat a zsebedben, a váltás pedig törvény szerint díjmentes.',
          bt:'Bankszámla-díjkimutatás', bh:'https://online.ovb.hu/bankszamladijkimutatas/', logos:_BANKS },
   items:[
-    {i:'🏦', t:'Díjmentes bankszámlák',   m:'A 2026 őszi ajánlatok',          h:'https://zoefinance.hu/bankszamla.html', tag:'ÚJ', tagc:'new'},
+    {i:'🏦', t:'Díjmentes bankszámlák',   m:'A 2026 őszi ajánlatok',          h:'bankszamla.html', tag:'ÚJ', tagc:'new'},
     {i:'📄', t:'Online díjkimutatás',     m:'Az OVB hivatalos felületén',     h:'https://online.ovb.hu/bankszamladijkimutatas/'},
-    {i:'🔄', t:'Számlaváltás lépésenként',m:'13 munkanap, díjmentesen',       h:'https://zoefinance.hu/bankszamla.html'},
+    {i:'🔄', t:'Számlaváltás lépésenként',m:'13 munkanap, díjmentesen',       h:'bankszamla.html#valasztas'},
     {i:'💳', t:'Személyi kölcsön',        m:'Jó és rossz kamat különbsége',   h:'kalkulator.html'},
     {i:'💠', t:'Csoportos beszedések',    m:'Online átvezetés',               h:'https://online.ovb.hu/csob/'},
     {i:'📅', t:'Időpontot foglalok',      m:'Válassz tanácsadót',             h:'#advisors'}
@@ -47,7 +47,7 @@ var NAV = [
          p:'Először az derül ki, mire és mikor kell a pénz, és csak utána, hogy milyen formában. <b>Egy eszköz sem jó mindenre</b>, és ezt meg is mondjuk.',
          bt:'Befektetés és TBSZ', bh:'befektetesek.html', logos:_LTP },
   items:[
-    {i:'🐖', t:'Lakástakarék',            m:'Megéri még támogatás nélkül?',   h:'https://zoefinance.hu/lakastakarek.html', tag:'ÚJ', tagc:'new'},
+    {i:'🐖', t:'Lakástakarék',            m:'Megéri még támogatás nélkül?',   h:'lakastakarek.html', tag:'ÚJ', tagc:'new'},
     {i:'📦', t:'Befektetés, TBSZ',        m:'Adómentes hozam 5 év után',      h:'befektetesek.html', tag:'ÚJ', tagc:'new'},
     {i:'🌅', t:'Nyugdíj-megtakarítás',    m:'20% adó-visszatérítéssel',       h:'nyugdij.html', tag:'ÚJ', tagc:'new'},
     {i:'👶', t:'Gyermek-megtakarítás',    m:'Babakötvény, oktatási alap',     h:'gyermekjovo.html', tag:'ÚJ', tagc:'new'},
@@ -89,11 +89,21 @@ var NAV = [
     {i:'🏢', t:'Céges biztosítások',      m:'Telephely, gép, felelősség',     h:'vallalati.html#biztositas'},
     {i:'🤝', t:'Kulcsember-biztosítás',   m:'Ha a cég egy emberen múlik',     h:'vallalati.html#biztositas'},
     {i:'📋', t:'Céges átvilágítás',       m:'Díjmentes, kötelezettség nélkül',h:'#lead'}
+  ]},
+{ key:'ceg', label:'Rólunk', simple:true,
+  items:[
+    {i:'🎯', t:'Kinek segítünk?',        h:'#for-whom'},
+    {i:'🗺️', t:'Hogyan dolgozunk?',      h:'#how'},
+    {i:'⭐', t:'Miért mi?',              h:'#why'},
+    {i:'🎬', t:'Ügyfélvélemények',       h:'#video-testimonial'},
+    {i:'🏢', t:'Rólunk, röviden',        h:'#about'},
+    {i:'❓', t:'Gyakori kérdések',       h:'#faq'},
+    {i:'🚀', t:'Karrier az EAGLZ-nél',   h:'http://eaglzcareer.hu', ext:true}
   ]}
 ];
 
 /* ══════════════════════════════════════════════════════════════════════
-   INNENTŐL MŰKÖDÉS — ehhez nem kell hozzányúlni.
+   INNENTŐL MŰKÖDÉS, ehhez nem kell hozzányúlni.
    ══════════════════════════════════════════════════════════════════════ */
 (function(){
 function el(id){ return document.getElementById(id); }
@@ -109,6 +119,16 @@ function HREF(h){ return (!IS_INDEX && h.charAt(0) === '#') ? 'index.html' + h :
 var bar = el('mnav'), host = el('megaHost'), mob = el('mmobHost');
 var barH = [], panH = [], mobH = [];
 NAV.forEach(function(c, idx){
+  if(c.simple){
+    barH.push('<button type="button" class="sec" data-mega="'+c.key+'" aria-expanded="false">'+esc(c.label)+
+      '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>');
+    panH.push('<div class="mega simple" id="mega-'+c.key+'"><div class="mega-simple"><div class="mega-simple-in">'+
+      c.items.map(function(it){
+        var ext = it.ext ? ' target="_blank" rel="noopener"' : '';
+        return '<a href="'+HREF(it.h)+'"'+ext+(it.ext?' class="ext"':'')+'><span class="i">'+it.i+'</span>'+esc(it.t)+(it.ext?' ↗':'')+'</a>';
+      }).join('')+'</div></div></div>');
+    return;   /* a mobil menuben az extra linkek kulon vannak */
+  }
   barH.push('<button type="button" data-mega="'+c.key+'" aria-expanded="false">'+esc(c.label)+
     '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>');
 

@@ -12,19 +12,6 @@ S = S.replace('</style>', '\n' + CSS + '\n</style>', 1)
 
 # ─────────────────────────────────────────────── 2) uj fejlec a regi nav helyere
 HEAD = u'''<div class="ehead" id="ehead">
-  <div class="uhead">
-    <div class="uhead-in">
-      <a href="#for-whom">Kinek?</a>
-      <a href="#how">Hogyan?</a>
-      <a href="#why">Miért mi?</a>
-      <a href="#video-testimonial">Vélemények</a>
-      <a href="#about">Rólunk</a>
-      <a href="#faq">GYIK</a>
-      <a href="http://eaglzcareer.hu" target="_blank" rel="noopener">Karrier ↗</a>
-      <span class="u-sep"></span>
-      <a class="u-cta" href="#advisors">📅 Díjmentes konzultáció</a>
-    </div>
-  </div>
   <div class="mhead">
     <div class="mhead-in">
       <a class="elogo" href="#hero" aria-label="EAGLZ Finance">
@@ -200,15 +187,15 @@ PARTNERS = u'''
         <div class="hub-d">12 kérdés, 2 perc. Megmondja, jogosult lehetsz-e a 3 százalékos fix kamatra, és ha nem, akkor min múlik.</div>
         <span class="hub-go">Kitöltöm →</span>
       </a>
-      <a class="hub-c" href="https://zoefinance.hu/bankszamla.html" target="_blank" rel="noopener">
+      <a class="hub-c" href="bankszamla.html">
         <div class="hub-top"><div class="hub-i">🏦</div><div><div class="hub-n">05</div><div class="hub-t">Díjmentes bankszámlák</div></div></div>
         <div class="hub-d">A 2026 őszi 0 forintos számlaajánlatok a feltételekkel együtt, és a váltás három lépése.</div>
-        <span class="hub-go">Megnézem ↗</span>
+        <span class="hub-go">Megnézem →</span>
       </a>
-      <a class="hub-c" href="https://zoefinance.hu/lakastakarek.html" target="_blank" rel="noopener">
+      <a class="hub-c" href="lakastakarek.html">
         <div class="hub-top"><div class="hub-i">🐖</div><div><div class="hub-n">06</div><div class="hub-t">Lakástakarék</div></div></div>
         <div class="hub-d">Megéri még állami támogatás nélkül? A kalkulátor évesített hozamot számol, a díjak levonása után.</div>
-        <span class="hub-go">Megnézem ↗</span>
+        <span class="hub-go">Megnézem →</span>
       </a>
       <a class="hub-c" href="nyugdij.html">
         <div class="hub-top"><div class="hub-i">🌅</div><div><div class="hub-n">07</div><div class="hub-t">Nyugdíj-kalkulátor</div></div></div>
@@ -262,6 +249,9 @@ S = re.sub(r'<span class="count" data-target="(\d+)">0</span>',
 S = S.replace("function animateCount(el){\n    const target = +el.dataset.target;",
               "function animateCount(el){\n    const target = +el.dataset.target;\n    el.textContent = '0';")
 
+import index_layout, theme_inject
+S = index_layout.apply(S)
+S = theme_inject.apply(S)
 io.open('index_portal.html', 'w', encoding='utf-8').write(S)
 print('index_portal.html:', len(S)//1024, 'KB')
 for t in ['id="ehead"', 'id="mnav"', 'class="hw"', 'id="partners"', 'id="hub"', 'eo-wrap', '<nav>']:
