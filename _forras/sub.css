@@ -1,0 +1,154 @@
+/* ══════════════════════════════════════════════════════════════
+   EAGLZ SZAKMAI ALOLDALAK — hosszú, tagolt tartalomhoz
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── szövegtörzs ── */
+.art{max-width:780px;margin:0 auto;text-align:left;}
+.art.wide{max-width:960px;}
+.art h2{font-family:var(--fb);font-size:clamp(1.35rem,2.7vw,1.85rem);font-weight:800;line-height:1.24;margin:0 0 .85rem;color:var(--navy);}
+.art h3{font-family:var(--fb);font-size:1.05rem;font-weight:700;margin:1.9rem 0 .55rem;color:var(--navy);}
+.art p{font-size:.93rem;line-height:1.85;color:var(--gray);margin-bottom:1rem;}
+.art p:last-child{margin-bottom:0;}
+.art p b,.art li b{color:var(--navy);font-weight:600;}
+.art a{color:var(--teal-ink);font-weight:600;}
+.art ul,.art ol{margin:0 0 1.1rem 0;padding-left:1.3rem;}
+.art li{font-size:.92rem;line-height:1.8;color:var(--gray);margin-bottom:.4rem;}
+.art ul.clean{list-style:none;padding-left:0;}
+.art ul.clean li{position:relative;padding-left:1.55rem;}
+.art ul.clean li::before{content:'✓';position:absolute;left:0;top:0;color:var(--teal-ink);font-weight:700;}
+.art ul.cross li::before{content:'✕';color:#C2456B;}
+.art .lead{font-size:1rem;line-height:1.85;color:var(--navy);}
+
+/* ── szakaszfejléc középre ── */
+.sec-head{text-align:center;max-width:720px;margin:0 auto 2.4rem;}
+.sec-head .section-sub{margin-left:auto;margin-right:auto;}
+
+/* ── kiemelt dobozok ── */
+.box{border-radius:16px;padding:1.35rem 1.5rem;margin:1.5rem 0;font-size:.9rem;line-height:1.8;}
+.box b{font-weight:700;}
+.box .box-t{display:block;font-family:var(--fb);font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
+.box.info{background:#EAF4F3;border:1px solid rgba(63,124,116,.22);color:var(--navy);}
+.box.info .box-t{color:var(--teal-ink);}
+.box.warn{background:rgba(240,180,41,.09);border:1px solid rgba(240,180,41,.34);color:var(--navy);}
+.box.warn .box-t{color:#8A6400;}
+.box.stop{background:rgba(194,69,107,.07);border:1px solid rgba(194,69,107,.26);color:var(--navy);}
+.box.stop .box-t{color:#A6365A;}
+.box.quote{background:var(--bg);border-left:3px solid var(--purple);border-radius:0 14px 14px 0;color:var(--navy);}
+
+/* ── adattábla ── */
+.tbl-wrap{overflow-x:auto;margin:1.5rem 0;border-radius:14px;border:1.5px solid var(--border);}
+table.tbl{width:100%;border-collapse:collapse;min-width:520px;background:#fff;}
+table.tbl th{text-align:left;font-family:var(--fb);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-ink);padding:.85rem 1.05rem;background:#EAF4F3;white-space:nowrap;}
+table.tbl td{padding:.8rem 1.05rem;font-size:.86rem;color:var(--gray);border-top:1px solid var(--border);line-height:1.6;vertical-align:top;}
+table.tbl td:first-child{font-family:var(--fb);font-weight:700;color:var(--navy);}
+table.tbl tr.hl td{background:rgba(63,124,116,.05);}
+table.tbl td b{color:var(--navy);}
+.tbl-note{font-size:.75rem;color:var(--gray);line-height:1.65;margin-top:.6rem;}
+
+/* ── számozott lépések ── */
+.nsteps{display:flex;flex-direction:column;gap:.85rem;margin:1.5rem 0;}
+.nstep{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;}
+.nstep-n{width:32px;height:32px;border-radius:10px;background:linear-gradient(140deg,var(--teal),var(--purple));color:#fff;font-family:var(--fb);font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;}
+.nstep-t{font-family:var(--fb);font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+.nstep-d{font-size:.85rem;color:var(--gray);line-height:1.72;}
+
+/* ── csempék ── */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.6rem 0;}
+.tiles.c2{grid-template-columns:repeat(2,1fr);}
+.tile{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.35rem 1.35rem;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(27,56,88,.08);border-color:rgba(63,124,116,.3);}
+.tile-i{font-size:1.5rem;margin-bottom:.6rem;}
+.tile-t{font-family:var(--fb);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.tile-d{font-size:.83rem;color:var(--gray);line-height:1.72;}
+.tile-d b{color:var(--navy);}
+
+/* ── számsáv ── */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:1.8rem 0;}
+.kpi{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1.15rem;text-align:center;}
+.kpi b{display:block;font-family:var(--fb);font-size:1.3rem;font-weight:800;color:var(--teal-ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:.2rem;}
+.kpi span{display:block;font-size:.75rem;color:var(--gray);line-height:1.5;}
+
+/* ── sötét szakasz ── */
+.dark-sec{background:var(--navy-deep);color:#fff;position:relative;overflow:hidden;}
+.dark-sec::before{content:'';position:absolute;inset:0;background:linear-gradient(130deg,rgba(140,197,189,.08),transparent 58%,rgba(139,108,181,.07));}
+.dark-sec .container{position:relative;z-index:1;}
+.dark-sec .section-title,.dark-sec .art h2{color:#fff;}
+.dark-sec .section-sub,.dark-sec .art p,.dark-sec .art li{color:rgba(255,255,255,.68);}
+.dark-sec .art p b,.dark-sec .art li b{color:#fff;}
+.dark-sec .art h3{color:#fff;}
+.dark-sec .art ul.clean li::before{color:var(--teal-lite);}
+.dark-sec .yn{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
+.dark-sec .yn-col{padding:1.4rem 1.5rem;border-radius:16px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);}
+.dark-sec .yn-col.ok{border-color:rgba(140,197,189,.3);background:rgba(140,197,189,.07);}
+.dark-sec .yn-col.no{border-color:rgba(232,69,122,.25);background:rgba(232,69,122,.06);}
+.yn-h{font-family:var(--fb);font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:#fff;}
+.yn-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;padding:0;margin:0;}
+.yn-col li{font-size:.85rem;line-height:1.68;color:rgba(255,255,255,.72);padding-left:1rem;position:relative;}
+.yn-col li::before{content:'—';position:absolute;left:0;color:rgba(255,255,255,.3);}
+
+/* ── kalkulátor (aloldali) ── */
+.sc{display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 10px 34px rgba(27,56,88,.08);margin:1.8rem 0;}
+.sc-in{background:#fff;padding:1.8rem 1.7rem;min-width:0;}
+.sc-out{background:var(--navy-deep);padding:1.8rem 1.7rem;position:relative;overflow:hidden;display:flex;flex-direction:column;min-width:0;}
+.sc-out::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(140,197,189,.1),transparent 55%,rgba(139,108,181,.09));}
+.sc-out > *{position:relative;z-index:1;}
+.scf{margin-bottom:1.3rem;}
+.scf:last-child{margin-bottom:0;}
+.scf-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.5rem;font-family:var(--fb);font-size:.8rem;font-weight:600;color:var(--navy);cursor:pointer;}
+.scf-top b{font-family:var(--fb);font-size:1rem;font-weight:700;color:var(--teal-ink);white-space:nowrap;}
+.scf-note{display:block;margin-top:.42rem;font-size:.73rem;line-height:1.55;color:var(--gray);}
+.sc input[type=range]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:6px;border-radius:99px;outline:none;cursor:pointer;margin:0;
+  background:linear-gradient(90deg,var(--teal-ink) 0%,var(--teal-ink) var(--p,50%),rgba(27,56,88,.13) var(--p,50%),rgba(27,56,88,.13) 100%);}
+.sc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--teal-ink);box-shadow:0 2px 8px rgba(27,56,88,.22);cursor:pointer;transition:transform .12s;}
+.sc input[type=range]::-webkit-slider-thumb:active{transform:scale(1.12);}
+.sc input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--teal-ink);box-shadow:0 2px 8px rgba(27,56,88,.22);cursor:pointer;}
+.sc input[type=range]:focus-visible{outline:2.5px solid var(--teal-ink);outline-offset:4px;}
+.sc-seg{display:flex;gap:.3rem;padding:.28rem;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;margin-bottom:1.4rem;}
+.sc-seg button{flex:1;padding:.55rem .5rem;border:none;border-radius:9px;background:transparent;font-family:var(--fb);font-size:.79rem;font-weight:700;color:var(--gray);cursor:pointer;transition:background .18s,color .18s;}
+.sc-seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(27,56,88,.1);}
+.sc-hero{text-align:center;padding:.2rem 0 1.3rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.15rem;}
+.sc-hero-l{font-family:var(--fb);font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--teal-lite);margin-bottom:.5rem;}
+.sc-hero-n{font-family:var(--fb);font-size:clamp(1.6rem,3.2vw,2.25rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.025em;}
+.sc-hero-s{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.42rem;line-height:1.55;}
+.sc-rows{display:flex;flex-direction:column;}
+.sc-rows > div{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.sc-rows > div:last-child{border-bottom:none;}
+.sc-rows span{font-size:.81rem;color:rgba(255,255,255,.6);}
+.sc-rows b{font-family:var(--fb);font-size:.87rem;font-weight:700;color:#fff;white-space:nowrap;}
+.sc-rows .hl b{color:var(--teal-lite);}
+.sc-rows b.good{color:#4ADE80;}
+.sc-warn{margin-top:auto;padding:.85rem 1rem;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.77rem;line-height:1.68;color:rgba(255,255,255,.6);}
+.sc-warn b{color:#fff;}
+.sc-warn.ok{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.25);}
+.sc-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.5rem;justify-content:center;}
+
+/* ── tartalomjegyzék ── */
+.toc{text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:1.3rem 1.5rem;margin:0 auto 2.4rem;max-width:780px;}
+.toc-t{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.8rem;}
+.toc ol{margin:0;padding-left:1.2rem;columns:2;column-gap:2rem;}
+.toc li{font-size:.85rem;line-height:1.9;margin:0;}
+.toc a{color:var(--navy);text-decoration:none;font-weight:500;}
+.toc a:hover{color:var(--teal-ink);text-decoration:underline;}
+
+/* ── kapcsolódó oldalak ── */
+.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.rel-c{display:flex;gap:.85rem;align-items:center;padding:1rem 1.15rem;border-radius:14px;background:#fff;border:1.5px solid var(--border);text-decoration:none;transition:transform .18s,box-shadow .18s,border-color .18s;}
+.rel-c:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,56,88,.08);border-color:rgba(63,124,116,.35);}
+.rel-i{width:38px;height:38px;border-radius:11px;background:#EAF4F3;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex:none;}
+.rel-t{font-family:var(--fb);font-size:.83rem;font-weight:700;color:var(--navy);line-height:1.35;}
+.rel-d{font-size:.73rem;color:var(--gray);line-height:1.45;margin-top:.1rem;}
+
+@media(max-width:900px){
+  .tiles,.tiles.c2{grid-template-columns:1fr 1fr;}
+  .kpis{grid-template-columns:1fr 1fr;}
+  .sc{grid-template-columns:1fr;}
+  .dark-sec .yn{grid-template-columns:1fr;}
+  .rel{grid-template-columns:1fr;}
+}
+@media(max-width:680px){
+  .tiles,.tiles.c2{grid-template-columns:1fr;}
+  .toc ol{columns:1;}
+  .art h2{font-size:1.3rem;}
+  .sc-in,.sc-out{padding:1.35rem 1.2rem;}
+  .box{padding:1.15rem 1.2rem;}
+}
