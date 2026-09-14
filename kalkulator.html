@@ -2346,6 +2346,35 @@ p.sub-lead,p.hero-lead,.section-sub{ text-wrap:pretty; }
   position:static !important; grid-column:auto !important; grid-row:auto !important;
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   17. EGY BAL SZÉL  ·  az oldal ne ingadozzon balra zárt és középre zárt
+   között. Desktopon minden tartalmi blokk ugyanonnan indul; középre
+   csak az kerül, ami szándékosan kiemelt (záró gombsor, összehasonlító
+   tábla, záró jel).
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1024px){
+  section > .container > *,
+  .section > .container > *,
+  .art > *{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  /* kivetelek: ezek szandekosan kozepen allnak */
+  section > .container > .sec-cta,
+  section > .container > div:has(> .apt-btn-wrap),
+  #why > .container > .compare-wrap,
+  #why > .container > .compare-table,
+  #endmark > .container,
+  section > .container > .hub-jump{
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
+/* szekcion beluli alcim soha ne legyen kozepre zart desktopon */
+@media(min-width:1024px){
+  section h3[style*="text-align:center"],section h4[style*="text-align:center"]{ text-align:left !important; }
+}
+
 /* ── ikonrendszer: egysegies vonalas ikonok az emojik helyett ── */
 .ic-sprite{position:absolute;width:0;height:0;overflow:hidden;}
 .ic{width:1em;height:1em;flex:0 0 auto;display:inline-block;vertical-align:-.13em;
@@ -2365,7 +2394,7 @@ a .ic,button .ic{pointer-events:none;}
   width:1em;height:1em;stroke-width:1.6;}
 
 </style>
-<meta name="eaglz-build" content="2026-09-14-1908">
+<meta name="eaglz-build" content="2026-09-14-1934">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
