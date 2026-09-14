@@ -2476,6 +2476,31 @@ footer a:not([class]) .ic{ color:#FF7EA8; }
 .hw a:not([class]) .ic,.hw-fine a .ic{ color:var(--eaglz-pink) !important; }
 /* az urlap adatkezelesi hivatkozasa vilagos kartyan all */
 .lead-gdpr a,.lead-box a:not([class]),.cta-right a:not([class]){ color:var(--teal-ink) !important; }
+/* az oldalon beluli ugrosav a nyitoresz tobbi elemevel egy vonalban */
+.sub-hero .sub-toc-inner{ justify-content:flex-start; }
+@media(max-width:1023px){ .sub-hero .sub-toc-inner{ justify-content:center; } }
+.sub-hero .sub-toc{ margin-top:1.4rem !important; }
+/* cimsorok kiegyensulyozott tordelese: ne maradjon egyetlen szo az utolso soron */
+h1,h2,.hero-title,.sub-h1,.section-title,.cta-title,.lead-title,.hub-g-t,.adv-help-t{
+  text-wrap:balance;
+}
+p.sub-lead,p.hero-lead,.section-sub{ text-wrap:pretty; }
+/* nagyon hosszu szekciocim ne fusson vegig a teljes szelessegen */
+@media(min-width:1024px){
+  .section-title{ max-width:42ch; }
+  .sub-hero .sub-h1,#hero .hero-title{ max-width:26ch; }
+}
+/* jelzodobozok fejlece balra, mint a doboz tartalma */
+@media(min-width:1024px){
+  .warnbox h4,.progbox h4,.docbox h4,.box h4,.box b:first-child{ justify-content:flex-start; text-align:left; }
+}
+.warnbox h4,.progbox h4,.docbox h4{ display:flex; align-items:center; gap:.5rem; }
+/* a fooldali ketoszlopos GYIK elrendezese ne szivarogjon at az atemelt
+   aloldalakra: ott egyoszlopos a lista, ott nem kell rogzitett fejlec */
+.zpage #faq > .container,.zpage #gyik > .container{ display:block !important; }
+.zpage #faq > .container > :first-child,.zpage #gyik > .container > :first-child{
+  position:static !important; grid-column:auto !important; grid-row:auto !important;
+}
 
 /* ── ikonrendszer: egysegies vonalas ikonok az emojik helyett ── */
 .ic-sprite{position:absolute;width:0;height:0;overflow:hidden;}
@@ -2485,6 +2510,9 @@ footer a:not([class]) .ic{ color:#FF7EA8; }
 a .ic,button .ic{pointer-events:none;}
 /* ikon + szoveg kozott mindig egyenletes koz */
 .ic + *{margin-left:.1em;}
+/* sorszam ikon helyett (a billentyu-emoji helyere) */
+.ic-num{display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--fb);font-weight:800;font-size:.92em;line-height:1;letter-spacing:-.02em;}
 /* CSS-bol rajzolt ikon (::before / ::after): a szin oroklodik */
 .ic-m::before,.ic-m::after{background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;}
@@ -2493,6 +2521,7 @@ a .ic,button .ic{pointer-events:none;}
   width:1em;height:1em;stroke-width:1.6;}
 
 </style>
+<meta name="eaglz-build" content="2026-09-14-1908">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
