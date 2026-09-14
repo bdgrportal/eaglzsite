@@ -2338,6 +2338,9 @@ footer a:not([class]) .ic{ color:#FF7EA8; }
 a .ic,button .ic{pointer-events:none;}
 /* ikon + szoveg kozott mindig egyenletes koz */
 .ic + *{margin-left:.1em;}
+/* sorszam ikon helyett (a billentyu-emoji helyere) */
+.ic-num{display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--fb);font-weight:800;font-size:.92em;line-height:1;letter-spacing:-.02em;}
 /* CSS-bol rajzolt ikon (::before / ::after): a szin oroklodik */
 .ic-m::before,.ic-m::after{background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;}
@@ -2346,6 +2349,7 @@ a .ic,button .ic{pointer-events:none;}
   width:1em;height:1em;stroke-width:1.6;}
 
 </style>
+<meta name="eaglz-build" content="2026-09-14-1839">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
