@@ -657,6 +657,21 @@ a{ color:var(--menta-t); }
   display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:0;
   align-items:stretch;
 }
+/* a ket reszletes magyarazat: felugro ablakban, a kiemelt blokkon belul */
+.bv-info{ display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-top:1rem; }
+@media(max-width:860px){ .bv-info{ grid-template-columns:1fr; } }
+.bv-infogomb{
+  display:flex; align-items:center; gap:.8rem; text-align:left; width:100%;
+  min-height:var(--tap); padding:.85rem 1.1rem; cursor:pointer;
+  background:rgba(255,255,255,.06); border:1px solid rgba(232,69,122,.45);
+  border-radius:var(--r-m);
+  font-family:var(--fd); font-size:.92rem; font-weight:600; line-height:1.4;
+  color:#fff;
+  transition:background .2s, border-color .2s;
+}
+.bv-infogomb .i{ margin-left:auto; flex:0 0 auto; color:var(--pink); transition:transform .2s; }
+.bv-infogomb:hover{ background:rgba(232,69,122,.14); border-color:var(--pink); }
+.bv-infogomb:hover .i{ transform:translateX(3px); }
 @media(max-width:860px){ .bv-perspektiva{ grid-template-columns:1fr; } }
 .bv-p{
   display:flex; flex-direction:column; height:100%;
@@ -814,7 +829,9 @@ a{ color:var(--menta-t); }
 /* a tortenetek szovegtara: csak a felugro ablak forrasa */
 .tort-tar{ display:none !important; }
 
-.tab-doboz{ width:min(560px, calc(100% - 32px)); }
+/* a szelesseget a .fablak-doboz alapszabaly utan kell megadni, ezert
+   kap tobblet-pontossagot a szulo azonositoval */
+.tablak .fablak-doboz{ width:min(560px, calc(100% - 32px)); }
 .tab-fej{
   display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center;
   padding-right:2.6rem; margin-bottom:1.3rem;
@@ -829,6 +846,20 @@ a{ color:var(--menta-t); }
 .tab-szoveg{ font-size:.96rem; line-height:1.75; color:var(--ink-2); }
 .tab-szoveg p{ margin:0 0 .85rem; }
 .tab-szoveg p:last-child{ margin-bottom:0; }
+
+/* szoveges ablak: hosszabb magyarazatok */
+.sablak .fablak-doboz{ width:min(680px, calc(100% - 32px)); }
+.sab-cim{
+  font-size:clamp(1.12rem,2.2vw,1.35rem); color:var(--navy);
+  margin:0 0 1.1rem; padding-right:2.6rem;
+}
+.sab-szoveg{ font-size:.96rem; line-height:1.75; color:var(--ink-2); }
+.sab-szoveg p{ margin:0 0 .9rem; }
+.sab-szoveg p:last-child{ margin-bottom:0; }
+.sab-szoveg b{ color:var(--navy); }
+.sab-szoveg ul{ margin:0 0 .9rem; padding-left:1.15rem; }
+.sab-szoveg li{ margin-bottom:.35rem; }
+.sab-szoveg li::marker{ color:var(--menta-t); }
 .tablak .fablak-jegy{
   margin-top:1.4rem; padding-top:1.1rem; border-top:1px solid var(--vonal);
 }
@@ -837,6 +868,54 @@ a{ color:var(--menta-t); }
   .tab-kep{ width:62px; height:62px; }
   .tab-nev h2{ font-size:1.12rem; }
 }
+
+/* ── 12/b. TÁRSADALMI SZEREPVÁLLALÁS ────────────────────────────────
+   Bal oldalon az álló videó, jobb oldalon a számok és a becsatlakozás.
+   A videó szélessége korlátos, hogy a szekció ne nyúljon el. */
+.tars-racs{
+  display:grid; gap:1.6rem; align-items:start;
+}
+@media(min-width:900px){
+  .tars-racs{ grid-template-columns:minmax(0,.62fr) minmax(0,1fr); gap:2.4rem; }
+}
+.tars-video{ max-width:330px; width:100%; margin-inline:auto; }
+.tars-cim{
+  font-family:var(--fd); font-size:1.12rem; font-weight:700; color:var(--navy);
+  margin:0 0 .5rem;
+}
+.tars-be{ margin:0 0 1.3rem; font-size:.96rem; line-height:1.7; color:var(--ink-2); }
+.tars-szamok{
+  list-style:none; margin:0 0 1.3rem; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:.8rem;
+}
+@media(max-width:420px){ .tars-szamok{ grid-template-columns:1fr; } }
+.tars-szamok li{
+  background:var(--feher); border:1px solid var(--vonal); border-radius:var(--r-l);
+  padding:1.1rem 1.25rem;
+}
+.tars-ert{
+  display:block; font-family:var(--fd); font-weight:700; line-height:1.1;
+  /* mért 3,67:1 fehéren, nagy szövegnél a 3:1 a küszöb */
+  font-size:clamp(1.7rem,3.4vw,2.2rem); color:#4F9186;
+  font-variant-numeric:tabular-nums;
+  padding-bottom:.55rem; margin-bottom:.55rem;
+  border-bottom:1px solid rgba(125,200,192,.45);
+}
+.tars-lab{
+  display:block; font-size:.76rem; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.tars-doboz{
+  background:rgba(125,200,192,.10); border:1px solid rgba(125,200,192,.42);
+  border-left:3px solid var(--menta-s);
+  border-radius:var(--r-l); padding:1.15rem 1.3rem;
+}
+.tars-doboz h4{
+  font-family:var(--fd); font-size:1rem; font-weight:700; color:var(--navy);
+  margin:0 0 .5rem;
+}
+.tars-doboz p{ margin:0; font-size:.94rem; line-height:1.7; color:var(--ink-2); }
+.tars-doboz b{ color:var(--navy); }
 
 /* ── 13. IRODA, KÖZÖSSÉG, TÉRKÉP ────────────────────────────────────── */
 .ir-racs{
@@ -1512,7 +1591,7 @@ section[id],[id]{ scroll-margin-top:84px; }
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-15-2210">
+<meta name="eaglz-build" content="2026-09-15-2220">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol></svg>
@@ -1968,7 +2047,76 @@ section[id],[id]{ scroll-margin-top:84px; }
         <span class="bv-ert bv-ert-alul">1,5-3 <em>M Ft/hó</em></span>
       </article>
     </div>
+
+    <div class="bv-info">
+      <button type="button" class="bv-infogomb" data-info="i-jovedelem" data-ev="info">
+        <span>Mit jelent valójában a havi 1-2,5 millió forintos jövedelem?</span>
+        <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+      </button>
+      <button type="button" class="bv-infogomb" data-info="i-harom" data-ev="info">
+        <span>Milyen út vezet a havi 3 milliós jövedelemhez?</span>
+        <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+      </button>
     </div>
+    </div>
+
+<!-- a ket hosszabb magyarazat szovege: a felugro ablak innen veszi at,
+     keresok szamara is olvashato marad, mert a jelolesben van -->
+<div class="info-tar" hidden>
+  <article id="i-jovedelem" data-cim="Mit jelent valójában a havi 1-2,5 millió forintos jövedelem?">
+    <p>Az oldalon szereplő jövedelmek valódi eredmények, ugyanakkor fontos megérteni, hogy ezek
+      <b>nem automatikusan járnak senkinek</b>.</p>
+    <p>A pénzügyi elemzés / tanácsadás teljesítményalapú szakma. Nincs garantált bér, viszont nincs
+      felső korlát sem. A bevételedet alapvetően az határozza meg, hogy mennyi értéket teremtesz az
+      ügyfeleknek, milyen gyorsan fejlődsz, és mennyire vagy kitartó.</p>
+    <p>A legtöbben, akik eljutnak a havi 1-2,5 millió forintos szintre, nagyjából az alábbiakat
+      csinálják:</p>
+    <ul>
+      <li>heti 30-40 óra munkát tesznek bele (akár diákként is - irodai rekordunk 3,3 millió Ft,
+        22 évesen)</li>
+      <li>folyamatosan tanulnak és fejlesztik magukat</li>
+      <li>rendszeresen keresnek új lehetőségeket, együttműködő partnereket</li>
+      <li>hetente több elemzést és tanácsadást tartanak</li>
+      <li>következetesen dolgoznak hónapokon keresztül, nem csak akkor, amikor éppen kedvük van</li>
+    </ul>
+    <p><b>Ez nem egy &bdquo;gyors meggazdagodás&rdquo; típusú lehetőség.</b></p>
+    <p>A legtöbb kollégánknak hónapokra van szüksége ahhoz, hogy stabilizálódjon ezen a szinten,
+      megtanulja a szakmát és eljusson idáig. Van, akinek gyorsabban sikerül, másnak több idő kell
+      hozzá - ez leginkább a befektetett munka mennyiségén és minőségén múlik.</p>
+    <p>Mi minden jelentkezőnek ugyanazt az esélyt tudjuk biztosítani: képzést, mentorálást, működő
+      rendszert és támogatást. <b>Az eredményt viszont senki helyett nem tudjuk megdolgozni.</b></p>
+    <p>Ha motivál, hogy a saját teljesítményed határozza meg a keresetedet, akkor ez egy olyan
+      pálya, ami fél évszázada bizonyítja: az átlagnál gyorsabban kerülhetsz a TOP mezőnybe.</p>
+  </article>
+
+  <article id="i-harom" data-cim="Milyen út vezet a havi 3 milliós jövedelemhez?">
+    <p>A több millió forintos havi bevétel már egy teljesen más szint.</p>
+    <p>Ezt nem néhány jól sikerült ügyfél vagy egy szerencsés hónap eredményezi, hanem évek alatt
+      felépített acélos szakmai tudás, következetes munka és sok esetben egy saját csapat
+      vezetése.</p>
+    <p>Akik ezen a szinten dolgoznak, jellemzően:</p>
+    <ul>
+      <li>több száz ügyféllel dolgoznak</li>
+      <li>hosszú évek óta építik a franchise vállalkozásukat</li>
+      <li>vezetőként más tanácsadók / irodák fejlődéséért is felelnek</li>
+      <li>folyamatosan képezik magukat</li>
+      <li>napi szinten hoznak üzleti döntéseket</li>
+      <li>rendezvényeket szerveznek</li>
+      <li>a HR-folyamatok motorjai</li>
+      <li>marketinget fejlesztenek</li>
+    </ul>
+    <p><b>Fontos megérteni, hogy ez nem egy kezdő fizetés.</b></p>
+    <p>Ahogy egy ügyvéd, orvos vagy vállalkozó sem keres több millió forintot az első hónapban, úgy
+      nálunk is hosszabb fejlődési út vezet idáig. Az itt bemutatott jövedelmek olyan kollégák
+      eredményei, akik évek óta építik a karrierjüket, rengeteg tapasztalatot szereztek, és sok
+      munkát tettek bele, hogy eljussanak erre a szintre.</p>
+    <p><b>Nem ígérjük, hogy mindenki több millió forintot fog keresni.</b> Azt viszont igen, hogy
+      aki hosszú távon gondolkodik, hajlandó tanulni, dolgozni és fejlődni, annak a keresetét nem
+      egy előre meghatározott bértábla fogja korlátozni.</p>
+    <p>A célunk, hogy ebbe a lehetőségbe azok kapaszkodjanak, akiknek a hosszú távú
+      franchise-működés, önálló vállalkozás és irodák fejlesztése a végcélja.</p>
+  </article>
+</div>
 
     <details class="nyit nyit-sotet bv-diak" data-ev="diak_nyitas">
       <summary>Diák vagyok: miben más ez, mint egy klasszikus diákmunka?</summary>
@@ -2254,8 +2402,56 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </section>
 
+<!-- ══ 10/b. TÁRSADALMI SZEREPVÁLLALÁS ═════════════════════════════
+     A videó ugyanazzal a komponenssel megy, mint az irodai videók:
+     kattintásig csak a poszter tölt be. ═════════════════════════════ -->
+<section class="sec sec-feher" id="tarsadalom">
+  <div class="wrap">
+    <h2 class="sec-cim">Társadalmi szerepvállalás</h2>
+    <p class="sec-alcim">A pénzügyi tudatosságot ott kezdjük, ahol a legtöbbet számít: az
+      iskolapadban. Tanácsadóink önkéntesen járnak iskolákba, és élményalapú, korosztályra szabott
+      órákat tartanak a pénz kezeléséről, a megtakarításról és a tudatos döntésekről.</p>
+
+    <div class="tars-racs">
+      <div class="vkart tars-video" data-video="/assets/kar-vid-tarsadalmi.mp4"
+           data-poster="/assets/kar-vid-tarsadalmi.jpg" data-felirat="">
+        <div class="vk-keret vk-t1">
+          <button type="button" class="vk-gomb"
+                  style="background-image:url(/assets/kar-vid-tarsadalmi.jpg)"
+                  aria-label="Lejátszom a pénzügyi oktatási programról szóló videót">
+            <span class="vk-jel" aria-hidden="true">
+              <svg class="i"><use href="#i-play"></use></svg>
+            </span>
+          </button>
+        </div>
+        <h3 class="vh">Pénzügyi oktatási program az iskolákban</h3>
+      </div>
+
+      <div class="tars-jobb">
+        <h3 class="tars-cim">A programunk számokban</h3>
+        <p class="tars-be">Eddigi közösségi pénzügyi oktatási munkánk mérlege: valódi iskolák,
+          valódi osztályok, valódi diákok.</p>
+
+        <ul class="tars-szamok">
+          <li><span class="tars-ert">157</span><span class="tars-lab">általános iskola</span></li>
+          <li><span class="tars-ert">695</span><span class="tars-lab">alsós és felsős osztály</span></li>
+          <li><span class="tars-ert">16 002</span><span class="tars-lab">tanuló</span></li>
+          <li><span class="tars-ert">114</span><span class="tars-lab">kolléga</span></li>
+        </ul>
+
+        <div class="tars-doboz">
+          <h4>Neked is szereped lehet benne</h4>
+          <p>Ha <b>tanító, segítő szellemű</b> vagy, ezt nálunk nem kell hátrahagynod. Ahogy
+            fejlődsz, te is bekapcsolódhatsz ezekbe a programokba, akár <b>a saját egykori
+            iskoládba visszatérve</b> adhatsz át tudást ott, ahol egykor te is diák voltál.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ 11. GYIK ═════════════════════════════════════════════════════ -->
-<section class="sec sec-feher" id="gyik">
+<section class="sec sec-vilagos" id="gyik">
   <div class="wrap">
     <h2 class="sec-cim">Gyakori kérdések</h2>
     <p class="sec-alcim">Ezek hangzanak el a leggyakrabban az első beszélgetéseken.</p>
@@ -2477,6 +2673,23 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </div>
 
+<!-- ══ SZÖVEGES ABLAK ══════════════════════════════════════════════
+     Hosszabb magyarazatokhoz. A cimet es a tartalmat az .info-tar
+     blokk adott eleme adja, ugyanazzal a viselkedessel, mint a tobbi
+     ablak. ════════════════════════════════════════════════════════ -->
+<div class="fablak sablak" id="sablak" hidden>
+  <div class="fablak-hatter" data-zar></div>
+  <div class="fablak-doboz sab-doboz" role="dialog" aria-modal="true"
+       aria-labelledby="sablak-cim" tabindex="-1">
+    <button type="button" class="fablak-x" data-zar aria-label="Bezárom az ablakot">
+      <svg class="i" aria-hidden="true"><use href="#i-x"></use></svg>
+    </button>
+
+    <h2 class="sab-cim" id="sablak-cim"></h2>
+    <div class="sab-szoveg" id="sablak-szoveg"></div>
+  </div>
+</div>
+
 <!-- ══ FOGLALÁSI ABLAK ════════════════════════════════════════════ -->
 <div class="fablak" id="fablak" hidden>
   <div class="fablak-hatter" data-zar></div>
@@ -2663,6 +2876,21 @@ section[id],[id]{ scroll-margin-top:84px; }
 
   var foglalas = Ablak('fablak');
   var tortenet = Ablak('tablak');
+  var szoveg = Ablak('sablak');
+
+  /* hosszabb magyarazatok: a tartalom az .info-tar blokkbol jon */
+  function szovegNyit(gomb) {
+    if (!szoveg) return;
+    var forras = document.getElementById(gomb.getAttribute('data-info'));
+    if (!forras) return;
+    document.getElementById('sablak-cim').textContent = forras.getAttribute('data-cim') || '';
+    var cel = document.getElementById('sablak-szoveg');
+    cel.innerHTML = '';
+    [].forEach.call(forras.children, function (gy) { cel.appendChild(gy.cloneNode(true)); });
+    szoveg.doboz.scrollTop = 0;
+    szoveg.nyit(gomb);
+    mer('info_megnyitas', { temakor: forras.getAttribute('data-cim') || '' });
+  }
 
   /* a tortenet ablak feltoltese a .tort-tar blokkbol */
   function tortenetNyit(gomb) {
@@ -2685,6 +2913,8 @@ section[id],[id]{ scroll-margin-top:84px; }
     if (!e.target.closest) return;
     var t = e.target.closest('[data-tort]');
     if (t) { e.preventDefault(); tortenetNyit(t); return; }
+    var sz = e.target.closest('[data-info]');
+    if (sz) { e.preventDefault(); szovegNyit(sz); return; }
     var b = e.target.closest('[data-book]');
     if (b && foglalas) {
       e.preventDefault();
