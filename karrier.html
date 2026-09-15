@@ -650,33 +650,89 @@ a{ color:var(--menta-t); }
 }
 .zaras-alt a:hover{ color:#fff; }
 
-/* ── 17. LÁBLÉC ─────────────────────────────────────────────────────── */
-.klab{ background:var(--navy-m); color:rgba(255,255,255,.66); padding-block:3rem 2rem; }
+/* ── 17. ZÁRÓJEL ÉS LÁBLÉC ─────────────────────────────────────────
+   A fő oldal zárása, ugyanazzal a szerkezettel és arányokkal, de a
+   karrieroldal tokenjeivel. A színek erősebbek a mintánál, mert itt
+   mérten is teljesíteni kell a WCAG AA kontrasztot.
+   ─────────────────────────────────────────────────────────────────── */
+:root{ --navy-x:#0F2035; }
+
+.endjel{
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.028) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 44px),
+    var(--navy-x);
+  padding-block:4.2rem; text-align:center;
+}
+@media(max-width:700px){ .endjel{ padding-block:3rem 2.6rem; } }
+.ej-logok{
+  display:flex; align-items:center; justify-content:center;
+  gap:clamp(1.6rem,5vw,3.4rem);
+}
+.ej-logok img{ height:clamp(30px,5.5vw,46px); width:auto; display:block; opacity:.95; }
+.ej-logok .ej-ovb{ height:clamp(38px,7vw,60px); }
+.ej-logok span{
+  font-family:var(--fd); font-weight:300; line-height:1;
+  font-size:clamp(1.2rem,3vw,1.8rem); color:rgba(255,255,255,.34);
+}
+.ej-cap{
+  margin:1.5rem auto 0; max-width:64ch;
+  font-size:.78rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:rgba(255,255,255,.52); line-height:1.8;
+}
+
+.klab{ background:var(--navy-x); padding-block:2.4rem 2rem; }
 .klab-fo{
-  display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:2rem;
-  padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.10);
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:1rem 1.6rem;
 }
-@media(max-width:900px){ .klab-fo{ grid-template-columns:1fr 1fr; } }
-@media(max-width:560px){ .klab-fo{ grid-template-columns:1fr; gap:1.6rem; } }
-.klab-marka img{ height:32px; width:auto; display:block; margin-bottom:.9rem; }
-.klab-marka p{ font-size:.88rem; line-height:1.6; margin:0; }
-.klab-nav h2{
-  font-family:var(--fd); font-size:.8rem; font-weight:700; letter-spacing:.09em;
-  text-transform:uppercase; color:rgba(255,255,255,.5); margin:0 0 .8rem;
+.klab-nev{
+  margin:0; font-family:var(--fb); font-size:.95rem; font-weight:700; color:#fff;
 }
-.klab-nav a{
-  display:flex; align-items:center; min-height:var(--tap);
-  color:rgba(255,255,255,.72); text-decoration:none; font-size:.92rem;
+.klab-nev span{ color:var(--menta); }
+.klab-alcim{
+  margin:.22rem 0 0; font-size:.78rem; line-height:1.6; color:rgba(255,255,255,.62);
 }
-.klab-nav a:hover{ color:#fff; text-decoration:underline; }
-.klab-jogi .kep-helyorzo{ min-height:90px; font-size:.82rem; }
-.klab-zaro{
-  margin:1.6rem 0 0; font-size:.82rem; line-height:1.65;
-  color:rgba(255,255,255,.48); max-width:88ch;
+.klab-linkek{ display:flex; flex-wrap:wrap; align-items:center; gap:0 1.05rem; }
+.klab-linkek a{
+  display:inline-flex; align-items:center; min-height:var(--tap);
+  font-size:.82rem; color:rgba(255,255,255,.72); text-decoration:none;
+  transition:color .2s;
 }
-@media(max-width:1023px){
-  .klab-fo{ text-align:left; }
-  .klab-marka img{ margin-inline:0; }
+.klab-linkek a:hover{ color:#fff; text-decoration:underline; }
+
+.klab-jog{
+  margin-top:1.4rem; padding-top:1.3rem;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+.klab-jog-fent{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:0 1.4rem;
+}
+.klab-copy{
+  margin:0; font-family:var(--fb); font-size:.8rem; font-weight:600;
+  color:rgba(255,255,255,.66);
+}
+.klab-copy b{ color:rgba(255,255,255,.86); }
+.klab-jog-linkek{ display:flex; flex-wrap:wrap; gap:0 1.15rem; }
+.klab-jog-linkek a{
+  display:inline-flex; align-items:center; min-height:var(--tap);
+  font-size:.78rem; color:rgba(255,255,255,.66); text-decoration:none;
+  transition:color .2s;
+}
+.klab-jog-linkek a:hover{ color:var(--menta); text-decoration:underline; }
+.klab-apro{
+  margin:.9rem 0 0; max-width:96ch;
+  font-size:.78rem; line-height:1.75; color:rgba(255,255,255,.58);
+}
+.klab-apro b{ color:rgba(255,255,255,.76); font-weight:600; }
+.klab-apro a{ color:rgba(140,197,189,.95); text-decoration:underline; }
+.klab-apro a:hover{ color:var(--menta); }
+
+@media(max-width:820px){
+  .klab-fo{ flex-direction:column; align-items:flex-start; gap:.4rem; }
+  .klab-jog-fent{ flex-direction:column; align-items:flex-start; gap:.2rem; }
+  .klab-linkek,.klab-jog-linkek{ gap:0 1rem; }
 }
 
 /* ── 18. MOBIL ALSÓ SÁV ─────────────────────────────────────────────── */
@@ -1060,7 +1116,7 @@ section[id],[id]{ scroll-margin-top:84px; }
 #csere .oszlop{ height:auto; }
 
 </style>
-<meta name="eaglz-build" content="2026-09-15-0941">
+<meta name="eaglz-build" content="2026-09-15-1002">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol></svg>
@@ -1272,9 +1328,9 @@ section[id],[id]{ scroll-margin-top:84px; }
       első időszak a gyakorlatban.</p>
 
     <ul class="videok">
-      <li class="vkart" data-video="/assets/kar-vid-iroda1.mp4" data-poster="/assets/kar-vid-iroda1.jpg" data-felirat=""><div class="vk-keret vk-t1"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda1.jpg)" aria-label="Lejátszom ezt a videót: Ahol az EAGLZ repül"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Ahol az EAGLZ repül</h3><p>Rövid film a csapatról, a munkáról és a kilátásról.</p></li>
-      <li class="vkart" data-video="/assets/kar-vid-iroda2.mp4" data-poster="/assets/kar-vid-iroda2.jpg" data-felirat=""><div class="vk-keret vk-t2"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda2.jpg)" aria-label="Lejátszom ezt a videót: No call, no party"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>No call, no party</h3><p>Telefonálás, képzés és a mindennapi munka az irodában.</p></li>
-      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t3"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-book"></use></svg></div><h3>Ügyfélidőpont, képzés és közös munka</h3><p>Amiből egy hét valójában összeáll.</p></li>
+      <li class="vkart" data-video="/assets/kar-vid-iroda1.mp4" data-poster="/assets/kar-vid-iroda1.jpg" data-felirat=""><div class="vk-keret vk-t1"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda1.jpg)" aria-label="Lejátszom ezt a videót: Office day"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Office day</h3><p>Egy hétköznap az irodában, a reggeli tervezéstől az utolsó feladatig.</p></li>
+      <li class="vkart" data-video="/assets/kar-vid-iroda2.mp4" data-poster="/assets/kar-vid-iroda2.jpg" data-felirat=""><div class="vk-keret vk-t2"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda2.jpg)" aria-label="Lejátszom ezt a videót: After work"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>After work</h3><p>Néhány pillanat abból, hogyan kapcsolódunk ki egy intenzív időszak után.</p></li>
+      <li class="vkart" data-video="/assets/kar-vid-iroda3.mp4" data-poster="/assets/kar-vid-iroda3.jpg" data-felirat=""><div class="vk-keret vk-t3"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda3.jpg)" aria-label="Lejátszom ezt a videót: Rooftop work"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Rooftop work</h3><p>Amikor a munka kilép az irodából: laptop, panoráma, jó idő.</p></li>
     </ul>
   </div>
 </section>
@@ -1665,7 +1721,7 @@ section[id],[id]{ scroll-margin-top:84px; }
       valódi csapatként dolgozzunk.</p>
 
     <ul class="videok">
-      <li class="vkart" data-video="/assets/kar-vid-csapat1.mp4" data-poster="/assets/kar-vid-csapat1.jpg" data-felirat=""><div class="vk-keret vk-t4"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-csapat1.jpg)" aria-label="Lejátszom ezt a videót: After work vibes"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>After work vibes</h3><p>Néhány pillanat abból, hogyan kapcsolódunk ki egy intenzív időszak után.</p></li>
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t4"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-heart"></use></svg></div><h3>Csapatépítő és közös programok</h3><p>Néhány pillanat abból, hogyan telik egy közös nap az irodán kívül.</p></li>
       <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t5"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-trophy"></use></svg></div><h3>Szakmai rendezvények és gálák</h3><p>Így néz ki, amikor az ország különböző csapatai egy helyen találkoznak.</p></li>
       <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t6"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-plane"></use></svg></div><h3>Utazások a csapattal</h3><p>Közös utak, amelyekből a fényképeken túl is marad valami.</p></li>
     </ul>
@@ -1856,48 +1912,68 @@ section[id],[id]{ scroll-margin-top:84px; }
 
 </main>
 
+<!-- ══ ZÁRÓJEL · EAGLZ × OVB ═══════════════════════════════════════
+     Ugyanaz a zárás, mint a fő oldalon, hogy a két portál egy rendszernek
+     látsszon. A hivatkozások az oldalon belüli szakaszokra és a fő oldal
+     jogi tartalmaira mutatnak. ═══════════════════════════════════════ -->
+<section class="endjel" aria-label="EAGLZ és OVB">
+  <div class="wrap">
+    <div class="ej-logok">
+      <img src="/assets/eaglz-logo.png" width="760" height="328" alt="EAGLZ"
+           loading="lazy" decoding="async">
+      <span aria-hidden="true">×</span>
+      <img class="ej-ovb" src="/assets/ovb-logo.png" width="300" height="351" alt="OVB"
+           loading="lazy" decoding="async">
+    </div>
+    <p class="ej-cap">Független pénzügyi tanácsadás<br>az OVB Allfinanz Magyarország partnereként</p>
+  </div>
+</section>
+
 <footer class="klab">
   <div class="wrap">
+
     <div class="klab-fo">
       <div class="klab-marka">
-        <picture><source srcset="/assets/eaglz-lockup-nav.webp" type="image/webp"><img src="/assets/eaglz-lockup-nav.png" width="327" height="56"
-             alt="EAGLZ, powered by OVB Gentischer Direction" loading="lazy" decoding="async"></picture>
-        <p>Kelenhegyi iroda &middot; Budapest XI. kerület, Kelenhegyi út 43.</p>
+        <p class="klab-nev">EAGLZ <span>Finance</span></p>
+        <p class="klab-alcim">OVB Allfinanz Magyarország &middot; Budapest, XI. kerület &middot;
+          MNB-nyilvántartott közvetítők</p>
       </div>
 
-      <nav class="klab-nav" aria-label="Lábléc">
-        <h2>Az oldalon</h2>
+      <nav class="klab-linkek" aria-label="Lábléc">
         <a href="#munka">A munka</a>
         <a href="#bevetel">A bevétel</a>
-        <a href="#gyik">Gyakori kérdések</a>
+        <a href="#gyik">GYIK</a>
         <a href="#interju">Az interjú</a>
-      </nav>
-
-      <nav class="klab-nav" aria-label="Kapcsolat">
-        <h2>Kapcsolat</h2>
-        <a href="mailto:gentischer.info@ovb.hu">gentischer.info@ovb.hu</a>
-        <a href="/" data-ev="fo_oldal">eaglz.hu, a tanácsadói oldal</a>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Budapest,+Kelenhegyi+%C3%BAt+43,+1118"
-           target="_blank" rel="noopener" data-ev="terkep">Az iroda a térképen</a>
-      </nav>
-
-      <!-- ELLENŐRIZENDŐ TARTALOM: a jogi dokumentumok pontos, működő URL-je hiányzik.
-           Szükséges: adatkezelési tájékoztató, impresszum, sütikezelési tájékoztató,
-           a szolgáltató pontos cégneve, székhelye, nyilvántartási és MNB-engedélyszáma,
-           valamint az OVB-vel fennálló jogi kapcsolat megnevezése.
-           A foglalási űrlap adatkezeléséről szóló tájékoztató is ide tartozik.
-           Amíg ezek nincsenek meg, a blokk nem mutat hamis linket. -->
-      <nav class="klab-nav klab-jogi" aria-label="Jogi információk" data-ellenorizendo="jogi-linkek">
-        <h2>Jogi információk</h2>
-        <p class="kep-helyorzo">Adatkezelési tájékoztató, impresszum és sütikezelés linkje ide kerül</p>
+           target="_blank" rel="noopener" data-ev="terkep">Térkép</a>
+        <a href="mailto:gentischer.info@ovb.hu" data-ev="email">Kapcsolat</a>
+        <a href="/" data-ev="fo_oldal">eaglz.hu</a>
       </nav>
     </div>
 
-    <p class="klab-zaro">
-      Ez az oldal karrier-tájékoztató. Nem minősül állásajánlatnak, szerződéses ajánlatnak,
-      díjazási ígéretnek vagy pénzügyi tanácsadásnak. A bemutatott időbeosztások és bevételi
-      lehetőségek példák, amelyek egyéni teljesítménytől függenek.
-    </p>
+    <div class="klab-jog">
+      <div class="klab-jog-fent">
+        <p class="klab-copy">&copy; 2026 <b>EAGLZ Finance</b>. Minden jog fenntartva.</p>
+        <div class="klab-jog-linkek">
+          <a href="/#impresszum">Impresszum</a>
+          <a href="https://www.ovb.hu/szerviz/adatkezelesi-szabalyzat.html"
+             target="_blank" rel="noopener">Adatkezelési tájékoztató</a>
+          <a href="/#impresszum">Panaszkezelés</a>
+          <a href="https://intezmenykereso.mnb.hu" target="_blank" rel="noopener">MNB nyilvántartás</a>
+        </div>
+      </div>
+
+      <p class="klab-apro">Az <b>EAGLZ</b> márkanév, nem önálló jogi személy. A tanácsadás az
+        <b>OVB Vermögensberatung Kft.</b> többes ügynökeként történik, felügyeleti szerv:
+        <b>Magyar Nemzeti Bank</b>. A weboldal tartalma tájékoztató jellegű, nem minősül
+        ajánlattételnek. A részletes jogi tájékoztató, a cégadatok és a panaszkezelés menete
+        <a href="/#impresszum">az impresszumban</a> olvasható.</p>
+
+      <p class="klab-apro">Ez az oldal karrier-tájékoztató. Nem minősül állásajánlatnak,
+        szerződéses ajánlatnak, díjazási ígéretnek vagy pénzügyi tanácsadásnak. A bemutatott
+        időbeosztások és bevételi lehetőségek példák, amelyek egyéni teljesítménytől függenek.</p>
+    </div>
+
   </div>
 </footer>
 
