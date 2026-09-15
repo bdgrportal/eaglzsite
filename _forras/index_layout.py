@@ -97,6 +97,7 @@ def apply(S):
 
     S = advisors_and_form(S)
     S = lead_js(S)
+    S = online_block(S)
     return S
 
 
@@ -272,3 +273,28 @@ def placeholders(S):
     S = re.sub(r'<dt>.*?</dt>\s*<dd>.*?</dd>', row, S, flags=re.S)
     S = re.sub(r'<div class="imp-row">.*?</div>\s*</div>', row, S, flags=re.S)
     return S
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  Online kotes sav: egyseges kartyak (a ket szinu valtakozas megszunik)
+# ══════════════════════════════════════════════════════════════════════
+def online_block(S):
+    import re
+    i = S.find('<section id="online"')
+    if i == -1:
+        return S
+    g0 = S.index('<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">', i)
+    g1 = S.index('</div>\n  </div>\n</section>', g0)
+    block = S[g0:g1]
+    cards = re.findall(r'<a href="([^"]+)"[^>]*>\s*<span[^>]*>(.*?)</span>\s*<span[^>]*>(.*?)</span>\s*</a>',
+                       block, re.S)
+    if not cards:
+        return S
+    out = ['<div class="onl-grid">']
+    for href, ico, label in cards:
+        out.append('<a class="onl-card" href="%s" target="_blank" rel="noopener">'
+                   '<span class="onl-i">%s</span><span class="onl-t">%s</span>'
+                   '<svg class="ic onl-go" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>'
+                   '</a>' % (href, ico.strip(), re.sub(r'\s+', ' ', label).strip()))
+    out.append('</div>')
+    return S[:g0] + '\n      '.join(out) + S[g1:]

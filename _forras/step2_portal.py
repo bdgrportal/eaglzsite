@@ -280,7 +280,7 @@ PARTNERS = u'''
       </a>
     </div>
     </div>
-    <p style="max-width:76ch;margin:1.8rem auto 0;text-align:center;font-size:.79rem;line-height:1.75;color:var(--gray);">
+    <p class="hub-fine" style="max-width:76ch;margin:1.8rem 0 0;text-align:left;font-size:.79rem;line-height:1.75;color:var(--gray);">
       A kalkulátorok tájékoztató jellegűek, egyszerűsített, annuitásos számítást használnak, és nem minősülnek ajánlatnak, ajánlattételi felhívásnak vagy THM-tájékoztatásnak. Az oldalon egyetlen pénzintézet ajánlata, kamata vagy THM-e sem szerepel; a logók az adott vállalatok tulajdonát képezik, feltüntetésük a hazai piac szemléltetését szolgálja. A naprakész banki kondíciók az <a href="https://hitelvalaszto.mnb.hu/termekkereso" target="_blank" rel="noopener" style="color:var(--teal-ink);font-weight:600;">MNB Termékkeresőjében</a> ellenőrizhetők. Adatok érvényessége: <b data-upd></b>.
     </p>
   </div>

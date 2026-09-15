@@ -432,8 +432,6 @@ section > .container > div[style*="text-align:center"] .section-sub,
   .compare-table{ margin-left:0 !important; max-width:none !important; }
   .why-compare{ margin-top:var(--sp-head) !important; }
 }
-
-}
 @media(min-width:1024px){
   .faq-list,.faq-wrap{ margin-left:0 !important; margin-right:0 !important; max-width:920px !important; }
   .team-grid,.gd-grid{ max-width:none !important; }
@@ -1203,3 +1201,237 @@ footer a:not([class]) .ic{ color:#FF7EA8; }
 .hw a:not([class]) .ic,.hw-fine a .ic{ color:var(--eaglz-pink) !important; }
 /* az urlap adatkezelesi hivatkozasa vilagos kartyan all */
 .lead-gdpr a,.lead-box a:not([class]),.cta-right a:not([class]){ color:var(--teal-ink) !important; }
+/* az oldalon beluli ugrosav a nyitoresz tobbi elemevel egy vonalban */
+.sub-hero .sub-toc-inner{ justify-content:flex-start; }
+@media(max-width:1023px){ .sub-hero .sub-toc-inner{ justify-content:center; } }
+.sub-hero .sub-toc{ margin-top:1.4rem !important; }
+/* cimsorok kiegyensulyozott tordelese: ne maradjon egyetlen szo az utolso soron */
+h1,h2,.hero-title,.sub-h1,.section-title,.cta-title,.lead-title,.hub-g-t,.adv-help-t{
+  text-wrap:balance;
+}
+p.sub-lead,p.hero-lead,.section-sub{ text-wrap:pretty; }
+/* nagyon hosszu szekciocim ne fusson vegig a teljes szelessegen */
+@media(min-width:1024px){
+  .section-title{ max-width:42ch; }
+  .sub-hero .sub-h1,#hero .hero-title{ max-width:26ch; }
+}
+/* jelzodobozok fejlece balra, mint a doboz tartalma */
+@media(min-width:1024px){
+  .warnbox h4,.progbox h4,.docbox h4,.box h4,.box b:first-child{ justify-content:flex-start; text-align:left; }
+}
+.warnbox h4,.progbox h4,.docbox h4{ display:flex; align-items:center; gap:.5rem; }
+/* a fooldali ketoszlopos GYIK elrendezese ne szivarogjon at az atemelt
+   aloldalakra: ott egyoszlopos a lista, ott nem kell rogzitett fejlec */
+.zpage #faq > .container,.zpage #gyik > .container{ display:block !important; }
+.zpage #faq > .container > :first-child,.zpage #gyik > .container > :first-child{
+  position:static !important; grid-column:auto !important; grid-row:auto !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   17. EGY BAL SZÉL  ·  az oldal ne ingadozzon balra zárt és középre zárt
+   között. Desktopon minden tartalmi blokk ugyanonnan indul; középre
+   csak az kerül, ami szándékosan kiemelt (záró gombsor, összehasonlító
+   tábla, záró jel).
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1024px){
+  section > .container > *,
+  .section > .container > *,
+  .art > *{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  /* kivetelek: ezek szandekosan kozepen allnak */
+  section > .container > .sec-cta,
+  section > .container > div:has(> .apt-btn-wrap),
+  #why > .container > .compare-wrap,
+  #why > .container > .compare-table,
+  #endmark > .container,
+  section > .container > .hub-jump{
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
+/* szekcion beluli alcim soha ne legyen kozepre zart desktopon */
+@media(min-width:1024px){
+  section h3[style*="text-align:center"],section h4[style*="text-align:center"]{ text-align:left !important; }
+}
+
+/* ── 18. ONLINE KÖTÉS SÁV ────────────────────────────────────────────── */
+.onl-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--sp-mod); }
+.onl-card{
+  display:flex; align-items:center; gap:.8rem; padding:.95rem 1.1rem; text-decoration:none;
+  background:var(--surface); border:1.5px solid var(--line); border-radius:var(--r-m);
+  box-shadow:var(--sh-1); transition:border-color .18s,box-shadow .18s,transform .18s;
+}
+.onl-card:hover{ border-color:var(--teal-ink); box-shadow:var(--sh-2); transform:translateY(-2px); }
+.onl-i{
+  width:36px; height:36px; flex:none; border-radius:10px; display:inline-flex;
+  align-items:center; justify-content:center; font-size:1.05rem;
+  background:var(--eaglz-pink-soft); color:var(--eaglz-pink);
+}
+.onl-t{ font-family:var(--fb); font-size:.88rem; font-weight:700; color:var(--navy); line-height:1.35; text-align:left; }
+.onl-go{ margin-left:auto; color:var(--ink-3); width:1.05em; height:1.05em; flex:none; }
+.onl-card:hover .onl-go{ color:var(--teal-ink); }
+@media(max-width:1023px){ .onl-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:620px){ .onl-grid{ grid-template-columns:1fr; } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   19. MOBIL IGAZÍTÁS  ·  a címsorok középen, a magyarázó szöveg balra
+   ----------------------------------------------------------------------
+   Több soros, középre zárt bekezdés mindkét szélén szakadozik, ezért
+   nehezen olvasható. Mobilon a szekciócím és a címke marad középen, a
+   szöveg, a felsorolás, a kártyák tartalma balra zárt.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(max-width:1023px){
+  p,li,dd,td,blockquote,figcaption,
+  .section-sub,.sub-lead,.sub-upd,.cta-sub,.lead-sub,.midcta-t,.midcta-s,
+  .st-d,.st-t,.ct-d,.ki-d,.ki-t,.fld-h,.fld-note,.res-note,.res-sub,.qz-help,
+  .fw-text,.why-text,.ms-text,.hub-g-s,.hub-d,.step-text,.tile-d,.rel-d,.gd-d,
+  .ltp-p-text,.ltp-u-t,.calc-foot,.sc-warn,.bk-panel-text,.bk-lead,.bk-fine,
+  .docitem,.docitem b,.docitem span,.adv-help-s,.sav-text,.sav-note,
+  .footer-sub,.footer-fine,.sub-note,.legal-note,.tbl-note,.scf-note,.faq-a,.art{
+    text-align:left !important;
+  }
+  /* kártya: a teljes tartalma balra, a cím is */
+  .docbox,.docbox *,.warnbox,.warnbox *,.progbox,.progbox *,
+  .st,.st *,.tile,.tile *,.hub-c,.hub-c *,.rel-c,.rel-c *,.onl-card,.onl-card *,
+  .bk-panel,.bk-panel *,.ltp-u,.ltp-u *,.sav-item,.sav-item *{
+    text-align:left !important;
+  }
+  /* középen marad: szekciófejléc, címke, gomb, statisztika, nagy szám */
+  .section-title,.sub-h1,.hero-title,.cta-title,.lead-title,h2,h3,
+  .label-chip,.eyebrow,.hub-g-lab,.ben-h,
+  .stat-num,.stat-label,.kpi,.bignum,.sc-hero,.res-hero,.sc-hero-n,
+  .hero-trust,.sub-chips,.sub-actions,.hero-actions,.sec-cta,.apt-btn-wrap,.roles{
+    text-align:center !important;
+  }
+  /* a kártyán belüli címsor viszont balra, hogy ne törjön meg a blokk */
+  .docbox h4,.warnbox h4,.progbox h4,.st-t,.tile-t,.hub-t,.rel-t,.onl-t,.ltp-u-t{
+    text-align:left !important;
+  }
+}
+/* maradek kozepre zart hosszu szovegek mobilon */
+@media(max-width:1023px){
+  .hero-lead,.hw-fine,.pt-title,.pt-text,.calccta-d,.calccta-t,.src-text,.src-card,
+  .chart-title,.bk-warn,.bk-warn *,.bl,.footer-sub,.footer-fine,.foot-legal,
+  .cta-sub,.lead-box p,.imp-modal p,.imp-modal li,.sc-out .res-note{
+    text-align:left !important;
+  }
+  /* a lablec markaneve es a zaro jel marad kozepen */
+  .footer-brand,.endmark,.endmark-cap{ text-align:center !important; }
+}
+/* a lablec jogi szovege mobilon is balra zart, csak a markanev kozepen */
+@media(max-width:1023px){
+  footer .footer-inner,footer .footer-legal{ text-align:left !important; justify-items:start !important; }
+  footer .footer-sub,footer .footer-fine,footer .foot-legal,footer .footer-copy{ text-align:left !important; }
+  footer .footer-brand{ text-align:left !important; }
+  footer .footer-links,footer .footer-legal-links{ justify-content:flex-start !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   20. KÁRTYAFEJLÉC  ·  a cím mellé tett jelölő ne szoruljon a cím alá
+   ----------------------------------------------------------------------
+   A kártyák fejléce (cím + darabszám jelölő) egy soros rugalmas doboz
+   volt, ezért hosszú címnél a jelölő kétsorosra tört, és a cím alá
+   csúszott. Megengedjük a sortörést, a jelölő pedig egyben marad.
+   ══════════════════════════════════════════════════════════════════════ */
+.docbox h4,.warnbox h4,.progbox h4,.st-top{
+  flex-wrap:wrap !important;
+  align-items:baseline !important;
+  row-gap:.4rem !important;
+}
+.docbox h4 em,.warnbox h4 em,.progbox h4 em{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+.docbox h4 > .ic,.warnbox h4 > .ic,.progbox h4 > .ic{ align-self:center !important; }
+.st-top .role{ flex:0 0 auto !important; white-space:nowrap !important; }
+
+/* a "Kilenc lépés" kártyáin a cím és a szerepjelölő külön sorban olvashatóbb */
+@media(max-width:1023px){
+  .st-top{ display:block !important; }
+  .st-top .st-t{ display:block !important; margin-bottom:.45rem !important; }
+  .st-top .role{ display:inline-flex !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   21. MOBIL IGAZÍTÁS  ·  a maradék középre zárt hosszú szövegek
+   ----------------------------------------------------------------------
+   A 19. szakasz után mért blokkok: kártyarácsok, súgószövegek, zárósorok.
+   A számokat kiemelő blokkok (statisztika, összegzősáv) középen maradnak.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(max-width:1023px){
+  .hub,.hub-c,.hub-c *,.rel,.rel *,.ben,.ben *,.onl-grid,.scf,.scf *,
+  .calcgrid,.fld,.fld *,.tipbox,.tipbox *,.sub-toc,.sub-toc *,.sub-toc-inner,
+  .cta-sub,.lead-sub,.endmark-cap,.toc,.toc *{
+    text-align:left !important;
+  }
+  /* a számot kiemelő dobozok és a gombsorok viszont középen jók */
+  .hw-hero,.kpi,.bignum,.sc-hero,.res-hero,.stat,.stat *,
+  .hub-g-lab,.sec-cta,.apt-btn-wrap,.calccta-b,.roles{
+    text-align:center !important;
+  }
+  .toc summary,.sub-toc-t{ text-align:left !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   22. OLVASHATÓ MÉRET  ·  mért, nem becsült 12 px-es alsó határ
+   ----------------------------------------------------------------------
+   Az alábbi felsorolás mérésből származik: a 12 oldalon 390 px-en
+   megjelenített minden szövegdobozt végigmértük, és ami 12 px alatt
+   maradt, az itt kapja meg az alsó határt.
+   ══════════════════════════════════════════════════════════════════════ */
+.adv-back-cap small,
+.adv-more,
+.bb-lab,
+.bk-fine,
+.bk-gift-l,
+.bk-h,
+.bignum .br,
+.calc-hero-lab,
+.chart-title,
+.elogo span,
+.endmark-cap,
+.fld-note,
+.fld-num span,
+.hero-badge,
+.hero-trust-item,
+.hw-hero i,
+.hw-hero span,
+.hw-tabs button,
+.lead-gdpr span,
+.lead-gdpr a,
+.lead-kicker,
+.lead-trust div,
+.ltp-p-kind,
+.ms-text,
+.ms-year,
+.qz-step,
+.res-lbl,
+.role,
+.sub-toc-inner a,
+.upd,
+.upd span,
+.docbox h4 em,.warnbox h4 em,.progbox h4 em,
+.bk-body i,.bk-table th,
+small{ font-size:.75rem !important; }
+.ms-text{ font-size:.86rem !important; }
+.bk-h{ font-size:.95rem !important; }
+.bk-facts span,.bk-facts i,.bk-facts div > span{ font-size:.75rem !important; }
+/* a fejléc alámondása: 12 px-en már nem fér el a keskeny sávban,
+   ezért mobilon a jól olvasható logó marad, az alámondás nélkül */
+.mhead .elogo span{ font-size:.75rem !important; letter-spacing:.08em; }
+@media(max-width:700px){ .mhead .elogo span{ display:none !important; } }
+/* biztonsagi hatar: egybetartott szo se logjon ki a kepernyorol */
+.nb{ overflow-wrap:anywhere; }
+
+/* ── 17/b. az utolso ket kozepre huzott blokk is a kozos bal szelre ──── */
+@media(min-width:1024px){
+  #faq > .container > .faq-list{ margin-left:0 !important; margin-right:0 !important; }
+  #hub > .container > p{
+    margin-left:0 !important; margin-right:0 !important; text-align:left !important;
+  }
+}
+@media(max-width:1023px){
+  #hub > .container > p{ text-align:left !important; }
+}

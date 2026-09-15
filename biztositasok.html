@@ -2726,9 +2726,225 @@ a .ic,button .ic{pointer-events:none;}
 /* a kulon ikon-dobozokban (kartyak) az ikon nagy es akcentszinu */
 .hub-i .ic,.tile-i .ic,.rel-i .ic,.ben-i .ic,.hw-q-ico .ic,.mega .i .ic,.mm-i .ic{
   width:1em;height:1em;stroke-width:1.6;}
+/* ══════════════════════════════════════════════════════════════════════
+   19. HARMÓNIA RÉTEG  ·  a karrieroldal designrendszere az egész családra
+   ----------------------------------------------------------------------
+   Ez a réteg a theme.css UTÁN fut, tehát az utolsó szó az övé.
+   Nem nyúl a tartalomhoz és nem rendezi át az elrendezést: csak a felületi
+   értékeket hozza közös nevezőre, mert a széteső hatást ezek okozzák.
+
+     1. közös jelölők (sugár, keret, árnyék, olvasási hossz)
+     2. tartalomoszlop: nyugodtabb sorhossz
+     3. tipográfiai skála: egy címsorméret oldalanként
+     4. szekcióritmus
+     5. kártyageometria: egy kártyacsalád
+     6. címkék, gombok
+     7. négyzetrácsos háttér, mint a karrieroldalon
+     8. mozgás: finom megjelenés és visszajelzés
+     9. mobil finomhangolás
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── 19.1 közös jelölők ─────────────────────────────────────────────── */
+:root{
+  --h-r-s:10px;                 /* apró elem: címke, mező */
+  --h-r-m:12px;                 /* gomb, kisebb doboz */
+  --h-r-l:16px;                 /* kártya, panel */
+  --h-vonal:rgba(27,56,88,.12);
+  --h-vonal-e:rgba(27,56,88,.20);
+  --h-vonal-vil:rgba(255,255,255,.14);
+  --h-sh-1:0 1px 2px rgba(16,32,52,.06);
+  --h-sh-2:0 6px 20px rgba(16,32,52,.09);
+  --h-sh-3:0 12px 32px rgba(16,32,52,.12);
+  --h-ido:.24s;
+  --h-gorbe:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ── 19.2 tartalomoszlop ────────────────────────────────────────────────
+   1440 px-es oszlopban a sorok túl hosszúak, a szem elfárad. A
+   karrieroldal 1160 px-es sávja a viszonyítás: itt 1280 px a kompromisszum,
+   mert a hat kártyás rácsok még kényelmesen elférnek benne.            */
+:root{ --maxw:1280px; }
+@media(min-width:1700px){ :root{ --maxw:1340px; } }
+
+/* ── 19.3 tipográfiai skála ─────────────────────────────────────────────
+   Egy szekciócím-méret az egész oldalcsaládban, egy alcím, egy kártyacím. */
+.section-title,.sub-h1,.cta-title,.lead-title{
+  font-size:clamp(1.62rem, 1.18rem + 1.6vw, 2.4rem) !important;
+  line-height:1.16; letter-spacing:-.022em;
+}
+.section-title.big,.hero-title{
+  font-size:clamp(2rem, 1.4rem + 2.3vw, 3.1rem) !important;
+  line-height:1.1; letter-spacing:-.025em;
+}
+.section-sub,.sub-lead,.cta-sub,.lead-sub{
+  font-size:1.02rem !important; line-height:1.7;
+}
+.tile-t,.nstep-t,.rel-t,.hub-t,.box-t,.faq-q,.faq summary,.eo-t,.onl-t,
+.step-title,.why-title,.svc-title,.ben-t,.scf-top,.gd-t{
+  font-size:1.05rem !important; line-height:1.35; letter-spacing:-.012em;
+}
+.tile-d,.nstep-d,.rel-d,.hub-d,.eo-d,.onl-d,.ben-s,.step-text,.why-text,.svc-desc{
+  font-size:.94rem !important; line-height:1.65;
+}
+body{ font-size:16.5px; }
+
+/* ── 19.4 szekcióritmus ─────────────────────────────────────────────────
+   A 90 px-es szekcióköz széles kijelzőn széteső hatást kelt. A
+   karrieroldal 72 px-es ritmusa feszesebb és rendezettebb.             */
+:root{
+  --sp-sec:  clamp(2.9rem, 2.1rem + 2.4vw, 4.6rem);
+  --sp-sec-s:clamp(2rem,  1.5rem + 1.7vw, 3.1rem);
+  --sp-head: clamp(1.5rem, 1.15rem + 1.2vw, 2.4rem);
+}
+
+/* ── 19.5 kártyageometria ───────────────────────────────────────────────
+   Hét különböző sarokméret és három árnyék futott egymás mellett. Egy
+   kártyacsalád marad: azonos sugár, azonos hajszálkeret, azonos árnyék. */
+.tile,.box,.hub-c,.fw-card,.nstep,.faq-item,.kpi,.rel-c,.eo-tile,.onl-card,
+.card,.scf,.docitem,.sav-item,.ben-c,.gd-c,.midcta-box,.cta-box,.info,.warn,
+.hl,.good,.clean,.tbl-wrap,.adv-c,.stat-item{
+  border-radius:var(--h-r-l) !important;
+}
+.tile,.box,.hub-c,.fw-card,.nstep,.faq-item,.kpi,.rel-c,.eo-tile,.onl-card,
+.card,.scf,.ben-c,.gd-c,.adv-c{
+  border-width:1px !important; border-style:solid !important;
+  box-shadow:var(--h-sh-1);
+}
+.section:not(.dark-sec) .tile,.section:not(.dark-sec) .hub-c,
+.section:not(.dark-sec) .nstep,.section:not(.dark-sec) .faq-item,
+.section:not(.dark-sec) .kpi,.section:not(.dark-sec) .rel-c,
+.section:not(.dark-sec) .eo-tile,.section:not(.dark-sec) .onl-card,
+.section:not(.dark-sec) .ben-c,.section:not(.dark-sec) .gd-c,
+.section:not(.dark-sec) .adv-c{
+  border-color:var(--h-vonal) !important;
+}
+
+/* Az összes maradék dobozsarok is a két értékre áll be. A lista mérve
+   készült: ezek voltak a 8 és 26 px közötti egyedi sarkok az oldalcsaládban. */
+.adv-help,.adv-side,.bk-lead,.bk-rung,.bk-table-wrap,.bk-warn,.bk-yn-col,
+.calc,.calcbox,.calccta,.chart-box,.cta-right,.cta-ring,.docbox,.faq,
+.hw,.hw-hero,.ki,.ltp-f,.ltp-u,.ltp-w,.ms-content,.progbox,.qz,.sc,
+.step-card,.tipbox,.ttable,.st,.yn-col,
+.adv-side.adv-front,.adv-side.adv-back,.cta-right.lead-box{
+  border-radius:var(--h-r-l) !important;
+}
+.bignum,.calc-warn,.calctile,.ctab,.qz-opt,.res-note,.rng-box,.sav-note,
+.sc-warn,.sub-note,.warnbox,.toc{
+  border-radius:var(--h-r-m) !important;
+}
+
+/* Címsor-lépcső: szekciócím → szakaszcím → kártyacím. Eddig a cikkbeli
+   h2 majdnem akkora volt, mint a szekciócím, ezért nem volt hierarchia. */
+.art h2,.section h2:not(.section-title):not(.cta-title):not(.hero-title),
+.art h2.h-be{
+  font-size:clamp(1.24rem, 1.05rem + .7vw, 1.55rem) !important;
+  line-height:1.25; letter-spacing:-.018em;
+}
+.art h3,.section h3:not(.lead-title):not([class*="-t"]),.hub-g-t{
+  font-size:1.16rem !important; line-height:1.35; letter-spacing:-.012em;
+}
+
+/* ── 19.6 címkék, gombok ────────────────────────────────────────────────
+   A címkék pirulák, a gombok egységes sarokkal futnak.                 */
+.label-chip,.eyebrow,.sub-chip,.chip-teal,.chip-purple,.chip-gold,.sav-badge{
+  border-radius:100px !important;
+}
+.btn,.hact,.apt-btn,.apt-btn-inner,.mhead-cta,.hub-go,.onl-go,.midcta-a,
+button,input,select,textarea{
+  border-radius:var(--h-r-m) !important;
+}
+.label-chip,.eyebrow{
+  font-size:.78rem !important; letter-spacing:.10em; font-weight:700;
+}
+
+/* ── 19.7 négyzetrácsos háttér ──────────────────────────────────────────
+   Ugyanaz a halvány rács, mint a karrieroldalon. A besorolást a mozgas.js
+   végzi: csak az egyszínű, képet nem tartalmazó szekciók kapják meg.   */
+.h-racs-vilagos{
+  background-image:
+    repeating-linear-gradient(0deg, rgba(27,56,88,.030) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(27,56,88,.030) 0 1px, transparent 1px 44px) !important;
+}
+.h-racs-sotet{
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 44px) !important;
+}
+
+/* ── 19.8 mozgás ────────────────────────────────────────────────────────
+   Két dolgot csinál: a blokkok megjelenéskor finoman felúsznak, és a
+   kattintható felületek választ adnak. Semmi látványosság, csak annyi,
+   amennyitől az oldal késznek érződik.                                 */
+.h-be{
+  opacity:0; transform:translateY(14px);
+  transition:opacity .5s var(--h-gorbe), transform .5s var(--h-gorbe);
+  will-change:opacity, transform;
+}
+.h-be.h-lat{ opacity:1; transform:none; }
+
+.tile,.hub-c,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card{
+  transition:transform var(--h-ido) var(--h-gorbe),
+             box-shadow var(--h-ido) var(--h-gorbe),
+             border-color var(--h-ido) var(--h-gorbe);
+}
+@media(hover:hover){
+  .tile:hover,.hub-c:hover,.rel-c:hover,.eo-tile:hover,.onl-card:hover,
+  .ben-c:hover,.gd-c:hover,.adv-c:hover,.fw-card:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--h-sh-2);
+    border-color:var(--h-vonal-e) !important;
+  }
+  .faq-item:hover{ border-color:var(--h-vonal-e) !important; }
+  .btn:hover,.hact:hover,.apt-btn:hover,.mhead-cta:hover{ transform:translateY(-1px); }
+}
+.btn,.hact,.apt-btn,.mhead-cta,.hub-go,.onl-go{
+  transition:transform .16s var(--h-gorbe), background var(--h-ido), box-shadow var(--h-ido);
+}
+.btn:active,.hact:active,.apt-btn:active,.mhead-cta:active{ transform:translateY(1px); }
+
+/* nyíló elemek: a kis jel elfordulása legyen folyamatos */
+.faq-chev,.faq-item svg,.toc-chev{ transition:transform .25s var(--h-gorbe); }
+.faq-item.on .faq-chev,.faq-item[open] .faq-chev{ transform:rotate(180deg); }
+
+/* képek: a kártyán belüli kép finoman ráközelít, de csak egérrel */
+@media(hover:hover){
+  .tile img,.rel-c img,.hub-c img{ transition:transform .45s var(--h-gorbe); }
+  .tile:hover img,.rel-c:hover img,.hub-c:hover img{ transform:scale(1.03); }
+}
+
+/* csökkentett mozgás: minden azonnal a helyén van */
+@media(prefers-reduced-motion:reduce){
+  .h-be{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .tile,.hub-c,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card,
+  .btn,.hact,.apt-btn,.mhead-cta{ transition:none !important; }
+  @media(hover:hover){
+    .tile:hover,.hub-c:hover,.rel-c:hover,.eo-tile:hover,.onl-card:hover,
+    .ben-c:hover,.gd-c:hover,.adv-c:hover,.fw-card:hover,
+    .btn:hover,.hact:hover,.apt-btn:hover,.mhead-cta:hover{ transform:none; }
+    .tile:hover img,.rel-c:hover img,.hub-c:hover img{ transform:none; }
+  }
+}
+/* JS nélkül semmi nem tűnhet el */
+.no-js .h-be{ opacity:1 !important; transform:none !important; }
+
+/* ── 19.9 mobil finomhangolás ───────────────────────────────────────── */
+@media(max-width:700px){
+  :root{
+    --sp-sec:  clamp(2.2rem, 1.8rem + 2vw, 3rem);
+    --sp-sec-s:clamp(1.7rem, 1.4rem + 1.4vw, 2.3rem);
+    --sp-head: clamp(1.15rem, 1rem + 1vw, 1.7rem);
+  }
+  body{ font-size:16px; }
+  .section-title,.sub-h1,.cta-title,.lead-title{ line-height:1.2; }
+  .tile,.box,.hub-c,.nstep,.faq-item,.kpi,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c{
+    border-radius:var(--h-r-m) !important;
+  }
+  /* a felúszás rövidebb úton fusson, hogy ne tűnjön lomhának */
+  .h-be{ transform:translateY(10px); transition-duration:.42s; }
+}
 
 </style>
-<meta name="eaglz-build" content="2026-09-14-2245">
+<meta name="eaglz-build" content="2026-09-15-2303">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -3491,6 +3707,119 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
   window.addEventListener('resize', function () { clearTimeout(window.__tblT); window.__tblT = setTimeout(tables, 200); });
+})();
+
+/* ══════════════════════════════════════════════════════════════════════
+   EAGLZ mozgásréteg  ·  minden oldalon a theme után fut
+   ----------------------------------------------------------------------
+   1. négyzetrácsos háttér besorolása: csak egyszínű szekciókra kerül
+   2. finom felúszás görgetéskor, szekción belül lépcsőzve
+   3. az első képernyőn látható elemek azonnal a helyükön vannak
+   Minden viselkedés kikapcsol, ha a látogató csökkentett mozgást kért.
+   ══════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var halk = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1. rács-besorolás ───────────────────────────────────────────────
+     Csak akkor kap rácsot a szekció, ha nincs saját háttérképe és nem
+     áttetsző. A világos és a sötét felület más erősségű rácsot kap. */
+  function racs() {
+    var sorok = document.querySelectorAll('section, .section, footer');
+    for (var i = 0; i < sorok.length; i++) {
+      var el = sorok[i];
+      if (el.classList.contains('h-racs-vilagos') || el.classList.contains('h-racs-sotet')) continue;
+      var st = window.getComputedStyle(el);
+      if (st.backgroundImage && st.backgroundImage !== 'none') continue;
+      var szin = st.backgroundColor || '';
+      var m = szin.match(/rgba?\(([^)]+)\)/);
+      if (!m) continue;
+      var r = m[1].split(',').map(function (x) { return parseFloat(x); });
+      if (r.length > 3 && r[3] < 0.9) continue;            // áttetsző: hagyjuk
+      var vil = (0.2126 * r[0] + 0.7152 * r[1] + 0.0722 * r[2]) / 255;
+      if (el.getBoundingClientRect().height < 80) continue;
+      el.classList.add(vil > 0.6 ? 'h-racs-vilagos' : 'h-racs-sotet');
+    }
+  }
+
+  /* ── 2. felúszás ─────────────────────────────────────────────────────
+     A kiválasztott blokkok a nézetbe érve úsznak fel. Egy szekción belül
+     az egymás utáni elemek kis késleltetést kapnak, így a sor nem
+     egyszerre villan be, de nem is válik lassúvá: legfeljebb hat lépés. */
+  var VALASZTO = [
+    '.section-title', '.section-sub', '.sec-head', '.label-chip',
+    '.tile', '.box', '.hub-c', '.fw-card', '.nstep', '.faq-item', '.kpi',
+    '.rel-c', '.eo-tile', '.onl-card', '.card', '.scf', '.sav-item',
+    '.ben-c', '.gd-c', '.adv-c', '.stat-item', '.docitem',
+    '.midcta-box', '.cta-box', '.tbl-wrap', '.graph-light', '.art > p',
+    '.art > h3', '.art > ul', '.toc'
+  ].join(',');
+
+  function elokeszit() {
+    var elemek = document.querySelectorAll(VALASZTO);
+    var csoportSzamlalo = new WeakMap();
+    var lista = [];
+    for (var i = 0; i < elemek.length; i++) {
+      var el = elemek[i];
+      if (el.closest('.ehead, .mhead, .mmob, .mega, [class*="modal"], .fablak')) continue;
+      var doboz = el.getBoundingClientRect();
+      if (doboz.height === 0 && doboz.width === 0) continue;
+      var szulo = el.parentElement || document.body;
+      var n = (csoportSzamlalo.get(szulo) || 0);
+      csoportSzamlalo.set(szulo, n + 1);
+      el.style.transitionDelay = Math.min(n, 5) * 55 + 'ms';
+      el.classList.add('h-be');
+      lista.push(el);
+    }
+    return lista;
+  }
+
+  function indit() {
+    if (halk || !('IntersectionObserver' in window)) return;
+    var lista = elokeszit();
+    var also = window.innerHeight * 0.95;
+
+    /* az első képernyő tartalma ne villanjon: azonnal látszik */
+    lista.forEach(function (el) {
+      if (el.getBoundingClientRect().top < also) {
+        el.style.transitionDelay = '0ms';
+        el.classList.add('h-lat');
+      }
+    });
+
+    var figyelo = new IntersectionObserver(function (bejegyzesek) {
+      bejegyzesek.forEach(function (b) {
+        if (!b.isIntersecting) return;
+        b.target.classList.add('h-lat');
+        figyelo.unobserve(b.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
+
+    lista.forEach(function (el) {
+      if (!el.classList.contains('h-lat')) figyelo.observe(el);
+    });
+
+    /* biztonsági háló: ha bármi félrecsúszna, 6 másodperc után minden látszik */
+    window.setTimeout(function () {
+      lista.forEach(function (el) { el.classList.add('h-lat'); });
+    }, 6000);
+  }
+
+  function start() {
+    try { racs(); } catch (e) { /* a háttér sose akassza meg az oldalt */ }
+    try { indit(); } catch (e) { /* a mozgás sem */ }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+  window.addEventListener('resize', function () {
+    clearTimeout(window.__hRacsT);
+    window.__hRacsT = window.setTimeout(function () { try { racs(); } catch (e) {} }, 250);
+  });
 })();
 
 </script>

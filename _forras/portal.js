@@ -94,11 +94,11 @@ var NAV = [
   items:[
     {i:'🎯', t:'Kinek segítünk?',        h:'#for-whom'},
     {i:'🗺️', t:'Hogyan dolgozunk?',      h:'#how'},
-    {i:'⭐', t:'Miért mi?',              h:'#why'},
+    {i:'⭐', t:'Miért mi?',              h:'#about'},
     {i:'🎬', t:'Ügyfélvélemények',       h:'#video-testimonial'},
     {i:'🏢', t:'Rólunk, röviden',        h:'#about'},
     {i:'❓', t:'Gyakori kérdések',       h:'#faq'},
-    {i:'🚀', t:'Karrier az EAGLZ-nél',   h:'http://eaglzcareer.hu', ext:true}
+    {i:'🚀', t:'Karrier az EAGLZ-nél',   h:'/karrier'}
   ]}
 ];
 
@@ -162,9 +162,9 @@ bar.innerHTML = barH.join('');
 host.innerHTML = panH.join('');
 mob.innerHTML = mobH.join('') +
   '<div class="mmob-extra">'+
-  '<a href="'+HREF('#for-whom')+'">Kinek?</a><a href="'+HREF('#how')+'">Hogyan?</a><a href="'+HREF('#why')+'">Miért mi?</a>'+
+  '<a href="'+HREF('#for-whom')+'">Kinek?</a><a href="'+HREF('#how')+'">Hogyan?</a><a href="'+HREF('#about')+'">Miért mi?</a>'+
   '<a href="'+HREF('#video-testimonial')+'">Vélemények</a><a href="'+HREF('#about')+'">Rólunk</a><a href="'+HREF('#faq')+'">GYIK</a>'+
-  '<a href="http://eaglzcareer.hu" target="_blank" rel="noopener">Karrier</a></div>'+
+  '<a href="/karrier">Karrier</a></div>'+
   '<div class="mmob-foot"><a class="a1" href="'+HREF('#advisors')+'">Időpontot foglalok</a>'+
   '<a class="a2" href="'+HREF('#lead')+'">Kérek visszahívást</a></div>';
 
