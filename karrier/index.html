@@ -131,7 +131,7 @@ a{ color:var(--menta-t); }
   background:var(--navy-m); border-bottom:1px solid rgba(255,255,255,.10);
 }
 .khead-in{ display:flex; align-items:center; gap:1.5rem; min-height:66px; }
-.klogo{ display:inline-flex; align-items:center; flex:0 0 auto; }
+.klogo{ display:inline-flex; align-items:center; flex:0 0 auto; min-height:var(--tap); }
 .klogo img{ height:30px; width:auto; display:block; }
 .knav{ display:flex; align-items:center; gap:.15rem; flex:1; min-width:0; }
 .knav a{
@@ -187,58 +187,104 @@ a{ color:var(--menta-t); }
 /* ── 3. NYITÓRÉSZ ───────────────────────────────────────────────────── */
 .hero{
   background:
-    linear-gradient(180deg, rgba(27,56,88,0) 0%, rgba(11,24,40,.55) 100%),
+    linear-gradient(180deg, rgba(27,56,88,0) 0%, rgba(11,24,40,.5) 100%),
     repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 44px),
     repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 44px),
     var(--navy);
-  color:#fff; padding-block:4.5rem 4rem;
+  color:#fff; padding-block:3.5rem;
 }
-@media(min-width:1024px){ .hero{ padding-block:5.5rem 4.5rem; } }
-@media(max-width:700px){ .hero{ padding-block:3rem 2.75rem; } }
+@media(min-width:1024px){ .hero{ padding-block:4.5rem; } }
+@media(max-width:700px){ .hero{ padding-block:2.5rem 2.75rem; } }
+
+.hero-racs{
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(320px,.85fr);
+  gap:3.5rem; align-items:center;
+}
+@media(max-width:980px){
+  .hero-racs{ grid-template-columns:1fr; gap:2.2rem; }
+}
+
 .eyebrow{
-  display:inline-flex; align-items:center; gap:.45rem; margin:0 0 1.3rem;
+  display:inline-flex; align-items:center; gap:.45rem; margin:0 0 1.2rem;
   background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.17);
   border-radius:100px; padding:.42rem 1rem;
   font-size:.82rem; font-weight:600; letter-spacing:.02em; color:rgba(255,255,255,.9);
 }
 .hero h1{
-  font-size:clamp(2.1rem,5vw,3.9rem); font-weight:700; line-height:1.08;
-  color:#fff; margin:0 0 1.1rem; max-width:22ch;
-  text-wrap:balance;
+  font-size:clamp(2rem,3.6vw,3.15rem); font-weight:700; line-height:1.1;
+  color:#fff; margin:0 0 1rem; text-wrap:balance;
 }
 .hero h1 em{ font-style:normal; color:var(--menta); }
 .hero .lead{
-  max-width:60ch; color:rgba(255,255,255,.80); font-size:1.05rem; line-height:1.72;
-  margin-bottom:1.7rem;
+  max-width:52ch; color:rgba(255,255,255,.82); font-size:1.12rem; line-height:1.68;
+  margin-bottom:1.8rem;
 }
+@media(max-width:700px){ .hero .lead{ font-size:1.02rem; } }
 .hero-btns{ display:flex; flex-wrap:wrap; gap:.7rem; }
-.hero-biztos{
-  display:flex; align-items:center; gap:.5rem; margin:1.4rem 0 0;
-  color:rgba(255,255,255,.66); font-size:.9rem;
-}
-.hero-biztos .i{ color:var(--menta); }
 
 .hero-jelek{
-  list-style:none; margin:2.6rem 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem;
+  list-style:none; margin:2rem 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem;
 }
 .hero-jelek a{
-  display:flex; flex-direction:column; gap:.2rem; min-height:var(--tap);
-  padding:1rem 1.15rem; border-radius:var(--r-m); text-decoration:none;
+  display:flex; flex-direction:column; gap:.15rem; min-height:var(--tap);
+  padding:.85rem 1rem; border-radius:var(--r-m); text-decoration:none;
   background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.12);
+  transition:background .15s, border-color .15s;
 }
-.hero-jelek a:hover{ background:rgba(255,255,255,.10); }
-.hero-jelek b{ font-family:var(--fd); font-size:1rem; color:#fff; }
-.hero-jelek span{ font-size:.86rem; color:rgba(255,255,255,.68); }
-@media(max-width:760px){ .hero-jelek{ grid-template-columns:1fr; } }
+.hero-jelek a:hover{ background:rgba(255,255,255,.11); border-color:rgba(255,255,255,.24); }
+.hero-jelek b{ font-family:var(--fd); font-size:.96rem; color:#fff; }
+.hero-jelek span{ font-size:.82rem; color:rgba(255,255,255,.66); line-height:1.45; }
+@media(max-width:620px){ .hero-jelek{ grid-template-columns:1fr; } }
 
-.hero-arcok{ display:flex; margin:2.6rem 0 .5rem; }
-.hero-arcok img{
-  width:52px; height:52px; border-radius:50%; display:block;
-  border:2px solid rgba(255,255,255,.55); margin-right:-12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.28);
+/* ── 3/b. INTERJÚ-KÁRTYA A NYITÓRÉSZBEN ─────────────────────────────
+   A jobb hasáb nem dekoráció: azt mutatja meg, kivel fog találkozni,
+   és ez a leggyakoribb interjú előtti bizonytalanság. */
+.hero-kartya{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--r-l); padding:1.5rem 1.5rem 1.6rem;
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 18px 44px rgba(6,15,28,.32);
 }
-.hero-arcok-cap{ color:rgba(255,255,255,.60); font-size:.85rem; margin:0; }
+.hk-fej{
+  display:grid; grid-template-columns:auto 1fr; gap:.6rem; align-items:start;
+  padding-bottom:1.1rem; margin-bottom:1.1rem;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  font-size:.92rem; line-height:1.55; color:rgba(255,255,255,.78);
+}
+.hk-fej b{ color:#fff; }
+.hk-fej .i{ color:var(--menta); width:1.2em; height:1.2em; margin-top:.1rem; }
+.hk-cim{
+  font-family:var(--fd); font-size:.76rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:rgba(255,255,255,.66); margin:0 0 .9rem;
+}
+.hk-lista{ list-style:none; margin:0 0 1.3rem; padding:0; display:grid; gap:.7rem; }
+.hk-lista li{
+  display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto;
+  column-gap:.85rem; align-items:center;
+}
+.hk-lista img{
+  grid-column:1; grid-row:1 / 3; width:44px; height:44px;
+  border-radius:50%; display:block; object-fit:cover;
+  border:2px solid rgba(255,255,255,.28);
+}
+.hk-nev{
+  grid-column:2; grid-row:1; align-self:end;
+  font-family:var(--fd); font-size:.95rem; font-weight:600; color:#fff;
+}
+.hk-poz{
+  grid-column:2; grid-row:2; align-self:start;
+  font-size:.82rem; color:rgba(255,255,255,.6);
+}
+.hk-gomb{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  width:100%; min-height:48px; border:0; cursor:pointer; border-radius:var(--r-s);
+  background:var(--menta); border:1px solid var(--menta);
+  color:#0d2033; font-family:var(--fb); font-size:.94rem; font-weight:700;
+  transition:background .15s;
+}
+.hk-gomb:hover{ background:#8fd6cd; border-color:#8fd6cd; }
 
 /* ── 4. SZEKCIÓK ────────────────────────────────────────────────────── */
 .sec{ padding-block:4.5rem; }
@@ -493,11 +539,9 @@ a{ color:var(--menta-t); }
 }
 
 /* ── 13. IRODA ──────────────────────────────────────────────────────── */
-.iroda-racs{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:1.8rem; }
-/* amig nincs valodi irodai foto, a blokk egy hasabban all, hogy ne
-   maradjon feltunoen ures fel oldal */
-.iroda-racs:has(> [data-ellenorizendo]){ grid-template-columns:1fr; max-width:74ch; }
-@media(max-width:900px){ .iroda-racs{ grid-template-columns:1fr; } }
+/* Az iroda szekcio egy hasabban all: a hangulatot a ket videoblokk
+   mutatja meg, nem allokep. */
+.iroda-racs{ display:grid; grid-template-columns:1fr; max-width:74ch; margin-bottom:0; }
 .iroda-adat{ margin:0 0 1.2rem; }
 .iroda-adat > div{
   display:grid; grid-template-columns:150px 1fr; gap:1rem;
@@ -571,18 +615,20 @@ a{ color:var(--menta-t); }
   font-size:1rem; line-height:1.72;
 }
 .zaras-lepesek{
-  list-style:none; counter-reset:z; margin:0 auto 2.2rem; padding:0;
+  list-style:none; margin:0 auto 2.2rem; padding:0;
   display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; text-align:left;
 }
 @media(max-width:860px){ .zaras-lepesek{ grid-template-columns:1fr; } }
 .zaras-lepesek li{
-  counter-increment:z; padding:1.2rem 1.35rem;
+  padding:1.2rem 1.35rem;
   background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.13);
   border-radius:var(--r-m); color:rgba(255,255,255,.74);
   font-size:.92rem; line-height:1.65;
 }
-.zaras-lepesek li::before{
-  content:counter(z); display:flex; align-items:center; justify-content:center;
+/* A sorszám a jelölésben van, nem CSS számlálóban: így a felolvasó és a
+   szövegkinyerő sem mondja be kétszer az "1"-et. */
+.z-n{
+  display:flex; align-items:center; justify-content:center;
   width:28px; height:28px; border-radius:var(--r-s); margin-bottom:.6rem;
   background:var(--menta); color:#0d2033;
   font-family:var(--fd); font-weight:700; font-size:.9rem;
@@ -723,11 +769,238 @@ section[id],[id]{ scroll-margin-top:84px; }
   details{ break-inside:avoid; }
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   23. OSZTOTT SZEKCIÓ  ·  cím balra, tartalom jobbra
+   ----------------------------------------------------------------------
+   Az egymás alá pakolt, széles és félig üres kártyasorok helyett a cím
+   saját hasábba kerül. Így a sor jobb harmada nem marad kihasználatlan,
+   és a szekcióknak eltérő ritmusa lesz.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1000px){
+  #roviden > .wrap,#gyik > .wrap{
+    display:grid; grid-template-columns:minmax(240px,.8fr) minmax(0,1.7fr);
+    gap:.4rem 3.5rem; align-items:start;
+  }
+  #roviden .sec-cim,#gyik .sec-cim{ grid-column:1; grid-row:1; margin-bottom:.7rem; }
+  #roviden .sec-alcim,#gyik .sec-alcim{ grid-column:1; grid-row:2; margin-bottom:0; }
+  #roviden .rovid,#gyik .gyik-lista{ grid-column:2; grid-row:1 / 4; }
+  #gyik .gyik-lista{ max-width:none; }
+}
+
+/* a rövid összefoglaló sorai legyenek tömörebbek */
+.rovid li{ padding:.95rem 1.2rem; }
+.rovid li b{ margin-bottom:.15rem; }
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   24. EGYSÉGES KÁRTYAGEOMETRIA
+   ----------------------------------------------------------------------
+   Minden ismétlődő doboz ugyanazt a belső margót, sarkot, keretet és
+   fókuszviselkedést kapja. A magasság sosem fix: a soron belüli
+   egyformaságot a rács nyújtja ki, mobilon a tartalom dönt.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --pad-k:1.5rem;     /* kártya belső margó */
+  --pad-k-m:1.15rem;  /* sűrűbb sor belső margója */
+  --cim-k:1.08rem;    /* kártyacím mérete */
+}
+
+.szakasz,.ido-kartya,.oszlop,.bev-lep,.bev-kartya,.tort,
+.zaras-lepesek li,.hero-kartya,.cts-doboz{
+  padding:var(--pad-k);
+}
+.rovid li,.temak li,.vk-keret{ border-radius:var(--r-m); }
+.szakasz,.ido-kartya,.oszlop,.tort,.hero-kartya,.cts-doboz{ border-radius:var(--r-l); }
+
+/* azonos ikonméret minden kártyacímben */
+.ido-kartya h3 .i,.oszlop h3 .i{ width:1.2em; height:1.2em; flex:0 0 auto; }
+
+/* a rács nyújt, a kártya belül osztja el a helyet */
+.szakaszok,.idorács,.videok,.zaras-lepesek,.bev-mechanizmus,.bev-racs,.ketoszlop{
+  align-items:stretch;
+}
+.szakasz,.ido-kartya,.vkart,.bev-lep,.bev-kartya,.oszlop{
+  display:flex; flex-direction:column; height:100%;
+}
+.sz-cimke{ align-self:flex-start; margin-top:auto; }
+.szakasz p{ margin-bottom:0; }
+/* a mentazöld zárómondat es a jegyzet a kartya aljara kerul, igy a
+   harom kartya azonos vonalon zar */
+.ido-plusz{ margin-top:auto; }
+.oszlop ul{ margin-top:0; }
+
+/* egységes címmagasság csak azonos típusú kártyák sorában, csak asztalin */
+@media(min-width:861px){
+  .bev-lep h3{ min-height:2.55em; }
+  .vkart h3{ min-height:2.7em; }
+}
+/* a harom eletbeosztas-kartya azonos tartalomtipusu bekezdese egy vonalon
+   zar, igy a mentazold zaromondat is egy magassagban kezdodik */
+@media(min-width:941px){ .ido-nap{ min-height:6.6em; } }
+
+/* egységes hover és fókusz minden kattintható dobozon */
+.hero-jelek a,.gy > summary,.nyit > summary,.fablak-lista a,.vk-gomb{
+  transition:background .15s, border-color .15s, box-shadow .15s;
+}
+.vk-gomb:focus-visible,.hero-jelek a:focus-visible,.fablak-lista a:focus-visible{
+  outline:3px solid var(--fokusz); outline-offset:3px;
+}
+
+/* ── 24/b. ÚJ SZÖVEGELEMEK ──────────────────────────────────────────── */
+.lead-jegy{
+  max-width:52ch; margin:-.7rem 0 1.7rem; padding-left:.95rem;
+  border-left:2px solid rgba(125,200,192,.55);
+  font-size:.93rem; line-height:1.62; color:rgba(255,255,255,.76);
+}
+.munka-be{
+  max-width:72ch; margin:-1.4rem 0 2rem;
+  font-size:1rem; line-height:1.75; color:var(--ink-2);
+}
+.ido-plusz{
+  margin:.95rem 0 0; padding:.75rem .9rem; border-radius:var(--r-s);
+  background:rgba(125,200,192,.14); color:var(--menta-t);
+  font-size:.9rem; font-weight:600; line-height:1.6;
+}
+.oszlop-be{
+  margin:0 0 1.1rem; padding-bottom:1rem; border-bottom:1px solid var(--vonal);
+  font-size:.95rem; line-height:1.7; color:var(--ink-2);
+}
+.videok-jegy{ margin:1.5rem 0 0; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   25. FOGLALÁSI SÁV
+   ----------------------------------------------------------------------
+   Két új, jól időzített foglalási pont. Ugyanazt a modált nyitják, mint
+   a többi gomb. Sötétkék panel világos alapon: elválik a környezetétől
+   anélkül, hogy harsány lenne.
+   ══════════════════════════════════════════════════════════════════════ */
+.ctasav{ padding-block:3.25rem; }
+@media(max-width:700px){ .ctasav{ padding-block:2.25rem; } }
+.ctasav-feher{ background:var(--feher); }
+.cts-doboz{
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:1.3rem 2.5rem;
+  align-items:center; box-shadow:var(--sh-2);
+  padding-block:1.85rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 40px),
+    var(--navy);
+}
+.cts-cim{
+  font-family:var(--fd); font-size:clamp(1.18rem,2.2vw,1.42rem); font-weight:700;
+  color:#fff; line-height:1.25; margin:0 0 .4rem; text-wrap:balance;
+}
+.cts-alcim{
+  max-width:56ch; margin:0; font-size:.97rem; line-height:1.65;
+  color:rgba(255,255,255,.78);
+}
+.cts-doboz .btn{ white-space:normal; }
+@media(max-width:820px){
+  .cts-doboz{ grid-template-columns:1fr; gap:1.2rem; }
+  .cts-doboz .btn{ width:100%; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   26. VIDEÓKÁRTYA
+   ----------------------------------------------------------------------
+   Egy komponens, két állapot. Helyőrzőként semmilyen videófájlt nem tölt
+   le, és nem okoz elrendezés-ugrást, mert a keret képaránya rögzített.
+   A hat téma csak a halvány fénypont helyében és a motívumban tér el,
+   így egy rendszernek látszanak.
+   ══════════════════════════════════════════════════════════════════════ */
+/* Allo, TikTok aranyu videok: a kartya keskeny, hogy harom se legyen
+   tulzottan magas, mobilon pedig kozepre kerul. */
+.videok{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(3,minmax(0,286px));
+  gap:1.4rem; justify-content:start;
+}
+@media(max-width:999px){ .videok{ grid-template-columns:repeat(2,minmax(0,286px)); } }
+@media(max-width:660px){
+  .videok{ grid-template-columns:minmax(0,300px); justify-content:center; gap:1.8rem; }
+  .vkart{ text-align:center; }
+}
+
+.vkart{ min-width:0; }
+.vk-keret{
+  position:relative; aspect-ratio:9 / 16; width:100%; overflow:hidden;
+  border:1px solid var(--vonal-e); background:var(--navy-m);
+  display:flex; align-items:center; justify-content:center;
+}
+.vk-keret::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px);
+}
+.vk-t1{ background:radial-gradient(130% 130% at 18% 10%, #24486B 0%, #12273D 68%); }
+.vk-t2{ background:radial-gradient(130% 130% at 82% 14%, #24486B 0%, #12273D 68%); }
+.vk-t3{ background:radial-gradient(130% 130% at 50% 104%, #24486B 0%, #12273D 68%); }
+.vk-t4{ background:radial-gradient(130% 130% at 10% 92%, #24486B 0%, #12273D 68%); }
+.vk-t5{ background:radial-gradient(130% 130% at 90% 86%, #24486B 0%, #12273D 68%); }
+.vk-t6{ background:radial-gradient(130% 130% at 50% -8%, #24486B 0%, #12273D 68%); }
+
+.vk-motiv{
+  position:absolute; right:.7rem; bottom:.7rem;
+  width:3.6em; height:3.6em; color:#fff; opacity:.10; pointer-events:none;
+}
+.vk-jel{
+  position:relative; z-index:1;
+  display:flex; align-items:center; justify-content:center;
+  width:54px; height:54px; border-radius:50%;
+  background:rgba(255,255,255,.10); border:1.5px solid rgba(125,200,192,.6);
+  color:var(--menta);
+}
+.vk-jel .i{ width:1.35em; height:1.35em; margin-left:.12em; }
+.vk-cimke{
+  position:absolute; z-index:1; left:.75rem; top:.75rem;
+  padding:.3rem .7rem; border-radius:100px;
+  background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.2);
+  font-size:.76rem; font-weight:700; letter-spacing:.03em; color:rgba(255,255,255,.92);
+}
+.vk-gomb{
+  position:absolute; inset:0; width:100%; height:100%; padding:0; border:0;
+  cursor:pointer; background:transparent center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
+}
+.vk-gomb:hover .vk-jel{ background:rgba(125,200,192,.28); }
+.vk-keret video,.vk-keret iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0; display:block;
+  background:#000; object-fit:contain;
+}
+.vkart h3{
+  font-size:1.02rem; font-weight:700; color:var(--navy);
+  margin:.95rem 0 .3rem; line-height:1.35;
+}
+.vkart p{ font-size:.9rem; line-height:1.6; color:var(--ink-3); margin:0; }
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   27. VIDEÓSZEKCIÓ OSZTOTT ELRENDEZÉSE
+   ----------------------------------------------------------------------
+   Az álló videók mellett a sor jobb harmada üresen maradna, ezért a cím
+   ugyanabba a bal hasábba kerül, mint a rövid összefoglalónál és a
+   GYIK-nál. Egy rendszer, két helyen.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1000px){
+  #irodavideo > .wrap,#csapatvideo > .wrap{
+    display:grid; grid-template-columns:minmax(240px,.85fr) minmax(0,1.85fr);
+    gap:.4rem 3rem; align-items:start;
+  }
+  #irodavideo .sec-cim,#csapatvideo .sec-cim{ grid-column:1; grid-row:1; margin-bottom:.7rem; }
+  #irodavideo .sec-alcim,#csapatvideo .sec-alcim{ grid-column:1; grid-row:2; margin-bottom:0; }
+  #irodavideo .videok,#csapatvideo .videok{
+    grid-column:2; grid-row:1 / 4; grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  #csapatvideo .videok-jegy{ grid-column:2; grid-row:4; margin-top:1.3rem; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-14-2211">
+<meta name="eaglz-build" content="2026-09-15-0805">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol></svg>
 
 <a class="skip" href="#fo">Ugrás a tartalomhoz</a>
 
@@ -771,38 +1044,68 @@ section[id],[id]{ scroll-margin-top:84px; }
 
 <!-- ══ 1. NYITÓRÉSZ ═════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <div class="wrap hero-in">
-    <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-pin"></use></svg>
-      Kelenhegyi iroda, Budapest XI. kerület</p>
+  <div class="wrap hero-racs">
 
-    <h1>Így néz ki a munka,<br><em>mielőtt igent mondasz.</em></h1>
+    <div class="hero-szoveg">
+      <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-pin"></use></svg>
+        Kelenhegyi iroda, Budapest XI. kerület</p>
 
-    <p class="lead">Telefonon a legfontosabb kereteket már átbeszéltük. Itt megmutatjuk, mit
-      csinálnál a gyakorlatban, mennyi időt igényel a kezdés, hogyan működik a bevétel, és mire
-      számíthatsz az első interjún.</p>
+      <h1>Így néz ki a munka,<br><em>mielőtt igent mondasz.</em></h1>
 
-    <div class="hero-btns">
-      <button type="button" class="btn btn-fo" data-book data-ev="cta_hero">Lefoglalom az interjú időpontomat</button>
-      <a class="btn btn-vonal" href="#munka" data-ev="cta_reszletek">Előbb megnézem a részleteket</a>
+      <p class="lead">Ha érdekel egy olyan pénzügyi pálya, ahol emberekkel dolgozhatsz, valódi
+        szakmai tudást szerezhetsz, és a fejlődésedet a saját teljesítményed alakítja, itt
+        megismerheted a munka mindennapjait. Megmutatjuk, hogyan indulhatsz el, mennyi időt
+        igényel, hogyan működik a bevétel, és mire számíthatsz az első beszélgetésen.</p>
+
+      <p class="lead-jegy">Ha telefonon már beszéltünk, innen közvetlenül le is foglalhatod az
+        interjú időpontodat.</p>
+
+      <div class="hero-btns">
+        <button type="button" class="btn btn-fo" data-book data-ev="cta_hero">Lefoglalom az interjú időpontomat</button>
+        <a class="btn btn-vonal" href="#munka" data-ev="cta_reszletek">Előbb megnézem a részleteket</a>
+      </div>
+
+      <ul class="hero-jelek">
+        <li><a href="#munka"><b>A munka</b><span>Mit csinálsz egy ügyféllel</span></a></li>
+        <li><a href="#bevetel"><b>A bevétel</b><span>Hogyan keletkezik</span></a></li>
+        <li><a href="#interju"><b>Az interjú</b><span>Két kör, és mi jön utána</span></a></li>
+      </ul>
     </div>
 
-    <p class="hero-biztos"><svg class="i" aria-hidden="true"><use href="#i-info"></use></svg>
-      Az első beszélgetés körülbelül 40 perc, és nem vizsga.</p>
+    <aside class="hero-kartya" aria-label="Akikkel az interjún találkozhatsz">
+      <p class="hk-fej"><svg class="i" aria-hidden="true"><use href="#i-info"></use></svg>
+        <span>Az első beszélgetés körülbelül <b>40 perc</b>, és nem vizsga.</span></p>
 
-    <ul class="hero-jelek">
-      <li><a href="#munka"><b>A munka</b><span>Mit csinálsz egy ügyféllel</span></a></li>
-      <li><a href="#bevetel"><b>A bevétel</b><span>Hogyan keletkezik, mitől függ</span></a></li>
-      <li><a href="#interju"><b>Az interjú</b><span>Két kör, és mi történik utána</span></a></li>
-    </ul>
+      <p class="hk-cim">Velük találkozhatsz</p>
+      <ul class="hk-lista">
+        <li>
+          <picture><source srcset="/assets/adv-gentischer-round.webp" type="image/webp"><img src="/assets/adv-gentischer-round.png" width="108" height="108" alt="" decoding="async"></picture>
+          <span class="hk-nev">Gentischer Richárd</span>
+          <span class="hk-poz">Területi igazgató</span>
+        </li>
+        <li>
+          <picture><source srcset="/assets/adv-angelcsev.webp" type="image/webp"><img src="/assets/adv-angelcsev.png" width="108" height="108" alt="" decoding="async"></picture>
+          <span class="hk-nev">Angelcsev Zoé</span>
+          <span class="hk-poz">Fiókvezető</span>
+        </li>
+        <li>
+          <picture><source srcset="/assets/adv-steinmetz.webp" type="image/webp"><img src="/assets/adv-steinmetz.png" width="108" height="108" alt="" decoding="async"></picture>
+          <span class="hk-nev">Steinmetz Edvárd</span>
+          <span class="hk-poz">Fiókvezető</span>
+        </li>
+        <li>
+          <picture><source srcset="/assets/adv-hollo.webp" type="image/webp"><img src="/assets/adv-hollo.png" width="108" height="108" alt="" decoding="async"></picture>
+          <span class="hk-nev">Holló Bernadett</span>
+          <span class="hk-poz">Fiókvezető</span>
+        </li>
+      </ul>
 
-    <div class="hero-arcok" aria-hidden="true">
-      <picture><source srcset="/assets/adv-gentischer-round.webp" type="image/webp"><img src="/assets/adv-gentischer-round.png" width="108" height="108" alt="" loading="lazy" decoding="async"></picture>
-      <picture><source srcset="/assets/adv-angelcsev.webp" type="image/webp"><img src="/assets/adv-angelcsev.png" width="108" height="108" alt="" loading="lazy" decoding="async"></picture>
-      <picture><source srcset="/assets/adv-steinmetz.webp" type="image/webp"><img src="/assets/adv-steinmetz.png" width="108" height="108" alt="" loading="lazy" decoding="async"></picture>
-      <picture><source srcset="/assets/adv-hollo.webp" type="image/webp"><img src="/assets/adv-hollo.png" width="108" height="108" alt="" loading="lazy" decoding="async"></picture>
-      <picture><source srcset="/assets/adv-tugyi.webp" type="image/webp"><img src="/assets/adv-tugyi.png" width="108" height="108" alt="" loading="lazy" decoding="async"></picture>
-    </div>
-    <p class="hero-arcok-cap">Az iroda vezetői, akikkel az interjún találkozhatsz.</p>
+      <button type="button" class="hk-gomb" data-book data-ev="cta_hero_kartya">
+        <svg class="i" aria-hidden="true"><use href="#i-calendar"></use></svg>
+        Megnézem a szabad időpontjaikat
+      </button>
+    </aside>
+
   </div>
 </section>
 
@@ -812,23 +1115,28 @@ section[id],[id]{ scroll-margin-top:84px; }
     <h2 class="sec-cim">A lehetőség 30 másodpercben</h2>
     <p class="sec-alcim">Ha csak ennyit olvasol el, a lényeget már tudod.</p>
 
-    <ol class="rovid">
+    <ul class="rovid">
       <li><svg class="i" aria-hidden="true"><use href="#i-clipboard"></use></svg>
-        <div><b>Pénzügyi igényfelméréssel induló tanácsadói pálya.</b>
-        Az első hónapokban az ügyfél céljait térképezed fel egy kész keretrendszer szerint.</div></li>
+        <div><b>Valódi ügyfélmunka.</b>
+        Már a kezdetektől valódi emberek céljait és pénzügyi helyzetét segítesz átlátni egy kész
+        elemzési rendszer segítségével.</div></li>
       <li><svg class="i" aria-hidden="true"><use href="#i-users"></use></svg>
-        <div><b>Mentorált betanulás.</b>
-        Az első éles helyzetekben mentor ül melletted, nem egyedül kezdesz.</div></li>
+        <div><b>Mentorált indulás.</b>
+        Az első ügyfélhelyzetekben tapasztalt mentor dolgozik melletted, így fokozatosan válhatsz
+        önállóvá.</div></li>
       <li><svg class="i" aria-hidden="true"><use href="#i-transfer"></use></svg>
-        <div><b>Személyes és online munkavégzés.</b>
-        Ügyfelet irodában és videóhíváson is fogadhatsz.</div></li>
-      <li><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg>
-        <div><b>Rugalmas, de valódi időráfordítást igénylő működés.</b>
-        Te osztod be, viszont heti szinten oda kell tenni magad.</div></li>
+        <div><b>Rugalmas munkavégzés.</b>
+        Az ügyfelekkel személyesen és online is dolgozhatsz, ezért a pálya egyetem vagy másik
+        munka mellett is elkezdhető.</div></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-brain"></use></svg>
+        <div><b>Használható szakmai tudás.</b>
+        Olyan pénzügyi, kommunikációs és tárgyalási ismereteket szerezhetsz, amelyek a szakmán
+        kívül is értéket jelentenek.</div></li>
       <li><svg class="i" aria-hidden="true"><use href="#i-scale"></use></svg>
-        <div><b>Teljesítményarányos, szerződéses együttműködés.</b>
-        Nem alkalmazotti jogviszony, és nincs garantált havi bér.</div></li>
-    </ol>
+        <div><b>Teljesítményarányos együttműködés.</b>
+        Nem alkalmazotti órabérben dolgozol: a bevételedet az elvégzett munka, az ügyfélfolyamatok
+        és a fejlődésed alakítja.</div></li>
+    </ul>
   </div>
 </section>
 
@@ -838,22 +1146,26 @@ section[id],[id]{ scroll-margin-top:84px; }
     <h2 class="sec-cim">Mit csinálnál a gyakorlatban?</h2>
     <p class="sec-alcim">Minden ügyféllel ugyanaz a három szakasz fut le. Te az elsővel kezdesz.</p>
 
+    <p class="munka-be">A legtöbb embernek vannak pénzügyi céljai, de nincs ideje végignézni
+      minden lehetőséget. A tanácsadó feladata, hogy kérdezzen, rendszerezzen és érthetővé tegye
+      a döntést. Ezért a munka egyszerre szól számokról és emberekről.</p>
+
     <ol class="szakaszok">
       <li class="szakasz sz-most">
-        <span class="sz-n">1</span>
+        <span class="sz-n" aria-hidden="true">1</span>
         <h3>Elemzés</h3>
         <p>Egy kész keretrendszer szerint végigmentek az ügyfél céljain és élethelyzetén.
           Nagyjából <b>egy óra tizenöt perc</b> az adminisztrációval együtt.</p>
         <span class="sz-cimke">Itt kezdesz</span>
       </li>
       <li class="szakasz">
-        <span class="sz-n">2</span>
+        <span class="sz-n" aria-hidden="true">2</span>
         <h3>Tanácsadás</h3>
         <p>A felmérés után konkrét, számszerűsített terv készül. Ezt a szakaszt kezdetben a
           mentorod vezeti, és fokozatosan veszed át.</p>
       </li>
       <li class="szakasz">
-        <span class="sz-n">3</span>
+        <span class="sz-n" aria-hidden="true">3</span>
         <h3>Folyamatos ügyfélszerviz</h3>
         <p>Ha változik az ügyfél élethelyzete vagy a piac, újranézitek a tervet. Ez adja a
           visszatérő munkát.</p>
@@ -907,6 +1219,8 @@ section[id],[id]{ scroll-margin-top:84px; }
         </dl>
         <p class="ido-nap"><b>Egy tipikus nap:</b> délelőtt egyetem, 12:30-tól iroda, délután
           két online és egy személyes ügyfél, este otthon a maradék adminisztráció.</p>
+        <p class="ido-plusz">Így már a diploma megszerzése előtt valódi ügyfél- és üzleti
+          tapasztalatot építhetsz.</p>
         <p class="ido-jegy">Vizsgaidőszakban vissza lehet venni, utána pótolni.</p>
       </article>
 
@@ -920,6 +1234,8 @@ section[id],[id]{ scroll-margin-top:84px; }
         </dl>
         <p class="ido-nap"><b>Egy tipikus nap:</b> 9-től 17:30-ig a főállás, este egy online
           ügyfél otthonról. Hetente egyszer beugrás az irodába.</p>
+        <p class="ido-plusz">Fokozatosan próbálhatod ki a pályát anélkül, hogy azonnal fel
+          kellene adnod a jelenlegi munkádat.</p>
         <p class="ido-jegy">A hétvégéd jellemzően szabad marad.</p>
       </article>
 
@@ -933,9 +1249,25 @@ section[id],[id]{ scroll-margin-top:84px; }
         </dl>
         <p class="ido-nap"><b>Egy tipikus nap:</b> reggel tervezés és visszahívások, délelőtt
           egy-két elemzés vagy tanácsadás, délután szakmai program és újabb ügyfél.</p>
+        <p class="ido-plusz">Nagyobb időráfordítással gyorsabban mélyítheted a szakmai tudásodat
+          és építheted az ügyfélkörödet.</p>
         <p class="ido-jegy">Erre jellemzően a másodállású időszak után váltanak a kollégák.</p>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4/b. FOGLALÁSI PONT · az életbeosztás után ═══════════════════ -->
+<section class="ctasav ctasav-feher">
+  <div class="wrap">
+    <div class="cts-doboz">
+      <div class="cts-szoveg">
+        <p class="cts-cim">El tudod képzelni a saját hetedben?</p>
+        <p class="cts-alcim">Az első beszélgetésen együtt megnézzük, hogyan férhetne bele a
+          munka a te időbeosztásodba.</p>
+      </div>
+      <button type="button" class="btn btn-fo" data-book data-ev="cta_idod">Megnézem a szabad interjúidőpontokat</button>
     </div>
   </div>
 </section>
@@ -944,12 +1276,15 @@ section[id],[id]{ scroll-margin-top:84px; }
 <section class="sec sec-feher" id="csere">
   <div class="wrap">
     <h2 class="sec-cim">Mit kapsz, és mit kér a munka?</h2>
-    <p class="sec-alcim">Két oszlop, szépítés nélkül. A jobb oldalit ugyanolyan komolyan
-      gondoljuk, mint a balt.</p>
+    <p class="sec-alcim">Két oszlop, szépítés nélkül. Így reálisan fel tudod mérni, mit adunk
+      hozzá, és mit kér cserébe a munka.</p>
 
     <div class="ketoszlop">
       <div class="oszlop oszlop-ok">
         <h3><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Amit biztosítunk</h3>
+        <p class="oszlop-be">A kezdéshez nem kész pénzügyi szakembert keresünk. Olyan embert
+          keresünk, aki tanulni akar, mi pedig biztosítjuk hozzá a rendszert és a szakmai
+          segítséget.</p>
         <ul>
           <li>Mentor, aki az első éles helyzetekben veled ül</li>
           <li>Strukturált betanulás, lépésről lépésre</li>
@@ -961,13 +1296,15 @@ section[id],[id]{ scroll-margin-top:84px; }
       </div>
       <div class="oszlop oszlop-fig">
         <h3><svg class="i" aria-hidden="true"><use href="#i-alert"></use></svg> Amit vállalnod kell</h3>
+        <p class="oszlop-be">A rugalmasság nagyobb önállóságot is jelent. A fejlődéshez
+          rendszerességre, tanulásra és valódi munkára van szükség.</p>
         <ul>
-          <li>Az első hónapok intenzív tanulása munka mellett</li>
-          <li>A ténylegesen szükséges heti időráfordítás, nem kevesebb</li>
-          <li>Önálló szervezés: a naptáradat te tartod karban</li>
-          <li>Ügyfélkommunikáció, akkor is, amikor nehéz</li>
-          <li>Folyamatos szakmai képzés, nem csak az elején</li>
-          <li>A teljesítményalapú működés bizonytalansága</li>
+          <li>Az első hónapokban intenzív tanulás, jellemzően munka vagy egyetem mellett</li>
+          <li>Rendszeres heti időt kell biztosítanod a tanulásra, az ügyfelekre és az adminisztrációra</li>
+          <li>A naptáradat te tartod karban, és te szervezed az ügyfélidőpontjaidat</li>
+          <li>Megtanulod kezelni a könnyebb és a nehezebb ügyfélhelyzeteket is</li>
+          <li>Folyamatos szakmai képzés, nem csak az első időszakban</li>
+          <li>El kell fogadnod, hogy a bevétel a teljesítményeddel együtt változik</li>
         </ul>
       </div>
     </div>
@@ -1096,7 +1433,7 @@ section[id],[id]{ scroll-margin-top:84px; }
     </div>
 
     <p class="dontes-zaro">Ha a jobb oldalon ismersz magadra, mondd el nyugodtan az interjún.
-      Jobb egy őszinte nem, mint egy elhúzódó igen.</p>
+      Az interjú célja, hogy mindkét fél nyugodtan eldönthesse, van-e értelme közösen folytatni.</p>
   </div>
 </section>
 
@@ -1124,10 +1461,10 @@ section[id],[id]{ scroll-margin-top:84px; }
         <div class="tort-be">
           <h3>Gentischer Richárd <span>Területi igazgató</span></h3>
           <p>Tizenkilenc évesen, baráti ajánlásra kezdtem 2015 decemberében. Fél év gyakornoki
-            munka után főállásra váltottam. Az első nehézség az volt, hogy vállalkozói fejjel
+            munka után főállásra váltottam. Az elején az volt a nehéz, hogy vállalkozói fejjel
             kellett gondolkodnom, miközben még tanultam a szakmát. Öt évig egyéni tanácsadóként
-            dolgoztam, aztán kezdtem csapatot építeni. Ha egy dolgot tanultam: a szakma nem a
-            tehetségről szól, hanem arról, hogy heteken át ugyanúgy csinálod.</p>
+            dolgoztam, aztán csapatot kezdtem építeni. Egy dolgot biztosan megtanultam: itt nem a
+            tehetség dönt, hanem az, hogy heteken át ugyanúgy csinálod.</p>
           <details class="nyit nyit-mini">
             <summary>Elolvasom a teljes történetét</summary>
             <div class="nyit-be">
@@ -1148,12 +1485,11 @@ section[id],[id]{ scroll-margin-top:84px; }
              alt="Angelcsev Zoé portréja"></picture>
         <div class="tort-be">
           <h3>Angelcsev Zoé <span>Fiókvezető</span></h3>
-          <p>Egyetem mellett kerestem munkát, és tudtam, hogy a hagyományos diákmunkánál
-            valamivel többre vágyom. Az elején az volt a nehéz, hogy többet kellett tanulni és
-            többet dolgozni, mint a csoporttársaimnak egy műszakos melóban. Az első évben
-            viszont annyit fejlődtem szakmailag, hogy már kezdő kollégák mentorálásában is részt
-            tudok venni. Azt tanultam meg, hogy a befektetett idő itt kamatozik, csak nem
-            azonnal.</p>
+          <p>Egyetem mellett kerestem munkát, és tudtam, hogy a hagyományos diákmunkánál valamivel
+            többre vágyom. Az elején az volt a nehéz, hogy többet kellett tanulnom és többet
+            dolgoznom, mint a csoporttársaimnak egy műszakos melóban. Az első évben viszont annyit
+            fejlődtem szakmailag, hogy ma már kezdő kollégák mentorálásában is részt tudok venni.
+            Azt tanultam meg, hogy a befektetett idő itt kamatozik, csak nem azonnal.</p>
           <details class="nyit nyit-mini">
             <summary>Elolvasom a teljes történetét</summary>
             <div class="nyit-be">
@@ -1176,9 +1512,9 @@ section[id],[id]{ scroll-margin-top:84px; }
           <h3>Steinmetz Edvárd <span>Fiókvezető</span></h3>
           <p>2023-ban, suli mellett kezdtem asszisztensi feladatokkal. Eredetileg honvédelmi
             pályára készültem, jelentkeztem is a közszolgálati egyetemre. Az első hónapokban a
-            fegyelem volt a nehéz: senki nem szólt rám, ha nem csináltam meg valamit. Aztán
-            annyira megtetszett a közeg, hogy itt maradtam, és ma egy öt fős csapattal dolgozom a
-            Vác és Budapest közti tengelyen.</p>
+            fegyelem volt a nehéz: senki nem szólt rám, ha valamit nem csináltam meg. Aztán
+            annyira megtetszett a közeg, hogy itt maradtam. Ma öt fős csapattal dolgozom a Vác és
+            Budapest közti tengelyen, és a saját időmet én osztom be.</p>
         </div>
       </article>
 
@@ -1190,8 +1526,8 @@ section[id],[id]{ scroll-margin-top:84px; }
           <p>2022-ben még a gyermekeimmel voltam otthon, és a COVID után kerestem, hol tudnék
             stabil jövőképpel elhelyezkedni. Egy ismeretlen szám hívott, és onnan indult az egész.
             A legnehezebb a kezdés ritmusa volt két gyerek mellett: meg kellett tanulnom heti
-            szinten védeni azt a néhány órát. Három év közös munka után ma saját
-            fiókvezetőségem van.</p>
+            szinten védeni azt a néhány órát. Három év közös munka után ma saját fiókvezetőségem
+            van, és tudom, hogy a rendszeresség többet ér a nagy hajráknál.</p>
         </div>
       </article>
 
@@ -1204,7 +1540,7 @@ section[id],[id]{ scroll-margin-top:84px; }
             voltam egy telekommunikációs cégnél, de hamar kiderült, hogy nem ez az én utam, és
             munka nélkül maradtam. Egy dolgot tudtam biztosan: biztonságra vágyom úgy, hogy a
             munka ne menjen a család rovására. Egy hétköznapi kárügyintézésből lett ebből
-            munkatársi kapcsolat.</p>
+            munkatársi kapcsolat, és ma a saját tempómban építem az ügyfélkörömet.</p>
         </div>
       </article>
 
@@ -1212,8 +1548,29 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </section>
 
+<!-- ══ 8/b. VIDEÓBLOKK 1 · IRODAI HÉTKÖZNAPOK ══════════════════════
+     A hat videókártya egyetlen komponensre épül. A csere egyszerű:
+     a build.py tetején lévő VIDEOK szótárban kell kitölteni az adott
+     kulcs "url" és "poster" mezőjét, minden más változatlan marad.
+     Amíg az url üres, a kártya igényes helyőrzőt mutat, és nem tölt
+     le semmilyen videófájlt. ══════════════════════════════════════ -->
+<section class="sec sec-feher" id="irodavideo">
+  <div class="wrap">
+    <h2 class="sec-cim">Nézz be az irodai hétköznapokba</h2>
+    <p class="sec-alcim">A munka hangulatát nehéz néhány mondatból elképzelni. Ezekben a rövid
+      videókban megmutatjuk, hogyan telik egy átlagos nap, hogyan dolgozunk együtt, és milyen az
+      első időszak a gyakorlatban.</p>
+
+    <ul class="videok">
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t1"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-building"></use></svg></div><h3>Egy átlagos nap a Kelenhegyi irodában</h3><p>Reggeli tervezéstől az utolsó ügyfélidőpontig.</p></li>
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t2"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-users"></use></svg></div><h3>Így dolgozik együtt egy kezdő és a mentora</h3><p>Egy éles ügyfélhelyzet, négy szem és két szerepkör.</p></li>
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t3"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-book"></use></svg></div><h3>Ügyfélidőpont, képzés és közös munka</h3><p>Amiből egy hét valójában összeáll.</p></li>
+    </ul>
+  </div>
+</section>
+
 <!-- ══ 9. AZ IRODA ══════════════════════════════════════════════════ -->
-<section class="sec sec-feher" id="iroda">
+<section class="sec sec-vilagos" id="iroda">
   <div class="wrap">
     <h2 class="sec-cim">Az iroda és a közösség</h2>
     <p class="sec-alcim">Ide jársz be, és itt lesz az interjú is.</p>
@@ -1234,24 +1591,40 @@ section[id],[id]{ scroll-margin-top:84px; }
            target="_blank" rel="noopener">
           <svg class="i" aria-hidden="true"><use href="#i-map"></use></svg> Megnyitom a térképet</a>
       </div>
-
-      <!-- ELLENŐRIZENDŐ TARTALOM: a projektben nincs valódi irodai vagy csapatfotó.
-           A brief 3-5 hiteles fotót kér. A helyük itt van kialakítva, a képeket a
-           tulajdonosnak kell megadnia. Addig a blokk nem jelenít meg stockfotót. -->
-      <div class="iroda-kepek" data-ellenorizendo="iroda-fotok">
-        <p class="kep-helyorzo">Ide kerülnek az iroda fotói</p>
-      </div>
     </div>
+  </div>
+</section>
 
-    <details class="nyit">
-      <summary>Megnézem, milyen közös programok voltak</summary>
-      <div class="nyit-be">
-        <p>Negyedéves csapatépítők és rendszeres összejövetelek. Az elmúlt két évben volt közös
-          gálaest, sörfőzde-látogatás és több külföldi út is.</p>
-        <p class="jogi-jegy">A közös programok szervezése nem a munkavégzés része, és nem
-          minden kolléga vesz részt mindegyiken.</p>
+<!-- ══ 9/b. VIDEÓBLOKK 2 · KÖZÖS ÉLMÉNYEK ══════════════════════════ -->
+<section class="sec sec-feher" id="csapatvideo">
+  <div class="wrap">
+    <h2 class="sec-cim">A közös élményekből is épül a csapat</h2>
+    <p class="sec-alcim">A szakmai fejlődés mellett időről időre kilépünk az irodából is. Közös
+      programok, rendezvények és utazások segítenek abban, hogy ne csak egymás mellett, hanem
+      valódi csapatként dolgozzunk.</p>
+
+    <ul class="videok">
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t4"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-heart"></use></svg></div><h3>Csapatépítő és közös programok</h3><p>Néhány pillanat abból, hogyan kapcsolódunk ki egy intenzív időszak után.</p></li>
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t5"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-trophy"></use></svg></div><h3>Szakmai rendezvények és gálák</h3><p>Így néz ki, amikor az ország különböző csapatai egy helyen találkoznak.</p></li>
+      <li class="vkart" data-video="" data-poster="" data-felirat=""><div class="vk-keret vk-t6"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span><span class="vk-cimke">Videó hamarosan</span><svg class="vk-motiv" aria-hidden="true"><use href="#i-plane"></use></svg></div><h3>Utazások a csapattal</h3><p>Közös utak, amelyekből a fényképeken túl is marad valami.</p></li>
+    </ul>
+
+    <p class="jogi-jegy videok-jegy">A programokon és utazásokon való részvétel alkalomtól,
+      szerepkörtől és feltételektől függhet, és nem a munkavégzés része.</p>
+  </div>
+</section>
+
+<!-- ══ 9/c. FOGLALÁSI PONT · a csapat megismerése után ═════════════ -->
+<section class="ctasav ctasav-feher">
+  <div class="wrap">
+    <div class="cts-doboz">
+      <div class="cts-szoveg">
+        <p class="cts-cim">Szívesen megismernéd személyesen is a csapatot?</p>
+        <p class="cts-alcim">Foglalj egy kötetlen első beszélgetést, és nézd meg, milyen érzés
+          élőben ez a közeg.</p>
       </div>
-    </details>
+      <button type="button" class="btn btn-fo" data-book data-ev="cta_csapat">Lefoglalom az interjú időpontomat</button>
+    </div>
   </div>
 </section>
 
@@ -1285,7 +1658,7 @@ section[id],[id]{ scroll-margin-top:84px; }
 <section class="sec sec-feher" id="gyik">
   <div class="wrap">
     <h2 class="sec-cim">Gyakori kérdések</h2>
-    <p class="sec-alcim">Ezek hangzanak el a leggyakrabban a telefonos körökön.</p>
+    <p class="sec-alcim">Ezek hangzanak el a leggyakrabban az első beszélgetéseken.</p>
 
     <div class="gyik-lista">
 
@@ -1305,8 +1678,9 @@ section[id],[id]{ scroll-margin-top:84px; }
         <summary>Van garantált fizetés?</summary>
         <div class="gy-be">
           <p>Nincs. A bevétel teljesítményarányos: akkor keletkezik, ha az általad vitt folyamat
-            szerződéssel zárul. Nincs órabér és nincs garantált havi összeg. Ezért fontos, hogy
-            a heti időráfordítást reálisan tervezd meg.</p>
+            szerződéssel zárul. Nincs órabér és nincs garantált havi összeg. Cserébe a
+            ráfordított munka közvetlenül a saját eredményedet építi, ezért érdemes a heti
+            időráfordítást reálisan megterveznie mindenkinek.</p>
         </div>
       </details>
 
@@ -1405,11 +1779,11 @@ section[id],[id]{ scroll-margin-top:84px; }
       olvasás közben eszedbe jutott.</p>
 
     <ol class="zaras-lepesek">
-      <li><b>Kiválasztod, kivel beszélnél.</b> A gombra kattintva megnyílik a naptár, és kiveszed
+      <li><span class="z-n" aria-hidden="true">1</span><b>Kiválasztod, kivel beszélnél.</b> A gombra kattintva megnyílik a naptár, és kiveszed
         a neked jó időpontot. Fél perc.</li>
-      <li><b>Első kör, körülbelül 40 perc.</b> Az irodában a Kelenhegyi úton, vagy online, ahogy
+      <li><span class="z-n" aria-hidden="true">2</span><b>Első kör, körülbelül 40 perc.</b> Az irodában a Kelenhegyi úton, vagy online, ahogy
         neked jobb. Kötetlen beszélgetés, nem vizsga.</li>
-      <li><b>Ha mindkettőnknek jó, jön a második kör.</b> Ott a konkrét feltételeket és a
+      <li><span class="z-n" aria-hidden="true">3</span><b>Ha mindkettőnknek jó, jön a második kör.</b> Ott a konkrét feltételeket és a
         szerződést vesszük végig, és beszélünk az indulás időpontjáról.</li>
     </ol>
 
@@ -1677,6 +2051,75 @@ section[id],[id]{ scroll-margin-top:84px; }
       if (e.target.closest('a[href^="http"]')) { window.setTimeout(ablakZar, 120); }
     });
   }
+
+  /* ── 5. videókártyák ──────────────────────────────────────────────
+     Egy komponens, két állapot. Üres data-video esetén a kártya marad
+     helyőrző, és semmilyen videófájlt nem tölt le. Kitöltött data-video
+     esetén a keret egy billentyűzettel is elérhető gombbá válik, és a
+     tényleges videó csak kattintásra kerül a DOM-ba. A keret képaránya
+     rögzített, ezért a csere nem okoz elrendezés-ugrást. */
+  function videoBe(kart) {
+    var url = kart.getAttribute('data-video');
+    if (!url) return;
+    var keret = kart.querySelector('.vk-keret');
+    var gomb = keret ? keret.querySelector('.vk-gomb') : null;
+    if (!keret || !gomb) return;
+
+    var cimEl = kart.querySelector('h3');
+    var cim = cimEl ? cimEl.textContent.trim() : 'videó';
+    var poster = kart.getAttribute('data-poster') || '';
+    var felirat = kart.getAttribute('data-felirat') || '';
+
+    gomb.addEventListener('click', function () {
+      var beagyaz;
+      if (/\.(mp4|webm|mov)(\?|$)/i.test(url)) {
+        beagyaz = document.createElement('video');
+        beagyaz.setAttribute('controls', '');
+        beagyaz.setAttribute('playsinline', '');
+        beagyaz.setAttribute('preload', 'metadata');
+        beagyaz.setAttribute('autoplay', '');
+        if (poster) beagyaz.setAttribute('poster', poster);
+        var forras = document.createElement('source');
+        forras.src = url;
+        beagyaz.appendChild(forras);
+        if (felirat) {
+          var savo = document.createElement('track');
+          savo.kind = 'captions'; savo.srclang = 'hu';
+          savo.label = 'Magyar felirat'; savo.src = felirat;
+          savo.setAttribute('default', '');
+          beagyaz.appendChild(savo);
+        }
+      } else {
+        // YouTube es Vimeo eseten kerunk automatikus inditast, minden mas
+        // beagyazasnal (TikTok, Instagram) valtozatlanul hagyjuk a cimet
+        var sajat = /youtube|youtu\.be|vimeo/i.test(url);
+        beagyaz = document.createElement('iframe');
+        beagyaz.src = sajat
+          ? url + (url.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1&rel=0'
+          : url;
+        beagyaz.title = cim;
+        beagyaz.setAttribute('allow',
+          'accelerometer; autoplay; encrypted-media; picture-in-picture');
+        beagyaz.setAttribute('allowfullscreen', '');
+        beagyaz.setAttribute('loading', 'lazy');
+      }
+      gomb.remove();
+      keret.appendChild(beagyaz);
+      if (typeof beagyaz.focus === 'function') beagyaz.focus({ preventScroll: true });
+      mer('video_inditas', { videocim: cim.slice(0, 80) });
+    });
+  }
+
+  document.querySelectorAll('.vkart[data-video]').forEach(videoBe);
+
+  /* ── 6. munkatársi történetek: mobilon egyszerre egy nyitva ──────── */
+  var tortNyitok = document.querySelectorAll('.tort details.nyit-mini');
+  tortNyitok.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open || window.innerWidth > 860) return;
+      tortNyitok.forEach(function (m) { if (m !== d) m.open = false; });
+    });
+  });
 
   /* ── 3. mobil alsó sáv ────────────────────────────────────────────── */
   var sav = document.getElementById('msav');
