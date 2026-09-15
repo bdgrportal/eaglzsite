@@ -461,6 +461,11 @@ a{ color:var(--menta-t); }
 .oszlop-fig{ background:rgba(232,69,122,.06); border-color:rgba(232,69,122,.24); }
 .oszlop-fig h3{ color:var(--pink-t); }
 .oszlop-fig li::before{ background:var(--pink-t); }
+/* a jobb hasab mar nem figyelmeztetes, hanem a masik fel hozzajarulasa:
+   semleges, tengerkek arnyalat, hogy parban alljon a mentazolddel */
+.oszlop-te{ background:rgba(27,56,88,.045); border-color:rgba(27,56,88,.16); }
+.oszlop-te h3{ color:var(--navy); }
+.oszlop-te li::before{ background:var(--navy-v); }
 .oszlop-nem{ background:var(--torto); border-color:var(--vonal-e); }
 .oszlop-nem h3{ color:var(--ink-2); }
 .oszlop-nem li::before{ background:var(--ink-3); }
@@ -1112,14 +1117,19 @@ section[id],[id]{ scroll-margin-top:84px; }
 
 /* a ket panel eltero hosszu listaval: a magassag a tartalomhoz igazodik,
    igy nem marad nagy ures sav a rovidebb panel aljan */
-#csere .ketoszlop{ align-items:start; }
-#csere .oszlop{ height:auto; }
+/* cim es magyarazat parban: a cim sajat sorban, a magyarazat alatta */
+.oszlop-parok{ gap:1.05rem !important; }
+.oszlop-parok li{ color:var(--ink-3); }
+.oszlop-parok b{
+  display:block; margin-bottom:.15rem; font-weight:700;
+  font-family:var(--fd); font-size:1rem; letter-spacing:-.01em; color:var(--navy);
+}
 
 </style>
-<meta name="eaglz-build" content="2026-09-15-1002">
+<meta name="eaglz-build" content="2026-09-15-1021">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol></svg>
 
 <a class="skip" href="#fo">Ugrás a tartalomhoz</a>
 
@@ -1149,7 +1159,7 @@ section[id],[id]{ scroll-margin-top:84px; }
   <nav class="wrap kmenu-in" aria-label="Menü">
     <a href="#munka">A munka</a>
     <a href="#idod">Így férhet bele az életedbe</a>
-    <a href="#csere">Amit kapsz, amit vállalsz</a>
+    <a href="#csere">Amit adunk, amit hozzáteszel</a>
     <a href="#bevetel">A bevétel és a szerződés</a>
     <a href="#dontes">Kinek való, kinek nem</a>
     <a href="#emberek">Az emberek</a>
@@ -1415,36 +1425,40 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </section>
 
-<!-- ══ 5. AMIT KAPSZ, AMIT VÁLLALSZ ═════════════════════════════════ -->
+<!-- ══ 5. AMIT ADUNK, AMIT HOZZÁTESZEL ═════════════════════════════ -->
 <section class="sec sec-feher" id="csere">
   <div class="wrap">
-    <h2 class="sec-cim">Mit kapsz, és mit kér a munka?</h2>
-    <p class="sec-alcim">Két oszlop, szépítés nélkül. Így reálisan fel tudod mérni, mit adunk
-      hozzá, és mit kér cserébe a munka.</p>
+    <h2 class="sec-cim">Mit adunk, és mit várunk új kollégáinktól?</h2>
+    <p class="sec-alcim">Nem kell kész pénzügyi szakértőként érkezned. Ha kíváncsi vagy, szeretsz
+      emberekkel dolgozni és hajlandó vagy fejlődni, minden szakmai segítséget megkapsz az
+      induláshoz.</p>
 
     <div class="ketoszlop">
       <div class="oszlop oszlop-ok">
-        <h3><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Amit biztosítunk</h3>
-        <p class="oszlop-be">A kezdéshez nem kész pénzügyi szakembert keresünk. Olyan embert
-          keresünk, aki tanulni akar, mi pedig biztosítjuk hozzá a rendszert és a szakmai
-          segítséget.</p>
-        <ul>
-          <li>Mentor, aki az első éles helyzetekben veled ül</li>
-          <li>Strukturált betanulás, lépésről lépésre</li>
-          <li>Kész szakmai rendszer</li>
-          <li>Rugalmas időbeosztási lehetőség</li>
-          <li>Irodai és technikai háttér</li>
-          <li>Fejlődési lehetőség: szakmai specializáció vagy csapatvezetés</li>
+        <h3><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Amit mi adunk</h3>
+        <ul class="oszlop-parok">
+          <li><b>Mentor az első lépéstől</b>
+            Az első ügyfélhelyzetekben sem maradsz egyedül.</li>
+          <li><b>Érthető, gyakorlati betanulás</b>
+            Lépésről lépésre tanulod meg, hogyan működik a szakma.</li>
+          <li><b>Rugalmasan alakítható időbeosztás</b>
+            Egyetem vagy másik munka mellett is elkezdheted.</li>
+          <li><b>Valódi fejlődési lehetőség</b>
+            Haladhatsz szakértői vagy később vezetői irányba.</li>
         </ul>
       </div>
-      <div class="oszlop oszlop-fig">
-        <h3><svg class="i" aria-hidden="true"><use href="#i-alert"></use></svg> Amit vállalnod kell</h3>
-        <p class="oszlop-be">A rugalmasság nagyobb önállóságot is jelent. A fejlődéshez
-          rendszerességre, tanulásra és valódi munkára van szükség.</p>
-        <ul>
-          <li>Az első hónapokban intenzívebb a betanulási időszak, hiszen szakmai alapozás zajlik</li>
-          <li>Rendszeres heti időt kell biztosítanod a munkára, hetente előre egyeztetett menetrendben</li>
-          <li>El kell fogadnod, hogy a bevétel a teljesítményeddel együtt változik</li>
+
+      <div class="oszlop oszlop-te">
+        <h3><svg class="i" aria-hidden="true"><use href="#i-star"></use></svg> Amit te teszel hozzá</h3>
+        <ul class="oszlop-parok">
+          <li><b>Kíváncsiság és tanulási kedv</b>
+            Nem kell mindent tudnod, de akarnod kell fejlődni.</li>
+          <li><b>Rendszeresség</b>
+            Hetente előre tervezhető időt szánsz a munkára.</li>
+          <li><b>Nyitottság az emberek felé</b>
+            Kérdezel, figyelsz és megtanulsz jól kommunikálni.</li>
+          <li><b>Felelősség a saját eredményeidért</b>
+            A bevételed a fejlődéseddel és a teljesítményeddel együtt alakul.</li>
         </ul>
       </div>
     </div>
