@@ -67,7 +67,7 @@
   function indit() {
     if (halk || !('IntersectionObserver' in window)) return;
     var lista = elokeszit();
-    var also = window.innerHeight * 0.95;
+    var also = window.innerHeight * 1.25;
 
     /* az első képernyő tartalma ne villanjon: azonnal látszik */
     lista.forEach(function (el) {
@@ -83,7 +83,7 @@
         b.target.classList.add('h-lat');
         figyelo.unobserve(b.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
+    }, { rootMargin: '300px 0px 300px 0px', threshold: 0.01 });
 
     lista.forEach(function (el) {
       if (!el.classList.contains('h-lat')) figyelo.observe(el);
@@ -92,7 +92,7 @@
     /* biztonsági háló: ha bármi félrecsúszna, 6 másodperc után minden látszik */
     window.setTimeout(function () {
       lista.forEach(function (el) { el.classList.add('h-lat'); });
-    }, 6000);
+    }, 3000);
   }
 
   function start() {

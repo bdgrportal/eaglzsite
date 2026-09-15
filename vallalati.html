@@ -2761,10 +2761,10 @@ a .ic,button .ic{pointer-events:none;}
 
 /* ── 19.2 tartalomoszlop ────────────────────────────────────────────────
    1440 px-es oszlopban a sorok túl hosszúak, a szem elfárad. A
-   karrieroldal 1160 px-es sávja a viszonyítás: itt 1280 px a kompromisszum,
-   mert a hat kártyás rácsok még kényelmesen elférnek benne.            */
-:root{ --maxw:1280px; }
-@media(min-width:1700px){ :root{ --maxw:1340px; } }
+   karrieroldal 1160 px-es sávja a viszonyítás, és mostantól az egész
+   oldalcsalád ezt használja: egy oszlopszélesség, mindenhol.          */
+:root{ --maxw:1160px; }
+@media(min-width:1700px){ :root{ --maxw:1240px; } }
 
 /* ── 19.3 tipográfiai skála ─────────────────────────────────────────────
    Egy szekciócím-méret az egész oldalcsaládban, egy alcím, egy kártyacím. */
@@ -2877,7 +2877,7 @@ button,input,select,textarea{
    amennyitől az oldal késznek érződik.                                 */
 .h-be{
   opacity:0; transform:translateY(14px);
-  transition:opacity .5s var(--h-gorbe), transform .5s var(--h-gorbe);
+  transition:opacity .42s var(--h-gorbe), transform .42s var(--h-gorbe);
   will-change:opacity, transform;
 }
 .h-be.h-lat{ opacity:1; transform:none; }
@@ -2943,8 +2943,219 @@ button,input,select,textarea{
   .h-be{ transform:translateY(10px); transition-duration:.42s; }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   20. EGY IRÁNY  ·  az oldalcsalád elköteleződése
+   ----------------------------------------------------------------------
+   Eddig ugyanaz a blokk desktopon balra, mobilon középre zárt, a HTML-ben
+   pedig soronkénti "text-align:center" is volt. Ettől tűnt kaotikusnak.
+   A szabály innentől egy mondat:
+
+       MINDEN BALRA ZÁRT, KIVÉVE A ZÁRÓ FOGLALÁSI SÁVOT, A LÁBLÉCET
+       ÉS A FÉNYKÉPRE ÉPÜLŐ TANÁCSADÓ-KÁRTYÁKAT.
+
+   Ugyanaz a rend, mint a karrieroldalon, és minden képernyőméreten
+   ugyanaz: nincs töréspont, ahol átfordul.
+   ══════════════════════════════════════════════════════════════════════ */
+body,
+.section,.section .container,section .container,
+.sec-head,.head-center,.section-title,.section-sub,.label-chip,.eyebrow,
+.sub-h1,.sub-lead,.sub-hero,.sub-actions,.sub-note,.sub-upd,
+.art,.art *,.toc,.toc *,
+.tile,.tile *,.box,.box *,.hub-c,.hub-c *,.fw-card,.fw-card *,
+.nstep,.nstep *,.faq-item,.faq-item *,.rel-c,.rel-c *,.eo-tile,.eo-tile *,
+.onl-card,.onl-card *,.card,.card *,.scf,.scf *,.ben-c,.ben-c *,.gd-c,.gd-c *,
+.docitem,.docitem *,.sav-item,.sav-item *,.midcta-box,.midcta-box *,
+.tbl,.tbl *,.tbl-wrap,.ttable,.ttable *,
+.hw,.hw *,.calc,.calc *,.calcin,.calcin *,.fld,.fld *,.qz,.qz *,
+.tipbox,.tipbox *,.warnbox,.warnbox *,.info,.info *,.warn,.warn *,
+.hl,.hl *,.good,.good *,.clean,.clean *,.ki,.ki *,.st,.st *,
+.progbox,.progbox *,.docbox,.docbox *,.res-note,.yn-col,.yn-col *,
+.bk-lead,.bk-lead *,.bk-warn,.bk-warn *,.ltp-u,.ltp-u *,.ltp-w,.ltp-w *,
+.sc,.sc *,.step-card,.step-card *,.graph-light,.graph-light *{
+  text-align:left !important;
+}
+/* a jelölésbe írt középre zárás is megszűnik */
+[style*="text-align:center"]{ text-align:left !important; }
+[style*="text-align:center"] > *{ margin-left:0 !important; margin-right:auto !important; }
+
+/* A három kivétel. Mindhárom egy lezárás vagy egy arckép: ott a középre
+   zárás nem bizonytalanság, hanem szándék. */
+.cta-box,.cta-box *,.cta-inner,.cta-inner *,#cta .container,#cta .container *,
+.adv-card,.adv-card *,.adv-front,.adv-front *,.adv-back,.adv-back *,
+.sec-cta,.apt-btn-wrap,
+.endmark,.endmark *,.endmark-cap,.endjel,.endjel *{
+  text-align:center !important;
+}
+/* a lablec: a zaro jel kozepen, alatta minden balra, minden meretben */
+footer,footer *,.footer-inner,.footer-inner *,.footer-brand,.footer-sub,
+.footer-links,.footer-links *,.footer-legal,.footer-legal *,.footer-copy,
+.footer-legal-links,.footer-legal-links *,.footer-fine{
+  text-align:left !important;
+}
+footer .endmark,footer .endmark *,footer .endmark-cap{ text-align:center !important; }
+.cta-box .cta-title,.cta-box .cta-sub{ margin-left:auto !important; margin-right:auto !important; }
+
+/* A szövegoszlop is ugyanarról a bal élről indul, mint minden más.
+   Eddig 780 px-es középre zárt hasáb volt, ezért látszott másik
+   szélességűnek, mint a kártyarácsok fölötte. */
+.art{ max-width:74ch !important; margin-left:0 !important; margin-right:0 !important; }
+.section-sub,.sub-lead,.cta-sub,.lead-sub{ max-width:66ch; }
+.cta-box .cta-sub{ max-width:60ch; }
+
+/* ── 20.1 fejléc: a menü és a gomb soha ne érjen egymásba ─────────────
+   A szűkebb tartalomoszloptól a menüsor utolsó pontja rácsúszott a
+   foglalás gombra. A menü mostantól jobbra zár, feszesebb belső
+   térközzel, és korábban vált hamburgerre. */
+.mhead-in{ gap:1rem !important; }
+.mnav{ justify-content:flex-end !important; flex:1 1 auto; min-width:0; }
+.mnav > button{ padding:0 .52rem !important; font-size:.78rem !important; }
+.mhead-cta{ flex:0 0 auto; margin-left:.4rem; }
+@media(max-width:1340px){ .mnav > button{ padding:0 .4rem !important; font-size:.76rem !important; } }
+@media(max-width:1180px){ .mnav,.mhead-cta{ display:none !important; } .mburger{ display:flex !important; } }
+
+/* ── 20.2 kalkulátorok: egy mező, egy keret ───────────────────────────
+   A beviteli mező a saját keretét is megkapta a külső doboz belsejében,
+   ezért minden sor dupla dobozként látszott. */
+.rng-box input,.rng-box .rng-num,.rng-box input[type=number],.rng-box input[type=text]{
+  border:0 !important; background:transparent !important; box-shadow:none !important;
+  border-radius:0 !important; padding-top:.3rem !important; padding-bottom:.3rem !important;
+}
+.rng-box{ border-radius:var(--h-r-m) !important; border-width:1px !important; }
+
+/* ── 20.3 tanácsadókártyák: azonos arányok ────────────────────────────
+   Eddig a hosszabb pozíciónév és a kétsoros címke széthúzta a kártyát,
+   ezért a hat kártya más magasságban zárt. Mostantól rácsban futnak:
+   a fénykép, a név, a pozíció és a címkesor azonos sávban áll, a
+   hivatkozás pedig mindig a kártya alján. */
+.adv-front{
+  display:flex !important; flex-direction:column; align-items:center;
+}
+.adv-front .adv-name{ min-height:2.6em; display:flex; align-items:center; justify-content:center; }
+.adv-front .adv-role{ min-height:2.9em; font-size:.88rem !important; line-height:1.35; }
+.adv-front .adv-tags{ min-height:4.6em; align-content:flex-start; }
+.adv-front .adv-more,.adv-back .adv-more{ margin-top:auto !important; padding-top:.5rem; }
+
+/* ── 20.4 ritmus és sorköz ────────────────────────────────────────────
+   A blokkok közötti üres sávok aránytalanul nagyok voltak a tartalomhoz
+   képest. A szekcióköz és a fejléc utáni köz is feszesebb lett, a
+   sorközök pedig egy skálára kerültek. */
+:root{
+  --sp-sec:  clamp(2.5rem, 1.9rem + 1.9vw, 3.8rem);
+  --sp-sec-s:clamp(1.8rem, 1.4rem + 1.3vw, 2.6rem);
+  --sp-head: clamp(1.2rem, 1rem + .9vw, 1.9rem);
+}
+body{ line-height:1.62; }
+p,li,dd,.tile-d,.nstep-d,.rel-d,.hub-d,.box p,.art p{ line-height:1.65; }
+.section-title,.sub-h1,.cta-title,.lead-title,.hero-title{ line-height:1.15; }
+.tile-t,.nstep-t,.rel-t,.hub-t,.box-t,.faq-q,.faq summary{ line-height:1.3; }
+.art p + p{ margin-top:.75rem; }
+.art h2{ margin-top:2.2rem !important; margin-bottom:.6rem !important; }
+.art h3{ margin-top:1.6rem !important; margin-bottom:.45rem !important; }
+
+/* ── 20.5 azonos szélességek ──────────────────────────────────────────
+   A dobozok és widgetek eddig saját maximumot hoztak magukkal. Mostantól
+   mind a tartalomoszlop teljes szélességét használják, és a bal élük
+   egy vonalban van. */
+.box,.tipbox,.warnbox,.info,.warn,.hl,.good,.clean,.progbox,.docbox,
+.tbl-wrap,.ttable,.sc,.ki,.st,.bk-lead,.bk-warn,.ltp-u,.ltp-w,.graph-light,
+.midcta-box,.hw,.calc,.qz,.toc,.scf{
+  max-width:none !important; margin-left:0 !important; margin-right:0 !important;
+}
+.art .box,.art .tipbox,.art .warnbox,.art .info,.art .warn,.art .hl,
+.art .good,.art .clean,.art .progbox,.art .docbox{ max-width:100% !important; }
+
+@media(max-width:700px){
+  :root{
+    --sp-sec:  clamp(2rem, 1.7rem + 1.5vw, 2.6rem);
+    --sp-sec-s:clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --sp-head: clamp(1rem, .9rem + .7vw, 1.4rem);
+  }
+  .art{ max-width:none !important; }
+  .adv-front .adv-name,.adv-front .adv-role,.adv-front .adv-tags{ min-height:0; }
+}
+
+/* ── 20.6 kalkulátor-mezők: azonos szélességű beviteli dobozok ─────────
+   A doboz eddig a benne lévő szám hosszához igazodott, ezért soronként
+   máshol kezdődött. Fix szélességgel a mezők egy vonalban állnak. */
+.fld-l label,.hw-lab{ display:flex !important; align-items:center; gap:.7rem; width:100%; }
+.rng-box{
+  width:11rem; max-width:52%; margin-left:auto !important;
+  justify-content:flex-end; padding-right:.7rem !important;
+}
+.rng-num{ width:100% !important; flex:1 1 auto; min-width:0; }
+.rng-unit{ flex:0 0 auto; }
+@media(max-width:560px){ .rng-box{ width:9.4rem; max-width:58%; } }
+
+/* ── 20.7 a rugalmas sorok is balra zárnak ────────────────────────────
+   A kártyák záró hivatkozása flex-doboz, ezért a szövegigazítás nem
+   érte el. A vízszintes elrendezést is a bal élhez kötjük. */
+.hub-go,.onl-go,.tile-go,.rel-go,.eo-go,.card-go,.gd-go,
+.fw-card .tile-go,.box .tile-go,.art .tile-go{
+  justify-content:flex-start !important;
+}
+.hub-c,.tile,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.fw-card,.nstep,.box,.card{
+  align-items:flex-start !important;
+}
+/* a kivételek (záró sáv, lábléc, tanácsadókártya) maradnak középen */
+.cta-box,.cta-inner,.footer-inner,.adv-card,.adv-front,.adv-back,
+.sec-cta,.apt-btn-wrap{ align-items:center !important; }
+.adv-front .adv-tags{ justify-content:center !important; }
+
+/* ── 20.8 a szekciócím akcentcsíkja minden méretben ───────────────────
+   Eddig csak 1024 px felett látszott, ezért mobilon más volt a cím
+   karaktere, mint desktopon. Egy jel, minden képernyőn. */
+.section-title:not(.big),.sub-h1{
+  position:relative; padding-left:1.15rem !important;
+}
+.section-title:not(.big)::before,.sub-h1::before{
+  content:''; position:absolute; left:0; top:.14em; bottom:.14em; width:4px;
+  border-radius:3px; background:linear-gradient(180deg,var(--teal) 0%,var(--purple) 100%);
+}
+.cta-box .cta-title::before,.cta-title::before{ content:none; }
+.cta-box .cta-title{ padding-left:0 !important; }
+
+/* ── 20.9 egyetlen díszítő jel ────────────────────────────────────────
+   A bemutatkozó bekezdés mobilon egy vízszintes kis vonalat kapott,
+   desktopon viszont bal oldali csíkot. Mindenhol a bal oldali csík marad,
+   ugyanaz, mint a szekciócímeknél. */
+.about-bio{ position:relative; padding-left:1.15rem !important; margin-left:0 !important; }
+.about-bio::before{
+  content:''; position:absolute; left:0; top:.2em; bottom:.2em;
+  width:3px; height:auto; border-radius:3px;
+  background:linear-gradient(180deg,var(--teal) 0%,var(--purple) 100%);
+}
+
+/* a lábléc sorai is a bal élről indulnak, a rugalmas elrendezésben is */
+.footer-legal-top,.footer-legal-links,.footer-links,.footer-inner{
+  justify-content:flex-start !important;
+}
+.footer-copy,.footer-fine,.footer-sub,.footer-brand{
+  margin-left:0 !important; margin-right:0 !important;
+}
+@media(min-width:900px){
+  .footer-inner,.footer-legal-top{ justify-content:space-between !important; }
+}
+@media(max-width:899px){
+  /* oszlopba rendeződő lábléc: a blokkok bal széle egy vonalban */
+  .footer-inner,.footer-legal-top,.footer-legal-links,.footer-links{
+    align-items:flex-start !important;
+  }
+}
+
+/* a tanácsadókártyák záró hivatkozása mindig a kártya alján áll, akkor is,
+   ha az egyik címke két sorba törik */
+.adv-front{ padding-bottom:2.9rem !important; }
+.adv-front .adv-more{
+  position:absolute; left:0; right:0; bottom:1rem; margin:0 !important;
+  justify-content:center;
+}
+/* a kártya magassága a leghosszabb tartalomhoz igazodik, hogy a kétsoros
+   címke se érjen hozzá a záró hivatkozáshoz */
+.adv-card{ height:386px !important; }
+@media(max-width:760px){ .adv-card{ height:360px !important; } }
+
 </style>
-<meta name="eaglz-build" content="2026-09-15-2303">
+<meta name="eaglz-build" content="2026-09-15-2347">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -2955,7 +3166,7 @@ button,input,select,textarea{
     <div class="mhead-in">
       <a class="elogo" href="index.html" aria-label="EAGLZ Finance">
         <img src="assets/eaglz-lockup-nav.png" alt="EAGLZ">
-        <span>powered by OVB Gentischer Direction</span>
+        <span>powered by OVB - BD Gentischer</span>
       </a>
       <div class="mnav" id="mnav" role="navigation" aria-label="Fő navigáció"></div>
       <a class="mhead-cta" href="index.html#advisors">Időpontot foglalok <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
@@ -3863,7 +4074,7 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
   function indit() {
     if (halk || !('IntersectionObserver' in window)) return;
     var lista = elokeszit();
-    var also = window.innerHeight * 0.95;
+    var also = window.innerHeight * 1.25;
 
     /* az első képernyő tartalma ne villanjon: azonnal látszik */
     lista.forEach(function (el) {
@@ -3879,7 +4090,7 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
         b.target.classList.add('h-lat');
         figyelo.unobserve(b.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
+    }, { rootMargin: '300px 0px 300px 0px', threshold: 0.01 });
 
     lista.forEach(function (el) {
       if (!el.classList.contains('h-lat')) figyelo.observe(el);
@@ -3888,7 +4099,7 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
     /* biztonsági háló: ha bármi félrecsúszna, 6 másodperc után minden látszik */
     window.setTimeout(function () {
       lista.forEach(function (el) { el.classList.add('h-lat'); });
-    }, 6000);
+    }, 3000);
   }
 
   function start() {

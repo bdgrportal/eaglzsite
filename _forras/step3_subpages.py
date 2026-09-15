@@ -17,7 +17,7 @@ HEAD = u'''<div class="ehead" id="ehead">
     <div class="mhead-in">
       <a class="elogo" href="index.html" aria-label="EAGLZ Finance">
         <img src="assets/eaglz-lockup-nav.png" alt="EAGLZ">
-        <span>powered by OVB Gentischer Direction</span>
+        <span>powered by OVB - BD Gentischer</span>
       </a>
       <div class="mnav" id="mnav" role="navigation" aria-label="Fő navigáció"></div>
       <a class="mhead-cta" href="index.html#advisors">Időpontot foglalok →</a>
