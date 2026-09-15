@@ -678,49 +678,128 @@ a{ color:var(--menta-t); }
   font-size:.98rem; line-height:1.7;
 }
 
-/* ── 12. TÖRTÉNETEK ─────────────────────────────────────────────────── */
-.tortenetek{ display:grid; gap:1rem; }
-.tort{
-  display:grid; grid-template-columns:104px 1fr; gap:1.4rem; align-items:start;
+/* ── 12. KOLLÉGAI ARCOK ÉS A TÖRTÉNET ABLAK ─────────────────────────
+   A szekcio egy keskeny sav: csak arc, nev, pozicio. A tortenet felugro
+   ablakban nyilik, igy a tartalom megmarad, de nem visz el fel oldalt.
+   ─────────────────────────────────────────────────────────────────── */
+.arcok{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(5,1fr); gap:.85rem;
+}
+@media(max-width:940px){ .arcok{ grid-template-columns:repeat(3,1fr); } }
+
+.arc{
+  display:flex; flex-direction:column; align-items:center; gap:.12rem;
+  width:100%; height:100%; padding:1.15rem .8rem 1.25rem; cursor:pointer;
   background:var(--feher); border:1px solid var(--vonal); border-radius:var(--r-l);
-  padding:1.5rem 1.6rem;
+  font-family:var(--fb); text-align:center; box-shadow:var(--sh-1);
+  transition:border-color .15s, box-shadow .15s, transform .12s;
 }
-.tort img{
-  width:104px; height:104px; border-radius:var(--r-m); object-fit:cover;
-  object-position:center 18%; display:block;
+.arc:hover{ border-color:var(--menta-s); box-shadow:var(--sh-2); transform:translateY(-2px); }
+.arc:hover .arc-nev{ color:var(--menta-t); }
+.arc img{
+  width:82px; height:82px; border-radius:50%; object-fit:cover; object-position:center 16%;
+  margin-bottom:.75rem; border:2px solid rgba(125,200,192,.45); display:block;
 }
-.tort h3{
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem .6rem;
-  font-size:1.08rem; color:var(--navy); margin:0 0 .5rem;
+.arc-nev{
+  font-family:var(--fd); font-size:.95rem; font-weight:700; line-height:1.3;
+  color:var(--navy); transition:color .15s;
 }
-.tort h3 span{
-  font-family:var(--fb); font-size:.84rem; font-weight:600; color:var(--ink-3);
-}
-.tort p{ font-size:.95rem; color:var(--ink-2); line-height:1.7; margin:0; }
-@media(max-width:640px){
-  .tort{ grid-template-columns:1fr; gap:1rem; }
-  .tort img{ width:76px; height:76px; }
+.arc-poz{ font-size:.82rem; line-height:1.4; color:var(--ink-3); }
+
+/* kis kijelzon soros lista: nem marad arva kartya az utolso sorban,
+   es nem kell oldalra huzogatni sem */
+@media(max-width:560px){
+  .arcok{ grid-template-columns:1fr; gap:.55rem; }
+  .arc{
+    display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto;
+    column-gap:.95rem; align-items:center; text-align:left;
+    padding:.85rem 1rem; box-shadow:none;
+  }
+  .arc:hover{ transform:none; }
+  .arc img{ grid-column:1; grid-row:1 / 3; width:56px; height:56px; margin:0; }
+  .arc-nev{ grid-column:2; grid-row:1; align-self:end; }
+  .arc-poz{ grid-column:2; grid-row:2; align-self:start; }
 }
 
-/* ── 13. IRODA ──────────────────────────────────────────────────────── */
-/* Az iroda szekcio egy hasabban all: a hangulatot a ket videoblokk
-   mutatja meg, nem allokep. */
-.iroda-racs{ display:grid; grid-template-columns:1fr; max-width:74ch; margin-bottom:0; }
-.iroda-adat{ margin:0 0 1.2rem; }
-.iroda-adat > div{
-  display:grid; grid-template-columns:150px 1fr; gap:1rem;
-  padding:.6rem 0; border-bottom:1px solid var(--vonal);
+/* a tortenetek szovegtara: csak a felugro ablak forrasa */
+.tort-tar{ display:none !important; }
+
+.tab-doboz{ width:min(560px, calc(100% - 32px)); }
+.tab-fej{
+  display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center;
+  padding-right:2.6rem; margin-bottom:1.3rem;
 }
-.iroda-adat > div:last-child{ border-bottom:0; }
-.iroda-adat dt{ font-size:.88rem; color:var(--ink-3); }
-.iroda-adat dd{ margin:0; font-size:.95rem; color:var(--navy); font-weight:600; }
-@media(max-width:520px){
-  .iroda-adat > div{ grid-template-columns:1fr; gap:.1rem; }
+.tab-kep{
+  display:block; width:76px; height:76px; border-radius:50%;
+  background:var(--torto) center 16%/cover no-repeat;
+  border:2px solid rgba(125,200,192,.5);
 }
-.iroda-szoveg p{ font-size:.96rem; color:var(--ink-2); line-height:1.7; }
-.iroda-kepek{
-  display:grid; grid-template-columns:1fr 1fr; gap:.6rem; align-content:start;
+.tab-nev h2{ font-size:1.25rem; color:var(--navy); margin:0; }
+.tab-nev p{ margin:.15rem 0 0; font-size:.88rem; color:var(--ink-3); }
+.tab-szoveg{ font-size:.96rem; line-height:1.75; color:var(--ink-2); }
+.tab-szoveg p{ margin:0 0 .85rem; }
+.tab-szoveg p:last-child{ margin-bottom:0; }
+.tablak .fablak-jegy{
+  margin-top:1.4rem; padding-top:1.1rem; border-top:1px solid var(--vonal);
 }
+.tab-cta{ margin-top:.8rem; }
+@media(max-width:560px){
+  .tab-kep{ width:62px; height:62px; }
+  .tab-nev h2{ font-size:1.12rem; }
+}
+
+/* ── 13. IRODA, KÖZÖSSÉG, TÉRKÉP ────────────────────────────────────── */
+.ir-racs{
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:2.2rem 3rem; align-items:start; margin-bottom:2rem;
+}
+@media(max-width:900px){ .ir-racs{ grid-template-columns:1fr; gap:1.7rem; } }
+.ir-szoveg .sec-cim{ margin-bottom:.8rem; max-width:none; }
+.ir-hely{
+  font-family:var(--fd); font-size:1rem; font-weight:700; letter-spacing:-.01em;
+  color:var(--navy); margin:0 0 1.1rem;
+}
+.ir-szoveg p{ font-size:1rem; line-height:1.75; color:var(--ink-2); max-width:56ch; }
+.ir-szoveg p b{ color:var(--navy); }
+
+.ir-kartya{
+  background:var(--torto); border:1px solid var(--vonal); border-radius:var(--r-l);
+  padding:var(--pad-k);
+}
+.ir-kartya h3{ font-size:1.08rem; color:var(--navy); margin:0 0 1.15rem; }
+.ir-kartya ul{ list-style:none; margin:0; padding:0; display:grid; gap:.9rem; }
+.ir-kartya li{
+  display:grid; grid-template-columns:auto 1fr; gap:.75rem; align-items:start;
+  font-size:.95rem; line-height:1.6; color:var(--ink-2);
+}
+.ir-kartya .i{ color:var(--menta-t); width:1.15em; height:1.15em; margin-top:.22rem; }
+
+/* a terkep feher alapon all, ezert a szekcio is feher */
+.ir-terkep{
+  display:block; position:relative; overflow:hidden; text-decoration:none;
+  border:1px solid var(--vonal); border-radius:var(--r-l); background:var(--feher);
+  transition:border-color .15s, box-shadow .15s;
+}
+.ir-terkep img{ width:100%; height:auto; display:block; }
+.ir-terkep-sav{
+  position:absolute; left:1.1rem; bottom:1.1rem;
+  display:inline-flex; align-items:center; gap:.5rem; min-height:var(--tap);
+  padding:.55rem 1.15rem; border-radius:100px;
+  background:rgba(255,255,255,.95); border:1px solid var(--vonal-e);
+  box-shadow:var(--sh-2); color:var(--navy);
+  font-size:.92rem; font-weight:700;
+}
+.ir-terkep-sav .i{ color:var(--menta-t); }
+.ir-terkep:hover{ border-color:var(--menta-s); box-shadow:var(--sh-2); }
+.ir-terkep:hover .ir-terkep-sav{ border-color:var(--menta-s); }
+@media(max-width:700px){
+  /* a szeles terkepsav mobilon 160 pixel maganyos csikka zsugorodna, ezert
+     kozelebbrol mutatjuk: a keret magasabb, a kep a gombostu kore vagodik */
+  .ir-terkep img{ aspect-ratio:4 / 3; object-fit:cover; object-position:54% 42%; }
+  .ir-terkep-sav{ left:.7rem; bottom:.7rem; font-size:.85rem; padding:.5rem .9rem; }
+}
+
 .kep-helyorzo{
   display:flex; align-items:center; justify-content:center; text-align:center;
   min-height:160px; padding:1.5rem; margin:0;
@@ -730,21 +809,35 @@ a{ color:var(--menta-t); }
 }
 
 /* ── 14. HÁTTÉR ─────────────────────────────────────────────────────── */
-.hatter-be{ max-width:72ch; font-size:1rem; color:var(--ink-2); line-height:1.75; }
+.hatter-be{
+  max-width:78ch; font-size:1rem; color:var(--ink-2); line-height:1.75;
+  margin-bottom:1.1rem;
+}
+.hatter-be b{ color:var(--navy); font-variant-numeric:tabular-nums; }
+.hatter-gomb{ margin:.6rem 0 0; }
+.hatter-gomb .i{ color:var(--menta-t); }
 .hatter-szamok{ margin:1.8rem 0; }
 .hatter-szamok[data-ellenorizendo]{ margin:0; }
-.hatter-link{ font-size:.95rem; color:var(--ink-3); max-width:70ch; }
-.hatter-link a{ color:var(--menta-t); font-weight:700; }
 
 /* ── 15. GYIK ───────────────────────────────────────────────────────── */
-.gyik-lista{ display:grid; gap:.55rem; max-width:82ch; }
+/* Ket hasabban feleannyi hely, de a sorok fuggetlenek: egy nyitott kartya
+   nem nyujtja meg a mellette allot. */
+.gyik-lista{
+  display:grid; gap:.5rem; max-width:82ch;
+}
+@media(min-width:900px){
+  .gyik-lista{
+    grid-template-columns:1fr 1fr; align-items:start;
+    gap:.5rem .7rem; max-width:none;
+  }
+}
 .gy{
   border:1px solid var(--vonal); border-radius:var(--r-m); background:var(--feher);
 }
 .gy > summary{
-  display:flex; align-items:center; gap:.8rem; min-height:58px;
-  padding:.9rem 1.3rem; cursor:pointer; list-style:none;
-  font-family:var(--fd); font-size:1rem; font-weight:600; color:var(--navy);
+  display:flex; align-items:center; gap:.7rem; min-height:48px;
+  padding:.62rem 1rem; cursor:pointer; list-style:none;
+  font-family:var(--fd); font-size:.95rem; font-weight:600; color:var(--navy);
 }
 .gy > summary::-webkit-details-marker{ display:none; }
 .gy > summary::after{
@@ -756,7 +849,7 @@ a{ color:var(--menta-t); }
 .gy[open] > summary::after{ transform:rotate(225deg) translateY(-3px); }
 .gy > summary:hover{ background:var(--torto); border-radius:var(--r-m); }
 .gy-be{
-  padding:0 1.3rem 1.3rem; font-size:.96rem; color:var(--ink-2); line-height:1.75;
+  padding:0 1rem 1rem; font-size:.92rem; color:var(--ink-2); line-height:1.7;
 }
 .gy-be p{ max-width:72ch; }
 
@@ -1284,19 +1377,6 @@ section[id],[id]{ scroll-margin-top:84px; }
    maganyosan allo kis elem egy sor kozepen.
    ══════════════════════════════════════════════════════════════════════ */
 
-/* munkatarsi kartya: a portre es a nev egy sorban, a szoveg alattuk */
-@media(max-width:640px){
-  .tort{
-    grid-template-columns:68px minmax(0,1fr);
-    gap:.45rem .9rem; align-items:start;
-  }
-  .tort img{ width:68px; height:68px; grid-column:1; grid-row:1; }
-  .tort-be{ display:contents; }
-  .tort-be > h3{ grid-column:2; grid-row:1; margin:0; align-self:center; }
-  .tort-be > p{ grid-column:1 / -1; grid-row:2; margin-top:.35rem; }
-  .tort-be > details{ grid-column:1 / -1; grid-row:3; }
-}
-
 /* juttatas-csipek: mobilon egyetlen zart lista, nem hat maganyos pirula */
 @media(max-width:620px){
   .bv-chipek{
@@ -1325,7 +1405,7 @@ section[id],[id]{ scroll-margin-top:84px; }
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-15-1343">
+<meta name="eaglz-build" content="2026-09-15-2116">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol></svg>
@@ -1867,136 +1947,146 @@ section[id],[id]{ scroll-margin-top:84px; }
 <section class="atvezeto">
   <div class="wrap">
     <p class="at-cim">Eddig stimmel?</p>
-    <p class="at-szoveg">Az első interjú körülbelül 40 perc, és arról szól, hogy kölcsönösen
+    <p class="at-szoveg">Az első interjú körülbelül 30 perc, és arról szól, hogy kölcsönösen
       megnézzük, van-e közös ügyünk.</p>
     <button type="button" class="btn btn-fo" data-book data-ev="cta_kozepso">Lefoglalom az interjú időpontomat</button>
   </div>
 </section>
 
-<!-- ══ 8. AZ EMBEREK ════════════════════════════════════════════════ -->
+<!-- ══ 8. KOLLÉGÁINK SZEMÉLYES TÖRTÉNETEI ══════════════════════════
+     Keskeny sav: csak arcok, nev es pozicio. A tortenet felugro
+     ablakban nyilik, hogy a szekcio ne vigyen el fel oldalt.
+     ═══════════════════════════════════════════════════════════════ -->
 <section class="sec sec-vilagos" id="emberek">
   <div class="wrap">
-    <h2 class="sec-cim">Az emberek, akikkel dolgoznál</h2>
-    <p class="sec-alcim">Mindenki máshonnan érkezett. Röviden, a saját szavaikkal.</p>
+    <h2 class="sec-cim">Kollégáink személyes történetei</h2>
+    <p class="sec-alcim">Kattints valamelyik arcra, és elolvashatod, hogyan került ide.</p>
 
-    <div class="tortenetek">
-
-      <article class="tort">
-        <picture><source srcset="/assets/kar-13.webp" type="image/webp"><img src="/assets/kar-13.jpg" width="300" height="354" loading="lazy" decoding="async"
-             alt="Gentischer Richárd portréja"></picture>
-        <div class="tort-be">
-          <h3>Gentischer Richárd <span>Területi igazgató</span></h3>
-          <p>Tizenkilenc évesen, baráti ajánlásra kezdtem 2015 decemberében. Fél év gyakornoki
-            munka után főállásra váltottam. Az elején az volt a nehéz, hogy vállalkozói fejjel
-            kellett gondolkodnom, miközben még tanultam a szakmát. Öt évig egyéni tanácsadóként
-            dolgoztam, aztán csapatot kezdtem építeni. Egy dolgot biztosan megtanultam: itt nem a
-            tehetség dönt, hanem az, hogy heteken át ugyanúgy csinálod.</p>
-          <details class="nyit nyit-mini">
-            <summary>Elolvasom a teljes történetét</summary>
-            <div class="nyit-be">
-              <p>2015 decemberében találkoztam a pénzügyi szolgáltatói pályával egy baráti
-                ajánláson keresztül. Tizenkilenc évesen az ember nem feltétlenül azon gondolkodik,
-                hogy vállalkozást építsen, ebből a szempontból én kivétel voltam. Fél év gyakornoki
-                munka után főállásra váltottam, és feltettem mindent egy lapra. Öt éven keresztül
-                egyéni tanácsadóként dolgoztam, majd amikor már felkészültnek éreztem magam arra,
-                hogy átadjam a tudásomat, elkezdtem saját csapatokat és irodákat építeni. Ma egy
-                harminc fős csapat élén dolgozom három irodában.</p>
-            </div>
-          </details>
-        </div>
-      </article>
-
-      <article class="tort">
-        <picture><source srcset="/assets/kar-14.webp" type="image/webp"><img src="/assets/kar-14.jpg" width="300" height="449" loading="lazy" decoding="async"
-             alt="Angelcsev Zoé portréja"></picture>
-        <div class="tort-be">
-          <h3>Angelcsev Zoé <span>Fiókvezető</span></h3>
-          <p>Egyetem mellett kerestem munkát, és tudtam, hogy a hagyományos diákmunkánál valamivel
-            többre vágyom. Az elején az volt a nehéz, hogy többet kellett tanulnom és többet
-            dolgoznom, mint a csoporttársaimnak egy műszakos melóban. Az első évben viszont annyit
-            fejlődtem szakmailag, hogy ma már kezdő kollégák mentorálásában is részt tudok venni.
-            Azt tanultam meg, hogy a befektetett idő itt kamatozik, csak nem azonnal.</p>
-          <details class="nyit nyit-mini">
-            <summary>Elolvasom a teljes történetét</summary>
-            <div class="nyit-be">
-              <p>Amikor felvettek az egyetemre, jelentkeztem több helyre is dolgozni, viszont a
-                korábbi tapasztalataimból kiindulva tudtam azt, hogy a hagyományos diákmunkánál
-                valamivel többre vágyom. Számomra motiváló volt, hogy valamivel többet kell tanulni
-                és többet kell dolgozni, de az itt megszerezhető tapasztalat később egy komolyabb
-                karrier megalapozására kiváló lehetőség. Ez már az első évemben bebizonyosodott,
-                hiszen hamar fejlődtem szakmailag, és már a kezdő munkatársak mentorálásában is
-                szerepet tudok vállalni.</p>
-            </div>
-          </details>
-        </div>
-      </article>
-
-      <article class="tort">
-        <picture><source srcset="/assets/kar-15.webp" type="image/webp"><img src="/assets/kar-15.jpg" width="300" height="449" loading="lazy" decoding="async"
-             alt="Steinmetz Edvárd portréja"></picture>
-        <div class="tort-be">
-          <h3>Steinmetz Edvárd <span>Fiókvezető</span></h3>
-          <p>2023-ban, suli mellett kezdtem asszisztensi feladatokkal. Eredetileg honvédelmi
-            pályára készültem, jelentkeztem is a közszolgálati egyetemre. Az első hónapokban a
-            fegyelem volt a nehéz: senki nem szólt rám, ha valamit nem csináltam meg. Aztán
-            annyira megtetszett a közeg, hogy itt maradtam. Ma öt fős csapattal dolgozom a Vác és
-            Budapest közti tengelyen, és a saját időmet én osztom be.</p>
-        </div>
-      </article>
-
-      <article class="tort">
-        <picture><source srcset="/assets/kar-16.webp" type="image/webp"><img src="/assets/kar-16.jpg" width="300" height="451" loading="lazy" decoding="async"
-             alt="Holló Bernadett portréja"></picture>
-        <div class="tort-be">
-          <h3>Holló Bernadett <span>Fiókvezető</span></h3>
-          <p>2022-ben még a gyermekeimmel voltam otthon, és a COVID után kerestem, hol tudnék
-            stabil jövőképpel elhelyezkedni. Egy ismeretlen szám hívott, és onnan indult az egész.
-            A legnehezebb a kezdés ritmusa volt két gyerek mellett: meg kellett tanulnom heti
-            szinten védeni azt a néhány órát. Három év közös munka után ma saját fiókvezetőségem
-            van, és tudom, hogy a rendszeresség többet ér a nagy hajráknál.</p>
-        </div>
-      </article>
-
-      <article class="tort">
-        <picture><source srcset="/assets/kar-17.webp" type="image/webp"><img src="/assets/kar-17.jpg" width="160" height="160" loading="lazy" decoding="async"
-             alt="Hajszter Dalma portréja"></picture>
-        <div class="tort-be">
-          <h3>Hajszter Dalma <span>Tanácsadó</span></h3>
-          <p>2025 júniusában tértem vissza a munkába a gyermekem születése után. Középvezető
-            voltam egy telekommunikációs cégnél, de hamar kiderült, hogy nem ez az én utam, és
-            munka nélkül maradtam. Egy dolgot tudtam biztosan: biztonságra vágyom úgy, hogy a
-            munka ne menjen a család rovására. Egy hétköznapi kárügyintézésből lett ebből
-            munkatársi kapcsolat, és ma a saját tempómban építem az ügyfélkörömet.</p>
-        </div>
-      </article>
-
-    </div>
+    <ul class="arcok">
+      <li><button type="button" class="arc" data-tort="t-gentischer" data-ev="tortenet">
+        <picture><source srcset="/assets/kar-13.webp" type="image/webp"><img src="/assets/kar-13.jpg" width="300" height="354" loading="lazy" decoding="async" alt=""></picture>
+        <span class="arc-nev">Gentischer Richárd</span>
+        <span class="arc-poz">Területi igazgató</span>
+      </button></li>
+      <li><button type="button" class="arc" data-tort="t-angelcsev" data-ev="tortenet">
+        <picture><source srcset="/assets/kar-14.webp" type="image/webp"><img src="/assets/kar-14.jpg" width="300" height="449" loading="lazy" decoding="async" alt=""></picture>
+        <span class="arc-nev">Angelcsev Zoé</span>
+        <span class="arc-poz">Fiókvezető</span>
+      </button></li>
+      <li><button type="button" class="arc" data-tort="t-steinmetz" data-ev="tortenet">
+        <picture><source srcset="/assets/kar-15.webp" type="image/webp"><img src="/assets/kar-15.jpg" width="300" height="449" loading="lazy" decoding="async" alt=""></picture>
+        <span class="arc-nev">Steinmetz Edvárd</span>
+        <span class="arc-poz">Fiókvezető</span>
+      </button></li>
+      <li><button type="button" class="arc" data-tort="t-hollo" data-ev="tortenet">
+        <picture><source srcset="/assets/kar-16.webp" type="image/webp"><img src="/assets/kar-16.jpg" width="300" height="451" loading="lazy" decoding="async" alt=""></picture>
+        <span class="arc-nev">Holló Bernadett</span>
+        <span class="arc-poz">Fiókvezető</span>
+      </button></li>
+      <li><button type="button" class="arc" data-tort="t-hajszter" data-ev="tortenet">
+        <picture><source srcset="/assets/kar-17.webp" type="image/webp"><img src="/assets/kar-17.jpg" width="160" height="160" loading="lazy" decoding="async" alt=""></picture>
+        <span class="arc-nev">Hajszter Dalma</span>
+        <span class="arc-poz">Tanácsadó</span>
+      </button></li>
+    </ul>
   </div>
 </section>
 
-<!-- ══ 9. AZ IRODA ══════════════════════════════════════════════════ -->
+<!-- a tortenetek szovege: a felugro ablak innen veszi at, keresok szamara
+     is olvashato marad, mert a jelolesben van, nem szkriptben -->
+<div class="tort-tar" hidden>
+  <article id="t-gentischer" data-nev="Gentischer Richárd" data-poz="Területi igazgató" data-kep="/assets/kar-13.jpg">
+    <p>Tizenkilenc évesen, baráti ajánlásra kezdtem 2015 decemberében. Fél év gyakornoki munka
+      után főállásra váltottam. Az elején az volt a nehéz, hogy vállalkozói fejjel kellett
+      gondolkodnom, miközben még tanultam a szakmát.</p>
+    <p>Öt éven keresztül egyéni tanácsadóként dolgoztam, majd amikor már felkészültnek éreztem
+      magam arra, hogy átadjam a tudásomat, elkezdtem saját csapatokat és irodákat építeni. Ma egy
+      harminc fős csapat élén dolgozom három irodában.</p>
+    <p>Egy dolgot biztosan megtanultam: itt nem a tehetség dönt, hanem az, hogy heteken át
+      ugyanúgy csinálod.</p>
+  </article>
+
+  <article id="t-angelcsev" data-nev="Angelcsev Zoé" data-poz="Fiókvezető" data-kep="/assets/kar-14.jpg">
+    <p>Amikor felvettek az egyetemre, jelentkeztem több helyre is dolgozni, viszont a korábbi
+      tapasztalataimból tudtam, hogy a hagyományos diákmunkánál valamivel többre vágyom.</p>
+    <p>Az elején az volt a nehéz, hogy többet kellett tanulnom és többet dolgoznom, mint a
+      csoporttársaimnak egy műszakos melóban. Motiváló volt viszont, hogy az itt megszerezhető
+      tapasztalat egy komolyabb karrier megalapozására is kiváló.</p>
+    <p>Ez már az első évemben bebizonyosodott: annyit fejlődtem szakmailag, hogy ma már kezdő
+      kollégák mentorálásában is részt tudok venni. Azt tanultam meg, hogy a befektetett idő itt
+      kamatozik, csak nem azonnal.</p>
+  </article>
+
+  <article id="t-steinmetz" data-nev="Steinmetz Edvárd" data-poz="Fiókvezető" data-kep="/assets/kar-15.jpg">
+    <p>2023-ban, suli mellett kezdtem asszisztensi feladatokkal. Eredetileg honvédelmi pályára
+      készültem, jelentkeztem is a közszolgálati egyetemre.</p>
+    <p>Az első hónapokban a fegyelem volt a nehéz: senki nem szólt rám, ha valamit nem csináltam
+      meg. Aztán annyira megtetszett a közeg, hogy itt maradtam.</p>
+    <p>Ma öt fős csapattal dolgozom a Vác és Budapest közti tengelyen, és a saját időmet én osztom
+      be.</p>
+  </article>
+
+  <article id="t-hollo" data-nev="Holló Bernadett" data-poz="Fiókvezető" data-kep="/assets/kar-16.jpg">
+    <p>2022-ben még a gyermekeimmel voltam otthon, és a COVID után kerestem, hol tudnék stabil
+      jövőképpel elhelyezkedni. Egy ismeretlen szám hívott, és onnan indult az egész.</p>
+    <p>A legnehezebb a kezdés ritmusa volt két gyerek mellett: meg kellett tanulnom heti szinten
+      védeni azt a néhány órát.</p>
+    <p>Három év közös munka után ma saját fiókvezetőségem van, és tudom, hogy a rendszeresség
+      többet ér a nagy hajráknál.</p>
+  </article>
+
+  <article id="t-hajszter" data-nev="Hajszter Dalma" data-poz="Tanácsadó" data-kep="/assets/kar-17.jpg">
+    <p>2025 júniusában tértem vissza a munkába a gyermekem születése után. Középvezető voltam egy
+      telekommunikációs cégnél, de hamar kiderült, hogy nem ez az én utam, és munka nélkül
+      maradtam.</p>
+    <p>Egy dolgot tudtam biztosan: biztonságra vágyom úgy, hogy a munka ne menjen a család
+      rovására.</p>
+    <p>Egy hétköznapi kárügyintézésből lett ebből munkatársi kapcsolat, és ma a saját tempómban
+      építem az ügyfélkörömet.</p>
+  </article>
+</div>
+
+<!-- ══ 9. AZ IRODA, A KÖZÖSSÉG ÉS A JÖVŐKÉP ════════════════════════ -->
 <section class="sec sec-feher" id="iroda">
   <div class="wrap">
-    <h2 class="sec-cim">Az iroda és a közösség</h2>
-    <p class="sec-alcim">Ide jársz be, és itt lesz az interjú is.</p>
-
-    <div class="iroda-racs">
-      <div class="iroda-szoveg">
-        <dl class="iroda-adat">
-          <div><dt>Cím</dt><dd>Budapest XI. kerület, Kelenhegyi út 43.</dd></div>
-          <div><dt>Megközelítés</dt><dd>A Móricz Zsigmond körtértől busszal kb. 10 perc</dd></div>
-          <div><dt>Nyitvatartás</dt><dd>A hét minden napján, hétvégén is</dd></div>
-          <div><dt>Munkavégzés</dt><dd>Irodában és online is, heti néhány óra személyes jelenléttel</dd></div>
-        </dl>
-        <p>Kisállatbarát, emberközpontú közösség. A szakmai igényesség alapelvárás, a hivatalos
-          légkör viszont nem jellemző ránk. Az irodát 2023 februárjában nyitottuk meg négyen,
-          ma huszonöt fölött vagyunk.</p>
-        <a class="btn btn-vonal" data-ev="terkep"
-           href="https://www.google.com/maps/search/?api=1&amp;query=Budapest,+Kelenhegyi+%C3%BAt+43,+1118"
-           target="_blank" rel="noopener">
-          <svg class="i" aria-hidden="true"><use href="#i-map"></use></svg> Megnyitom a térképet</a>
+    <div class="ir-racs">
+      <div class="ir-szoveg">
+        <h2 class="sec-cim">Az iroda, a közösség<br>és a jövőkép.</h2>
+        <p class="ir-hely">Kelenhegyi iroda &middot; Budapest XI. kerület, Kelenhegyi út 43.</p>
+        <p>Irodánk a <b>Móricz Zsigmond körtértől könnyen megközelíthető</b>, busszal legfeljebb
+          10 perc. A hét minden napján nyitva vagyunk, akár hétvégén is be tudsz jönni dolgozni.</p>
+        <p>Kisállatbarát, emberközpontú közösség vagyunk. Korlátlan kávé, tea és víz áll
+          rendelkezésre. A szakmai igényesség alapelvárás, a hivatalos légkör viszont nem
+          jellemző ránk.</p>
       </div>
+
+      <aside class="ir-kartya" aria-labelledby="ir-kartya-cim">
+        <h3 id="ir-kartya-cim">Irodánk röviden</h3>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+            <div>2023 februárjában nyíltunk: négyen kezdtük, ma már 25 fölött dolgozunk együtt</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+            <div>Országosan 110 fölötti területi vezetőségből bekerültünk a TOP 10-be
+            <!-- ELLENŐRIZENDŐ TARTALOM: a TOP 10 helyezes es a 110 folotti vezetoseg szam
+                 osszehasonlito allitas. Forras es vonatkozasi idoszak megadasa ajanlott. -->
+            </div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+            <div>Volt olyan kategória, amelyben 7 hónapon át folyamatosan tartottuk az első helyezést</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+            <div>Negyedéves csapatépítők, rendszeres összejövetelek és közösségi programok</div></li>
+        </ul>
+      </aside>
     </div>
+
+    <a class="ir-terkep" data-ev="terkep" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/search/?api=1&amp;query=Budapest,+Kelenhegyi+%C3%BAt+43,+1118">
+      <picture><source srcset="/assets/kar-terkep.webp" type="image/webp"><img src="/assets/kar-terkep.jpg" width="1600" height="743" loading="lazy" decoding="async"
+           alt="Térkép: az EAGLZ iroda a Gellérthegyen, Budapest XI. kerület, Kelenhegyi út 43., a Móricz Zsigmond körtér közelében."></picture>
+      <span class="ir-terkep-sav">
+        <svg class="i" aria-hidden="true"><use href="#i-map"></use></svg>
+        Megnyitom a Google Térképen
+      </span>
+    </a>
   </div>
 </section>
 
@@ -2016,29 +2106,27 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </section>
 
-<!-- ══ 10. SZAKMAI HÁTTÉR ═══════════════════════════════════════════ -->
+<!-- ══ 10. FRANCHISE PARTNER ══════════════════════════════════════ -->
 <section class="sec sec-vilagos" id="hatter">
   <div class="wrap">
-    <h2 class="sec-cim">Mi áll az iroda mögött?</h2>
-    <p class="sec-alcim">A Kelenhegyi iroda önállóan épít csapatot, de nem egyedül dolgozik.</p>
+    <h2 class="sec-cim">Franchise partnerünk</h2>
 
-    <p class="hatter-be">Az OVB Allfinanz egy 1970-ben, Németországban alapított, a frankfurti
-      tőzsdén jegyzett pénzügyi közvetítő vállalatcsoport. A helyi iroda mögött az ő jogi
-      kerete, szerződött partnerhálózata, elemzőrendszere és képzési rendszere áll.</p>
+    <p class="hatter-be">Nemzetközi háttérrel dolgozunk: csapatunk az OVB Allfinanz partnere.
+      Az 1970-ben alapított, frankfurti tőzsdén jegyzett vállalatcsoport Európa egyik vezető
+      pénzügyi közvetítője. 2025-ben <b>437,2 millió euró</b> közvetítési bevételt ért el, a
+      magyarországi társasága pedig közel <b>52 millió eurót</b>, ami több mint 20 milliárd
+      forint.</p>
 
-    <!-- ELLENŐRIZENDŐ TARTALOM: az alábbi számokhoz hiányzik a hivatalos forrás és a
-         vonatkozási dátum. A brief minden változó számhoz pontos megnevezést, vonatkozási
-         területet, forrást és "frissítve" dátumot ír elő. Amíg ezek nincsenek meg, a számok
-         nem jelennek meg.
-         Tisztázandó: ügyfélszám, országok száma, szerződött pénzintézetek száma,
-         TOP 10 helyezés, oktatási program számai, tőzsdei és árbevételi adatok. -->
-    <div class="hatter-szamok" data-ellenorizendo="ovb-szamok">
-      <p class="kep-helyorzo">Ide kerülnek a forrásolt OVB adatok</p>
-    </div>
+    <p class="hatter-be">Munkatársainkat nemzetközi tapasztalat, stabil jogi és technológiai
+      háttér, szerződött partnerhálózat és folyamatos képzés támogatja.</p>
 
-    <p class="hatter-link">Az ügyfeleknek szóló szolgáltatásról és a csapatról az
-      <a href="/" data-ev="fo_oldal">eaglz.hu</a> oldalon találsz mindent.
-      Ez az oldal a munkáról szól.</p>
+    <p class="hatter-gomb">
+      <a class="btn btn-vonal" data-ev="forras" target="_blank" rel="noopener"
+         href="https://www.nemzeticegtar.hu/ovb-vermogensberatung-kft-e10355547.html">
+        <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        Forrás
+      </a>
+    </p>
   </div>
 </section>
 
@@ -2139,9 +2227,9 @@ section[id],[id]{ scroll-margin-top:84px; }
       <details class="gy" data-ev="gyik">
         <summary>Mi történik az első interjún?</summary>
         <div class="gy-be">
-          <p>Körülbelül 40 perc, kötetlen beszélgetés. Nem kell felkészülnöd és önéletrajzot sem
-            kell hoznod. Átnézzük, hogyan férne bele a munka a heteidbe, te pedig felteszed a
-            kérdéseidet. A második kör a konkrét feltételekről és az indulásról szól.</p>
+          <p>Körülbelül 30 perc, kötetlen beszélgetés. Nem kell rá különösebben felkészülnöd:
+            megnézzük együtt, hol találunk közös nevezőket, te pedig felteszed a kérdéseidet.
+            A második kör a konkrét folyamatokról és az együttműködés kereteiről szól.</p>
         </div>
       </details>
 
@@ -2161,18 +2249,18 @@ section[id],[id]{ scroll-margin-top:84px; }
 <!-- ══ 12. AZ INTERJÚ ÉS A ZÁRÁS ════════════════════════════════════ -->
 <section class="zaras" id="interju">
   <div class="wrap">
-    <h2>Az első interjú<br><em>körülbelül 40 perc.</em></h2>
-    <p class="zaras-lead">Nem kell felkészülnöd, és önéletrajzot sem kell hoznod. Megnézzük
-      együtt, hogyan férne bele a munka a heteidbe, te pedig felteszed azt a néhány kérdést, ami
-      olvasás közben eszedbe jutott.</p>
+    <h2>Az első interjú<br><em>körülbelül 30 perc.</em></h2>
+    <p class="zaras-lead">Nem kell felkészülnöd különösebben, csupán megnézzük együtt, hogy hol
+      találunk közös nevezőket, Te pedig felteszed azt a néhány kérdést, ami olvasás közben akár
+      eszedbe jutott.</p>
 
     <ol class="zaras-lepesek">
-      <li><span class="z-n" aria-hidden="true">1</span><b>Kiválasztod, kivel beszélnél.</b> A gombra kattintva megnyílik a naptár, és kiveszed
-        a neked jó időpontot. Fél perc.</li>
-      <li><span class="z-n" aria-hidden="true">2</span><b>Első kör, körülbelül 40 perc.</b> Az irodában a Kelenhegyi úton, vagy online, ahogy
-        neked jobb. Kötetlen beszélgetés, nem vizsga.</li>
-      <li><span class="z-n" aria-hidden="true">3</span><b>Ha mindkettőnknek jó, jön a második kör.</b> Ott a konkrét feltételeket és a
-        szerződést vesszük végig, és beszélünk az indulás időpontjáról.</li>
+      <li><span class="z-n" aria-hidden="true">1</span><b>Kiválasztod, kivel beszélnél.</b> A gombra kattintva megnyílik a naptár, és
+        kiválasztod a neked jó időpontot. Fél perc.</li>
+      <li><span class="z-n" aria-hidden="true">2</span><b>Első kör, körülbelül 30 perc.</b> Az irodában a Kelenhegyi úton, ajánlott viselet:
+        smart casual, business casual.</li>
+      <li><span class="z-n" aria-hidden="true">3</span><b>Ha mindkettőnknek jó, jön a második kör.</b> Ott a konkrét folyamatokat és az
+        együttműködés kereteit vesszük végig, és beszélünk a hosszú távú együttműködésről.</li>
     </ol>
 
     <button type="button" class="btn btn-fo btn-nagy" data-book data-ev="cta_zaro">Lefoglalom az interjú időpontomat</button>
@@ -2258,6 +2346,33 @@ section[id],[id]{ scroll-margin-top:84px; }
   <button type="button" class="msav-x" id="msavX" aria-label="Elrejtem a foglalási sávot">
     <svg class="i" aria-hidden="true"><use href="#i-x"></use></svg>
   </button>
+</div>
+
+<!-- ══ TÖRTÉNET ABLAK ══════════════════════════════════════════════
+     Ugyanaz a viselkedes, mint a foglalasi ablaknal: fokuszcsapda,
+     Escape, hatterrogzites, visszateres a kiindulo gombra. A tartalmat
+     a .tort-tar blokkbol veszi at. ═══════════════════════════════════ -->
+<div class="fablak tablak" id="tablak" hidden>
+  <div class="fablak-hatter" data-zar></div>
+  <div class="fablak-doboz tab-doboz" role="dialog" aria-modal="true"
+       aria-labelledby="tablak-cim" tabindex="-1">
+    <button type="button" class="fablak-x" data-zar aria-label="Bezárom az ablakot">
+      <svg class="i" aria-hidden="true"><use href="#i-x"></use></svg>
+    </button>
+
+    <div class="tab-fej">
+      <span class="tab-kep" id="tablak-kep" aria-hidden="true"></span>
+      <div class="tab-nev">
+        <h2 id="tablak-cim"></h2>
+        <p id="tablak-poz"></p>
+      </div>
+    </div>
+
+    <div class="tab-szoveg" id="tablak-szoveg"></div>
+
+    <p class="fablak-jegy">Szeretnél te is így kezdeni? Foglalj egy kötetlen első beszélgetést.</p>
+    <button type="button" class="btn btn-fo w100 tab-cta" data-book data-ev="cta_tortenet">Lefoglalom az interjú időpontomat</button>
+  </div>
 </div>
 
 <!-- ══ FOGLALÁSI ABLAK ════════════════════════════════════════════ -->
@@ -2389,74 +2504,117 @@ section[id],[id]{ scroll-margin-top:84px; }
     });
   }
 
-  /* ── 2. foglalási ablak ───────────────────────────────────────────── */
-  var ablak = document.getElementById('fablak');
-  var doboz = ablak ? ablak.querySelector('.fablak-doboz') : null;
-  var honnan = null;
-
+  /* ── 2. felugró ablakok ───────────────────────────────────────────
+     Egy gyar ket ablakhoz: a foglalasihoz es a tortenetekhez. Mindketto
+     ugyanazt kapja: fokuszcsapda, Escape, hatterrogzites, es a fokusz
+     visszater arra a gombra, amelyik megnyitotta. */
   var FOKUSZ = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  var nyitottAblak = null;
 
-  function fokuszolhatok() {
-    return [].slice.call(doboz.querySelectorAll(FOKUSZ)).filter(function (el) {
-      return el.offsetParent !== null || el === doboz;
-    });
-  }
+  function Ablak(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    var doboz = el.querySelector('.fablak-doboz');
+    var honnan = null;
 
-  function ablakNyit(inditotta) {
-    if (!ablak) return;
-    honnan = inditotta || document.activeElement;
-    ablak.hidden = false;
-    test.classList.add('ablak-nyit');
-    test.style.overflow = 'hidden';
-    mer('foglalas_megnyitas');
-    // a fókusz az ablakba kerül, hogy a billentyűzet ne a háttérben maradjon
-    window.requestAnimationFrame(function () {
-      var elsok = fokuszolhatok();
-      (elsok.length ? elsok[0] : doboz).focus({ preventScroll: true });
-    });
-  }
-
-  function ablakZar() {
-    if (!ablak || ablak.hidden) return;
-    ablak.hidden = true;
-    test.classList.remove('ablak-nyit');
-    test.style.overflow = '';
-    if (honnan && typeof honnan.focus === 'function') {
-      try { honnan.focus({ preventScroll: true }); } catch (e) { honnan.focus(); }
+    function fokuszolhatok() {
+      return [].slice.call(doboz.querySelectorAll(FOKUSZ)).filter(function (e) {
+        return e.offsetParent !== null || e === doboz;
+      });
     }
-    honnan = null;
+    return {
+      el: el,
+      doboz: doboz,
+      nyit: function (inditotta) {
+        var orokolt = null;
+        if (nyitottAblak && nyitottAblak !== this) {
+          orokolt = nyitottAblak.inditoja();   // lancolt nyitas: a fokusz az
+          nyitottAblak.zar(true);              // eredeti gombra terjen vissza
+        }
+        honnan = orokolt || inditotta || document.activeElement;
+        el.hidden = false;
+        test.classList.add('ablak-nyit');
+        test.style.overflow = 'hidden';
+        nyitottAblak = this;
+        window.requestAnimationFrame(function () {
+          var lista = fokuszolhatok();
+          (lista.length ? lista[0] : doboz).focus({ preventScroll: true });
+        });
+      },
+      zar: function (lancban) {
+        if (el.hidden) return;
+        el.hidden = true;
+        if (nyitottAblak === this) nyitottAblak = null;
+        if (!lancban) {
+          test.classList.remove('ablak-nyit');
+          test.style.overflow = '';
+          if (honnan && typeof honnan.focus === 'function' && honnan.offsetParent !== null) {
+            try { honnan.focus({ preventScroll: true }); } catch (e) { honnan.focus(); }
+          }
+        }
+        honnan = null;
+      },
+      fokuszolhatok: fokuszolhatok,
+      inditoja: function () { return honnan; }
+    };
+  }
+
+  var foglalas = Ablak('fablak');
+  var tortenet = Ablak('tablak');
+
+  /* a tortenet ablak feltoltese a .tort-tar blokkbol */
+  function tortenetNyit(gomb) {
+    if (!tortenet) return;
+    var forras = document.getElementById(gomb.getAttribute('data-tort'));
+    if (!forras) return;
+    var kep = document.getElementById('tablak-kep');
+    if (kep) kep.style.backgroundImage = 'url("' + forras.getAttribute('data-kep') + '")';
+    document.getElementById('tablak-cim').textContent = forras.getAttribute('data-nev');
+    document.getElementById('tablak-poz').textContent = forras.getAttribute('data-poz');
+    var cel = document.getElementById('tablak-szoveg');
+    cel.innerHTML = '';
+    [].forEach.call(forras.children, function (gy) { cel.appendChild(gy.cloneNode(true)); });
+    tortenet.doboz.scrollTop = 0;
+    tortenet.nyit(gomb);
+    mer('tortenet_megnyitas', { kollega: forras.getAttribute('data-nev') });
   }
 
   document.addEventListener('click', function (e) {
-    var ind = e.target.closest ? e.target.closest('[data-book]') : null;
-    if (ind) { e.preventDefault(); ablakNyit(ind); return; }
-    if (ablak && !ablak.hidden && e.target.closest && e.target.closest('[data-zar]')) {
-      e.preventDefault(); ablakZar();
+    if (!e.target.closest) return;
+    var t = e.target.closest('[data-tort]');
+    if (t) { e.preventDefault(); tortenetNyit(t); return; }
+    var b = e.target.closest('[data-book]');
+    if (b && foglalas) {
+      e.preventDefault();
+      foglalas.nyit(b);
+      mer('foglalas_megnyitas');
+      return;
     }
+    var z = e.target.closest('[data-zar]');
+    if (z && nyitottAblak && nyitottAblak.el.contains(z)) { e.preventDefault(); nyitottAblak.zar(); }
   });
 
   document.addEventListener('keydown', function (e) {
-    if (!ablak || ablak.hidden) {
+    if (!nyitottAblak) {
       if (e.key === 'Escape' && menu && !menu.hidden) menuAllit(false);
       return;
     }
-    if (e.key === 'Escape') { e.preventDefault(); ablakZar(); return; }
+    if (e.key === 'Escape') { e.preventDefault(); nyitottAblak.zar(); return; }
     if (e.key !== 'Tab') return;
-    // fókuszcsapda: a tabulátor ne hagyja el az ablakot
-    var lista = fokuszolhatok();
+    var lista = nyitottAblak.fokuszolhatok();
     if (!lista.length) return;
     var elso = lista[0], utolso = lista[lista.length - 1];
-    if (e.shiftKey && (document.activeElement === elso || document.activeElement === doboz)) {
+    if (e.shiftKey && (document.activeElement === elso || document.activeElement === nyitottAblak.doboz)) {
       e.preventDefault(); utolso.focus();
     } else if (!e.shiftKey && document.activeElement === utolso) {
       e.preventDefault(); elso.focus();
     }
   });
 
-  /* a naptár új lapon nyílik: az ablakot becsukjuk, hogy visszatérve tiszta legyen */
-  if (ablak) {
-    ablak.addEventListener('click', function (e) {
-      if (e.target.closest('a[href^="http"]')) { window.setTimeout(ablakZar, 120); }
+  /* a naptar uj lapon nyilik: az ablakot becsukjuk, hogy visszaterve tiszta legyen */
+  if (foglalas) {
+    foglalas.el.addEventListener('click', function (e) {
+      if (e.target.closest('a[href^="http"]')) { window.setTimeout(function () { foglalas.zar(); }, 120); }
     });
   }
 
@@ -2519,15 +2677,6 @@ section[id],[id]{ scroll-margin-top:84px; }
   }
 
   document.querySelectorAll('.vkart[data-video]').forEach(videoBe);
-
-  /* ── 6. munkatársi történetek: mobilon egyszerre egy nyitva ──────── */
-  var tortNyitok = document.querySelectorAll('.tort details.nyit-mini');
-  tortNyitok.forEach(function (d) {
-    d.addEventListener('toggle', function () {
-      if (!d.open || window.innerWidth > 860) return;
-      tortNyitok.forEach(function (m) { if (m !== d) m.open = false; });
-    });
-  });
 
   /* ── 3. mobil alsó sáv ────────────────────────────────────────────── */
   var sav = document.getElementById('msav');
