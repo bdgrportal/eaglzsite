@@ -473,46 +473,189 @@ a{ color:var(--menta-t); }
   margin-top:1.6rem; font-size:.97rem; color:var(--ink-3); max-width:70ch;
 }
 
-/* ── 10. BEVÉTEL ────────────────────────────────────────────────────── */
+/* ── 10. BEVÉTEL ────────────────────────────────────────────────────
+   Sotet szekcio, ezert minden szoveg vilagos alapon merve teljesiti a
+   WCAG AA-t. A szamok mentazoldek, a magyarazat halvanyabb feher: a
+   sorrend igy is olvashato marad, de a szam nem kiabal.
+   ─────────────────────────────────────────────────────────────────── */
 .bev-mechanizmus{
   display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2rem;
 }
 @media(max-width:860px){ .bev-mechanizmus{ grid-template-columns:1fr; } }
 .bev-lep{
   background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.13);
-  border-radius:var(--r-m); padding:1.3rem 1.4rem 1.4rem;
+  border-radius:var(--r-m);
 }
 .bev-lep h3{ font-size:1.02rem; color:#fff; margin:0 0 .5rem; }
-.bev-lep p{ font-size:.93rem; color:rgba(255,255,255,.76); line-height:1.65; margin:0; }
+.bev-lep p{ font-size:.93rem; color:rgba(255,255,255,.78); line-height:1.65; margin:0; }
 
-.bev-savok-cim{
-  font-family:var(--fd); font-size:.8rem; font-weight:700; letter-spacing:.09em;
-  text-transform:uppercase; color:rgba(255,255,255,.6); margin:0 0 .8rem;
+/* atlathatosagi keret */
+.bv-jegyzet{
+  display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:start;
+  background:rgba(125,200,192,.09); border:1px solid rgba(125,200,192,.28);
+  border-left:3px solid var(--menta);
+  border-radius:0 var(--r-m) var(--r-m) 0; padding:1.25rem 1.4rem;
+  margin-bottom:2.6rem;
 }
-.bev-racs{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-bottom:1.6rem; }
-@media(max-width:860px){ .bev-racs{ grid-template-columns:1fr; } }
-.bev-kartya{
-  background:rgba(255,255,255,.04); border:1px dashed rgba(255,255,255,.28);
-  border-radius:var(--r-m); padding:1.2rem 1.3rem;
+.bv-jegyzet .i{ color:var(--menta); width:1.3em; height:1.3em; margin-top:.15rem; }
+.bv-jegyzet p{ font-size:.95rem; line-height:1.7; color:rgba(255,255,255,.82); }
+.bv-jegyzet p + p{ margin-top:.7rem; margin-bottom:0; }
+
+.bv-cim{
+  font-size:clamp(1.15rem,2.2vw,1.42rem); font-weight:700; color:#fff;
+  margin:0 0 .9rem;
 }
-.bev-lab{
-  display:block; font-size:.82rem; color:rgba(255,255,255,.62);
-  text-transform:uppercase; letter-spacing:.06em; font-weight:700; margin-bottom:.35rem;
+.bv-be{
+  max-width:84ch; font-size:1rem; line-height:1.72;
+  color:rgba(255,255,255,.82); margin:0 0 1.5rem;
 }
-.bev-ert{
-  display:block; font-family:var(--fd); font-size:1.3rem; font-weight:700;
-  color:var(--menta); margin-bottom:.5rem;
+
+/* bevételi sávok */
+.bv-racs{
+  list-style:none; margin:0 0 1.4rem; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; align-items:stretch;
 }
-.bev-kartya p{ font-size:.86rem; color:rgba(255,255,255,.66); line-height:1.6; margin:0; }
-.bev-nincs{
-  max-width:74ch; font-size:1rem; color:rgba(255,255,255,.86); line-height:1.7;
-  margin-bottom:1.3rem;
+@media(max-width:860px){ .bv-racs{ grid-template-columns:1fr; } }
+.bv-kartya{
+  display:flex; flex-direction:column; height:100%;
+  background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-l); padding:var(--pad-k);
 }
+.bv-kartya.bv-elso{
+  background:rgba(125,200,192,.10); border-color:rgba(125,200,192,.42);
+}
+.bv-lab{
+  display:block; font-size:.78rem; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:rgba(255,255,255,.62); margin-bottom:.55rem;
+}
+.bv-ert{
+  display:block; font-family:var(--fd); font-weight:700; line-height:1.1;
+  font-size:clamp(1.55rem,3vw,2.05rem); color:var(--menta);
+  font-variant-numeric:tabular-nums; margin-bottom:.7rem;
+}
+.bv-ert em{
+  font-style:normal; font-size:.62em; font-weight:600; color:rgba(255,255,255,.86);
+}
+.bv-kartya p{
+  font-size:.92rem; line-height:1.65; color:rgba(255,255,255,.76); margin:0;
+}
+
+/* juttatás-csipek */
+.bv-chipek{
+  list-style:none; margin:0 0 1.5rem; padding:0;
+  display:flex; flex-wrap:wrap; gap:.5rem;
+}
+.bv-chipek li{
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding:.42rem .95rem; border-radius:100px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.17);
+  font-size:.84rem; color:rgba(255,255,255,.84);
+}
+.bv-chipek li::before{
+  content:''; width:6px; height:6px; border-radius:50%; flex:0 0 auto;
+  background:var(--menta);
+}
+
+/* két hosszú távú irány */
+.bv-perspektiva{
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.8rem;
+  align-items:stretch;
+}
+@media(max-width:860px){ .bv-perspektiva{ grid-template-columns:1fr; } }
+.bv-p{
+  display:flex; flex-direction:column; height:100%;
+  background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-l); padding:var(--pad-k);
+}
+.bv-p h4{
+  font-family:var(--fd); font-size:1.08rem; font-weight:700; letter-spacing:-.02em;
+  color:#fff; margin:0 0 .5rem;
+}
+.bv-p p{ font-size:.93rem; line-height:1.68; color:rgba(255,255,255,.78); margin:0 0 1.2rem; }
+.bv-ert-alul{
+  margin:auto 0 0; padding-top:1rem; border-top:1px solid rgba(255,255,255,.14);
+  font-size:clamp(1.4rem,2.6vw,1.8rem);
+}
+
+/* diákoknak szóló összehasonlítás */
+.bv-diak{ max-width:none; margin-top:.4rem; }
+.bv-tabla-keret{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:1.6rem; }
+.bv-tabla{
+  width:100%; min-width:560px; border-collapse:collapse; text-align:left;
+  font-size:.92rem; line-height:1.6;
+}
+.bv-tabla thead th{
+  padding:.55rem .9rem; font-family:var(--fd); font-size:.78rem; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,.66);
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.bv-tabla thead th:last-child{ color:var(--menta); }
+.bv-tabla tbody th{
+  width:18%; padding:.9rem .9rem; vertical-align:top; font-weight:700;
+  font-family:var(--fd); font-size:.86rem; letter-spacing:.03em;
+  color:#fff; border-bottom:1px solid rgba(255,255,255,.10);
+}
+.bv-tabla td{
+  padding:.9rem .9rem; vertical-align:top; color:rgba(255,255,255,.74);
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.bv-tabla td:last-child{
+  background:rgba(125,200,192,.08); color:rgba(255,255,255,.88);
+}
+.bv-tabla tbody tr:last-child th,.bv-tabla tbody tr:last-child td{ border-bottom:0; }
+
+/* Mobilon a tablazat kartyakra bomlik, igy nem kell oldalra huzogatni.
+   A cellak megkapjak a sajat oszlopfeliratukat, tehat az osszehasonlitas
+   egy hasabban is ertheto marad. */
+@media(max-width:700px){
+  .bv-tabla-keret{ overflow-x:visible; }
+  .bv-tabla{ min-width:0; display:block; }
+  .bv-tabla thead{ display:none; }
+  .bv-tabla tbody,.bv-tabla tr{ display:block; }
+  .bv-tabla tr{
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--r-m); padding:1.05rem 1.15rem; margin-bottom:.7rem;
+  }
+  .bv-tabla tbody th{
+    display:block; width:auto; padding:0 0 .55rem; border:0;
+    font-size:.95rem; letter-spacing:-.01em;
+  }
+  .bv-tabla td{ display:block; padding:0; border:0; background:none; }
+  .bv-tabla td::before{
+    content:attr(data-fej); display:block; margin-bottom:.1rem;
+    font-family:var(--fd); font-size:.72rem; font-weight:700; letter-spacing:.07em;
+    text-transform:uppercase; color:rgba(255,255,255,.58);
+  }
+  .bv-tabla td:last-child{
+    margin-top:.7rem; padding-top:.7rem; border-top:1px solid rgba(255,255,255,.14);
+    color:rgba(255,255,255,.88);
+  }
+  .bv-tabla td:last-child::before{ color:var(--menta); }
+}
+
+.bv-alcim{
+  font-family:var(--fd); font-size:.82rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:rgba(255,255,255,.66); margin:0 0 .9rem;
+}
+.bv-infok{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:.7rem;
+}
+@media(max-width:700px){ .bv-infok{ grid-template-columns:1fr; } }
+.bv-infok li{
+  display:grid; grid-template-columns:auto 1fr; gap:.8rem; align-items:start;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-m); padding:1rem 1.15rem;
+  font-size:.9rem; line-height:1.62; color:rgba(255,255,255,.76);
+}
+.bv-infok .i{ color:var(--menta); width:1.3em; height:1.3em; margin-top:.15rem; }
+.bv-infok b{ display:block; color:#fff; margin-bottom:.1rem; }
+
 .jogi-jegy{
-  max-width:78ch; font-size:.86rem; line-height:1.65; color:var(--ink-3);
-  margin-bottom:1.6rem;
+  max-width:none; font-size:.86rem; line-height:1.7; color:var(--ink-3);
+  margin-bottom:2.4rem;
 }
-.sec-kozep .jogi-jegy{ color:rgba(255,255,255,.58); }
+.sec-kozep .jogi-jegy{ color:rgba(255,255,255,.62); }
 
 /* ── 11. ÁTVEZETŐ ───────────────────────────────────────────────────── */
 .atvezeto{
@@ -1126,10 +1269,10 @@ section[id],[id]{ scroll-margin-top:84px; }
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-15-1021">
+<meta name="eaglz-build" content="2026-09-15-1100">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol></svg>
 
 <a class="skip" href="#fo">Ugrás a tartalomhoz</a>
 
@@ -1465,11 +1608,15 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </section>
 
-<!-- ══ 6. BEVÉTEL ÉS SZERZŐDÉS ══════════════════════════════════════ -->
+<!-- ══ 6. BEVÉTEL ÉS SZERZŐDÉS ══════════════════════════════════════
+     Sorrend: elobb a mechanizmus, utana az atlathatosagi keret, csak
+     ezutan a szamok. Igy a latogato erti, mit jelentenek a savok, es
+     nem egy kiragadott osszeget lat. ═══════════════════════════════ -->
 <section class="sec sec-kozep" id="bevetel">
   <div class="wrap">
-    <h2 class="sec-cim">A bevétel és a szerződés</h2>
-    <p class="sec-alcim">Ez a leggyakoribb kérdés, ezért előbb a mechanizmust mutatjuk meg.</p>
+    <h2 class="sec-cim">Hogyan és mennyit keresel?</h2>
+    <p class="sec-alcim">Teljesítményarányos fizetést alkalmazunk, más néven sikerdíjat. Előbb a
+      mechanizmust mutatjuk meg, utána a konkrét sávokat.</p>
 
     <div class="bev-mechanizmus">
       <div class="bev-lep">
@@ -1494,64 +1641,134 @@ section[id],[id]{ scroll-margin-top:84px; }
       </div>
     </div>
 
-    <!-- ══ ELLENŐRIZENDŐ TARTALOM ══════════════════════════════════════
-         A konkrét összegek addig nem jelennek meg, amíg a tulajdonos nem
-         tisztázza az alábbiakat. A megjelenítéshez: a <div data-ellenorizendo>
-         attribútumot kell eltávolítani, vagy a kar2.css-ben a rejtő szabályt.
-
-         1. A "200 000 Ft fix" pontos jogcíme (munkabér, ösztöndíj, előleg,
-            egyszeri juttatás?), bruttó vagy nettó, kifizetés időpontja,
-            kapcsolódik-e hozzá teljesítési követelmény.
-         2. Hogyan fér össze a "fix első hónap" és a "nincs garantált bér".
-         3. A havi sávok bevételt, jutalékot vagy tényleges jövedelmet jelentenek-e.
-         4. Milyen időszak és hány munkatárs adatai alapján készültek.
-         5. A megbízási szerződés pontos típusa és a munkatársat terhelő költségek.
-         ═══════════════════════════════════════════════════════════════ -->
-    <div class="bev-savok" data-ellenorizendo="bevetel-osszegek">
-      <p class="bev-savok-cim">Tájékoztató bevételi sávok</p>
-      <div class="bev-racs">
-        <div class="bev-kartya">
-          <span class="bev-lab">Első hónap</span>
-          <span class="bev-ert">ELLENŐRIZENDŐ</span>
-          <p>A betanulási időszak juttatásának jogcíme és feltételei tisztázásra várnak.</p>
-        </div>
-        <div class="bev-kartya">
-          <span class="bev-lab">Diák vagy másodállás, első év</span>
-          <span class="bev-ert">ELLENŐRIZENDŐ</span>
-          <p>A sáv alapjául szolgáló időszak és mintanagyság megadása szükséges.</p>
-        </div>
-        <div class="bev-kartya">
-          <span class="bev-lab">Diák vagy másodállás, második évtől</span>
-          <span class="bev-ert">ELLENŐRIZENDŐ</span>
-          <p>A sáv alapjául szolgáló időszak és mintanagyság megadása szükséges.</p>
-        </div>
+    <!-- atlathatosagi keret: ez mondja ki, hogy miert savok szerepelnek -->
+    <div class="bv-jegyzet">
+      <svg class="i" aria-hidden="true"><use href="#i-info"></use></svg>
+      <div>
+        <p>Az alábbiakban átlagokkal és tól-ig sávokkal fogsz találkozni, mert a kollégáink
+          bevétele a nálunk eltöltött idővel és a tapasztalattal változik. Diák és másodállású
+          kollégáink esetén különösen nagy eltérés alakulhat ki egy laza és egy feszes órarend
+          között.</p>
+        <p>Ezért a felvételi folyamat során mindenkivel egyeztetünk egy személyes menetrendről,
+          amellyel az a bevételi szint is elérhető, ami számodra komfortos.</p>
       </div>
     </div>
 
-    <p class="bev-nincs">
-      A konkrét számokat, a szerződés típusát és a betanulási időszak feltételeit az interjún
-      vesszük végig, a te órarendedre vetítve. Így nem egy általános sávot kapsz, hanem azt,
-      ami a te heti időddel reális.
-    </p>
+    <h3 class="bv-cim">Mire számíthatsz az első két évben</h3>
 
-    <p class="jogi-jegy">
-      A bemutatott összegek nem garantáltak. Az eredmény függ a ráfordított időtől, a megszerzett
-      tudástól, az ügyfélfolyamatok számától és az egyéni teljesítménytől.
-    </p>
-
-    <details class="nyit nyit-sotet">
-      <summary>Hosszú távú perspektíva</summary>
-      <div class="nyit-be">
-        <p>Néhány év tapasztalat után két irány szokott kialakulni. Az egyik a szakmai
-          specializáció: kiválasztasz egy területet, például a lakásfinanszírozást vagy a céges
-          termékeket, és abban mélyülsz el. A másik a csapatépítés: néhány fős csoport
-          vezetése, ahol már mások fejlődéséért is felelsz.</p>
-        <p>Mindkét irányhoz évek munkája vezet. Ahogy egy ügyvéd vagy egy vállalkozó sem keres
-          többet az első hónapban, úgy itt sem a kezdés szintje a mérce.
-          <!-- ELLENŐRIZENDŐ TARTALOM: a korábbi oldalon szerepelt havi 1-2,5 M Ft és
-               1,5-3 M Ft sáv. Ezek forrása, időszaka és mintanagysága nincs dokumentálva,
-               ezért nem jelennek meg. -->
+    <ul class="bv-racs">
+      <li class="bv-kartya bv-elso">
+        <span class="bv-lab">1. hónap, mindenkinek</span>
+        <span class="bv-ert">200 000 Ft <em>fix</em></span>
+        <p>Egységesen ez jár a betanulási időszak alatt, miközben a mentoroddal már éles
+          helyzetekben dolgoztok. Ezzel párhuzamosan a teljesítményarányos formából is
+          részesülsz.
+          <!-- ELLENŐRIZENDŐ TARTALOM: a 200 000 Ft jogcime (betanulasi juttatas, osztondij,
+               eloleg?), brutto vagy netto, es a kifizetes idopontja megadasra var. -->
         </p>
+      </li>
+      <li class="bv-kartya">
+        <span class="bv-lab">Diák vagy másodállás, első év</span>
+        <span class="bv-ert">150-600 <em>e Ft/hó</em></span>
+        <p>Havi 8-12 ügyfélfolyamat mellett reális. Ha 25 év alatt vagy, SZJA-mentesség is jár.
+          A sáv attól függ, mennyi időt töltesz a munkával.</p>
+      </li>
+      <li class="bv-kartya">
+        <span class="bv-lab">Diák vagy másodállás, második évtől</span>
+        <span class="bv-ert">400-800 <em>e Ft/hó</em></span>
+        <p>Akinek már rutinja van és konzisztensen dolgozik. Van, aki a vizsgaidőszakban lazább
+          hónapot tart, és van, aki akkor is ráerősít.</p>
+      </li>
+    </ul>
+
+    <ul class="bv-chipek" aria-label="Amit a bevétel mellé kapsz">
+      <li>200 000 Ft fix az első hónapban</li>
+      <li>SZJA-mentesség 25 éves korig</li>
+      <li>Negyedéves bónuszok</li>
+      <li>Apple eszköztámogatás</li>
+      <li>Ösztöndíjas MNB-képzés (60 000 Ft)</li>
+      <li>Megbízási szerződés</li>
+    </ul>
+
+    <p class="jogi-jegy">A bemutatott összegek tájékoztató jellegűek és nem garantáltak. Az
+      eredmény függ a ráfordított időtől, a megszerzett tudástól, az ügyfélfolyamatok számától és
+      az egyéni teljesítménytől. A konkrét feltételeket és a szerződés típusát az interjún vesszük
+      végig, írásban is.</p>
+
+    <h3 class="bv-cim">Két irány hosszú távon</h3>
+    <p class="bv-be">A diák és másodállású évek nálunk nem csak ugródeszka, hanem egy tudatosan
+      felépített karrierpálya első lépései. A cél az, hogy a tehetséges, elkötelezett kollégáknak
+      kiszámítható, hosszú távú perspektívát adjunk.</p>
+
+    <div class="bv-perspektiva">
+      <article class="bv-p">
+        <span class="bv-lab">2-4 év</span>
+        <h4>Profi egyéni tanácsadó, specialista</h4>
+        <p>Kiválasztasz egy szakterületet, amiben profi leszel, legyen az a lakásfinanszírozás
+          vagy a céges termékek menedzselése.</p>
+        <span class="bv-ert bv-ert-alul">1-2,5 <em>M Ft/hó</em></span>
+      </article>
+      <article class="bv-p">
+        <span class="bv-lab">2-4 év</span>
+        <h4>3-8 fős csoportvezető</h4>
+        <p>Komolyabb felelősség, de skálázható bevétel: ahány kolléga, annyi megoldandó probléma
+          és élethelyzet. Ha menedzserként folytatnád, hazai és nemzetközi programjainkon
+          keresztül a legjobbaktól tanulhatsz.</p>
+        <span class="bv-ert bv-ert-alul">1,5-3 <em>M Ft/hó</em></span>
+      </article>
+    </div>
+
+    <details class="nyit nyit-sotet bv-diak" data-ev="diak_nyitas">
+      <summary>Diák vagyok: miben más ez, mint egy klasszikus diákmunka?</summary>
+      <div class="nyit-be">
+        <div class="bv-tabla-keret">
+          <table class="bv-tabla">
+            <caption class="vh">Klasszikus diákmunka és a nálunk végzett munka összehasonlítása</caption>
+            <thead>
+              <tr><td></td><th scope="col">Klasszikus diákmunka</th><th scope="col">Nálunk</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Kereset</th>
+                <td data-fej="Klasszikus diákmunka">Kb. 2 000-2 500 Ft/óra, fix összeg</td>
+                <td data-fej="Nálunk">150-600 000 Ft/hó teljesítmény alapon: nem az óra, hanem az eredmény számít</td>
+              </tr>
+              <tr>
+                <th scope="row">Készségek</th>
+                <td data-fej="Klasszikus diákmunka">Többnyire rutinfeladatok: kiszolgálás, bevételezés, raktár, műszakok</td>
+                <td data-fej="Nálunk">Valós szakmai tapasztalat: tárgyalástechnika, ügyfélkezelés, pénzügyi elemzés,
+                  önéletrajzba kerülő kompetenciák</td>
+              </tr>
+              <tr>
+                <th scope="row">Beosztás</th>
+                <td data-fej="Klasszikus diákmunka">Fix műszak, leadott beosztás szerint, a vizsgaidőszak sem kivétel</td>
+                <td data-fej="Nálunk">Saját időgazdálkodás: vizsgaidőszakban lazíthatsz, utána ráerősíthetsz</td>
+              </tr>
+              <tr>
+                <th scope="row">Hosszú táv</th>
+                <td data-fej="Klasszikus diákmunka">Alap referencia és pénz, diploma után rendszerint vége</td>
+                <td data-fej="Nálunk">Kiépített kapcsolatrendszer, skálázható vezetői program, és a főállású opció
+                  a diploma után is megmarad</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="bv-alcim">Praktikus infók diákoknak</h4>
+        <ul class="bv-infok">
+          <li><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg>
+            <div><b>Rugalmas munkaidő</b>
+            Heti 15-20 óra a saját idősávodban, a vizsgaidőszak sem probléma.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-pin"></use></svg>
+            <div><b>Helyszín</b>
+            XI. kerület, Gellérthegy. Közel a BME, az ELTE, a Corvinus, a PPKE, a MATE és a KRE.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-sunrise"></use></svg>
+            <div><b>Nulláról indítunk</b>
+            Nem előírás a szakmai tapasztalat, a felkészítést tőlünk kapod meg.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-certificate"></use></svg>
+            <div><b>Két finanszírozott képesítés</b>
+            A betanulás végén kapod meg, piacképes, önéletrajzba kerülő bizonyítványok.</div></li>
+        </ul>
       </div>
     </details>
   </div>
@@ -1818,12 +2035,12 @@ section[id],[id]{ scroll-margin-top:84px; }
       <details class="gy" data-ev="gyik">
         <summary>Mit jelent a betanulási időszak juttatása?</summary>
         <div class="gy-be">
-          <p>A betanulási időszakra van egy külön juttatás.
-            <!-- ELLENŐRIZENDŐ TARTALOM: a korábbi oldalon "200 000 Ft fix" szerepelt.
-                 Tisztázandó: jogcím, bruttó vagy nettó, kifizetés időpontja, teljesítési
-                 feltétel, és hogyan fér össze a "nincs garantált bér" állítással. -->
-            Az összegét, a jogcímét és a feltételeit az interjún mondjuk el pontosan, mert ez
-            szerződéses kérdés, és nem szeretnénk félreérthető számot kitenni az oldalra.</p>
+          <p>Az első hónapban egységesen <b>200 000 Ft</b> jár mindenkinek, miközben a
+            mentoroddal már éles ügyfélhelyzetekben dolgoztok. Ez a betanulási időszakhoz
+            kötődik, és nem azonos a teljesítményarányos bevétellel: a kettő egymás mellett fut.
+            <!-- ELLENŐRIZENDŐ TARTALOM: a 200 000 Ft pontos jogcime, brutto vagy netto volta
+                 es a kifizetes idopontja megadasra var. -->
+            A pontos jogcímet és a kifizetés menetét az interjún, írásban is átadjuk.</p>
         </div>
       </details>
 
@@ -1862,12 +2079,12 @@ section[id],[id]{ scroll-margin-top:84px; }
         <div class="gy-be">
           <p>A pénzügyi közvetítői tevékenységhez jogszabályban előírt hatósági képzés és
             sikeres vizsga szükséges. A felkészülés online zajlik.
-            <!-- ELLENŐRIZENDŐ TARTALOM: a korábbi oldal azt állította, hogy a képzés 4 napos,
-                 40 000 Ft, ehhez 60 000 Ft ösztöndíj jár, és hogy "bármely alapszakos diploma"
-                 mentesít alóla. A mentesség feltételeit és a díjakat hiteles MNB-forrással kell
-                 igazolni, mert a diploma szerinti automatikus mentesség nem általános szabály. -->
-            A képzés pontos időtartamát, díját, a hozzá adott támogatást és az esetleges
-            mentességi feltételeket az interjún, hivatalos tájékoztatóval együtt adjuk át.</p>
+            A képzéshez <b>60 000 Ft ösztöndíjat</b> adunk.
+            <!-- ELLENŐRIZENDŐ TARTALOM: a kepzes idotartama, dija es az esetleges mentessegi
+                 feltetelek hiteles MNB-forrast igenyelnek, mert a diploma szerinti automatikus
+                 mentesseg nem altalanos szabaly. -->
+            A képzés pontos időtartamát, díját és az esetleges mentességi feltételeket az
+            interjún, hivatalos tájékoztatóval együtt adjuk át.</p>
         </div>
       </details>
 
