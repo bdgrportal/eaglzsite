@@ -3288,8 +3288,197 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   .section:has(.qz) .sec-head{ margin-bottom:1.9rem !important; }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   25. EGYSÉGES SZÉLESSÉGEK  ·  két mérték, több nincs
+   ----------------------------------------------------------------------
+   Eddig tizenkét különböző szélesség futott egymás mellett (700, 780,
+   820, 840, 860, 880, 900, 959, 1007, 1040, 1160), ezért tűnt úgy, hogy
+   a dobozok véletlenszerű méretűek. Mostantól kettő van:
+
+     TELJES  – minden szerkezeti elem: rács, táblázat, kalkulátor,
+               kártyasor, lezáró blokk, jogi kisbetűs sor
+     SZÖVEG  – minden folyó szöveg és szövegdoboz: egyetlen olvasási hossz
+
+   Mindkettő ugyanarról a bal élről indul, ezért a szem egy vonalat lát.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── 25.0 tágasabb tartalomoszlop nagy kijelzőn ─────────────────────────
+   13 colos gépen 1216 px a helyes oszlop. 1520 px felett viszont a
+   tartalom beszorult a képernyő közepére, ezért ott tágabb a sáv. */
+@media(min-width:1520px){ :root{ --maxw:1320px; } }
+@media(min-width:1800px){ :root{ --maxw:1400px; } }
+
+:root{ --h-mertek:46rem; }
+
+@media(min-width:861px){
+
+  /* ── 25.1 TELJES szélesség: minden szerkezeti elem ─────────────────── */
+  .art,.art.wide,.toc,.sec-head,.head-center,.faq-list,.faq-wrap,
+  .tbl-wrap,.tbl,.tiles,.kpis,.nsteps,.chart-box,.tipbox,.compare,.compare-wrap,
+  .calc,.calcbox,.calctiles,.calc-grid,.ctab,.ttable,.steps9,.klist,.qz,
+  .docbox,.progbox,.warnbox,.rz-list,.sc,.hw,.bignum,
+  .midcta-box,.cta-box,.bk-yn,.bk-split,.bk-offers,.bk-steps,.ltp-prov,
+  .ltp-facts,.ltp-use,.src-grid,.sav-grid,.hub,.rel,.gd-grid,.adv-grid,
+  /* jogi kisbetűs sorok: ezek is a teljes sávot használják */
+  .sub-note,.bk-faq-note,.calc-foot,.hub-fine,.legal-note,.foot-legal,
+  .footer-fine,.footer-inner,.res-note,.sav-note{
+    max-width:none !important; width:100% !important;
+    margin-left:0 !important; margin-right:0 !important;
+  }
+
+  /* A kiemelt dobozok panelek, nem folyó szöveg: ezek is a teljes sávot
+     kapják, hogy ne tűnjenek apró, véletlen méretű foltoknak. */
+  .art .box,.art .tipbox,.art .warnbox,.art .info,.art .warn,
+  .art .good,.art .progbox,.art .docbox,.art .st,.art .ki{
+    max-width:none !important; width:100% !important;
+  }
+
+  /* ── 25.2 SZÖVEG mérték: egyetlen olvasási hossz ───────────────────── */
+  .art > p,.art > ul,.art > ol,.art > blockquote,.art > .lead,
+  .section-sub,.sub-lead,.cta-sub,.lead-sub,.midcta-s,.hub-g-s,
+  .faq-a p,.sub-upd,.scf-note,.tbl-note,.adv-help-s{
+    max-width:var(--h-mertek) !important;
+  }
+  /* a szövegdobozon belül a doboz adja a mértéket */
+  .art .box p,.art .box ul,.art .box ol{ max-width:none !important; }
+
+  /* ── 25.3 címsorok: egy mérték oldalanként ─────────────────────────── */
+  .section-title,.sub-h1{ max-width:42ch !important; }
+  #hero .hero-title,.sub-hero .sub-h1{ max-width:26ch !important; }
+
+  /* ── 25.4 lépéssor két hasábban, hogy ne maradjon üres fél képernyő ── */
+  @media(min-width:1180px){
+    .nsteps{ display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+             gap:1rem !important; align-items:stretch; }
+    .nstep{ height:100%; }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   26. GOMBOK: EGY MAGASSÁG, EGY GEOMETRIA
+   ----------------------------------------------------------------------
+   Három különböző gombmagasság futott egymás mellett (40, 44, 57 px), és
+   a záró blokkban két egymás alatti gomb 216 és 266 px széles volt. Egy
+   gombcsalád marad: azonos magasság, azonos belső térköz, és ahol egymás
+   mellett vagy alatt állnak, ott azonos szélesség is.
+   ══════════════════════════════════════════════════════════════════════ */
+.btn,.hact,.apt-btn-inner,.lead-send,.qz-next,.calccta-b,.res-cta,.midcta-a,
+.adv-m-book a,.hub-go,.onl-go{
+  min-height:48px !important;
+  display:inline-flex !important; align-items:center !important;
+  justify-content:center !important; box-sizing:border-box !important;
+  padding-top:0 !important; padding-bottom:0 !important;
+  line-height:1.25 !important;
+}
+/* a fejléc gombja tudatosan kisebb: ott a menüsor magassága a mérték */
+.mhead-cta{ min-height:38px !important; display:inline-flex !important;
+            align-items:center !important; justify-content:center !important; }
+
+/* ── 26.1 záró foglalási blokk ──────────────────────────────────────── */
+@media(min-width:1024px){
+  #cta .cta-inner.cta-merged{
+    padding:3rem 3.2rem !important;
+    grid-template-columns:minmax(0,1fr) minmax(400px,46%) !important;
+    gap:3.4rem !important; align-items:center !important;
+  }
+  /* a két gomb egymás alatt, pontosan azonos szélességgel */
+  #cta .cta-actions{
+    display:grid !important; grid-template-columns:minmax(0,1fr) !important;
+    gap:.7rem !important; width:100% !important; max-width:23rem !important;
+    margin:0 auto !important; justify-items:stretch !important;
+  }
+  #cta .cta-actions > *{ width:100% !important; margin:0 !important; }
+  #cta .cta-actions .apt-btn-wrap,
+  #cta .cta-actions .apt-btn-inner,
+  #cta .cta-actions .hact{ width:100% !important; }
+
+  #cta .cta-left .cta-sub{ margin-left:auto !important; margin-right:auto !important; }
+}
+/* mobilon is azonos szélesség, csak teljes sávban */
+@media(max-width:1023px){
+  #cta .cta-actions{ display:grid !important; grid-template-columns:minmax(0,1fr) !important;
+    gap:.7rem !important; width:100% !important; max-width:21rem !important;
+    margin:0 auto !important; }
+  #cta .cta-actions > *{ width:100% !important; margin:0 !important; }
+  #cta .cta-actions .apt-btn-wrap,#cta .cta-actions .apt-btn-inner,
+  #cta .cta-actions .hact{ width:100% !important; }
+}
+
+/* ── 26.2 a lap alján futó sorok: egy sávszélesség ───────────────────── */
+@media(min-width:861px){
+  footer .footer-fine,footer .footer-legal,#endmark .endmark-cap,
+  .sub-note,.legal-note{
+    max-width:none !important; width:100% !important;
+  }
+  footer .footer-fine{ line-height:1.8 !important; }
+}
+
+/* ── 26.3 kétoszlopos CTA-sáv: szöveg balra, gomb jobbra ──────────────
+   Az olyan lezáró sávban, ahol a szöveg mellett külön oszlopban áll a
+   gomb, a középre zárt szöveg felborult képet adott: a cím a sáv
+   közepén lebegett, a gomb pedig a jobb szélen. Ezek mostantól rendes
+   bannerek: bal oldalon a mondanivaló, jobb oldalon a cselekvés. */
+@media(min-width:861px){
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *),
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *) *{
+    text-align:left !important;
+  }
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *){
+    align-items:center !important; gap:2.6rem !important;
+  }
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *) > *:last-child{
+    justify-self:end !important;
+  }
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *) .cta-title,
+  .cta-box .cta-inner:not(.cta-merged):has(> * + *) .cta-sub{
+    margin-left:0 !important; margin-right:0 !important;
+  }
+}
+
+/* ── 26.4 folyó szöveg a szerkezeti blokkokon belül is a mértéket kapja ─
+   A teljes sávot használó dobozok (kalkulátor-lábjegyzet, tipp-doboz)
+   szerkezeti elemek, de a bennük futó bekezdés ugyanolyan szöveg, mint a
+   cikkben: ugyanaz az olvasási hossz vonatkozik rá. */
+@media(min-width:861px){
+  .calc-foot > p,.tipbox > p,.ltp-w > p,.sec-head > p,.chart-box > p,
+  .qz > p,.docbox > p,.progbox > p{
+    max-width:var(--h-mertek) !important;
+  }
+}
+
+/* ── 26.5 az utolsó kilógó szélességek ────────────────────────────────
+   Mérve készült: ezek maradtak 662 és 1040 px között egyedi értéken. */
+@media(min-width:861px){
+  /* azonosítóval erősített régi szabályok is a teljes sávra állnak */
+  #gyik .faq-list,#faq .faq-list,.zpage .faq-list,.faq-list,.faq-wrap,
+  .calcgrid,.calccta,.artcol,.warn2,.warnbox,.calc-inputs-wrap,
+  .ctab-wrap,.compare-wrap,.klist,.steps9,.prog2,.progbox,.docbox,.doccol,.artcol2,.calccol{
+    max-width:none !important; width:100% !important;
+    margin-left:0 !important; margin-right:0 !important;
+  }
+  /* az ezekben futó bekezdés is a szövegmértéket kapja */
+  .artcol > p,.artcol > ul,.artcol > ol,.warn2 > p,.warnbox > p,
+  p.calc-foot,.art .clean,.art .good{
+    max-width:var(--h-mertek) !important; width:auto !important;
+  }
+  /* egy címsormérték: eddig 959 és 1008 px között ingadozott */
+  .section-title,.sub-h1,.cta-title{ max-width:60rem !important; }
+  #hero .hero-title,.sub-hero .sub-h1{ max-width:40rem !important; }
+}
+
+/* ── 26.6 a záró blokk két gombja minden méretben azonos magas ──────── */
+#cta .cta-actions > a,#cta .cta-actions > a.hact,#cta .cta-actions .apt-btn-inner{
+  min-height:48px !important; display:inline-flex !important;
+  align-items:center !important; justify-content:center !important;
+  box-sizing:border-box !important;
+}
+
+/* ── 26.7 apró illesztés: a jobbra úsztatott összeg és a felirat közé
+   kell egy hézag, különben hosszabb felirat mellett összeér. */
+.ki-v{ margin-left:.85rem !important; }
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0757">
+<meta name="eaglz-build" content="2026-09-16-0935">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>

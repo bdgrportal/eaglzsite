@@ -273,25 +273,6 @@ BODY = u'''
   </div>
 </section>
 
-<section class="section" style="background:#fff;">
-  <div class="container">
-    <div class="art">
-      <h2>A TKM, amit szerződés előtt meg kell nézni</h2>
-      <p class="lead">A teljes költségmutató egy szabványosított szám, ami egy modellszerződésre megmutatja, hogy a konstrukció évente hány százalékkal csökkenti a hozamodat. Nem tökéletes, de az egyetlen olyan mutató, amivel <b>két különböző biztosító terméke összehasonlítható</b>, mert mindenki ugyanazzal a módszertannal számolja.</p>
-      <ul class="clean">
-        <li>A biztosítók a TKM-et kötelezően közlik, és a szektor közös adatbázisban is publikálja, ahol termékenként és futamidőnként visszakereshető.</li>
-        <li>Létezik <b>TKM-limitrendszer</b> is: jegybanki ajánlás futamidő-kategóriánként felső határt szab, és az ezt túllépő termékeket külön meg kell jelölni.</li>
-        <li>Ugyanannak a terméknek több TKM-értéke van, futamidő szerint. Mindig azt nézd, amelyik a te tervezett tartamodhoz tartozik.</li>
-      </ul>
-
-      <div class="box stop">
-        <span class="box-t">Amit mi mindig elmondunk</span>
-        Ha unit-linkedet ajánlunk, megmutatjuk a TKM-et, és megmondjuk, mi történik akkor, ha három év múlva mégis meg kell szüntetned a szerződést. Ha ezt a kérdést egy tanácsadó kitérően válaszolja meg, az önmagában elég ok arra, hogy ne írd alá aznap.
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ KOCKÁZAT ═══ -->
 <section id="kockazat" class="section graph-light">
   <div class="container">
