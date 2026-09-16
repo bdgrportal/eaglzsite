@@ -1112,6 +1112,15 @@ a.hub-c:hover .hub-go{gap:.58rem;}
 .mega-simple-in a:hover{background:#EAF4F3;color:var(--teal-ink);}
 .mega-simple-in a.ext{margin-top:.25rem;border-top:1px solid var(--border);border-radius:0 0 10px 10px;padding-top:.75rem;color:var(--teal-ink);}
 @media(max-width:1120px){ .mnav > button.sec{display:none;} }
+/* karrier átvezető a mobilmenüben: külön, feltűnő sáv a chipek helyett */
+.mmob-kar{display:block;margin:.4rem 0 .2rem;padding:.9rem 1.1rem;border-radius:14px;
+  text-decoration:none;background:linear-gradient(120deg,rgba(226,74,138,.18),rgba(140,106,222,.16));
+  border:1.5px solid rgba(226,74,138,.55);}
+.mmob-kar-k{display:block;font-family:var(--fb);font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:#F49CC0;margin-bottom:.15rem;}
+.mmob-kar-t{display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  font-family:var(--fb);font-size:1rem;font-weight:800;color:#fff;}
+.mmob-kar-ny{font-size:1.05rem;color:#F49CC0;}
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -3989,8 +3998,66 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
    kell egy hézag, különben hosszabb felirat mellett összeér. */
 .ki-v{ margin-left:.85rem !important; }
 
+/* ══════════════════════════════════════════════════════════════════════
+   27. MOBIL: IKON A SZÖVEG FÖLÉ
+   ----------------------------------------------------------------------
+   Mobilon a tartalom középre zárt, de ezekben a kártyákban az ikon a bal
+   szélen ült, a szöveg pedig a maradék helyen próbált középre állni. Az
+   eredmény ferde, csálé tengely. Az ikon mostantól a szöveg fölé kerül,
+   így egyetlen közös függőleges tengely marad.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(max-width:860px){
+  .ltp-u,.nstep,.rel-c,.fw-card-top,.hub-top,.onl-card{
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:.55rem !important;
+  }
+  .ltp-u > .ltp-u-ico,.nstep > .nstep-n,.rel-c > .rel-i,
+  .fw-card-top > .fw-emoji,.hub-top > .hub-i,.onl-card > .onl-i{
+    margin:0 auto !important; flex:0 0 auto !important;
+  }
+  .ltp-u > *:not(.ltp-u-ico),.nstep > *:not(.nstep-n),.rel-c > *:not(.rel-i),
+  .hub-top > *:not(.hub-i){ width:100% !important; }
+  /* a nyíl a link jobb szélén marad, nem esik külön sorba */
+  /* a nyilnak fenntartott hely mindket oldalon egyforma, kulonben a
+     kozepre zart tengely balra csuszna */
+  .onl-card{ position:relative !important;
+             padding-left:2.5rem !important; padding-right:2.5rem !important; }
+  .onl-card > svg{ position:absolute !important; right:1rem; top:50%;
+                   transform:translateY(-50%); margin:0 !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   28. A KÉTOSZLOPOS CTA-SÁV VÉGLEGESEN BALRA ZÁR
+   ----------------------------------------------------------------------
+   A 26.3 szabály alulmaradt a "#cta .container *" azonosítós szabállyal
+   szemben, ezért a cím és a címke középen lebegett, a gomb meg a jobb
+   szélen: pontosan az a csálé kép, amit el akartunk kerülni.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:861px){
+  #cta .cta-inner:not(.cta-merged):has(> * + *),
+  #cta .cta-inner:not(.cta-merged):has(> * + *) *,
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *),
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *) *{
+    text-align:left !important;
+  }
+  #cta .cta-inner:not(.cta-merged):has(> * + *) > *:last-child,
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *) > *:last-child{
+    justify-self:end !important;
+  }
+  #cta .cta-inner:not(.cta-merged):has(> * + *) .cta-title,
+  #cta .cta-inner:not(.cta-merged):has(> * + *) .cta-sub,
+  #cta .cta-inner:not(.cta-merged):has(> * + *) .cta-free,
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *) .cta-title,
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *) .cta-sub,
+  .section .cta-box .cta-inner:not(.cta-merged):has(> * + *) .cta-free{
+    margin-left:0 !important; margin-right:auto !important;
+  }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0935">
+<meta name="eaglz-build" content="2026-09-16-1026">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -4590,8 +4657,10 @@ host.innerHTML = panH.join('');
 mob.innerHTML = mobH.join('') +
   '<div class="mmob-extra">'+
   '<a href="'+HREF('#for-whom')+'">Kinek?</a><a href="'+HREF('#how')+'">Hogyan?</a><a href="'+HREF('#about')+'">Miért mi?</a>'+
-  '<a href="'+HREF('#video-testimonial')+'">Vélemények</a><a href="'+HREF('#about')+'">Rólunk</a><a href="'+HREF('#faq')+'">GYIK</a>'+
-  '<a href="/karrier">Karrier</a></div>'+
+  '<a href="'+HREF('#video-testimonial')+'">Vélemények</a><a href="'+HREF('#about')+'">Rólunk</a><a href="'+HREF('#faq')+'">GYIK</a></div>'+
+  '<a class="mmob-kar" href="/karrier">'+
+  '<span class="mmob-kar-k">Csatlakoznál hozzánk?</span>'+
+  '<span class="mmob-kar-t">Karrier az EAGLZ-nél <span class="mmob-kar-ny">&#8594;</span></span></a>'+
   '<div class="mmob-foot"><a class="a1" href="'+HREF('#advisors')+'">Időpontot foglalok</a>'+
   '<a class="a2" href="'+HREF('#lead')+'">Kérek visszahívást</a></div>';
 

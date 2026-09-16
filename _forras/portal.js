@@ -163,8 +163,10 @@ host.innerHTML = panH.join('');
 mob.innerHTML = mobH.join('') +
   '<div class="mmob-extra">'+
   '<a href="'+HREF('#for-whom')+'">Kinek?</a><a href="'+HREF('#how')+'">Hogyan?</a><a href="'+HREF('#about')+'">Miért mi?</a>'+
-  '<a href="'+HREF('#video-testimonial')+'">Vélemények</a><a href="'+HREF('#about')+'">Rólunk</a><a href="'+HREF('#faq')+'">GYIK</a>'+
-  '<a href="/karrier">Karrier</a></div>'+
+  '<a href="'+HREF('#video-testimonial')+'">Vélemények</a><a href="'+HREF('#about')+'">Rólunk</a><a href="'+HREF('#faq')+'">GYIK</a></div>'+
+  '<a class="mmob-kar" href="/karrier">'+
+  '<span class="mmob-kar-k">Csatlakoznál hozzánk?</span>'+
+  '<span class="mmob-kar-t">Karrier az EAGLZ-nél <span class="mmob-kar-ny">&#8594;</span></span></a>'+
   '<div class="mmob-foot"><a class="a1" href="'+HREF('#advisors')+'">Időpontot foglalok</a>'+
   '<a class="a2" href="'+HREF('#lead')+'">Kérek visszahívást</a></div>';
 

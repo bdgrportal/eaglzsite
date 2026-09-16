@@ -199,3 +199,12 @@ a.hub-c:hover .hub-go{gap:.58rem;}
 .mega-simple-in a:hover{background:#EAF4F3;color:var(--teal-ink);}
 .mega-simple-in a.ext{margin-top:.25rem;border-top:1px solid var(--border);border-radius:0 0 10px 10px;padding-top:.75rem;color:var(--teal-ink);}
 @media(max-width:1120px){ .mnav > button.sec{display:none;} }
+/* karrier átvezető a mobilmenüben: külön, feltűnő sáv a chipek helyett */
+.mmob-kar{display:block;margin:.4rem 0 .2rem;padding:.9rem 1.1rem;border-radius:14px;
+  text-decoration:none;background:linear-gradient(120deg,rgba(226,74,138,.18),rgba(140,106,222,.16));
+  border:1.5px solid rgba(226,74,138,.55);}
+.mmob-kar-k{display:block;font-family:var(--fb);font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:#F49CC0;margin-bottom:.15rem;}
+.mmob-kar-t{display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  font-family:var(--fb);font-size:1rem;font-weight:800;color:#fff;}
+.mmob-kar-ny{font-size:1.05rem;color:#F49CC0;}
