@@ -35,8 +35,14 @@
    1440 px-es oszlopban a sorok túl hosszúak, a szem elfárad. A
    karrieroldal 1160 px-es sávja a viszonyítás, és mostantól az egész
    oldalcsalád ezt használja: egy oszlopszélesség, mindenhol.          */
-:root{ --maxw:1160px; }
-@media(min-width:1700px){ :root{ --maxw:1240px; } }
+:root{
+  /* A tartalom tényleges szélessége 1160 px, ugyanannyi, mint a
+     karrieroldalon. A konténer ennél a két oldalsó margóval szélesebb,
+     mert a belső térköz is benne van. */
+  --maxw:1216px;
+  --gutter:clamp(1.1rem, 2.2vw, 1.75rem);
+}
+@media(min-width:1700px){ :root{ --maxw:1216px; --gutter:1.75rem; } }
 
 /* ── 19.3 tipográfiai skála ─────────────────────────────────────────────
    Egy szekciócím-méret az egész oldalcsaládban, egy alcím, egy kártyacím. */
@@ -228,51 +234,56 @@ button,input,select,textarea{
    Ugyanaz a rend, mint a karrieroldalon, és minden képernyőméreten
    ugyanaz: nincs töréspont, ahol átfordul.
    ══════════════════════════════════════════════════════════════════════ */
-body,
-.section,.section .container,section .container,
-.sec-head,.head-center,.section-title,.section-sub,.label-chip,.eyebrow,
-.sub-h1,.sub-lead,.sub-hero,.sub-actions,.sub-note,.sub-upd,
-.art,.art *,.toc,.toc *,
-.tile,.tile *,.box,.box *,.hub-c,.hub-c *,.fw-card,.fw-card *,
-.nstep,.nstep *,.faq-item,.faq-item *,.rel-c,.rel-c *,.eo-tile,.eo-tile *,
-.onl-card,.onl-card *,.card,.card *,.scf,.scf *,.ben-c,.ben-c *,.gd-c,.gd-c *,
-.docitem,.docitem *,.sav-item,.sav-item *,.midcta-box,.midcta-box *,
-.tbl,.tbl *,.tbl-wrap,.ttable,.ttable *,
-.hw,.hw *,.calc,.calc *,.calcin,.calcin *,.fld,.fld *,.qz,.qz *,
-.tipbox,.tipbox *,.warnbox,.warnbox *,.info,.info *,.warn,.warn *,
-.hl,.hl *,.good,.good *,.clean,.clean *,.ki,.ki *,.st,.st *,
-.progbox,.progbox *,.docbox,.docbox *,.res-note,.yn-col,.yn-col *,
-.bk-lead,.bk-lead *,.bk-warn,.bk-warn *,.ltp-u,.ltp-u *,.ltp-w,.ltp-w *,
-.sc,.sc *,.step-card,.step-card *,.graph-light,.graph-light *{
-  text-align:left !important;
-}
-/* a jelölésbe írt középre zárás is megszűnik */
-[style*="text-align:center"]{ text-align:left !important; }
-[style*="text-align:center"] > *{ margin-left:0 !important; margin-right:auto !important; }
+@media(min-width:861px){
+/* Desktop: balra zart tartalom. Mobilon a 22.1 szakasz kozepre zar,
+   ezert ez a resz csak 861 px felett ervenyes, igy a ketto nem harcol. */
+  body,
+  .section,.section .container,section .container,
+  .sec-head,.head-center,.section-title,.section-sub,.label-chip,.eyebrow,
+  .sub-h1,.sub-lead,.sub-hero,.sub-actions,.sub-note,.sub-upd,
+  .art,.art *,.toc,.toc *,
+  .tile,.tile *,.box,.box *,.hub-c,.hub-c *,.fw-card,.fw-card *,
+  .nstep,.nstep *,.faq-item,.faq-item *,.rel-c,.rel-c *,.eo-tile,.eo-tile *,
+  .onl-card,.onl-card *,.card,.card *,.scf,.scf *,.ben-c,.ben-c *,.gd-c,.gd-c *,
+  .docitem,.docitem *,.sav-item,.sav-item *,.midcta-box,.midcta-box *,
+  .tbl,.tbl *,.tbl-wrap,.ttable,.ttable *,
+  .hw,.hw *,.calc,.calc *,.calcin,.calcin *,.fld,.fld *,.qz,.qz *,
+  .tipbox,.tipbox *,.warnbox,.warnbox *,.info,.info *,.warn,.warn *,
+  .hl,.hl *,.good,.good *,.clean,.clean *,.ki,.ki *,.st,.st *,
+  .progbox,.progbox *,.docbox,.docbox *,.res-note,.yn-col,.yn-col *,
+  .bk-lead,.bk-lead *,.bk-warn,.bk-warn *,.ltp-u,.ltp-u *,.ltp-w,.ltp-w *,
+  .sc,.sc *,.step-card,.step-card *,.graph-light,.graph-light *{
+    text-align:left !important;
+  }
+  /* a jelölésbe írt középre zárás is megszűnik */
+  [style*="text-align:center"]{ text-align:left !important; }
+  [style*="text-align:center"] > *{ margin-left:0 !important; margin-right:auto !important; }
 
-/* A három kivétel. Mindhárom egy lezárás vagy egy arckép: ott a középre
-   zárás nem bizonytalanság, hanem szándék. */
-.cta-box,.cta-box *,.cta-inner,.cta-inner *,#cta .container,#cta .container *,
-.adv-card,.adv-card *,.adv-front,.adv-front *,.adv-back,.adv-back *,
-.sec-cta,.apt-btn-wrap,
-.endmark,.endmark *,.endmark-cap,.endjel,.endjel *{
-  text-align:center !important;
-}
-/* a lablec: a zaro jel kozepen, alatta minden balra, minden meretben */
-footer,footer *,.footer-inner,.footer-inner *,.footer-brand,.footer-sub,
-.footer-links,.footer-links *,.footer-legal,.footer-legal *,.footer-copy,
-.footer-legal-links,.footer-legal-links *,.footer-fine{
-  text-align:left !important;
-}
-footer .endmark,footer .endmark *,footer .endmark-cap{ text-align:center !important; }
-.cta-box .cta-title,.cta-box .cta-sub{ margin-left:auto !important; margin-right:auto !important; }
+  /* A három kivétel. Mindhárom egy lezárás vagy egy arckép: ott a középre
+     zárás nem bizonytalanság, hanem szándék. */
+  .cta-box,.cta-box *,.cta-inner,.cta-inner *,#cta .container,#cta .container *,
+  .adv-card,.adv-card *,.adv-front,.adv-front *,.adv-back,.adv-back *,
+  .sec-cta,.apt-btn-wrap,
+  .endmark,.endmark *,.endmark-cap,.endjel,.endjel *{
+    text-align:center !important;
+  }
+  /* a lablec: a zaro jel kozepen, alatta minden balra, minden meretben */
+  footer,footer *,.footer-inner,.footer-inner *,.footer-brand,.footer-sub,
+  .footer-links,.footer-links *,.footer-legal,.footer-legal *,.footer-copy,
+  .footer-legal-links,.footer-legal-links *,.footer-fine{
+    text-align:left !important;
+  }
+  footer .endmark,footer .endmark *,footer .endmark-cap{ text-align:center !important; }
+  .cta-box .cta-title,.cta-box .cta-sub{ margin-left:auto !important; margin-right:auto !important; }
 
-/* A szövegoszlop is ugyanarról a bal élről indul, mint minden más.
-   Eddig 780 px-es középre zárt hasáb volt, ezért látszott másik
-   szélességűnek, mint a kártyarácsok fölötte. */
-.art{ max-width:74ch !important; margin-left:0 !important; margin-right:0 !important; }
-.section-sub,.sub-lead,.cta-sub,.lead-sub{ max-width:66ch; }
-.cta-box .cta-sub{ max-width:60ch; }
+  /* A szövegoszlop is ugyanarról a bal élről indul, mint minden más.
+     Eddig 780 px-es középre zárt hasáb volt, ezért látszott másik
+     szélességűnek, mint a kártyarácsok fölötte. */
+  .art{ max-width:74ch !important; margin-left:0 !important; margin-right:0 !important; }
+  .section-sub,.sub-lead,.cta-sub,.lead-sub{ max-width:66ch; }
+  .cta-box .cta-sub{ max-width:60ch; }
+
+}
 
 /* ── 20.1 fejléc: a menü és a gomb soha ne érjen egymásba ─────────────
    A szűkebb tartalomoszloptól a menüsor utolsó pontja rácsúszott a
@@ -425,3 +436,230 @@ p,li,dd,.tile-d,.nstep-d,.rel-d,.hub-d,.box p,.art p{ line-height:1.65; }
    címke se érjen hozzá a záró hivatkozáshoz */
 .adv-card{ height:386px !important; }
 @media(max-width:760px){ .adv-card{ height:360px !important; } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   21. FEJLÉC  ·  a márkajel és a menü végleges aránya
+   ----------------------------------------------------------------------
+   Széles kijelzőn a menüsor ráúszott a logó alatti feliratra. A fejléc
+   ugyanazon a bal és jobb élen áll, mint a tartalom, ezért nem a sávot
+   tágítjuk, hanem a benne lévő elemeket hangoljuk arányosra:
+   kisebb, ritkított márkafelirat, feszesebb menü, és egy elválasztó
+   hajszálvonal a logó után.
+   ══════════════════════════════════════════════════════════════════════ */
+.mhead-in{ gap:0 !important; }
+.elogo{
+  flex:0 0 auto !important; padding-right:1.25rem; margin-right:1.25rem;
+  border-right:1px solid rgba(255,255,255,.16);
+  gap:.3rem !important;
+}
+.elogo img{ height:22px !important; }
+.elogo span{
+  font-size:.47rem !important; letter-spacing:.155em !important;
+  color:rgba(255,255,255,.46) !important; font-weight:700;
+}
+.mnav{
+  flex:1 1 auto !important; min-width:0; overflow:hidden;
+  justify-content:flex-start !important; gap:0 !important;
+}
+.mnav > button{ padding:0 .4rem !important; font-size:.76rem !important; }
+.mhead-cta{
+  flex:0 0 auto !important; margin-left:.8rem !important;
+  padding:.5rem .95rem !important; font-size:.76rem !important;
+}
+@media(max-width:1400px){
+  .mnav > button{ padding:0 .3rem !important; font-size:.745rem !important; }
+  .elogo{ padding-right:.9rem; margin-right:.9rem; }
+}
+/* A márkafelirat dekoratív mikroszöveg a logó alatt: a logó a hordozó
+   üzenet, ez csak a partneri megjelölés. Ezért kisebb és feszesebb, hogy
+   ne legyen szélesebb, mint maga a logó, és ne nyomja szét a fejlécet. */
+.ehead .elogo span,.mhead .elogo span{
+  font-size:11px !important; letter-spacing:.05em !important; line-height:1.1;
+  color:rgba(255,255,255,.5) !important; font-weight:600 !important;
+  text-transform:uppercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   22. AZ IRÁNY VÉGLEGES SZABÁLYA
+   ----------------------------------------------------------------------
+   Mobilon minden középre zárt, kivétel nélkül. Desktopon minden balra,
+   kivéve a kalkulátorok fejlécét, a záró foglalási sávot és a záró jelet.
+   Ez a fájl utolsó szakasza, tehát ez a döntő szó.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── 22.1 MOBIL: minden középen ───────────────────────────────────── */
+@media(max-width:860px){
+  body,body *:not(input):not(textarea):not(select){ text-align:center !important; }
+
+  /* a felsorolás jelöléseivel együtt kerül középre */
+  ul,ol,.art ul,.art ol{ list-style-position:inside !important; padding-left:0 !important; }
+  li{ text-align:center !important; }
+
+  /* a szövegblokkok saját szélességük szerint középen állnak */
+  .art,.section-sub,.sub-lead,.cta-sub,.lead-sub,.about-bio,.sub-note,
+  .footer-sub,.footer-fine,.klab-apro,p{
+    margin-left:auto !important; margin-right:auto !important;
+  }
+
+  /* a szekciócím jele vízszintes csík a cím fölött, nem bal oldali sáv */
+  .section-title,.sub-h1,.about-bio{ padding-left:0 !important; }
+  .section-title:not(.big)::before,.sub-h1::before,.about-bio::before{
+    position:static !important; display:block !important;
+    width:46px !important; height:3px !important; inset:auto !important;
+    margin:0 auto .8rem !important; border-radius:3px;
+  }
+  .about-bio::before{ margin-bottom:1rem !important; }
+
+  /* a rugalmas sorok is középre rendeződnek */
+  .hub-go,.onl-go,.tile-go,.rel-go,.eo-go,.card-go,.gd-go,.adv-more,
+  .sec-cta,.apt-btn-wrap,.footer-links,.footer-legal-links,.footer-legal-top,
+  .footer-inner,.sub-actions,.hero-actions,.trust,.chips,.sub-chips,
+  .label-chip,.eyebrow{
+    justify-content:center !important;
+  }
+  .hub-c,.tile,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.fw-card,.nstep,.box,.card,
+  .faq-item,.kpi,.scf,.footer-inner,.footer-legal-top{
+    align-items:center !important;
+  }
+  .label-chip,.eyebrow,.sub-chip,.chip-teal,.chip-purple,.chip-gold{
+    margin-left:auto !important; margin-right:auto !important;
+  }
+
+  /* kalkulátormező: a címke a doboz fölé kerül, mindkettő középen */
+  .fld-l label,.hw-lab{
+    flex-direction:column !important; align-items:center !important; gap:.45rem !important;
+  }
+  .rng-box{
+    margin:0 auto !important; width:12rem; max-width:100%;
+    justify-content:center !important; padding-right:.7rem !important;
+  }
+  .rng-num{ text-align:center !important; }
+
+  /* a nyitható sávok jelzése a szöveg mellett marad, de a szöveg középen */
+  .faq-q,.faq summary,.nyit > summary,.gy > summary{ justify-content:center !important; }
+}
+
+/* ── 22.2 DESKTOP: a kalkulátorok fejléce középen ─────────────────── */
+@media(min-width:861px){
+  .calchead,.calchead *,.calcbox > h3,.calcbox > p,
+  .hw-hero,.hw-hero *,.calccta,.calccta *{
+    text-align:center !important;
+  }
+  .calchead{ margin-left:auto !important; margin-right:auto !important; }
+  .calchead p{ max-width:76ch; margin-left:auto !important; margin-right:auto !important; }
+}
+
+/* A mobil kozepre zaras ugyanazokat a valasztokat hasznalja, mint a
+   desktop balra zaras, plusz a theme.css mobil listajat: igy azonos
+   pontossaggal, de kesobb allva mindig ez nyer. */
+@media(max-width:860px){
+body,
+.section,.section .container,section .container,
+.sec-head,.head-center,.section-title,.section-sub,.label-chip,.eyebrow,
+.sub-h1,.sub-lead,.sub-hero,.sub-actions,.sub-note,.sub-upd,
+.art,.art *,.toc,.toc *,
+.tile,.tile *,.box,.box *,.hub-c,.hub-c *,.fw-card,.fw-card *,
+.nstep,.nstep *,.faq-item,.faq-item *,.rel-c,.rel-c *,.eo-tile,.eo-tile *,
+.onl-card,.onl-card *,.card,.card *,.scf,.scf *,.ben-c,.ben-c *,.gd-c,.gd-c *,
+.docitem,.docitem *,.sav-item,.sav-item *,.midcta-box,.midcta-box *,
+.tbl,.tbl *,.tbl-wrap,.ttable,.ttable *,
+.hw,.hw *,.calc,.calc *,.calcin,.calcin *,.fld,.fld *,.qz,.qz *,
+.tipbox,.tipbox *,.warnbox,.warnbox *,.info,.info *,.warn,.warn *,
+.hl,.hl *,.good,.good *,.clean,.clean *,.ki,.ki *,.st,.st *,
+.progbox,.progbox *,.docbox,.docbox *,.res-note,.yn-col,.yn-col *,
+.bk-lead,.bk-lead *,.bk-warn,.bk-warn *,.ltp-u,.ltp-u *,.ltp-w,.ltp-w *,
+.sc,.sc *,.step-card,.step-card *,.graph-light,.graph-light *,
+.hub,.hub-c,.hub-c *,.rel,.rel *,.ben,.ben *,.onl-grid,.scf,.scf *,
+.calcgrid,.fld,.fld *,.tipbox,.tipbox *,.sub-toc,.sub-toc *,.sub-toc-inner,
+.cta-sub,.lead-sub,.endmark-cap,.toc,.toc *,.toc summary,.sub-toc-t,
+.st-d,.st-t,.ct-d,.ki-d,.ki-t,.fld-h,.fld-note,.res-note,.res-sub,.qz-help,
+.faq-a,.faq-a *,.faq-q,.gy-be,.gy-be *,.nyit-be,.nyit-be *,
+.bk-list,.bk-list *,.bk-h,.docitem,.docitem *,.warnbox,.warnbox *,
+p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
+    text-align:center !important;
+  }
+}
+
+/* Erősebb záró szabály: a szekciók és a lábléc teljes tartalma középen.
+   Két osztályszintű előtaggal minden korábbi balra záró szabályt felülír. */
+@media(max-width:860px){
+  .section .container *:not(input):not(textarea):not(select),
+  section .container *:not(input):not(textarea):not(select),
+  .section .wrap *:not(input):not(textarea):not(select),
+  footer .container *:not(input):not(textarea):not(select),
+  footer .footer-inner *,footer .footer-legal *{
+    text-align:center !important;
+  }
+  /* a beviteli mezők tartalma marad, ahol a leolvasás megkívánja */
+  .rng-num{ text-align:center !important; }
+  .tbl td,.tbl th,.ttable td,.ttable th{ text-align:center !important; }
+}
+@media(max-width:860px){
+  /* egy szekcióban egy díszítő jel elég: a szekciócímé marad */
+  .about-bio::before{ display:none !important; }
+  .about-bio{ padding-left:0 !important; }
+}
+
+/* ── 22.3 mobil: a vízszintes sorok is középre rendeződnek ────────────
+   A szövegigazítás a rugalmas dobozokban nem hat, ezért a soralapú
+   elrendezéseket külön kell középre állítani. Az oszlopirányú kártyák
+   kimaradnak, mert ott a függőleges sorrend a lényeg. */
+@media(max-width:860px){
+  .hub-top,.sav-item,.hero-trust-item,.trust,.trust-i,.hw-tabs,.calc-reset,
+  .lead-gdpr,.tbl-hint,.vid-hint,.midcta-a,.cta-free,.sub-actions,
+  .hero-actions,.footer-links,.footer-legal-links,.footer-legal-top,
+  .bk-h,.scf-top,.hact,.apt-btn-inner,.btn,.mhead-cta{
+    justify-content:center !important;
+  }
+  /* nyitható sávok fejléce: a címke és a jel egy párként középen */
+  .toc > summary,.details.toc > summary,.sub-toc-t,.faq-q,.faq > summary,
+  .nyit > summary,.gy > summary,.mmob summary{
+    justify-content:center !important; gap:.7rem !important;
+  }
+  /* a mobil menü minden sora középen */
+  .mmob,.mmob *{ justify-content:center !important; }
+  .mmob a,.mmob summary{ text-align:center !important; }
+}
+@media(max-width:860px){
+  /* tartalomjegyzék fejléce: a címke és a jel párként középen */
+  .toc-t,.toc > .toc-t,details.toc > summary.toc-t{
+    display:flex !important; justify-content:center !important; gap:.7rem !important;
+    text-align:center !important;
+  }
+  details.toc ol,details.toc li{ text-align:center !important; }
+}
+@media(max-width:860px){
+  /* a jel ne tolja magát a jobb szélre: a címkével együtt áll középen */
+  details.toc > summary::after,.faq-item .faq-chev,.mmob summary::after{
+    margin-left:0 !important;
+  }
+}
+@media(max-width:860px){
+  /* a lábléc oszlopba rendeződő sorai is középre igazodnak */
+  .footer-inner,.footer-legal-top,.footer-legal-links,.footer-links{
+    align-items:center !important; justify-content:center !important;
+  }
+}
+
+/* ── 22.4 nyitható sávok mobilon: egységes minta ──────────────────────
+   Egysoros kérdésnél a jel a szöveg mellé csúszott, kétsorosnál a jobb
+   szélre. Mostantól minden nyitható sávnál ugyanaz: a felirat középen,
+   a jel rögzítve a jobb szélen. */
+@media(max-width:860px){
+  .faq-q,.faq > summary,.toc-t,details.toc > summary,.mmob summary,
+  .nyit > summary,.gy > summary{
+    position:relative !important; justify-content:center !important;
+    padding-left:2.9rem !important; padding-right:2.9rem !important;
+    text-align:center !important;
+  }
+  .faq-chev,.faq-q > svg,.toc-t::after,details.toc > summary::after,
+  .mmob summary::after,.nyit > summary::after,.gy > summary::after{
+    position:absolute !important; right:1rem; top:50%;
+    transform:translateY(-50%); margin:0 !important;
+  }
+  .faq-item.on .faq-chev,.faq-item[open] .faq-chev,
+  details.toc[open] > summary::after,.mmob details[open] summary::after,
+  .nyit[open] > summary::after,.gy[open] > summary::after{
+    transform:translateY(-50%) rotate(180deg);
+  }
+}
