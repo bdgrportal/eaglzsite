@@ -1648,8 +1648,50 @@ section[id],[id]{ scroll-margin-top:84px; }
   .rov-video{ max-width:250px; margin-bottom:1.7rem; }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   MOBIL: HETI MENETRENDEK FELUGRÓ ABLAKBAN
+   ----------------------------------------------------------------------
+   A három menetrendkártya egymás alatt több mint három képernyőnyi
+   görgetés volt, és a sok adatsor összefolyt. Mobilon a kártya összecsukva
+   csak a címet és a bevételi sávot mutatja, a részletek felugró ablakban
+   nyílnak. Asztali gépen minden változatlan.
+   ══════════════════════════════════════════════════════════════════════ */
+.ido-nyit{ display:none; }
+
+@media(max-width:700px){
+  .ido-kartya > .ido-adat,
+  .ido-kartya > .ido-nap,
+  .ido-kartya > .ido-plusz{ display:none !important; }
+  .ido-kartya{ padding:1.15rem 1.2rem 1.1rem; }
+  .ido-kartya h3{ margin:0 0 .75rem; }
+  .ido-kartya .ido-jegy{ margin:0 0 .9rem; }
+
+  .ido-nyit{
+    display:flex; align-items:center; justify-content:center; gap:.5rem;
+    width:100%; min-height:46px; padding:.7rem 1rem;
+    border:1.5px solid var(--vonal-e); border-radius:var(--r-m);
+    background:var(--hatter-2, #F4F7FA); color:var(--navy);
+    font-family:var(--fd); font-size:.92rem; font-weight:700;
+    cursor:pointer; text-align:center;
+    transition:background .16s, border-color .16s;
+  }
+  .ido-nyit:hover,.ido-nyit:focus-visible{
+    background:#E9EFF5; border-color:rgba(27,56,88,.28);
+  }
+  .ido-nyit .i{ width:1.05em; height:1.05em; color:var(--menta-t); }
+
+  /* a felugró ablakban a kártya adatsorai teljes szélességben állnak */
+  .sab-szoveg .ido-adat{ margin:0 0 1rem; }
+  .sab-szoveg .ido-jegy{ margin:1rem 0 0; }
+}
+
+/* a társadalmi videó mobilon is középen áll, mint minden más tartalom */
+@media(max-width:700px){
+  .tars-video{ max-width:200px; margin-inline:auto; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-1329">
+<meta name="eaglz-build" content="2026-09-16-1343">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol></svg>
@@ -1908,6 +1950,10 @@ section[id],[id]{ scroll-margin-top:84px; }
           tapasztalatot építhetsz.</p>
         <p class="ido-jegy ido-bev"><b>Átlagos bevételi sáv</b>
           <span>160-400e Ft</span>, a vállalt havi eredménytől függően</p>
+        <button type="button" class="ido-nyit">
+          <span>Megnézem a menetrendet</span>
+          <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </button>
       </article>
 
       <article class="ido-kartya">
@@ -1924,6 +1970,10 @@ section[id],[id]{ scroll-margin-top:84px; }
           kellene adnod a jelenlegi munkádat.</p>
         <p class="ido-jegy ido-bev"><b>Átlagos bevételi sáv</b>
           <span>160-400e Ft</span>, a vállalt havi eredménytől függően</p>
+        <button type="button" class="ido-nyit">
+          <span>Megnézem a menetrendet</span>
+          <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </button>
       </article>
 
       <article class="ido-kartya">
@@ -1941,6 +1991,10 @@ section[id],[id]{ scroll-margin-top:84px; }
           tapasztalatod banki vagy biztosítási szektorban.</span></p>
         <p class="ido-jegy ido-bev"><b>Átlagos bevételi sáv</b>
           <span>800e-2M Ft</span>, a vállalt havi eredménytől függően</p>
+        <button type="button" class="ido-nyit">
+          <span>Megnézem a menetrendet</span>
+          <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </button>
       </article>
 
     </div>
@@ -2999,8 +3053,31 @@ section[id],[id]{ scroll-margin-top:84px; }
     mer('tortenet_megnyitas', { kollega: forras.getAttribute('data-nev') });
   }
 
+  /* Heti menetrendek mobilon: a kartya tartalma felugro ablakban nyilik.
+     A harom kartya egymas alatt tobb mint harom kepernyonyi gorgetes volt,
+     es a sok adatsor osszefolyt. Asztali gepen minden marad a helyen. */
+  function idoNyit(gomb) {
+    if (!szoveg) return;
+    var kartya = gomb.closest('.ido-kartya');
+    if (!kartya) return;
+    var cim = kartya.querySelector('h3');
+    document.getElementById('sablak-cim').textContent = cim ? cim.textContent.trim() : '';
+    var cel = document.getElementById('sablak-szoveg');
+    cel.innerHTML = '';
+    [].forEach.call(kartya.children, function (gy) {
+      if (gy === cim) return;
+      if (gy.classList && gy.classList.contains('ido-nyit')) return;
+      cel.appendChild(gy.cloneNode(true));
+    });
+    szoveg.doboz.scrollTop = 0;
+    szoveg.nyit(gomb);
+    mer('menetrend_megnyitas', { menetrend: cim ? cim.textContent.trim() : '' });
+  }
+
   document.addEventListener('click', function (e) {
     if (!e.target.closest) return;
+    var im = e.target.closest('.ido-nyit');
+    if (im) { e.preventDefault(); idoNyit(im); return; }
     var t = e.target.closest('[data-tort]');
     if (t) { e.preventDefault(); tortenetNyit(t); return; }
     var sz = e.target.closest('[data-info]');
