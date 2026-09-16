@@ -17,9 +17,20 @@
 ║ TANÁCSADÓ FELVÉTELE: görgess a fájl aljára az ADVISORS tömbhöz,     ║
 ║ másolj le egy { ... } blokkot, írd át. Semmi mást nem kell módosítani. ║
 ║                                     ║
-║ Ami nincs kitöltve, az nem törik el: a hiányzó foglalólink a közös   ║
-║ EAGLZ naptárra esik vissza, a hiányzó email/telefon gomb nem jelenik  ║
-║ meg, a kitöltetlen bemutatkozó sárga placeholder-dobozként látszik.   ║
+║ Ami nincs kitöltve, azt a látogató NEM LÁTJA: a hiányzó mező egyszerűen ║
+║ kimarad, a hiányzó foglalólink a közös EAGLZ naptárra esik vissza.   ║
+║ Ha te akarod látni, mi hiányzik még, nyisd meg így: eaglz.hu/?szerk=1 ║
+║                                     ║
+║ TANÁCSADÓ MEZŐI (mind opcionális a name/photo kivételével):       ║
+║  cim   ügyfélnek szóló pozíció, ez a fő felirat           ║
+║  role   belső rang (Fiókvezető stb.), halványan a cím alatt     ║
+║  kinek  EGY mondat: kinek segít a legtöbbet             ║
+║  bio   3 mondat, max 320 karakter                  ║
+║  varos  iroda / város    mod  Személyesen és online      ║
+║  nyelv  ["magyar","angol"]  mnb  MNB nyilvántartási szám     ║
+║  ota   pályakezdés ÉVE, pl. "2019" (az évek számát maga számolja)  ║
+║  csaladok pl. "250+"      valasz pl. "24 órán belül"       ║
+║  profil  a későbbi tanácsadói aloldal URL-je             ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 -->
 
@@ -331,21 +342,63 @@ div[style*="text-align:center"] > .section-sub{margin-left:auto;margin-right:aut
 @keyframes advIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 .adv-close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.2rem;color:var(--gray);cursor:pointer;line-height:1;padding:.35rem .5rem;border-radius:8px;transition:background .18s,color .18s;}
 .adv-close:hover{background:rgba(27,56,88,.06);color:var(--navy);}
-.adv-m-photo{width:112px;height:112px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;position:relative;border:3px solid rgba(125,200,192,.5);box-shadow:0 0 0 6px rgba(125,200,192,.1);display:flex;align-items:center;justify-content:center;background:rgba(125,200,192,.1);font-family:var(--fb);font-size:1.6rem;font-weight:800;color:var(--teal);}
+.adv-modal{max-width:780px;}
+.adv-m-grid{display:grid;grid-template-columns:196px minmax(0,1fr);gap:1.9rem;align-items:start;}
+.adv-m-side{text-align:center;}
+.adv-m-photo{width:132px;height:132px;border-radius:50%;margin:0 auto .95rem;overflow:hidden;position:relative;border:3px solid rgba(125,200,192,.5);box-shadow:0 0 0 6px rgba(125,200,192,.1);display:flex;align-items:center;justify-content:center;background:rgba(125,200,192,.1);font-family:var(--fb);font-size:1.8rem;font-weight:800;color:var(--teal);}
 .adv-m-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.adv-m-name{font-family:var(--fb);font-size:1.35rem;font-weight:800;color:var(--navy);text-align:center;}
-.adv-m-role{font-family:var(--fb);font-size:.85rem;font-weight:600;color:var(--teal);text-align:center;margin-top:.2rem;}
-.adv-m-tags{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.9rem;}
+#advMName{outline:none !important;}
+.adv-m-name{font-family:var(--fb);font-size:1.3rem;font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-.01em;}
+.adv-m-cim{font-family:var(--fb);font-size:.86rem;font-weight:700;color:#3f8f87;margin-top:.3rem;line-height:1.35;}
+.adv-m-rang{font-size:.74rem;font-weight:600;color:var(--gray);opacity:.8;margin-top:.25rem;letter-spacing:.02em;}
+.adv-m-meta{margin-top:.95rem;padding-top:.9rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.42rem;text-align:left;}
+.adv-m-meta div{display:flex;align-items:flex-start;gap:.45rem;font-size:.76rem;line-height:1.45;color:var(--gray);}
+.adv-m-meta svg{width:14px;height:14px;flex:none;margin-top:.15rem;color:var(--teal);}
+
+.adv-m-stats{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg);}
+.adv-m-stats > div{padding:.8rem .7rem;text-align:center;border-left:1px solid var(--border);}
+.adv-m-stats > div:first-child{border-left:0;}
+.adv-m-stat-n{font-family:var(--fb);font-size:1.12rem;font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-.01em;}
+.adv-m-stat-l{min-height:1.7em;display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-top:.28rem;line-height:1.3;}
+
+.adv-m-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1rem;}
 .adv-m-tag{background:rgba(125,200,192,.16);color:#3f8f87;font-family:var(--fb);font-size:.68rem;font-weight:700;padding:.28rem .6rem;border-radius:100px;}
-.adv-m-bio{margin-top:1.2rem;font-size:.87rem;line-height:1.72;color:var(--gray);}
-.adv-m-bio.is-ph{background:rgba(240,180,41,.08);border:1px dashed rgba(240,180,41,.45);border-radius:12px;padding:.9rem 1rem;color:#8a6d1f;font-size:.82rem;}
-.adv-m-contact{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.3rem;}
+.adv-m-kinek{margin-top:1rem;padding:.75rem 0 .75rem 1rem;border-left:3px solid var(--teal);font-family:var(--fb);font-size:.95rem;font-weight:600;line-height:1.5;color:var(--navy);}
+.adv-m-bio{margin-top:1rem;font-size:.88rem;line-height:1.72;color:var(--gray);}
+.adv-m-how{margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.42rem;}
+.adv-m-how div{display:flex;align-items:flex-start;gap:.5rem;font-size:.82rem;line-height:1.5;color:var(--navy);}
+.adv-m-how svg{width:15px;height:15px;flex:none;margin-top:.15rem;color:var(--teal);}
+
+.adv-m-foot{margin-top:1.5rem;padding-top:1.3rem;border-top:1px solid var(--border);}
+.adv-m-contact{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:.8rem;}
 .adv-cbtn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .9rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);color:var(--navy);font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;transition:background .18s,border-color .18s;}
 .adv-cbtn:hover{background:#e9eef5;border-color:rgba(27,56,88,.2);}
-.adv-m-book{margin-top:1.3rem;}
-.adv-m-book a{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.95rem 1.2rem;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:700;text-decoration:none;transition:background .18s;}
+.adv-m-book a{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.95rem 1.2rem;border-radius:12px;background:var(--navy);color:#fff;font-family:var(--fb);font-size:.92rem;font-weight:700;text-decoration:none;transition:background .18s;}
 .adv-m-book a:hover{background:#22376a;}
-.adv-m-note{margin-top:.7rem;text-align:center;font-size:.7rem;color:var(--gray);opacity:.75;}
+.adv-m-note{margin-top:.7rem;text-align:center;font-size:.72rem;color:var(--gray);opacity:.8;line-height:1.55;}
+
+/* szerkesztoi mod: csak ?szerk=1 mellett latszik, mit kell meg kitolteni */
+.adv-modal.is-szuk{max-width:520px;}
+.adv-modal.is-szuk .adv-m-grid{grid-template-columns:1fr;gap:1.15rem;}
+.adv-modal.is-szuk .adv-m-tags{justify-content:center;}
+.adv-modal.is-szuk .adv-m-meta{max-width:20rem;margin-left:auto;margin-right:auto;}
+.adv-modal.is-szuk .adv-m-how{max-width:23rem;margin-left:auto;margin-right:auto;}
+.adv-m-hiany{margin-top:.8rem;background:rgba(240,180,41,.08);border:1px dashed rgba(240,180,41,.5);border-radius:10px;padding:.7rem .85rem;color:#8a6d1f;font-size:.76rem;line-height:1.6;}
+.adv-m-hiany b{font-weight:800;}
+
+@media(max-width:719px){
+  .adv-m-grid{grid-template-columns:1fr;gap:1.2rem;}
+  .adv-m-side{display:grid;grid-template-columns:78px minmax(0,1fr);gap:.9rem;align-items:center;text-align:left;}
+  .adv-m-photo{width:78px;height:78px;margin:0;border-width:2px;box-shadow:0 0 0 4px rgba(125,200,192,.1);font-size:1.15rem;}
+  .adv-m-name{font-size:1.12rem;}
+  .adv-m-side > div:nth-child(2){padding-right:1.9rem;}
+  .adv-m-meta{grid-column:1 / -1;margin-top:.2rem;}
+  .adv-m-stats{grid-auto-flow:row;grid-auto-columns:auto;}
+  .adv-m-stats > div{border-left:0;border-top:1px solid var(--border);}
+  .adv-m-stats > div:first-child{border-top:0;}
+  .adv-m-kinek{font-size:.9rem;}
+  .adv-m-tags{justify-content:center;}
+}
 
 @media(max-width:900px){ .adv-grid{grid-template-columns:repeat(2,1fr);} }
 @media(max-width:560px){ .adv-grid{grid-template-columns:1fr;} .adv-modal{padding:2rem 1.3rem 1.5rem;} }
@@ -3546,7 +3599,7 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-16-1026">
+<meta name="eaglz-build" content="2026-09-16-1201">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -3960,14 +4013,30 @@ function toggleTeam(){
 <div class="adv-overlay" id="advOverlay">
   <div class="adv-modal" role="dialog" aria-modal="true" aria-labelledby="advMName">
     <button class="adv-close" onclick="closeAdv()" aria-label="Bezárás"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></button>
-    <div class="adv-m-photo" id="advMPhoto"></div>
-    <div class="adv-m-name" id="advMName"></div>
-    <div class="adv-m-role" id="advMRole"></div>
-    <div class="adv-m-tags" id="advMTags"></div>
-    <div class="adv-m-bio" id="advMBio"></div>
-    <div class="adv-m-contact" id="advMContact"></div>
-    <div class="adv-m-book" id="advMBook"></div>
-    <div class="adv-m-note" id="advMNote"></div>
+    <div class="adv-m-grid">
+      <aside class="adv-m-side">
+        <div class="adv-m-photo" id="advMPhoto"></div>
+        <div>
+          <div class="adv-m-name" id="advMName"></div>
+          <div class="adv-m-cim" id="advMCim"></div>
+          <div class="adv-m-rang" id="advMRang"></div>
+        </div>
+        <div class="adv-m-meta" id="advMMeta"></div>
+      </aside>
+      <div class="adv-m-main">
+        <div id="advMStatsWrap"></div>
+        <div class="adv-m-tags" id="advMTags"></div>
+        <div id="advMKinek"></div>
+        <div class="adv-m-bio" id="advMBio"></div>
+        <div id="advMHow"></div>
+        <div id="advMHiany"></div>
+      </div>
+    </div>
+    <div class="adv-m-foot">
+      <div class="adv-m-book" id="advMBook"></div>
+      <div class="adv-m-contact" id="advMContact"></div>
+      <div class="adv-m-note" id="advMNote"></div>
+    </div>
   </div>
 </div>
 
@@ -4519,92 +4588,164 @@ var ADVISORS = [
   {
     "name": "Gentischer Richárd",
     "role": "Igazgató · alapító",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-gentischer.jpg",
     "tags": [
       "Lakásfinanszírozás",
       "Nyugdíj",
       "Befektetés"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "2015 óta a pályán. Öt év egyéni tanácsadói gyakorlat után 2021-től építi az EAGLZ csapatát. Elsősorban lakásfinanszírozással, nyugdíj- és befektetési tervezéssel foglalkozik.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "gentischer.info@ovb.hu",
     "phone": "+36300880501",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-gentischer-flip.jpg"
   },
   {
     "name": "Steinmetz Edvárd",
     "role": "Fiókvezető",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-steinmetz.png",
     "tags": [
       "Lakáshitel",
       "Állami támogatások"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "BEMUTATKOZÓ_IDE · 2-3 mondat: mióta van a pályán, mely területeken a legerősebb, és kinek tud a legtöbbet segíteni.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "EMAIL_IDE",
     "phone": "TELEFON_IDE",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "BOOKING_URL_IDE",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-steinmetz-flip.jpg"
   },
   {
     "name": "Angelcsev Zoé",
     "role": "Fiókvezető",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-angelcsev.png",
     "tags": [
       "Megtakarítás",
       "Gyermekjövő"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "BEMUTATKOZÓ_IDE · 2-3 mondat: mióta van a pályán, mely területeken a legerősebb, és kinek tud a legtöbbet segíteni.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "EMAIL_IDE",
     "phone": "TELEFON_IDE",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "BOOKING_URL_IDE",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-angelcsev-flip.jpg"
   },
   {
     "name": "Holló Bernadett",
     "role": "Fiókvezető",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-hollo.png",
     "tags": [
       "Biztosítás",
       "Családi pénzügyek"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "BEMUTATKOZÓ_IDE · 2-3 mondat: mióta van a pályán, mely területeken a legerősebb, és kinek tud a legtöbbet segíteni.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "EMAIL_IDE",
     "phone": "TELEFON_IDE",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "BOOKING_URL_IDE",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-hollo-flip.jpg"
   },
   {
     "name": "Tugyi Andrea",
     "role": "Vagyon üzletág specialista",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-tugyi.png",
     "tags": [
       "Vagyonbiztosítás",
       "Lakásbiztosítás"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "BEMUTATKOZÓ_IDE · 2-3 mondat: mióta van a pályán, mely területeken a legerősebb, és kinek tud a legtöbbet segíteni.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "EMAIL_IDE",
     "phone": "TELEFON_IDE",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "BOOKING_URL_IDE",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-tugyi-flip.jpg"
   },
   {
     "name": "Fáy Barna",
     "role": "Banki üzletág specialista",
+    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
     "photo": "assets/adv-fay.png",
     "tags": [
       "Bankszámla",
       "Személyi kölcsön"
     ],
+    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
     "bio": "BEMUTATKOZÓ_IDE · 2-3 mondat: mióta van a pályán, mely területeken a legerősebb, és kinek tud a legtöbbet segíteni.",
+    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
+    "mod": "MOD_IDE · pl. Személyesen és online",
+    "nyelv": [
+      "NYELV_IDE"
+    ],
+    "mnb": "MNB_SZAM_IDE",
+    "ota": "EV_IDE",
+    "csaladok": "CSALAD_IDE",
+    "valasz": "VALASZIDO_IDE",
     "email": "EMAIL_IDE",
     "phone": "TELEFON_IDE",
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "BOOKING_URL_IDE",
+    "profil": "PROFIL_URL_IDE",
     "flip": "assets/adv-fay-flip.jpg"
   }
 ];
@@ -4639,7 +4780,7 @@ function _photoHTML(a){
         '<div class="adv-side adv-front">'+
           '<div class="adv-photo">'+photo+'</div>'+
           '<div class="adv-name">'+_esc(empty ? 'Szabad hely' : a.name)+'</div>'+
-          '<div class="adv-role">'+_esc(empty ? 'Csatlakozz a csapathoz' : a.role)+'</div>'+(empty ? '' : '<div class="adv-tags-mini">'+((a.tags||[]).filter(function(t){return !_isPh(t);}).slice(0,2).map(function(t){return '<span>'+_esc(t)+'</span>';}).join(''))+'</div>')+
+          '<div class="adv-role">'+_esc(empty ? 'Csatlakozz a csapathoz' : (!_isPh(a.cim) ? a.cim : a.role))+'</div>'+
           '<div class="adv-more">'+(empty ? 'Érdekel a lehetőség <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg>' : 'Bemutatkozás <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg>')+'</div>'+
         '</div>'+
         (hasFlip
@@ -4655,48 +4796,166 @@ function _photoHTML(a){
   if(hint && emptyCount) hint.textContent = 'Csapatunk folyamatosan bővül: ' + emptyCount + ' hely vár betöltésre.';
 })();
 
+/* ── szerkesztoi mod ──────────────────────────────────────────────────
+   A latogato SOHA nem lat kitoltetlen mezot: ami hianyzik, az egyszeruen
+   nem jelenik meg. Ha te akarod latni, mi van meg hatra, nyisd meg az
+   oldalt igy:  eaglz.hu/?szerk=1                                      */
+var EAGLZ_SZERK = /[?&]szerk=1/.test(location.search);
+
+var _IKON = {
+  hely:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+  mod:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+  nyelv: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>',
+  mnb:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3Z"/></svg>',
+  ok:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>'
+};
+
+function _ev(kezd){
+  var n = parseInt(String(kezd).replace(/\D/g,''), 10);
+  if(!n || n < 1950 || n > 2100) return null;
+  var e = new Date().getFullYear() - n;
+  return e > 0 ? e : null;
+}
+
 var _advOpener = null;
 function openAdv(i){
   var a = ADVISORS[i]; if(!a) return;
   _advOpener = document.activeElement;
   var empty = _isPh(a.name);
-  document.getElementById('advMPhoto').innerHTML = _photoHTML(a);
-  document.getElementById('advMName').textContent = empty ? 'Szabad hely a csapatban' : a.name;
-  document.getElementById('advMRole').textContent = empty ? 'Csatlakozz hozzánk' : a.role;
-
-  var tags = (a.tags||[]).filter(function(t){ return !_isPh(t); });
-  document.getElementById('advMTags').innerHTML =
-    tags.map(function(t){ return '<span class="adv-m-tag">'+_esc(t)+'</span>'; }).join('');
-
-  var bioEl = document.getElementById('advMBio');
-  if(empty){
-    bioEl.className = 'adv-m-bio';
-    bioEl.textContent = 'Ez a hely még betöltésre vár. Ha pénzügyi tanácsadóként képzeled el a következő éveidet, nézd meg a karrier oldalunkat.';
-  } else if(_isPh(a.bio)){
-    bioEl.className = 'adv-m-bio is-ph';
-    bioEl.textContent = a.bio;
-  } else {
-    bioEl.className = 'adv-m-bio';
-    bioEl.textContent = a.bio;
+  var hiany = [];
+  function van(mezo, cimke){
+    if(_isPh(a[mezo])){ hiany.push(cimke); return null; }
+    return a[mezo];
   }
 
-  var c = [];
-  if(!_isPh(a.email)) c.push('<a class="adv-cbtn" href="mailto:'+a.email+'"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg> E-mail</a>');
-  if(!_isPh(a.phone)) c.push('<a class="adv-cbtn" href="tel:'+a.phone.replace(/\s/g,'')+'"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg> Telefon</a>');
-  if(!_isPh(a.linkedin)) c.push('<a class="adv-cbtn" href="'+a.linkedin+'" target="_blank" rel="noopener">in LinkedIn</a>');
-  document.getElementById('advMContact').innerHTML = c.join('');
+  document.getElementById('advMPhoto').innerHTML = _photoHTML(a);
+  document.getElementById('advMName').textContent = empty ? 'Szabad hely a csapatban' : a.name;
 
+  /* ── fejlec: ugyfelnek szolo pozicio elol, belso rang halvanyan ── */
+  var cim  = empty ? 'Csatlakozz hozzánk' : (van('cim','ügyfélnek szóló pozíció') || '');
+  var rang = empty ? '' : (_isPh(a.role) ? '' : a.role);
+  var cimEl = document.getElementById('advMCim');
+  var rangEl = document.getElementById('advMRang');
+  /* ha nincs kulon ugyfel-pozicio, a belso rang lep elore, hogy ne maradjon ures */
+  if(!cim && rang){ cim = rang; rang = ''; }
+  cimEl.textContent = cim;  cimEl.style.display  = cim  ? '' : 'none';
+  rangEl.textContent = rang; rangEl.style.display = rang ? '' : 'none';
+
+  /* ── oldalsav: hol, hogyan, milyen nyelven, MNB szam ── */
+  var meta = [];
+  if(!empty){
+    var varos = van('varos','iroda / város');
+    var mod   = van('mod','találkozás módja');
+    var nyelv = (a.nyelv && a.nyelv.filter ? a.nyelv.filter(function(x){return !_isPh(x);}) : []);
+    var mnb   = van('mnb','MNB nyilvántartási szám');
+    if(varos) meta.push('<div>'+_IKON.hely+'<span>'+_esc(varos)+'</span></div>');
+    if(mod)   meta.push('<div>'+_IKON.mod+'<span>'+_esc(mod)+'</span></div>');
+    if(nyelv.length) meta.push('<div>'+_IKON.nyelv+'<span>'+_esc(nyelv.join(', '))+'</span></div>');
+    else if(!a.nyelv || !a.nyelv.length) hiany.push('nyelvek');
+    if(mnb)   meta.push('<div>'+_IKON.mnb+'<span>MNB nyilvántartási szám: '+_esc(mnb)+'</span></div>');
+  }
+  var metaEl = document.getElementById('advMMeta');
+  metaEl.innerHTML = meta.join('');
+  metaEl.style.display = meta.length ? '' : 'none';
+
+  /* ── harom hitelesito szam ── */
+  var st = [];
+  if(!empty){
+    var ev = _isPh(a.ota) ? null : _ev(a.ota);
+    if(_isPh(a.ota)) hiany.push('pályakezdés éve');
+    if(ev) st.push(['<span>'+ev+'</span> éve','a pályán']);
+    var cs = van('csaladok','hány családdal dolgozott');
+    if(cs) st.push([_esc(cs),'ügyfélcsalád']);
+    var vl = van('valasz','vállalt válaszidő');
+    if(vl) st.push([_esc(vl),'válaszidő']);
+  }
+  var stWrap = document.getElementById('advMStatsWrap');
+  stWrap.innerHTML = st.length
+    ? '<div class="adv-m-stats">'+st.map(function(x){
+        return '<div><div class="adv-m-stat-n">'+x[0]+'</div><div class="adv-m-stat-l">'+x[1]+'</div></div>';
+      }).join('')+'</div>'
+    : '';
+
+  /* ── szakteruletek ── */
+  var tags = (a.tags||[]).filter(function(t){ return !_isPh(t); });
+  var tagEl = document.getElementById('advMTags');
+  tagEl.innerHTML = tags.map(function(t){ return '<span class="adv-m-tag">'+_esc(t)+'</span>'; }).join('');
+  tagEl.style.display = tags.length ? '' : 'none';
+
+  /* ── egy mondat arrol, kinek segit a legtobbet ── */
+  var kinek = empty ? '' : (van('kinek','kinek segít a legtöbbet, egy mondat') || '');
+  document.getElementById('advMKinek').innerHTML =
+    kinek ? '<div class="adv-m-kinek">'+_esc(kinek)+'</div>' : '';
+
+  /* ── bemutatkozas ── */
+  var bioEl = document.getElementById('advMBio');
+  var bio = '';
+  if(empty){
+    bio = 'Ez a hely még betöltésre vár. Ha pénzügyi tanácsadóként képzeled el a következő éveidet, nézd meg a karrier oldalunkat.';
+  } else if(_isPh(a.bio)){
+    hiany.push('bemutatkozás (3 mondat)');
+  } else {
+    bio = a.bio;
+  }
+  bioEl.textContent = bio;
+  bioEl.style.display = bio ? '' : 'none';
+
+  /* ── mi tortenik a foglalas utan: minden tanacsadonal ugyanaz ── */
+  var how = ['Az első beszélgetés 30-60 perc, díjmentes.',
+             'Online vagy az irodában, ahogy neked jobb.',
+             'Semmit nem kell aláírnod aznap.'];
+  document.getElementById('advMHow').innerHTML = empty ? '' :
+    '<div class="adv-m-how">'+how.map(function(t){
+      return '<div>'+_IKON.ok+'<span>'+t+'</span></div>'; }).join('')+'</div>';
+
+  /* ── gomb es kapcsolat ── */
   var url = _isPh(a.book) ? EAGLZ_BOOKING_FALLBACK : a.book;
-  var label = empty ? '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 16.5L16.5 7.5M9 7.5h7.5V15"/></svg> Megnézem a karrier oldalt' : '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg> Időpontot foglalok';
+  if(_isPh(a.book) && !empty) hiany.push('saját foglalási naptár');
+  var label = empty
+    ? '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 16.5 12 12l4.5 4.5M12 12V3"/><path d="M4 21h16"/></svg> Érdekel a lehetőség'
+    : '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg> Időpontot foglalok';
+  if(empty) url = '/karrier';
   document.getElementById('advMBook').innerHTML =
-    '<a href="'+url+'" target="_blank" rel="noopener">'+label+'</a>';
-  document.getElementById('advMNote').textContent =
-    (!empty && _isPh(a.book)) ? 'A foglalás a közös EAGLZ naptárba fut be, onnan osztjuk le.' : '';
+    '<a href="'+url+'"'+(empty ? '' : ' target="_blank" rel="noopener"')+'>'+label+'</a>';
+
+  var c = [];
+  if(!empty){
+    if(_isPh(a.email)) hiany.push('e-mail cím'); else
+      c.push('<a class="adv-cbtn" href="mailto:'+a.email+'">'+
+             '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Írok neki</a>');
+    if(!_isPh(a.linkedin))
+      c.push('<a class="adv-cbtn" href="'+a.linkedin+'" target="_blank" rel="noopener">LinkedIn</a>');
+    else hiany.push('LinkedIn');
+    if(!_isPh(a.profil))
+      c.push('<a class="adv-cbtn" href="'+a.profil+'">Teljes profil <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>');
+  }
+  var cEl = document.getElementById('advMContact');
+  cEl.innerHTML = c.join('');
+  cEl.style.display = c.length ? '' : 'none';
+
+  document.getElementById('advMNote').textContent = empty ? '' :
+    (_isPh(a.book)
+      ? 'A foglalás a közös EAGLZ naptárba fut be, onnan osztjuk le. Díjmentes és kötelezettségmentes.'
+      : 'Díjmentes és kötelezettségmentes.');
+
+  /* ── szerkesztoi jelzes: csak ?szerk=1 mellett ── */
+  var hEl = document.getElementById('advMHiany');
+  hEl.innerHTML = (EAGLZ_SZERK && hiany.length)
+    ? '<div class="adv-m-hiany"><b>Szerkesztői nézet.</b> Hiányzó adatok: '+_esc(hiany.join(', '))+'.</div>'
+    : '';
+
+  /* Ha a jobb hasab meg ures, egy hasabra all vissza a kartya: igy a
+     hianyzo adat nem ures felkepernyokent latszik. */
+  var gazdag = (st.length ? 1 : 0) + (kinek ? 1 : 0) + (bio ? 1 : 0);
+  document.querySelector('.adv-modal').classList.toggle('is-szuk', gazdag === 0);
 
   document.getElementById('advOverlay').classList.add('active');
   var _mn = document.getElementById('advMName');
   if(_mn){ _mn.setAttribute('tabindex','-1'); setTimeout(function(){ try{ _mn.focus({preventScroll:true}); }catch(e){ _mn.focus(); } }, 30); }
   document.body.style.overflow = 'hidden';
+  /* a fokusz valodi vezerlore kerul, ne egy szovegdobozra */
+  var zar = document.querySelector('.adv-modal .adv-close');
+  if(zar){ try{ zar.focus({preventScroll:true}); }catch(e){} }
 }
 function closeAdv(){
   var ov = document.getElementById('advOverlay');
