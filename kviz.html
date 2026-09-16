@@ -2663,8 +2663,11 @@ body{ font-size:16.5px; }
 .hl,.good,.clean,.tbl-wrap,.adv-c,.stat-item{
   border-radius:var(--h-r-l) !important;
 }
-.tile,.box,.hub-c,.fw-card,.nstep,.faq-item,.kpi,.rel-c,.eo-tile,.onl-card,
-.card,.scf,.ben-c,.gd-c,.adv-c{
+/* Csak azok a dobozok, amelyeknek eredetileg is volt keretuk. A
+   .eo-tile (a lebego logok helyzeto burka) es a .scf (kalkulator
+   mezocsoport) szandekosan keret nelkuli, oda nem nyulunk. */
+.tile,.box,.hub-c,.fw-card,.nstep,.faq-item,.kpi,.rel-c,.onl-card,
+.card,.ben-c,.gd-c,.adv-c{
   border-width:1px !important; border-style:solid !important;
   box-shadow:var(--h-sh-1);
 }
@@ -2740,13 +2743,13 @@ button,input,select,textarea{
 }
 .h-be.h-lat{ opacity:1; transform:none; }
 
-.tile,.hub-c,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card{
+.tile,.hub-c,.rel-c,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card{
   transition:transform var(--h-ido) var(--h-gorbe),
              box-shadow var(--h-ido) var(--h-gorbe),
              border-color var(--h-ido) var(--h-gorbe);
 }
 @media(hover:hover){
-  .tile:hover,.hub-c:hover,.rel-c:hover,.eo-tile:hover,.onl-card:hover,
+  .tile:hover,.hub-c:hover,.rel-c:hover,.onl-card:hover,
   .ben-c:hover,.gd-c:hover,.adv-c:hover,.fw-card:hover{
     transform:translateY(-3px);
     box-shadow:var(--h-sh-2);
@@ -2773,10 +2776,10 @@ button,input,select,textarea{
 /* csökkentett mozgás: minden azonnal a helyén van */
 @media(prefers-reduced-motion:reduce){
   .h-be{ opacity:1 !important; transform:none !important; transition:none !important; }
-  .tile,.hub-c,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card,
+  .tile,.hub-c,.rel-c,.onl-card,.ben-c,.gd-c,.kpi,.nstep,.adv-c,.fw-card,
   .btn,.hact,.apt-btn,.mhead-cta{ transition:none !important; }
   @media(hover:hover){
-    .tile:hover,.hub-c:hover,.rel-c:hover,.eo-tile:hover,.onl-card:hover,
+    .tile:hover,.hub-c:hover,.rel-c:hover,.onl-card:hover,
     .ben-c:hover,.gd-c:hover,.adv-c:hover,.fw-card:hover,
     .btn:hover,.hact:hover,.apt-btn:hover,.mhead-cta:hover{ transform:none; }
     .tile:hover img,.rel-c:hover img,.hub-c:hover img{ transform:none; }
@@ -2956,7 +2959,7 @@ p,li,dd,.tile-d,.nstep-d,.rel-d,.hub-d,.box p,.art p{ line-height:1.65; }
 .fw-card .tile-go,.box .tile-go,.art .tile-go{
   justify-content:flex-start !important;
 }
-.hub-c,.tile,.rel-c,.eo-tile,.onl-card,.ben-c,.gd-c,.fw-card,.nstep,.box,.card{
+.hub-c,.tile,.rel-c,.onl-card,.ben-c,.gd-c,.fw-card,.nstep,.box,.card{
   align-items:flex-start !important;
 }
 /* a kivételek (záró sáv, lábléc, tanácsadókártya) maradnak középen */
@@ -3244,8 +3247,15 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   }
 }
 
+/* ── 23. VÉDETT KOMPONENSEK ───────────────────────────────────────────
+   Két elem viselkedése nem díszítés, hanem működés: a lebegő logók
+   helyzetét transform adja, a kalkulátor mezőcsoportja pedig keret
+   nélküli. Ezeket semmilyen egységesítés nem írhatja felül. */
+.eo-tile{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
+.scf{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0015">
+<meta name="eaglz-build" content="2026-09-16-0705">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
