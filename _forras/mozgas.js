@@ -39,7 +39,7 @@
   var VALASZTO = [
     '.section-title', '.section-sub', '.sec-head', '.label-chip',
     '.tile', '.box', '.hub-c', '.fw-card', '.nstep', '.faq-item', '.kpi',
-    '.rel-c', '.eo-tile', '.onl-card', '.card', '.scf', '.sav-item',
+    '.rel-c', '.onl-card', '.card', '.sav-item',
     '.ben-c', '.gd-c', '.adv-c', '.stat-item', '.docitem',
     '.midcta-box', '.cta-box', '.tbl-wrap', '.graph-light', '.art > p',
     '.art > h3', '.art > ul', '.toc'
@@ -54,6 +54,10 @@
       if (el.closest('.ehead, .mhead, .mmob, .mega, [class*="modal"], .fablak')) continue;
       var doboz = el.getBoundingClientRect();
       if (doboz.height === 0 && doboz.width === 0) continue;
+      /* Akinek a helyzetet transform adja (peldaul a lebego logok), ahhoz
+         nem nyulunk: a felderites transformja kitorolne a pozicionalast. */
+      var t = window.getComputedStyle(el).transform;
+      if (t && t !== 'none') continue;
       var szulo = el.parentElement || document.body;
       var n = (csoportSzamlalo.get(szulo) || 0);
       csoportSzamlalo.set(szulo, n + 1);

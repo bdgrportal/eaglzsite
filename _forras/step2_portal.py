@@ -164,7 +164,7 @@ PARTNERS = u'''
     <div class="pt-in">
       <div>
         <div class="pt-lab">Partnereink</div>
-        <div class="pt-title">Több mint 30 pénzintézet<br>és biztosító, egy kézben</div>
+        <div class="pt-title">A banki és biztosítási tanácsadás jövője a szemünk előtt épül.<br>Legyél részese, nézz körbe!</div>
         <div class="pt-text">Nem egy szolgáltató terméklistájából válogatunk. Az ajánlatokat egymás mellé tesszük, és azt visszük végig, amelyik a te helyzetedben a legkedvezőbb. Az összehasonlítás és a teljes ügyintézés díjmentes.</div>
       </div>
       __EO__

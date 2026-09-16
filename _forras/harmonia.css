@@ -673,3 +673,16 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
    nélküli. Ezeket semmilyen egységesítés nem írhatja felül. */
 .eo-tile{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
 .scf{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
+
+/* ── 23.1 tanácsadó-ablak foglalás gombja ─────────────────────────────
+   A gomb sötétkék alapon sötét teal feliratot és pink ikont kapott,
+   ami olvashatatlan volt (mért kontraszt 1,9:1). Fehér felirat és
+   visszafogott ikon: 12,7:1. */
+.adv-m-book a,.adv-m-book > a{
+  color:#fff !important;
+}
+.adv-m-book a .ic,.adv-m-book a svg{ color:rgba(255,255,255,.82) !important; }
+/* a lebegő logók helyzete transform, ezért a felderítés nem érintheti */
+.eo-tile.h-be,.eo-tile.h-lat{ opacity:1 !important; transform:translate(-50%,-50%) translate(var(--rx,0px),var(--ry,0px)) !important; }
+/* a partnerblokk hosszabb címe két nyugodt sorban fut, nem törik szét */
+.pt-title{ font-size:clamp(1.42rem, 1.1rem + 1.1vw, 1.95rem) !important; line-height:1.22; }

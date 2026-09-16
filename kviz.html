@@ -3254,8 +3254,21 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 .eo-tile{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
 .scf{ border:0 !important; border-radius:0 !important; box-shadow:none !important; }
 
+/* ── 23.1 tanácsadó-ablak foglalás gombja ─────────────────────────────
+   A gomb sötétkék alapon sötét teal feliratot és pink ikont kapott,
+   ami olvashatatlan volt (mért kontraszt 1,9:1). Fehér felirat és
+   visszafogott ikon: 12,7:1. */
+.adv-m-book a,.adv-m-book > a{
+  color:#fff !important;
+}
+.adv-m-book a .ic,.adv-m-book a svg{ color:rgba(255,255,255,.82) !important; }
+/* a lebegő logók helyzete transform, ezért a felderítés nem érintheti */
+.eo-tile.h-be,.eo-tile.h-lat{ opacity:1 !important; transform:translate(-50%,-50%) translate(var(--rx,0px),var(--ry,0px)) !important; }
+/* a partnerblokk hosszabb címe két nyugodt sorban fut, nem törik szét */
+.pt-title{ font-size:clamp(1.42rem, 1.1rem + 1.1vw, 1.95rem) !important; line-height:1.22; }
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0705">
+<meta name="eaglz-build" content="2026-09-16-0740">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -4104,7 +4117,7 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
   var VALASZTO = [
     '.section-title', '.section-sub', '.sec-head', '.label-chip',
     '.tile', '.box', '.hub-c', '.fw-card', '.nstep', '.faq-item', '.kpi',
-    '.rel-c', '.eo-tile', '.onl-card', '.card', '.scf', '.sav-item',
+    '.rel-c', '.onl-card', '.card', '.sav-item',
     '.ben-c', '.gd-c', '.adv-c', '.stat-item', '.docitem',
     '.midcta-box', '.cta-box', '.tbl-wrap', '.graph-light', '.art > p',
     '.art > h3', '.art > ul', '.toc'
@@ -4119,6 +4132,10 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
       if (el.closest('.ehead, .mhead, .mmob, .mega, [class*="modal"], .fablak')) continue;
       var doboz = el.getBoundingClientRect();
       if (doboz.height === 0 && doboz.width === 0) continue;
+      /* Akinek a helyzetet transform adja (peldaul a lebego logok), ahhoz
+         nem nyulunk: a felderites transformja kitorolne a pozicionalast. */
+      var t = window.getComputedStyle(el).transform;
+      if (t && t !== 'none') continue;
       var szulo = el.parentElement || document.body;
       var n = (csoportSzamlalo.get(szulo) || 0);
       csoportSzamlalo.set(szulo, n + 1);
