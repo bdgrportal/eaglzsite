@@ -38,7 +38,7 @@ def apply(S):
     new = ('<div style="text-align:center;">'
            '<div class="label-chip chip-teal">Ügyfeleink visszajelzései</div>'
            '<h2 class="section-title">Akik már végigcsinálták velünk.</h2>'
-           '<p class="section-sub">Nem mi mondjuk, hogy megéri. Három ügyfelünk mondja el, mi változott, miután leültünk.</p>'
+           '<p class="section-sub">Hallgass bele ügyfeleink véleményébe!</p>'
            '</div>')
     assert old in S, 'video fejlec'
     S = S.replace(old, new, 1)

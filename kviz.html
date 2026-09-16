@@ -1026,7 +1026,9 @@ nav{display:none!important;}
 .hw{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.36);position:sticky;top:calc(var(--eh) + 16px);}
 .hw-head{background:linear-gradient(135deg,var(--teal-ink),#2F625B);padding:.9rem 1.4rem;text-align:center;}
 .hw-head b{font-family:var(--fb);font-size:.94rem;font-weight:700;color:#fff;}
-.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);}
+/* a fulsor bal ele ugyanott kezdodjon, mint a fejlec es a tartalom:
+   1.1rem + a gomb sajat .3rem-je = 1.4rem, mint a .hw-head/.hw-body */
+.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);padding:0 1.1rem;}
 .hw-tabs button{flex:1;border:none;background:transparent;padding:.7rem .3rem;font-family:var(--fb);font-size:.73rem;font-weight:700;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;transition:color .16s,border-color .16s,background .16s;}
 .hw-tabs button:hover{color:var(--navy);}
 .hw-tabs button.on{color:var(--teal-ink);border-bottom-color:var(--teal-ink);background:#fff;}
@@ -3544,8 +3546,43 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   29. HERO ÉS PARTNERSÁV FINOMHANGOLÁS
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* 29.1 a hero nyitókérdése hangsúlyosabb, a magyarázat alatta halkabb */
+#hero .hero-lead-q{
+  font-size:clamp(1.02rem, .92rem + .42vw, 1.22rem) !important;
+  font-weight:600 !important;
+  color:#fff !important;
+  line-height:1.5 !important;
+  margin-bottom:.75rem !important;
+  max-width:38ch !important;
+}
+#hero .hero-lead:not(.hero-lead-q){
+  color:rgba(255,255,255,.82) !important;
+  max-width:46ch !important;
+}
+
+/* 29.2 partnersáv: az állítás a teljes sávot kapja, a logógyűrű alatta
+   középen. Így a cím két sor, a szöveg is kettő, olvasható méretben. Eddig
+   a 642 px-es hasábban mindkettő három sorba tört. */
+.pt-title{
+  line-height:1.26 !important;
+  max-width:none !important;
+  text-wrap:normal !important;
+}
+@media(min-width:861px){
+  .pt-in{ grid-template-columns:minmax(0,1fr) !important; gap:2.4rem !important;
+          align-items:start !important; }
+  .pt-in > div:first-child{ max-width:none !important; width:100% !important; }
+  .pt-title{ font-size:clamp(1.5rem, 1.08rem + 1.45vw, 2.05rem) !important; }
+  .pt-text{ max-width:none !important; font-size:.94rem !important; line-height:1.8 !important; }
+  .eo-wrap{ margin:0 auto !important; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-1201">
+<meta name="eaglz-build" content="2026-09-16-1245">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>

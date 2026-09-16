@@ -61,13 +61,14 @@ NEW_HERO = u'''<section id="hero" class="graph-dark">
     <div class="hero-grid">
       <div class="hero-copy">
         <h1 class="hero-title">Átlátható pénzügyek, <em>magabiztos döntések</em>.</h1>
-        <p class="hero-lead">Több mint 30 pénzintézet ajánlatát vetjük össze, és azt visszük végig, ami a te helyzetedben a legjobb. Az első beszélgetésen megnézzük, hol folyik el a pénzed, és írásban is megkapod az összehasonlítást.</p>
+        <p class="hero-lead hero-lead-q">El tudod képzelni, hogy fél órában választ kapsz minden pénzügyi kérdésedre?</p>
+        <p class="hero-lead">Célunk az, hogy a számodra legjobb ajánlat nyerjen, ne az, amelyik először jön szembe. Dolgozz együtt tanácsadói csapatunkkal, és keressük meg közösen a céljaidhoz igazodó megoldásokat.</p>
         <div class="hero-actions">
           <a class="hact hact-primary" href="#advisors">📅 Díjmentes konzultációt kérek</a>
           <a class="hact" href="#hub">🧮 Előbb számolok</a>
         </div>
         <div class="hero-trust">
-          <div class="hero-trust-item"><span>✓</span> Díjmentes, nem kötelez semmire</div>
+          <div class="hero-trust-item"><span>✓</span> Díjmentes</div>
           <div class="hero-trust-item"><span>✓</span> Online vagy személyesen</div>
           <div class="hero-trust-item"><span>✓</span> 30 fős szakértői csapat</div>
         </div>
@@ -177,7 +178,7 @@ PARTNERS = u'''
     <div style="text-align:center;margin-bottom:2.6rem;">
       <div class="label-chip chip-teal">Eszközök</div>
       <h2 class="section-title" style="text-align:center;">Számold ki magad, mielőtt beszélünk.</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Válaszd ki, melyik téma a tiéd. Minden eszköz ingyenes, regisztráció nélkül működik, és azonnal ad eredményt. Egyik szám sem egy konkrét pénzintézet ajánlata: a csúszkák alapértéke tájékoztató piaci nagyságrend, amit te állítasz a saját számaidra.</p>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Válaszd ki, melyik téma érdekel igazán. Minden eszköz díjmentes, regisztráció nélkül működik, és azonnal ad egy irányt. Egyik szám sem egy konkrét pénzintézet ajánlata: a csúszkák alapértéke tájékoztató jellegű piaci nagyságrend, amit te állítasz a saját számaidra.</p>
       <div class="hub-jump"><a href="#otthon">Otthon és hitel</a><a href="#megtakaritas">Megtakarítás és jövő</a><a href="#biztonsag">Biztosítás és biztonság</a><a href="#vallalkozas">Vállalkozás</a></div>
     </div>
     <div class="hub-group" id="otthon">

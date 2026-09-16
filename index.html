@@ -1080,7 +1080,9 @@ nav{display:none!important;}
 .hw{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.36);position:sticky;top:calc(var(--eh) + 16px);}
 .hw-head{background:linear-gradient(135deg,var(--teal-ink),#2F625B);padding:.9rem 1.4rem;text-align:center;}
 .hw-head b{font-family:var(--fb);font-size:.94rem;font-weight:700;color:#fff;}
-.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);}
+/* a fulsor bal ele ugyanott kezdodjon, mint a fejlec es a tartalom:
+   1.1rem + a gomb sajat .3rem-je = 1.4rem, mint a .hw-head/.hw-body */
+.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);padding:0 1.1rem;}
 .hw-tabs button{flex:1;border:none;background:transparent;padding:.7rem .3rem;font-family:var(--fb);font-size:.73rem;font-weight:700;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;transition:color .16s,border-color .16s,background .16s;}
 .hw-tabs button:hover{color:var(--navy);}
 .hw-tabs button.on{color:var(--teal-ink);border-bottom-color:var(--teal-ink);background:#fff;}
@@ -3598,8 +3600,43 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   29. HERO ÉS PARTNERSÁV FINOMHANGOLÁS
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* 29.1 a hero nyitókérdése hangsúlyosabb, a magyarázat alatta halkabb */
+#hero .hero-lead-q{
+  font-size:clamp(1.02rem, .92rem + .42vw, 1.22rem) !important;
+  font-weight:600 !important;
+  color:#fff !important;
+  line-height:1.5 !important;
+  margin-bottom:.75rem !important;
+  max-width:38ch !important;
+}
+#hero .hero-lead:not(.hero-lead-q){
+  color:rgba(255,255,255,.82) !important;
+  max-width:46ch !important;
+}
+
+/* 29.2 partnersáv: az állítás a teljes sávot kapja, a logógyűrű alatta
+   középen. Így a cím két sor, a szöveg is kettő, olvasható méretben. Eddig
+   a 642 px-es hasábban mindkettő három sorba tört. */
+.pt-title{
+  line-height:1.26 !important;
+  max-width:none !important;
+  text-wrap:normal !important;
+}
+@media(min-width:861px){
+  .pt-in{ grid-template-columns:minmax(0,1fr) !important; gap:2.4rem !important;
+          align-items:start !important; }
+  .pt-in > div:first-child{ max-width:none !important; width:100% !important; }
+  .pt-title{ font-size:clamp(1.5rem, 1.08rem + 1.45vw, 2.05rem) !important; }
+  .pt-text{ max-width:none !important; font-size:.94rem !important; line-height:1.8 !important; }
+  .eo-wrap{ margin:0 auto !important; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-1201">
+<meta name="eaglz-build" content="2026-09-16-1245">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -3630,13 +3667,14 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
     <div class="hero-grid">
       <div class="hero-copy">
         <h1 class="hero-title">Átlátható pénzügyek, <em>magabiztos döntések</em>.</h1>
-        <p class="hero-lead">Több mint 30 pénzintézet ajánlatát vetjük össze, és azt visszük végig, ami a te helyzetedben a legjobb. Az első beszélgetésen megnézzük, hol folyik el a pénzed, és írásban is megkapod az összehasonlítást.</p>
+        <p class="hero-lead hero-lead-q">El tudod képzelni, hogy fél órában választ kapsz minden pénzügyi kérdésedre?</p>
+        <p class="hero-lead">Célunk az, hogy a számodra legjobb ajánlat nyerjen, ne az, amelyik először jön szembe. Dolgozz együtt tanácsadói csapatunkkal, és keressük meg közösen a céljaidhoz igazodó megoldásokat.</p>
         <div class="hero-actions">
           <a class="hact hact-primary" href="#advisors"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg> Díjmentes konzultációt kérek</a>
           <a class="hact" href="#hub"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-calculator"></use></svg> Előbb számolok</a>
         </div>
         <div class="hero-trust">
-          <div class="hero-trust-item"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span> Díjmentes, nem kötelez semmire</div>
+          <div class="hero-trust-item"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span> Díjmentes</div>
           <div class="hero-trust-item"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span> Online vagy személyesen</div>
           <div class="hero-trust-item"><span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span> 30 fős szakértői csapat</div>
         </div>
@@ -3785,7 +3823,7 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
     <div style="text-align:center;margin-bottom:2.6rem;">
       <div class="label-chip chip-teal">Eszközök</div>
       <h2 class="section-title" style="text-align:center;">Számold ki magad, mielőtt beszélünk.</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Válaszd ki, melyik téma a tiéd. Minden eszköz ingyenes, regisztráció nélkül működik, és azonnal ad eredményt. Egyik szám sem egy konkrét pénzintézet ajánlata: a csúszkák alapértéke tájékoztató piaci nagyságrend, amit te állítasz a saját számaidra.</p>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Válaszd ki, melyik téma érdekel igazán. Minden eszköz díjmentes, regisztráció nélkül működik, és azonnal ad egy irányt. Egyik szám sem egy konkrét pénzintézet ajánlata: a csúszkák alapértéke tájékoztató jellegű piaci nagyságrend, amit te állítasz a saját számaidra.</p>
       <div class="hub-jump"><a href="#otthon">Otthon és hitel</a><a href="#megtakaritas">Megtakarítás és jövő</a><a href="#biztonsag">Biztosítás és biztonság</a><a href="#vallalkozas">Vállalkozás</a></div>
     </div>
     <div class="hub-group" id="otthon">
@@ -4091,7 +4129,7 @@ function toggleTeam(){
 
 <section id="video-testimonial" class="section" style="background:#fff;">
   <div class="container">
-    <div style="text-align:center;"><div class="label-chip chip-teal">Ügyfeleink visszajelzései</div><h2 class="section-title">Akik már végigcsinálták velünk.</h2><p class="section-sub">Nem mi mondjuk, hogy megéri. Három ügyfelünk mondja el, mi változott, miután leültünk.</p></div>
+    <div style="text-align:center;"><div class="label-chip chip-teal">Ügyfeleink visszajelzései</div><h2 class="section-title">Akik már végigcsinálták velünk.</h2><p class="section-sub">Hallgass bele ügyfeleink véleményébe!</p></div>
     <div class="vid-grid">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/615860220?badge=0&autopause=0&title=0&byline=0&portrait=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Ügyfélvélemény 1" loading="lazy"></iframe>

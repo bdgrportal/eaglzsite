@@ -954,3 +954,38 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
     margin-left:0 !important; margin-right:auto !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   29. HERO ÉS PARTNERSÁV FINOMHANGOLÁS
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* 29.1 a hero nyitókérdése hangsúlyosabb, a magyarázat alatta halkabb */
+#hero .hero-lead-q{
+  font-size:clamp(1.02rem, .92rem + .42vw, 1.22rem) !important;
+  font-weight:600 !important;
+  color:#fff !important;
+  line-height:1.5 !important;
+  margin-bottom:.75rem !important;
+  max-width:38ch !important;
+}
+#hero .hero-lead:not(.hero-lead-q){
+  color:rgba(255,255,255,.82) !important;
+  max-width:46ch !important;
+}
+
+/* 29.2 partnersáv: az állítás a teljes sávot kapja, a logógyűrű alatta
+   középen. Így a cím két sor, a szöveg is kettő, olvasható méretben. Eddig
+   a 642 px-es hasábban mindkettő három sorba tört. */
+.pt-title{
+  line-height:1.26 !important;
+  max-width:none !important;
+  text-wrap:normal !important;
+}
+@media(min-width:861px){
+  .pt-in{ grid-template-columns:minmax(0,1fr) !important; gap:2.4rem !important;
+          align-items:start !important; }
+  .pt-in > div:first-child{ max-width:none !important; width:100% !important; }
+  .pt-title{ font-size:clamp(1.5rem, 1.08rem + 1.45vw, 2.05rem) !important; }
+  .pt-text{ max-width:none !important; font-size:.94rem !important; line-height:1.8 !important; }
+  .eo-wrap{ margin:0 auto !important; }
+}

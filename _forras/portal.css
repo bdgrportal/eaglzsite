@@ -105,7 +105,9 @@ nav{display:none!important;}
 .hw{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.36);position:sticky;top:calc(var(--eh) + 16px);}
 .hw-head{background:linear-gradient(135deg,var(--teal-ink),#2F625B);padding:.9rem 1.4rem;text-align:center;}
 .hw-head b{font-family:var(--fb);font-size:.94rem;font-weight:700;color:#fff;}
-.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);}
+/* a fulsor bal ele ugyanott kezdodjon, mint a fejlec es a tartalom:
+   1.1rem + a gomb sajat .3rem-je = 1.4rem, mint a .hw-head/.hw-body */
+.hw-tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);padding:0 1.1rem;}
 .hw-tabs button{flex:1;border:none;background:transparent;padding:.7rem .3rem;font-family:var(--fb);font-size:.73rem;font-weight:700;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;transition:color .16s,border-color .16s,background .16s;}
 .hw-tabs button:hover{color:var(--navy);}
 .hw-tabs button.on{color:var(--teal-ink);border-bottom-color:var(--teal-ink);background:#fff;}
