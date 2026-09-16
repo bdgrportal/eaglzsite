@@ -3415,8 +3415,29 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 /* a partnerblokk hosszabb címe két nyugodt sorban fut, nem törik szét */
 .pt-title{ font-size:clamp(1.42rem, 1.1rem + 1.1vw, 1.95rem) !important; line-height:1.22; }
 
+/* ══════════════════════════════════════════════════════════════════════
+   24. KALKULÁTOROK  ·  fülek és fejléc
+   ----------------------------------------------------------------------
+   Az egységes gombsarok a füleket is elérte, pedig azok aláhúzásos vagy
+   szegmentált vezérlők: ott a saroknak más a logikája.
+   ══════════════════════════════════════════════════════════════════════ */
+/* aláhúzásos fülek: nincs saroklekerekítés */
+.hw-tabs > *,.mnav > button,.mnav > a,[role="tab"]{ border-radius:0 !important; }
+/* szegmentált váltó: a belső gomb sarka mindig kisebb a dobozénál */
+.sc-seg > button,.sc-seg > a,.ctab-wrap > button{ border-radius:9px !important; }
+
+/* fejléc és felület közé levegő: a cím ne érjen rá a kalkulátorra */
+.calchead{ padding-bottom:1.5rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+.section:has(.qz) .sec-head{ margin-bottom:2.8rem !important; }
+@media(max-width:700px){
+  .calchead{ padding-bottom:1.1rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+  .section:has(.qz) .sec-head{ margin-bottom:1.9rem !important; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0740">
+<meta name="eaglz-build" content="2026-09-16-0757">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -3759,7 +3780,7 @@ var RATES = {
 /* a menüszerkezet: egy sor egy menüpont */
 var _BANKS = ['otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 var _INSUR = ['generali','groupama','uniqa','union','alfa','signal-iduna','metlife','mapfre'];
-var _LTP   = ['fundamenta','otp-bank','erste'];
+var _LTP   = ['fundamenta','otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 
 var NAV = [
 { key:'hitel', label:'Lakásfinanszírozás',
@@ -3801,7 +3822,7 @@ var NAV = [
 { key:'tamog', label:'Támogatások',
   side:{ h:'Amit sokan nem is igényelnek',
          p:'Az otthonteremtési támogatások feltételrendszere évente változik. Átnézzük, mire vagy jogosult <b>most</b>, és milyen sorrendben érdemes igényelni.',
-         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS.slice(0,5) },
+         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS },
   items:[
     {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-key"></use></svg>', t:'Otthon Start 3%',         m:'Fix kamat, 50 M Ft-ig',          h:'kviz.html', tag:'ÚJ', tagc:'new'},
     {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg>', t:'Támogatások áttekintés',  m:'Mi él 2026-ban és mi nem',       h:'tamogatasok.html', tag:'ÚJ', tagc:'new'},

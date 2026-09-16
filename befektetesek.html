@@ -3415,8 +3415,29 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 /* a partnerblokk hosszabb címe két nyugodt sorban fut, nem törik szét */
 .pt-title{ font-size:clamp(1.42rem, 1.1rem + 1.1vw, 1.95rem) !important; line-height:1.22; }
 
+/* ══════════════════════════════════════════════════════════════════════
+   24. KALKULÁTOROK  ·  fülek és fejléc
+   ----------------------------------------------------------------------
+   Az egységes gombsarok a füleket is elérte, pedig azok aláhúzásos vagy
+   szegmentált vezérlők: ott a saroknak más a logikája.
+   ══════════════════════════════════════════════════════════════════════ */
+/* aláhúzásos fülek: nincs saroklekerekítés */
+.hw-tabs > *,.mnav > button,.mnav > a,[role="tab"]{ border-radius:0 !important; }
+/* szegmentált váltó: a belső gomb sarka mindig kisebb a dobozénál */
+.sc-seg > button,.sc-seg > a,.ctab-wrap > button{ border-radius:9px !important; }
+
+/* fejléc és felület közé levegő: a cím ne érjen rá a kalkulátorra */
+.calchead{ padding-bottom:1.5rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+.section:has(.qz) .sec-head{ margin-bottom:2.8rem !important; }
+@media(max-width:700px){
+  .calchead{ padding-bottom:1.1rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+  .section:has(.qz) .sec-head{ margin-bottom:1.9rem !important; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-16-0740">
+<meta name="eaglz-build" content="2026-09-16-0757">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -3459,7 +3480,6 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
         <li><a href="#tbsz">TBSZ: a legolcsóbb adóoptimalizálás</a></li>
         <li><a href="#kalk">Kalkulátor: mennyit visz el az adó?</a></li>
         <li><a href="#alapok">Befektetési alapok és költségeik</a></li>
-        <li><a href="#ul">Unit-linked: mikor jó, mikor nem</a></li>
         <li><a href="#kockazat">Kockázat, időtáv, diverzifikáció</a></li>
         <li><a href="#hibak">Öt hiba, ami sokba kerül</a></li>
         <li><a href="#gyik">Gyakori kérdések</a></li>
@@ -3704,38 +3724,6 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 </section>
 
 
-<!-- ═══ UNIT-LINKED ═══ -->
-<section id="ul" class="section dark-sec">
-  <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-gold">Őszinte beszéd</div>
-      <h2 class="section-title"><span class="nb">Unit-linked:</span> mikor jó, és mikor nem az</h2>
-      <p class="section-sub">Ez a termékcsalád kapja a legtöbb kritikát a magyar pénzügyi sajtóban, sokszor jogosan. Ettől még van, akinek pontosan ez a jó megoldás. A különbség azon múlik, mire használod.</p>
-    </div>
-
-    <div class="yn">
-      <div class="yn-col ok">
-        <div class="yn-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg> Amikor valóban ez a jó</div>
-        <ul>
-          <li>Rendszeres, havi megtakarítás 10-20 éves időtávra, ahol a fegyelmezett befizetés önmagában érték</li>
-          <li>Ha a megtakarítás mellé tényleges kockázati fedezet is kell, egyetlen szerződésben</li>
-          <li>Nyugdíjbiztosítás formájában, ahol a 20 százalékos adó-visszatérítés felülírja a költségszerkezetet</li>
-          <li>Ha a tartási időt kivárod: rendszeres díjnál 10, egyszeri díjnál 5 év után a hozam adómentes</li>
-        </ul>
-      </div>
-      <div class="yn-col no">
-        <div class="yn-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg> Amikor rossz döntés</div>
-        <ul>
-          <li>Ha jó eséllyel nem tudod végigvinni: az első évek visszavásárlási értéke töredéke a befizetettnek</li>
-          <li>Ha rugalmasságot keresel és menet közben hozzá akarsz nyúlni a pénzhez</li>
-          <li>Ha csak befektetést akarsz, fedezet nélkül, és érted az értékpapírszámlát: akkor a TBSZ olcsóbb</li>
-          <li>Ha nem nézted meg a TKM-et, és nem tudod, évi hány százalékot visz el a konstrukció</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" style="background:#fff;">
   <div class="container">
     <div class="art">
@@ -3896,7 +3884,7 @@ var RATES = {
 /* a menüszerkezet: egy sor egy menüpont */
 var _BANKS = ['otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 var _INSUR = ['generali','groupama','uniqa','union','alfa','signal-iduna','metlife','mapfre'];
-var _LTP   = ['fundamenta','otp-bank','erste'];
+var _LTP   = ['fundamenta','otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 
 var NAV = [
 { key:'hitel', label:'Lakásfinanszírozás',
@@ -3938,7 +3926,7 @@ var NAV = [
 { key:'tamog', label:'Támogatások',
   side:{ h:'Amit sokan nem is igényelnek',
          p:'Az otthonteremtési támogatások feltételrendszere évente változik. Átnézzük, mire vagy jogosult <b>most</b>, és milyen sorrendben érdemes igényelni.',
-         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS.slice(0,5) },
+         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS },
   items:[
     {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-key"></use></svg>', t:'Otthon Start 3%',         m:'Fix kamat, 50 M Ft-ig',          h:'kviz.html', tag:'ÚJ', tagc:'new'},
     {i:'<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg>', t:'Támogatások áttekintés',  m:'Mi él 2026-ban és mi nem',       h:'tamogatasok.html', tag:'ÚJ', tagc:'new'},

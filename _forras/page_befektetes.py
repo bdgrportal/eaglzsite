@@ -41,7 +41,6 @@ BODY = u'''
         <li><a href="#tbsz">TBSZ: a legolcsóbb adóoptimalizálás</a></li>
         <li><a href="#kalk">Kalkulátor: mennyit visz el az adó?</a></li>
         <li><a href="#alapok">Befektetési alapok és költségeik</a></li>
-        <li><a href="#ul">Unit-linked: mikor jó, mikor nem</a></li>
         <li><a href="#kockazat">Kockázat, időtáv, diverzifikáció</a></li>
         <li><a href="#hibak">Öt hiba, ami sokba kerül</a></li>
         <li><a href="#gyik">Gyakori kérdések</a></li>
@@ -269,38 +268,6 @@ BODY = u'''
 
       <div class="box quote">
         Az alapok múltbeli hozamát mindenhol kiteszik, mert azt könnyű eladni. A költséghányadot már kevésbé. Pedig a jövőbeli hozamot nem ismeri senki, a költséget viszont pontosan tudod előre.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ UNIT-LINKED ═══ -->
-<section id="ul" class="section dark-sec">
-  <div class="container">
-    <div class="sec-head">
-      <div class="label-chip chip-gold">Őszinte beszéd</div>
-      <h2 class="section-title">Unit-linked: mikor jó, és mikor nem az</h2>
-      <p class="section-sub">Ez a termékcsalád kapja a legtöbb kritikát a magyar pénzügyi sajtóban, sokszor jogosan. Ettől még van, akinek pontosan ez a jó megoldás. A különbség azon múlik, mire használod.</p>
-    </div>
-
-    <div class="yn">
-      <div class="yn-col ok">
-        <div class="yn-h">✓ Amikor valóban ez a jó</div>
-        <ul>
-          <li>Rendszeres, havi megtakarítás 10-20 éves időtávra, ahol a fegyelmezett befizetés önmagában érték</li>
-          <li>Ha a megtakarítás mellé tényleges kockázati fedezet is kell, egyetlen szerződésben</li>
-          <li>Nyugdíjbiztosítás formájában, ahol a 20 százalékos adó-visszatérítés felülírja a költségszerkezetet</li>
-          <li>Ha a tartási időt kivárod: rendszeres díjnál 10, egyszeri díjnál 5 év után a hozam adómentes</li>
-        </ul>
-      </div>
-      <div class="yn-col no">
-        <div class="yn-h">✕ Amikor rossz döntés</div>
-        <ul>
-          <li>Ha jó eséllyel nem tudod végigvinni: az első évek visszavásárlási értéke töredéke a befizetettnek</li>
-          <li>Ha rugalmasságot keresel és menet közben hozzá akarsz nyúlni a pénzhez</li>
-          <li>Ha csak befektetést akarsz, fedezet nélkül, és érted az értékpapírszámlát: akkor a TBSZ olcsóbb</li>
-          <li>Ha nem nézted meg a TKM-et, és nem tudod, évi hány százalékot visz el a konstrukció</li>
-        </ul>
       </div>
     </div>
   </div>

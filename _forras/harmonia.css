@@ -686,3 +686,24 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 .eo-tile.h-be,.eo-tile.h-lat{ opacity:1 !important; transform:translate(-50%,-50%) translate(var(--rx,0px),var(--ry,0px)) !important; }
 /* a partnerblokk hosszabb címe két nyugodt sorban fut, nem törik szét */
 .pt-title{ font-size:clamp(1.42rem, 1.1rem + 1.1vw, 1.95rem) !important; line-height:1.22; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   24. KALKULÁTOROK  ·  fülek és fejléc
+   ----------------------------------------------------------------------
+   Az egységes gombsarok a füleket is elérte, pedig azok aláhúzásos vagy
+   szegmentált vezérlők: ott a saroknak más a logikája.
+   ══════════════════════════════════════════════════════════════════════ */
+/* aláhúzásos fülek: nincs saroklekerekítés */
+.hw-tabs > *,.mnav > button,.mnav > a,[role="tab"]{ border-radius:0 !important; }
+/* szegmentált váltó: a belső gomb sarka mindig kisebb a dobozénál */
+.sc-seg > button,.sc-seg > a,.ctab-wrap > button{ border-radius:9px !important; }
+
+/* fejléc és felület közé levegő: a cím ne érjen rá a kalkulátorra */
+.calchead{ padding-bottom:1.5rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+.section:has(.qz) .sec-head{ margin-bottom:2.8rem !important; }
+@media(max-width:700px){
+  .calchead{ padding-bottom:1.1rem !important; }
+.section:has(.sc) .sec-head,.section:has(.calcbox) .sec-head,
+  .section:has(.qz) .sec-head{ margin-bottom:1.9rem !important; }
+}

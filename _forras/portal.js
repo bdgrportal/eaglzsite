@@ -15,7 +15,7 @@ var RATES = {
 /* a menüszerkezet: egy sor egy menüpont */
 var _BANKS = ['otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 var _INSUR = ['generali','groupama','uniqa','union','alfa','signal-iduna','metlife','mapfre'];
-var _LTP   = ['fundamenta','otp-bank','erste'];
+var _LTP   = ['fundamenta','otp-bank','erste','kandh','mbh-bank','cib-bank','raiffeisen','unicredit'];
 
 var NAV = [
 { key:'hitel', label:'Lakásfinanszírozás',
@@ -57,7 +57,7 @@ var NAV = [
 { key:'tamog', label:'Támogatások',
   side:{ h:'Amit sokan nem is igényelnek',
          p:'Az otthonteremtési támogatások feltételrendszere évente változik. Átnézzük, mire vagy jogosult <b>most</b>, és milyen sorrendben érdemes igényelni.',
-         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS.slice(0,5) },
+         bt:'Jogosultsági kvíz', bh:'kviz.html', logos:_BANKS },
   items:[
     {i:'🔑', t:'Otthon Start 3%',         m:'Fix kamat, 50 M Ft-ig',          h:'kviz.html', tag:'ÚJ', tagc:'new'},
     {i:'📋', t:'Támogatások áttekintés',  m:'Mi él 2026-ban és mi nem',       h:'tamogatasok.html', tag:'ÚJ', tagc:'new'},
