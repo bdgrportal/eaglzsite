@@ -3650,8 +3650,14 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 }
 .adv-cbtn.adv-cbtn-fo svg{ flex:none; }
 
+/* Egyetlen hitelesito szam eseten ne feszuljon ki a doboz a teljes
+   szelessegre: igy nem ures sav lesz belole, hanem egy kis jelveny. */
+@media(min-width:861px){
+  .adv-m-stats:has(> div:only-child){ display:inline-grid; min-width:11rem; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-19-1158">
+<meta name="eaglz-build" content="2026-09-19-1205">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -4640,28 +4646,22 @@ var EAGLZ_BOOKING_FALLBACK = "https://calendar.google.com/calendar/appointments/
 var ADVISORS = [
   {
     "name": "Gentischer Richárd",
-    "role": "Igazgató · alapító",
-    "cim": "POZICIO_IDE · ügyfélnek szóló pozíció, pl. Lakásfinanszírozás és állami támogatások",
+    "role": "EAGLZ alapító",
+    "cim": "Igazgató · Budapest",
     "photo": "assets/adv-gentischer.jpg",
-    "tags": [
-      "Lakásfinanszírozás",
-      "Nyugdíj",
-      "Befektetés"
-    ],
-    "kinek": "KINEK_IDE · egy mondat: kinek segít a legtöbbet, pl. Első lakást vásárló fiatal pároknak.",
-    "bio": "2015 óta a pályán. Öt év egyéni tanácsadói gyakorlat után 2021-től építi az EAGLZ csapatát. Elsősorban lakásfinanszírozással, nyugdíj- és befektetési tervezéssel foglalkozik.",
-    "varos": "IRODA_IDE · pl. Budapest, Kelenhegyi út 43",
-    "mod": "MOD_IDE · pl. Személyesen és online",
-    "nyelv": [
-      "NYELV_IDE"
-    ],
-    "mnb": "MNB_SZAM_IDE",
-    "ota": "EV_IDE",
+    "tags": ["Lakásfinanszírozás", "Nyugdíj", "Befektetés", "Vállalati megoldások"],
+    "kinek": "Leggyakrabban olyan családoknak segítek, akik egyszerre több pénzügyi döntés előtt állnak, és olyan fiataloknak, akik régi értékek szerint, mai eszközökkel akarnak vállalkozni.",
+    "bio": "2015 decemberében kezdtem gyakornokként, fél év múlva főállásra váltottam. Az elején az volt a nehéz, hogy vállalkozóként kellett gondolkodnom, miközben még tanultam a szakmát. Öt év és több száz család után kezdtem csapatot építeni: ma harmincan dolgozunk három irodában, és így sokkal több családhoz jutunk el.",
+    "varos": "Budapest, Kelenhegyi út 43",
+    "mod": "Személyesen és online",
+    "nyelv": ["magyar"],
+    "mnb": "116072866119",
+    "ota": "2015. december",
     "csaladok": "CSALAD_IDE",
     "valasz": "VALASZIDO_IDE",
     "email": "gentischer.info@ovb.hu",
     "phone": "+36300880501",
-    "linkedin": "LINKEDIN_URL_IDE",
+    "linkedin": "https://www.linkedin.com/in/rich%C3%A1rd-gentischer-4a082924b/",
     "book": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1jUmhTavyFnCiuqvfV_ptrXnPFHm_f7ejP7CHRVZ7tOCc08jY4N6hHwyczNielgrkkH8br_Yhv?gv=true",
     "profil": "/tanacsado/gentischer-richard",
     "flip": "assets/adv-gentischer-flip.jpg"
@@ -4864,9 +4864,26 @@ var _IKON = {
 };
 
 function _ev(kezd){
-  var n = parseInt(String(kezd).replace(/\D/g,''), 10);
+  /* Ha a honap is meg van adva (2015-12 vagy "2015. december"), honapra
+     pontosan szamolunk, kulonben evre. Igy nem mondunk eggyel tobbet. */
+  var sz = String(kezd);
+  var n = parseInt(sz.slice(0,4), 10);
   if(!n || n < 1950 || n > 2100) return null;
-  var e = new Date().getFullYear() - n;
+  var ma = new Date();
+  var e = ma.getFullYear() - n;
+  var HO = ['janu','febru','marc','apri','maj','juni',
+            'juli','augu','szept','okto','nove','dece'];
+  var ho = null;
+  var m = sz.match(/^\d{4}\D+(\d{1,2})(?!\d)/);
+  if(m){ ho = parseInt(m[1],10); }
+  else {
+    var alap = sz.toLowerCase()
+      .replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i')
+      .replace(/ó/g,'o').replace(/ö/g,'o').replace(/ő/g,'o')
+      .replace(/ú/g,'u').replace(/ü/g,'u').replace(/ű/g,'u');
+    for(var i=0;i<HO.length;i++){ if(alap.indexOf(HO[i]) > -1){ ho = i+1; break; } }
+  }
+  if(ho && ho >= 1 && ho <= 12 && (ma.getMonth()+1) < ho){ e = e - 1; }
   return e > 0 ? e : null;
 }
 

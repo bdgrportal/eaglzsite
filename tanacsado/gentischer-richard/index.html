@@ -24,6 +24,22 @@
    mindenhol a --ak, --ak-s és --ak-v jelölőket használjuk.
    ══════════════════════════════════════════════════════════════════════ */
 
+/* ── 0. alapok ──────────────────────────────────────────────────────── */
+/* A theme.css nem nullázza a böngésző alapértelmezett 8 px-es body
+   margóját, azt a főoldal saját resetje intézi. Itt nincs olyan reset,
+   ezért a saját oldalunk körül fehér keret maradt. Ugyanaz a reset kell,
+   mint a főoldalon, különben a sötét hero nem ér ki a képernyő széléig. */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0; padding:0}
+html{scroll-behavior:smooth}
+/* a lap alapszíne fehér: a halvány sávokat a .t-szakasz.vil adja, ha a
+   body is szürke lenne, eltűnne a szakaszok közötti kontraszt */
+body{
+  background:#fff; color:var(--navy,#1B3858);
+  overflow-x:hidden;
+}
+body > header,body > section,body > div,body > footer{max-width:100%}
+
 /* ── 1. keskeny fejléc ──────────────────────────────────────────────── */
 .thead{
   position:fixed; inset:0 0 auto 0; z-index:300;
@@ -2914,8 +2930,14 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 }
 .adv-cbtn.adv-cbtn-fo svg{ flex:none; }
 
+/* Egyetlen hitelesito szam eseten ne feszuljon ki a doboz a teljes
+   szelessegre: igy nem ures sav lesz belole, hanem egy kis jelveny. */
+@media(min-width:861px){
+  .adv-m-stats:has(> div:only-child){ display:inline-grid; min-width:11rem; }
+}
+
 </style>
-<meta name="eaglz-build" content="2026-09-19-1158">
+<meta name="eaglz-build" content="2026-09-19-1207">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
