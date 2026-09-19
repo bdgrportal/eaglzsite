@@ -3635,8 +3635,23 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   .eo-wrap{ margin:0 auto !important; }
 }
 
+/* ══ §30. TANÁCSADÓI ALOLDAL ÁTVEZETŐ ══════════════════════════════════
+   A tanácsadó popupjában a saját aloldalára mutató gomb: ez a legfontosabb
+   továbblépés a kártyáról, ezért teal keretet és színt kap, nem szürkét. */
+.adv-cbtn.adv-cbtn-fo{
+  background:color-mix(in srgb, var(--teal, #4CA09C) 12%, #fff) !important;
+  border:1px solid color-mix(in srgb, var(--teal, #4CA09C) 46%, transparent) !important;
+  color:var(--teal-ink, #2F6E6A) !important;
+  font-weight:700 !important;
+}
+.adv-cbtn.adv-cbtn-fo:hover{
+  background:color-mix(in srgb, var(--teal, #4CA09C) 20%, #fff) !important;
+  border-color:var(--teal, #4CA09C) !important;
+}
+.adv-cbtn.adv-cbtn-fo svg{ flex:none; }
+
 </style>
-<meta name="eaglz-build" content="2026-09-18-0859">
+<meta name="eaglz-build" content="2026-09-19-1158">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
