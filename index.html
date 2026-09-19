@@ -3657,7 +3657,7 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-19-1227">
+<meta name="eaglz-build" content="2026-09-19-1242">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -4067,6 +4067,116 @@ function toggleTeam(){
     </div>
   </div>
 </section>
+<section class="tk-szakasz" data-tk="tk"><style>
+.tk-szakasz{padding-block:clamp(1.6rem,1.2rem + 1.6vw,2.8rem)}
+.tk-fej{margin-bottom:clamp(.9rem,.7rem + .8vw,1.4rem)}
+.tk-cimke{
+  display:inline-block; font-family:var(--fb); font-size:.72rem; font-weight:700;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ak,var(--teal-ink,#3D817E));
+  margin-bottom:.35rem;
+}
+.tk-cim{
+  font-family:var(--fb); font-weight:800; letter-spacing:-.02em; line-height:1.15;
+  font-size:clamp(1.3rem,1.1rem + .9vw,1.7rem); color:var(--navy,#1B3858); margin:0;
+}
+.tk{display:grid; gap:clamp(1rem,2vw,1.8rem); align-items:stretch}
+@media(min-width:900px){ .tk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+/* a rajz doboz magasságát a gomblista adja: a svg abszolút, "meet" illesztéssel */
+.tk-rajz{
+  position:relative; min-height:0; border-radius:16px; overflow:hidden;
+  background:color-mix(in srgb, var(--ak,#4CA09C) 4%, #fff);
+  border:1px solid var(--h-vonal, rgba(27,56,88,.12));
+}
+@media(min-width:900px){ .tk-rajz{height:100%} }
+@media(max-width:899px){ .tk-rajz{aspect-ratio:1000/628} }
+.tk-hu{position:absolute; inset:0; width:100%; height:100%; padding:6px; box-sizing:border-box}
+.tk-orszag{
+  fill:color-mix(in srgb, var(--ak,#4CA09C) 11%, #fff);
+  stroke:color-mix(in srgb, var(--ak,#4CA09C) 60%, transparent);
+  stroke-width:1.4; stroke-linejoin:round; vector-effect:non-scaling-stroke;
+}
+.tk-viz{
+  fill:none; stroke:color-mix(in srgb, var(--ak,#4CA09C) 42%, #fff);
+  stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke;
+}
+.tk-to{
+  fill:color-mix(in srgb, var(--ak,#4CA09C) 30%, #fff);
+  stroke:color-mix(in srgb, var(--ak,#4CA09C) 55%, #fff); stroke-width:1; vector-effect:non-scaling-stroke;
+}
+.tk-pont-mag{fill:var(--ak-s,var(--ak,#3D817E)); stroke:#fff; stroke-width:2.5; transition:r .2s ease}
+.tk-pont-gyuru{
+  fill:none; stroke:var(--ak,#4CA09C); stroke-width:2; opacity:.5;
+  transform-box:fill-box; transform-origin:center; animation:tkpont 3.2s ease-out infinite;
+}
+.tk-pont:nth-child(3n) .tk-pont-gyuru{animation-delay:.9s}
+.tk-pont:nth-child(3n+1) .tk-pont-gyuru{animation-delay:1.8s}
+@keyframes tkpont{0%{transform:scale(.45);opacity:.7} 70%,100%{transform:scale(1.15);opacity:0}}
+.tk-pont.el .tk-pont-mag{r:10px}
+.tk-pont.el .tk-pont-gyuru{animation:none; opacity:.95; transform:scale(1.1)}
+
+.tk-lista{list-style:none; margin:0; padding:0; display:grid; gap:.5rem; align-content:start}
+.tk-v{position:relative}
+.tk-v-gomb{
+  width:100%; display:flex; align-items:center; gap:.6rem; text-align:left !important;
+  padding:.62rem .9rem; border-radius:12px; cursor:pointer;
+  background:#fff; border:1px solid var(--h-vonal, rgba(27,56,88,.12));
+  font-family:var(--fb); font-weight:700; font-size:.92rem; color:var(--navy,#1B3858);
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.tk-v-gomb .tk-pin{width:1.05em; height:1.05em; color:var(--ak-s,var(--ak,#3D817E)); flex:none}
+.tk-db{
+  margin-left:auto; font-size:.72rem; font-weight:700; color:var(--ak-s,var(--ak,#3D817E));
+  background:color-mix(in srgb, var(--ak,#4CA09C) 14%, #fff); border-radius:100px; padding:.15rem .55rem;
+}
+.tk-v:hover .tk-v-gomb,.tk-v.nyit .tk-v-gomb,.tk-v-gomb:focus-visible{
+  transform:translateX(3px); border-color:color-mix(in srgb, var(--ak,#4CA09C) 50%, transparent);
+  box-shadow:0 8px 20px rgba(15,32,53,.08); outline:none;
+}
+/* felugró: kik érhetők el ott. Egérre és kattintásra is nyílik. */
+.tk-pop{
+  position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:20;
+  padding:.7rem .9rem; border-radius:12px; background:var(--navy-deep,#0f2035); color:#fff;
+  font-size:.86rem; line-height:1.5; box-shadow:0 14px 34px rgba(7,20,40,.28);
+  opacity:0; transform:translateY(-6px); pointer-events:none;
+  transition:opacity .18s ease, transform .18s var(--h-gorbe, ease);
+  text-align:left !important;
+}
+.tk-pop::before{
+  content:''; position:absolute; left:1.2rem; top:-5px; width:10px; height:10px;
+  background:var(--navy-deep,#0f2035); transform:rotate(45deg);
+}
+.tk-pop b{display:block; font-family:var(--fb); font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ak-v,#8CC5BD); margin-bottom:.25rem}
+.tk-pop span{display:block}
+.tk-pop *{text-align:left !important}
+.tk-v:hover .tk-pop,.tk-v.nyit .tk-pop,.tk-v:focus-within .tk-pop{opacity:1; transform:none; pointer-events:auto}
+@media(max-width:899px){
+  .tk-lista{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tk-v-gomb{justify-content:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  .tk-pont-gyuru{animation:none; opacity:.4; transform:scale(1)}
+  .tk-v-gomb,.tk-pop{transition:none}
+  .tk-v:hover .tk-v-gomb{transform:none}
+}
+</style><div class="container"><div class="tk-fej"><span class="tk-cimke">Hol találsz meg minket</span><h2 class="tk-cim">Ezekben a városokban találkozhatsz velünk</h2></div><div class="tk"><div class="tk-rajz"><svg class="tk-hu" viewBox="0 0 1000 628" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Magyarország térképe a városokkal"><path class="tk-orszag" d="M777.3 14.0 L774.7 15.3 L773.7 19.5 L760.3 18.9 L757.9 27.3 L745.8 24.1 L739.8 28.1 L737.2 27.5 L731.3 33.8 L723.7 26.5 L716.2 25.2 L711.7 28.2 L708.0 27.3 L702.2 19.2 L695.1 21.1 L692.1 18.0 L692.8 14.7 L664.5 19.1 L654.8 24.4 L648.9 22.6 L647.8 26.1 L643.2 25.2 L643.6 34.2 L630.5 49.1 L629.7 60.1 L618.9 74.3 L617.4 79.8 L611.6 82.1 L604.5 78.3 L603.6 81.8 L600.1 82.2 L600.4 84.4 L590.0 83.8 L590.0 89.8 L580.9 96.8 L581.4 99.4 L578.3 102.0 L575.0 99.9 L569.3 103.2 L567.2 102.3 L562.0 109.5 L556.4 111.2 L558.8 106.4 L556.2 102.1 L549.7 99.9 L548.6 103.1 L546.3 101.8 L543.0 104.8 L540.9 104.2 L542.2 96.2 L536.0 92.2 L527.1 94.5 L523.2 86.7 L518.0 84.9 L503.3 94.2 L500.5 99.8 L500.9 105.0 L494.0 120.1 L490.9 116.4 L485.2 119.5 L472.0 118.7 L464.7 121.0 L463.0 126.1 L447.2 122.0 L436.4 125.1 L428.9 121.2 L425.4 125.7 L405.5 126.8 L402.0 128.8 L403.1 134.8 L400.6 139.4 L392.1 142.3 L395.1 146.0 L392.9 154.3 L393.7 164.0 L401.4 167.9 L406.9 173.4 L406.5 175.5 L390.5 176.7 L388.8 181.5 L376.4 188.1 L362.8 186.8 L355.7 189.7 L350.0 186.8 L328.2 193.8 L288.6 188.3 L284.9 190.3 L280.2 188.1 L276.1 191.3 L251.8 191.1 L242.9 188.6 L227.9 174.9 L222.1 176.2 L216.1 165.3 L206.1 161.5 L198.6 148.3 L188.3 138.3 L181.4 138.6 L176.7 136.6 L175.8 132.6 L169.3 133.0 L154.6 142.5 L156.2 153.0 L153.8 161.5 L143.2 167.0 L150.3 176.7 L148.7 181.7 L153.1 198.8 L123.9 202.7 L123.1 196.1 L117.6 199.2 L116.5 203.1 L106.2 203.1 L101.5 193.8 L83.8 187.9 L74.7 191.1 L76.7 196.5 L64.1 203.9 L61.4 201.6 L58.6 207.4 L70.8 214.0 L72.8 211.7 L79.9 216.8 L88.5 214.8 L93.6 222.6 L97.6 234.7 L92.1 242.2 L92.1 250.4 L84.2 258.6 L74.7 263.7 L68.1 264.1 L66.1 261.3 L61.8 262.5 L62.2 271.5 L58.2 274.7 L67.3 285.3 L64.5 293.5 L60.6 294.3 L58.2 302.5 L59.4 307.7 L61.8 308.4 L62.2 316.3 L70.8 315.9 L72.0 320.2 L66.1 326.9 L66.1 332.1 L71.6 334.8 L61.4 340.7 L69.2 346.7 L63.7 349.4 L40.5 347.1 L37.8 353.8 L14.0 375.6 L17.7 378.7 L30.9 374.5 L38.6 374.9 L48.0 382.8 L46.8 389.4 L43.0 390.4 L42.6 394.9 L45.1 394.9 L44.0 399.6 L49.2 408.0 L50.7 406.6 L52.4 408.3 L51.2 410.5 L58.8 412.5 L57.9 419.9 L54.3 419.0 L52.9 421.2 L67.0 436.9 L66.8 439.4 L70.7 439.7 L74.0 446.8 L72.8 452.2 L93.3 462.8 L92.2 464.5 L94.0 464.2 L100.7 476.3 L102.2 474.0 L106.7 478.7 L112.8 477.9 L121.8 484.3 L124.0 487.8 L124.8 499.6 L134.8 508.2 L137.2 507.8 L137.5 511.1 L150.5 516.4 L159.4 523.2 L163.6 523.2 L163.7 525.6 L166.6 527.1 L166.5 535.7 L171.8 534.9 L171.4 537.8 L174.7 537.5 L170.2 543.0 L173.9 541.6 L177.6 544.7 L174.1 545.0 L174.4 546.5 L179.5 546.9 L178.3 552.0 L183.3 552.7 L178.3 556.3 L184.2 558.5 L183.5 561.3 L186.6 561.0 L186.2 565.7 L189.1 565.3 L189.0 559.4 L192.1 564.2 L193.5 560.5 L195.1 565.0 L193.2 566.0 L197.0 566.3 L192.3 568.3 L189.9 567.1 L191.2 570.7 L195.7 569.9 L197.8 572.8 L200.5 571.4 L202.0 574.3 L203.2 570.0 L222.0 571.9 L231.4 580.9 L235.7 593.1 L260.1 599.9 L264.4 608.5 L271.5 601.5 L284.1 602.3 L297.5 606.9 L303.0 602.5 L318.1 605.5 L320.9 609.3 L332.1 611.2 L337.2 607.7 L348.4 613.8 L349.6 607.9 L354.7 602.7 L362.0 603.3 L373.4 591.8 L375.2 585.3 L378.1 585.3 L376.4 581.5 L379.3 579.1 L379.1 575.9 L385.2 576.7 L399.8 583.7 L402.0 576.8 L403.1 578.9 L408.6 577.5 L408.1 575.5 L409.7 576.5 L414.2 572.4 L428.7 574.8 L428.5 566.6 L438.9 566.4 L437.0 558.7 L442.5 550.4 L446.8 551.0 L448.8 559.5 L468.4 559.5 L470.8 561.1 L468.5 555.6 L479.3 548.3 L482.4 550.5 L487.3 548.5 L494.4 541.5 L494.4 538.7 L503.1 533.5 L499.9 528.9 L508.6 521.5 L518.8 522.7 L522.0 519.2 L526.9 519.2 L534.6 526.9 L544.8 531.3 L561.7 521.9 L573.5 521.9 L576.1 528.1 L580.3 527.9 L584.7 521.3 L591.0 528.6 L597.1 525.2 L604.3 532.6 L606.5 531.4 L607.5 534.3 L613.3 526.8 L621.7 523.0 L623.6 526.4 L627.8 525.7 L636.7 528.6 L642.7 518.7 L648.1 520.4 L662.1 532.9 L664.0 527.1 L669.7 527.7 L673.3 524.5 L674.9 515.6 L680.4 515.6 L678.2 506.4 L682.1 501.0 L694.9 498.2 L702.0 502.6 L706.3 500.6 L710.3 503.6 L718.0 503.0 L719.1 505.6 L723.9 506.4 L728.8 503.2 L730.9 495.0 L739.8 495.4 L739.8 488.6 L746.3 472.3 L756.9 473.1 L755.7 471.3 L759.3 463.3 L751.6 453.3 L753.8 443.8 L756.3 443.8 L759.9 436.0 L757.3 433.8 L760.8 425.9 L767.5 424.1 L772.8 427.7 L774.0 423.3 L779.3 418.3 L777.0 417.3 L776.4 412.8 L784.1 413.9 L789.8 403.8 L784.8 400.1 L783.5 396.1 L785.8 395.3 L789.6 382.2 L800.6 375.3 L800.0 362.8 L805.5 362.7 L811.6 355.5 L810.4 353.6 L812.6 348.2 L807.7 339.2 L811.4 338.4 L815.3 334.0 L818.1 327.3 L827.7 326.2 L830.5 312.8 L837.0 308.8 L835.6 300.8 L841.3 290.9 L840.1 288.0 L847.8 272.1 L851.7 268.6 L858.6 268.2 L862.4 262.3 L862.2 255.1 L858.8 247.1 L863.6 234.3 L866.1 236.5 L867.5 229.7 L870.8 230.2 L876.3 222.0 L882.8 223.2 L888.9 209.2 L888.9 202.4 L894.6 200.2 L895.6 194.2 L899.0 194.6 L902.3 191.6 L903.5 186.4 L919.4 191.6 L921.2 179.6 L926.3 177.4 L935.6 185.0 L945.0 185.2 L955.0 182.5 L960.8 171.4 L969.2 170.8 L965.9 159.4 L970.8 160.2 L978.9 156.5 L986.0 147.0 L985.3 144.2 L977.7 141.3 L983.7 129.8 L983.7 125.7 L980.7 125.3 L980.7 121.1 L977.4 120.6 L974.9 112.4 L972.3 114.8 L971.9 111.5 L967.9 111.7 L968.8 113.9 L967.0 114.2 L965.8 111.9 L962.7 112.1 L954.3 118.1 L942.1 114.5 L943.1 106.6 L937.7 98.8 L939.1 95.9 L934.1 93.3 L927.4 83.6 L924.5 86.2 L914.9 84.8 L912.5 87.9 L906.0 78.2 L905.7 72.5 L902.4 68.5 L903.0 62.9 L895.7 61.2 L891.8 55.6 L895.3 50.9 L890.3 50.5 L887.6 47.5 L879.7 51.0 L879.2 53.9 L876.3 54.8 L877.0 57.2 L869.9 58.7 L868.5 56.2 L865.5 57.7 L860.7 54.4 L855.4 57.8 L850.2 57.4 L847.0 59.2 L847.6 60.8 L842.9 59.4 L837.8 62.3 L836.9 60.0 L833.8 60.6 L833.7 66.8 L824.4 65.8 L817.9 63.2 L814.7 57.1 L809.5 54.6 L809.1 49.5 L803.1 38.4 L802.1 30.0 L791.9 30.2 L787.8 21.2 Z"/><path class="tk-viz" d="M763.8 131.8 L754.9 131.8 L750.4 127.3 L748.1 127.4 L746.1 131.2 L740.1 131.8 L733.9 135.9 L732.3 137.5 L731.4 140.1 L729.4 150.3 L723.5 157.6 L722.2 160.4 L722.1 171.2 L721.2 172.8 L718.4 174.6"/><path class="tk-viz" d="M967.3 114.1 L964.2 112.7 L956.8 115.8"/><path class="tk-viz" d="M947.1 115.8 L940.4 117.2 L936.6 122.6 L927.4 124.2 L924.3 123.9 L921.8 121.5 L919.8 122.4 L917.6 121.6 L914.0 118.5 L911.7 114.9 L906.1 111.5 L904.1 109.2 L904.1 102.9 L897.3 97.1 L898.3 88.3 L897.2 85.7 L892.3 81.1 L894.1 76.4 L894.2 58.9"/><path class="tk-viz" d="M889.4 49.5 L886.3 49.1 L881.6 50.9 L879.5 53.2"/><path class="tk-viz" d="M876.3 57.3 L868.8 71.6 L864.8 74.1 L859.0 72.5 L853.3 80.4 L847.2 86.8 L835.4 88.3 L828.0 94.7 L824.0 95.3 L813.0 102.0 L807.6 101.9 L802.0 99.3 L782.4 100.0 L778.2 104.0 L775.5 109.9 L775.2 113.6 L777.1 117.2 L777.6 120.1 L776.1 126.6 L772.5 130.2 L762.7 131.8"/><path class="tk-viz" d="M718.4 174.6 L719.0 183.7 L711.2 185.1 L711.1 186.7 L705.9 196.6 L698.7 203.8 L684.3 205.3 L681.8 206.3 L678.3 212.6 L672.6 215.7 L673.4 218.2 L672.5 220.4 L670.5 221.2 L669.7 226.2 L644.3 243.3 L643.0 245.0 L642.2 249.4 L640.3 251.2 L635.1 253.0 L631.2 257.3 L625.8 259.5 L624.6 263.3 L630.3 265.2 L633.2 267.3 L634.1 278.9 L637.2 281.1 L636.9 288.7 L635.5 291.5 L632.2 293.4 L626.4 294.2 L623.8 293.1 L621.3 290.4 L618.5 296.3 L613.1 299.9 L611.0 304.5 L607.4 305.4 L605.7 309.2 L596.3 314.4 L594.9 317.3 L594.1 321.4 L594.5 323.1 L598.3 324.1 L598.6 325.0 L597.9 328.1 L598.0 335.8 L598.9 339.8 L604.0 337.2 L607.6 337.1 L610.7 338.5 L611.6 341.0 L609.8 342.3 L603.2 343.0 L600.5 345.9 L586.9 356.1 L586.0 357.8 L586.9 359.5 L593.0 361.3 L593.0 362.6 L586.5 371.4 L584.6 372.8 L579.4 373.3 L577.3 375.0 L576.2 378.7 L576.3 382.6 L578.6 388.0 L579.2 392.3 L582.6 394.6 L583.6 399.2 L590.0 403.0 L590.0 407.6 L596.4 407.6 L597.9 408.7 L599.3 414.7 L600.8 415.4 L593.7 429.1 L592.6 434.5 L591.3 436.2 L591.0 438.6 L591.3 440.4 L593.9 445.0 L596.4 455.1 L599.1 456.6 L599.3 460.3 L597.9 467.4 L598.0 472.3 L599.3 481.6 L600.0 483.8 L601.8 485.4 L601.1 488.9 L603.8 497.7 L602.7 500.7 L596.5 503.8"/><path class="tk-viz" d="M406.8 173.9 L413.0 174.4 L414.9 175.3 L417.3 178.9 L420.2 178.8 L429.6 173.3 L436.7 173.9 L442.9 178.8 L445.2 184.6 L446.0 192.8 L445.4 201.9 L443.7 210.2 L435.4 234.1 L434.9 241.4 L436.8 247.3 L434.9 253.7 L434.3 258.3 L432.8 261.1 L423.9 268.1 L420.8 272.8 L416.2 286.2 L414.4 298.0 L411.4 304.1 L410.6 308.1 L410.3 316.6 L412.8 329.0 L423.0 341.0 L422.8 343.0 L421.1 346.9 L422.8 365.4 L420.3 368.3 L417.7 373.9 L417.0 382.7 L418.0 385.8 L425.4 395.3 L426.0 401.7 L427.9 409.4 L425.0 416.2 L420.9 420.5 L411.2 424.9 L407.3 429.2 L410.0 434.2 L416.2 453.6 L416.5 460.0 L413.1 471.4 L412.2 479.0 L412.6 482.3 L414.7 486.5 L415.2 489.1 L415.4 517.6 L413.8 522.3 L409.3 520.1 L400.9 532.2 L396.8 535.1 L393.6 540.4 L384.7 549.3 L383.4 554.8 L387.7 561.9 L399.8 574.8 L401.7 577.9"/><path class="tk-viz" d="M290.5 365.6 L292.3 367.5 L295.6 368.9 L304.3 370.6 L317.9 376.7 L320.7 378.6 L323.2 382.6 L341.4 397.8 L347.4 400.6 L353.4 401.7 L364.8 399.8 L369.8 401.3 L372.0 403.7 L374.0 407.6 L374.9 412.1 L370.1 439.4 L370.9 448.5 L372.6 452.1 L375.5 453.6 L377.2 455.7 L377.9 468.2 L375.3 471.2 L375.4 474.9 L390.2 478.2 L394.6 482.7 L399.5 482.7 L401.5 485.4 L403.5 482.7 L404.8 483.1 L406.3 484.8 L406.4 486.9 L410.1 485.5 L414.2 485.4"/><path class="tk-to" d="M269.9 374.2 L262.2 380.0 L221.7 397.6 L217.2 402.1 L209.0 407.6 L202.8 408.3 L191.7 406.1 L185.5 406.0 L180.5 407.7 L178.1 407.4 L176.6 404.6 L178.7 397.0 L184.5 396.8 L190.5 399.0 L193.3 398.1 L194.2 395.3 L196.4 392.8 L201.7 390.1 L207.1 390.5 L212.1 393.0 L223.5 385.3 L232.7 383.2 L237.3 376.4 L238.9 375.4 L258.7 367.8 L261.1 364.9 L266.9 369.7 L269.0 370.0 L270.3 367.6 L269.3 364.8 L265.0 361.3 L265.0 359.9 L279.2 351.7 L283.7 348.2 L287.6 342.9 L289.1 339.4 L289.7 336.0 L291.0 335.3 L300.4 338.1 L306.1 342.2 L308.5 345.2 L308.6 347.6 L303.8 357.3 L301.4 359.9 L295.5 363.3 L275.6 370.3 L272.8 370.0 L269.9 374.2 Z"/><g class="tk-pont" data-v="Budapest"><title>Budapest: Gentischer Richárd, Angelcsev Zoé</title><circle class="tk-pont-gyuru" cx="433.4" cy="243.1" r="15"/><circle class="tk-pont-mag" cx="433.4" cy="243.1" r="6.5"/></g><g class="tk-pont" data-v="Aszód"><title>Aszód: Kozma Dávid, Bagócsi Renáta</title><circle class="tk-pont-gyuru" cx="497.9" cy="210.5" r="15"/><circle class="tk-pont-mag" cx="497.9" cy="210.5" r="6.5"/></g><g class="tk-pont" data-v="Vác"><title>Vác: Hajszter Dalma</title><circle class="tk-pont-gyuru" cx="447.1" cy="184.6" r="15"/><circle class="tk-pont-mag" cx="447.1" cy="184.6" r="6.5"/></g><g class="tk-pont" data-v="Gödöllő"><title>Gödöllő: Steinmetz Edvárd</title><circle class="tk-pont-gyuru" cx="478.7" cy="222.3" r="15"/><circle class="tk-pont-mag" cx="478.7" cy="222.3" r="6.5"/></g><g class="tk-pont" data-v="Veresegyház"><title>Veresegyház: Holló Bernadett</title><circle class="tk-pont-gyuru" cx="468.2" cy="211.7" r="15"/><circle class="tk-pont-mag" cx="468.2" cy="211.7" r="6.5"/></g><g class="tk-pont" data-v="Székesfehérvár"><title>Székesfehérvár: Tugyi Andrea</title><circle class="tk-pont-gyuru" cx="343.1" cy="308.8" r="15"/><circle class="tk-pont-mag" cx="343.1" cy="308.8" r="6.5"/></g></svg></div><ul class="tk-lista"><li class="tk-v" data-v="Budapest"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Budapest</span><span class="tk-db">2</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Gentischer Richárd</span><span>Angelcsev Zoé</span></div></li><li class="tk-v" data-v="Aszód"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Aszód</span><span class="tk-db">2</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Kozma Dávid</span><span>Bagócsi Renáta</span></div></li><li class="tk-v" data-v="Vác"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Vác</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Hajszter Dalma</span></div></li><li class="tk-v" data-v="Gödöllő"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Gödöllő</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Steinmetz Edvárd</span></div></li><li class="tk-v" data-v="Veresegyház"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Veresegyház</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Holló Bernadett</span></div></li><li class="tk-v" data-v="Székesfehérvár"><button type="button" class="tk-v-gomb" aria-haspopup="true"><svg class="tk-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>Székesfehérvár</span></button><div class="tk-pop" role="tooltip"><b>Itt elérhető</b><span>Tugyi Andrea</span></div></li></ul></div></div><script>
+(function(){
+  var lista = document.querySelectorAll('.tk-v');
+  function pont(li){ return document.querySelector('.tk-pont[data-v="' + li.getAttribute('data-v') + '"]'); }
+  function zar(){ for (var j = 0; j < lista.length; j++){ lista[j].classList.remove('nyit'); var p = pont(lista[j]); if (p) p.classList.remove('el'); } }
+  for (var i = 0; i < lista.length; i++) (function(li){
+    var p = pont(li), g = li.querySelector('.tk-v-gomb');
+    li.addEventListener('mouseenter', function(){ if (p) p.classList.add('el'); });
+    li.addEventListener('mouseleave', function(){ if (!li.classList.contains('nyit') && p) p.classList.remove('el'); });
+    if (g) g.addEventListener('click', function(e){
+      e.stopPropagation();
+      var volt = li.classList.contains('nyit'); zar();
+      if (!volt){ li.classList.add('nyit'); if (p) p.classList.add('el'); }
+    });
+  })(lista[i]);
+  document.addEventListener('click', zar);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') zar(); });
+})();
+</script></section>
 
 <!-- Tanácsadó popup -->
 <div class="adv-overlay" id="advOverlay">
