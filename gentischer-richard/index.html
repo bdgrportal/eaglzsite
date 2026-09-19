@@ -124,7 +124,9 @@ body > header,body > section,body > div,body > footer{max-width:100%}
 }
 @media(max-width:900px){
   .thero-in{grid-template-columns:1fr; text-align:center; justify-items:center}
-  .t-foto{justify-self:center}
+  /* a lenti .t-foto{justify-self:end} később jön a fájlban, ezért itt
+     erősebb szelektor kell, különben mobilon jobbra tapad a fotó */
+  .thero-in .t-foto{justify-self:center}
 }
 
 .t-vissza{
@@ -2966,7 +2968,7 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 }
 
 </style>
-<meta name="eaglz-build" content="2026-09-19-1248">
+<meta name="eaglz-build" content="2026-09-19-1305">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
