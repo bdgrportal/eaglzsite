@@ -116,6 +116,9 @@ a{ color:var(--menta-t); }
 .btn-fo{ background:var(--menta); color:#0d2033; box-shadow:var(--sh-2); }
 .btn-fo:hover{ background:#8fd6cd; }
 .btn-fo:active{ transform:translateY(1px); }
+.btn-pink{ background:var(--pink); color:#fff; box-shadow:var(--sh-2); }
+.btn-pink:hover{ background:#d63a6c; }
+.btn-pink:active{ transform:translateY(1px); }
 .btn-vonal{
   background:transparent; color:var(--ink); border:1.5px solid var(--vonal-e);
 }
@@ -1038,10 +1041,7 @@ a{ color:var(--menta-t); }
   display:grid; gap:.5rem; max-width:82ch;
 }
 @media(min-width:900px){
-  .gyik-lista{
-    grid-template-columns:1fr 1fr; align-items:start;
-    gap:.5rem .7rem; max-width:none;
-  }
+  .gyik-lista{ max-width:none; }
 }
 .gy{
   border:1px solid var(--vonal); border-radius:var(--r-m); background:var(--feher);
@@ -1744,11 +1744,314 @@ section[id],[id]{ scroll-margin-top:84px; }
 .sec-kozep .penzjegy,.bv-kiemelt .penzjegy{ color:rgba(255,255,255,.62); }
 @media(max-width:700px){ .penzjegy{ font-size:.75rem; } }
 
+
+/* ── POZÍCIÓK: három szint, lenyitható részletekkel ─────────────────── */
+.poz-racs{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; align-items:start; }
+@media(max-width:940px){ .poz-racs{ grid-template-columns:1fr; } }
+.poz-kartya{
+  position:relative; background:var(--feher); border:1px solid var(--vonal);
+  border-radius:var(--r-l); padding:1.6rem 1.6rem 1.4rem; box-shadow:var(--sh-1);
+  display:flex; flex-direction:column;
+}
+.poz-szint{
+  font-family:var(--fd); font-size:.72rem; font-weight:800; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--menta-t);
+}
+.poz-cim{ font-size:1.32rem; color:var(--navy); margin:.35rem 0 .9rem; line-height:1.15; }
+.poz-sav{ margin:0; }
+.poz-osszeg{
+  display:block; font-family:var(--fd); font-weight:900; letter-spacing:-.02em; line-height:1;
+  font-size:clamp(1.5rem,1.2rem + 1vw,2rem); color:var(--navy); font-variant-numeric:tabular-nums;
+}
+.poz-savjegy{ display:block; margin-top:.35rem; font-size:.78rem; color:var(--ink-3); line-height:1.4; }
+.poz-fix{
+  display:flex; align-items:center; gap:.45rem; margin:.9rem 0 0;
+  font-size:.9rem; font-weight:700; color:var(--navy);
+}
+.poz-fix .i{ color:var(--menta-t); flex:0 0 auto; }
+.poz-kinek{ margin:.8rem 0 0; font-size:.95rem; line-height:1.6; color:var(--ink-2); }
+.poz-gomb{ margin-top:auto; width:100%; }
+.poz-kinek{ margin-bottom:1.2rem; }
+.poz-reszlet{ margin-top:.6rem; }
+.poz-reszlet > summary{
+  width:100%; cursor:pointer; list-style:none; gap:.5rem;
+}
+.poz-reszlet > summary::-webkit-details-marker{ display:none; }
+.poz-reszlet > summary::after{
+  content:''; width:10px; height:10px; flex:0 0 auto;
+  border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-3px); transition:transform .2s;
+}
+.poz-reszlet[open] > summary::after{ transform:rotate(225deg) translateY(-3px); }
+.poz-be{ padding-top:.8rem; }
+.poz-be h4{
+  margin:1rem 0 .4rem; font-family:var(--fd); font-size:.74rem; font-weight:800;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+}
+.poz-be h4:first-child{ margin-top:.2rem; }
+.poz-be ul{ list-style:none; margin:0; padding:0; display:grid; gap:.4rem; }
+.poz-be li{ position:relative; padding-left:1.1rem; font-size:.92rem; line-height:1.55; color:var(--ink-2); }
+.poz-be li::before{ content:''; position:absolute; left:0; top:.62em; width:.42rem; height:.42rem; border-radius:50%; background:var(--menta); }
+.poz-menet{ margin:1rem 0 0; padding:.8rem .9rem; border-radius:var(--r-m); background:var(--torto); font-size:.88rem; line-height:1.55; color:var(--ink-2); }
+.poz-menet b{ color:var(--navy); }
+#poziciok .jogi-jegy{ max-width:none; margin-top:1.4rem; }
+
+/* ── NAGY LENYITÓ: egy egész blokk becsukva, cím + alcím a fejlécben ── */
+.nyit-nagy{ max-width:none; }
+.nyit-nagy > summary{ flex-wrap:wrap; align-items:center; padding:1.1rem 1.4rem; min-height:auto; gap:.2rem 1rem; }
+.nyit-nagy-cim{
+  flex:1 1 100%; font-family:var(--fd); font-weight:800; letter-spacing:-.02em; line-height:1.15;
+  font-size:clamp(1.25rem,1rem + 1vw,1.7rem); color:var(--navy); padding-right:2rem;
+}
+.nyit-sotet .nyit-nagy-cim{ color:#fff; }
+.nyit-nagy-al{ flex:1 1 100%; font-size:.92rem; font-weight:400; color:var(--ink-2); line-height:1.55; padding-right:2rem; }
+.nyit-sotet .nyit-nagy-al{ color:rgba(255,255,255,.72); }
+.nyit-nagy > summary::after{ position:absolute; right:1.4rem; top:1.6rem; margin:0; }
+.nyit-nagy > summary{ position:relative; }
+.nyit-nagy > .nyit-be{ padding-top:.6rem; }
+.nyit-nagy .idorács,.nyit-nagy .bev-mechanizmus{ margin-top:.6rem; }
+
+/* ── 22. MÓDOSÍTÁS: bevételi GYIK a sötét blokkban, diák-blokk világos alapon ── */
+/* A három korábbi mechanizmus-kártya kérdés-válasz formában, a GYIK
+   kártyák mintájára, de a sötét szekcióhoz igazított színekkel. */
+.bv-cim-gyik{ margin-top:.4rem; }
+.bv-gyik{ display:grid; gap:.5rem; margin-bottom:1.6rem; }
+@media(min-width:900px){ .bv-gyik{ grid-template-columns:1fr 1fr 1fr; align-items:start; gap:.5rem .7rem; } }
+.gy-sotet{ background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.16); }
+.gy-sotet > summary{ color:#fff; }
+.gy-sotet > summary::after{ border-color:rgba(255,255,255,.65); }
+.gy-sotet > summary:hover{ background:rgba(255,255,255,.06); }
+.gy-sotet[open]{ border-color:rgba(255,255,255,.3); box-shadow:none; }
+.gy-sotet .gy-be{ color:rgba(255,255,255,.78); }
+
+/* A diák-összehasonlítás a Nyitott pozíciók (fehér) szekcióba került,
+   ezért a sötét háttérre írt színeket itt világos párjukra cseréljük. */
+.bv-diak-vilagos{ margin-top:0; }
+.bv-diak-vilagos .bv-tabla thead th{ color:var(--ink-3); border-bottom-color:var(--vonal); }
+.bv-diak-vilagos .bv-tabla thead th:last-child{ color:var(--menta-t); }
+.bv-diak-vilagos .bv-tabla tbody th{ color:var(--navy); border-bottom-color:var(--vonal); }
+.bv-diak-vilagos .bv-tabla td{ color:var(--ink-2); border-bottom-color:var(--vonal); }
+.bv-diak-vilagos .bv-tabla td:last-child{ background:rgba(125,200,192,.13); color:var(--ink); }
+.bv-diak-vilagos .bv-alcim{ color:var(--ink-3); }
+.bv-diak-vilagos .bv-infok li{
+  background:var(--torto); border-color:var(--vonal); color:var(--ink-2);
+}
+.bv-diak-vilagos .bv-infok .i{ color:var(--menta-t); }
+.bv-diak-vilagos .bv-infok b{ color:var(--navy); }
+@media(max-width:700px){
+  .bv-diak-vilagos .bv-tabla tr{ background:var(--torto); border-color:var(--vonal); }
+  .bv-diak-vilagos .bv-tabla td::before{ color:var(--ink-3); }
+  .bv-diak-vilagos .bv-tabla td:last-child{
+    border-color:rgba(125,200,192,.45); background:rgba(125,200,192,.14); color:var(--ink);
+  }
+  .bv-diak-vilagos .bv-tabla td:last-child::before{ color:var(--menta-t); }
+}
+
+/* ── 23. Lenyitható sáv: cím + alcím balra, rózsaszín gomb jobbra, egy kártyában.
+   Nem önálló "üres" szekció, hanem egy keskeny átvezető sáv két blokk között. ── */
+.sec-sav{ padding-block:2.2rem; }
+.sec-vilagos + .sec-sav{ padding-top:0; }
+@media(max-width:700px){ .sec-sav{ padding-block:1.6rem; } }
+.nyit-sav{ max-width:none; box-shadow:var(--sh-1); }
+.nyit-sav > summary{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem 2rem;
+  padding:1.3rem 1.5rem; min-height:auto; position:static;
+}
+.nyit-sav > summary::after{ display:none; }
+.nyit-sav > summary:hover{ background:var(--feher); }
+.nyit-sav-szoveg{ display:grid; gap:.3rem; min-width:0; }
+.nyit-sav .nyit-nagy-cim{ padding-right:0; font-size:clamp(1.15rem,.95rem + .8vw,1.45rem); }
+.nyit-sav .nyit-nagy-al{ padding-right:0; font-size:.9rem; }
+.nyit-sav .nyit-gomb{ white-space:nowrap; gap:.6rem; }
+.nyit-sav .nyit-gomb::after{
+  content:''; width:10px; height:10px; flex:0 0 auto;
+  border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-3px); transition:transform .2s;
+}
+.nyit-sav[open] .nyit-gomb::after{ transform:rotate(225deg) translateY(-3px); }
+.nyit-sav > summary:hover .nyit-gomb{ background:#d63a6c; }
+.nyit-sav > .nyit-be{ padding:0 1.5rem 1.5rem; border-top:1px solid var(--vonal); margin:0 0 0; }
+.nyit-sav .idorács{ margin-top:1.4rem; }
+@media(max-width:820px){
+  .nyit-sav > summary{ grid-template-columns:1fr; padding:1.15rem 1.15rem 1.2rem; }
+  .nyit-sav .nyit-gomb{ width:100%; white-space:normal; }
+  .nyit-sav > .nyit-be{ padding:0 1rem 1.2rem; }
+}
+
+/* A három pozíciókártya feje egyforma magas (JS állítja be), így a gombok
+   egy vonalban állnak, és a lenyitás csak a saját kártyáját növeli. */
+.poz-racs{ align-items:start; }
+
+/* ── 24. GYIK: témakörökbe rendezve, egy hasábban, egyforma sorokkal ── */
+.gyik-lista{ gap:1.6rem; }
+.gy-csoport{ display:grid; gap:.5rem; }
+.gy-csoport-cim{
+  margin:0 0 .25rem; padding-left:.15rem;
+  font-family:var(--fd); font-size:.74rem; font-weight:800; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--menta-t);
+}
+.gy > summary{ min-height:56px; padding:.7rem 1.15rem; line-height:1.35; }
+.gy-be{ padding:0 1.15rem 1.1rem; }
+.gy-be p:last-child{ margin-bottom:0; }
+
+/* bal hasáb: a cím alatt egy segítő kártya, hogy a hasáb ne maradjon üres */
+.gy-segit{
+  margin-top:1.6rem; padding:1.3rem 1.35rem 1.4rem;
+  background:var(--feher); border:1px solid var(--vonal); border-radius:var(--r-m);
+  box-shadow:var(--sh-1);
+}
+.gy-segit-cim{ margin:0 0 .3rem; font-family:var(--fd); font-size:1.02rem; font-weight:700; color:var(--navy); }
+.gy-segit > p{ margin:0 0 1rem; font-size:.92rem; line-height:1.6; color:var(--ink-2); }
+.gy-segit .btn{ width:100%; }
+.gy-segit-link{
+  display:block; margin-top:.75rem; text-align:center; font-size:.9rem;
+  color:var(--menta-t); text-decoration:underline; text-underline-offset:3px;
+}
+@media(min-width:1000px){
+  #gyik > .wrap{ grid-template-rows:auto auto 1fr; }
+  #gyik .gy-segit{ grid-column:1; grid-row:3; align-self:start; position:sticky; top:96px; }
+  #gyik .gyik-lista{ grid-row:1 / 4; }
+}
+@media(max-width:999px){
+  .gy-segit{ margin-top:1.8rem; }
+}
+
+/* ── 25. Nyitórész: a két hasáb egyforma magas, a kártya a szöveghez igazodik ── */
+@media(min-width:981px){
+  .hero-racs{ align-items:stretch; }
+  .hero-szoveg{ display:flex; flex-direction:column; justify-content:center; }
+  .hero-szoveg > .eyebrow{ align-self:flex-start; }
+  .hero-kartya{ display:flex; flex-direction:column; }
+  .hero-kartya .hk-lista{ flex:1; align-content:start; gap:1rem; }
+  .hero-kartya .hk-gomb{ margin-top:auto; }
+}
+
+/* ── 26. Videókártyák a szöveghasáb magasságához igazítva (desktop) ──
+   A bevezető és a "Mit csinálnál" blokkban a videó nem a saját 9:16
+   arányát tartja, hanem a mellette lévő tartalom magasságát veszi fel.
+   A borítókép középre igazítva, széleit vágva tölti ki a keretet. */
+@media(min-width:1000px){
+  #roviden > .wrap{ grid-template-columns:284px minmax(0,1fr); gap:.4rem 2.5rem; }
+  #roviden .rov-video{ align-self:stretch; display:grid; }
+  #roviden .rov-video .vk-keret{ aspect-ratio:auto; height:100%; min-height:0; }
+  .munka-racs{ align-items:stretch; }
+  .munka-video{ position:static; display:grid; }
+  .munka-video .vk-keret{ aspect-ratio:auto; height:100%; min-height:0; }
+  .munka-bal{ display:flex; flex-direction:column; }
+  .munka-bal .partnersav{ margin-top:auto; }
+}
+
+/* ── 27. POZÍCIÓ ABLAK: kéthasábos részletek, a kártya mérete nem változik ── */
+.pab-doboz{ width:min(980px, calc(100% - 32px)); padding:0; overflow:hidden; display:flex; flex-direction:column; }
+.pab-doboz .fablak-x{ z-index:2; background:var(--feher); box-shadow:var(--sh-1); }
+.pab-tartalom{ display:grid; grid-template-columns:minmax(0,1.65fr) minmax(280px,.95fr); min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; max-height:calc(100dvh - 48px); }
+.pab-bal{ padding:2.1rem 2.2rem 2rem; min-width:0; }
+.pab-eyebrow{
+  margin:0 0 .45rem; font-family:var(--fd); font-size:.74rem; font-weight:800;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--menta-t);
+}
+.pab-cim{ margin:0 0 1.3rem; font-size:clamp(1.5rem,1.2rem + 1vw,2rem); line-height:1.1; color:var(--navy); letter-spacing:-.02em; }
+.pab-h3{
+  display:flex; align-items:center; gap:.5rem; margin:0 0 .6rem;
+  font-family:var(--fd); font-size:1rem; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:.02em;
+}
+.pab-h3 .i{ color:var(--menta-t); width:1.15em; height:1.15em; }
+.pab-h3-vonal{ padding-left:.7rem; border-left:3px solid var(--menta); }
+.pab-leiras{ margin:0 0 1.5rem; padding-bottom:1.4rem; border-bottom:1px solid var(--vonal); font-size:.96rem; line-height:1.72; color:var(--ink-2); }
+.pab-oszlopok{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem 2rem; }
+.pab-lista{ list-style:none; margin:0; padding:0; display:grid; gap:.55rem; }
+.pab-lista li{ display:grid; grid-template-columns:auto 1fr; gap:.55rem; align-items:start; font-size:.92rem; line-height:1.55; color:var(--ink-2); }
+.pab-lista .i{ width:1.15em; height:1.15em; margin-top:.2em; color:var(--menta-t); }
+.pab-adunk .i{ color:var(--pink-t); }
+.pab-kiemel{ font-weight:700; color:var(--navy); }
+.pab-kiemel::after{ content:''; display:block; width:2.2rem; height:2px; margin-top:.25rem; background:var(--pink); border-radius:2px; }
+.pab-het{ margin:1.5rem 0 0; padding:.9rem 1.1rem; background:var(--torto); border-radius:var(--r-m); font-size:.92rem; line-height:1.6; color:var(--ink-2); }
+.pab-het b{ color:var(--navy); }
+.pab-jobb{
+  background:var(--navy-m, #12273D); color:#fff; padding:2.6rem 1.8rem 1.8rem;
+  display:flex; flex-direction:column;
+  background-image:radial-gradient(130% 130% at 82% 14%, #24486B 0%, #12273D 68%);
+}
+.pab-jobb-cim{ margin:0 0 1rem; font-family:var(--fd); font-size:.74rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.62); }
+.pab-tenyek{ margin:0 0 1.6rem; display:grid; gap:.8rem; }
+.pab-tenyek div{ padding-bottom:.8rem; border-bottom:1px solid rgba(255,255,255,.12); }
+.pab-tenyek dt{ font-size:.76rem; color:rgba(255,255,255,.62); margin-bottom:.15rem; }
+.pab-tenyek dd{ margin:0; font-family:var(--fd); font-weight:700; font-size:1rem; color:#fff; line-height:1.35; }
+.pab-cta{ width:100%; margin-top:auto; }
+.pab-zar{
+  margin-top:.8rem; background:transparent; border:0; cursor:pointer; padding:.5rem;
+  font-family:var(--fd); font-size:.86rem; font-weight:700; color:rgba(255,255,255,.72);
+  text-decoration:underline; text-underline-offset:3px;
+}
+.pab-zar:hover{ color:#fff; }
+.ell{
+  display:inline-block; padding:.05rem .4rem; border-radius:4px; margin-left:.2rem;
+  background:#FDE68A; color:#7C4A03; font-family:var(--fd); font-size:.66rem; font-weight:800; letter-spacing:.06em;
+}
+@media(max-width:820px){
+  .pab-tartalom{ grid-template-columns:1fr; }
+  .pab-bal{ padding:1.6rem 1.15rem 1.4rem; }
+  .pab-oszlopok{ grid-template-columns:1fr; gap:1.3rem; }
+  .pab-jobb{ padding:1.5rem 1.15rem 1.4rem; }
+  .pab-cim{ padding-right:2.4rem; }
+  .pab-eyebrow{ padding-right:3rem; }
+}
+
+/* a két kártyagomb közti levegő */
+.poz-reszlet-gomb{ margin-top:.65rem; width:100%; }
+
+/* ── 28. Pozíciókártya ikonjelvény a szintcímke helyén ── */
+.poz-ikon{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:52px; height:52px; border-radius:14px; margin-bottom:.35rem;
+  background:linear-gradient(135deg, var(--menta) 0%, #a9e2db 100%);
+  box-shadow:0 6px 16px rgba(125,200,192,.35); color:var(--navy);
+}
+.poz-kartya .poz-ikon .i{ width:28px !important; height:28px !important; }
+
+/* ── 29. GYIK kompakt: kategóriakártyák, a válasz felugró ablakban ── */
+.gyik-lista{ gap:.9rem; }
+@media(min-width:900px){ .gyik-lista{ grid-template-columns:1fr 1fr; align-items:start; gap:.9rem; } }
+.gy-csoport{
+  gap:0; padding:1rem 1.1rem 1.1rem; background:var(--feher);
+  border:1px solid var(--vonal); border-radius:var(--r-m); box-shadow:var(--sh-1);
+}
+.gy-csoport-cim{ margin:0 0 .5rem; padding-left:0; }
+.gy-kerdesek{ list-style:none; margin:0; padding:0; display:grid; }
+.gy-kerdesek li + li{ border-top:1px solid var(--vonal); }
+.gy-k{
+  display:flex; align-items:center; gap:.6rem; width:100%; min-height:42px;
+  padding:.5rem .1rem; background:transparent; border:0; cursor:pointer; text-align:left;
+  font-family:var(--fd); font-size:.92rem; font-weight:600; color:var(--navy); line-height:1.35;
+}
+.gy-k .i{ margin-left:auto; flex:0 0 auto; width:1em; height:1em; color:var(--menta-t); transition:transform .2s; }
+.gy-k:hover{ color:var(--menta-t); }
+.gy-k:hover .i{ transform:translateX(3px); }
+@media(min-width:1000px){
+  #gyik .gy-segit{ position:static; }
+}
+
+/* ── 30. "Amit mi adunk" tömör sáv a Kinek való blokkban ── */
+.adunk-sav{
+  list-style:none; margin:1.4rem 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem;
+}
+.adunk-sav li{
+  display:flex; align-items:flex-start; gap:.6rem; padding:.8rem .95rem;
+  background:var(--torto); border:1px solid var(--vonal); border-radius:var(--r-m);
+  font-size:.86rem; line-height:1.45; color:var(--ink-2);
+}
+.adunk-sav .i{ flex:0 0 auto; width:1.2em; height:1.2em; margin-top:.1rem; color:var(--menta-t); }
+.adunk-sav b{ display:block; color:var(--navy); font-weight:700; }
+@media(max-width:940px){ .adunk-sav{ grid-template-columns:1fr 1fr; } }
+@media(max-width:560px){ .adunk-sav{ grid-template-columns:1fr; } }
+.dontes-zaro{ margin-top:1.4rem; }
+
 </style>
-<meta name="eaglz-build" content="2026-09-18-0914">
+<meta name="eaglz-build" content="2026-09-24-1029">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="i-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol><symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></symbol><symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="16" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11h7M8.5 15h4.5"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.2"/><path d="M3.5 20v-1.3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5V20"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.9M17.5 13.9a5 5 0 0 1 3 4.6V20"/></symbol><symbol id="i-transfer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h13"/><path d="m14 5.5 3 3-3 3"/><path d="M20 15.5H7"/><path d="m10 12.5-3 3 3 3"/></symbol><symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2a3 3 0 0 0-5.6 1.3A3 3 0 0 0 4.6 12a3 3 0 0 0 2 4.6A3 3 0 0 0 12 18.8Z"/><path d="M12 5.2a3 3 0 0 1 5.6 1.3A3 3 0 0 1 19.4 12a3 3 0 0 1-2 4.6A3 3 0 0 1 12 18.8Z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10"/><path d="M12 7 4.5 9l2.6 5.5L9.7 9"/><path d="m12 7 7.5 2-2.6 5.5L14.3 9"/></symbol><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M9.5 20v-6h5v6"/></symbol><symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19h17"/><path d="M6.5 15a5.5 5.5 0 0 1 11 0"/><path d="M12 3v3M4.8 6.8l1.7 1.7M19.2 6.8l-1.7 1.7"/></symbol><symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M10 8.6h.1M14 8.6h.1"/><path d="M10.4 11.4a2.4 2.4 0 0 0 3.2 0"/><path d="M7.5 14.5 6 20M16.5 14.5 18 20"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v6c0 4.2 2.9 7.2 7 8.5 4.1-1.3 7-4.3 7-8.5V6Z"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m7 15 3.5-4 3 2.5L19 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6.5 15h3"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5Z"/><path d="M6.5 10.8V16c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-5.2"/><path d="M21 8.8v5"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 19.5h18.4Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2v.1"/></symbol><symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></symbol><symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5 18.5 12 8 18.5Z"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 7.5h.1M12 7.5h.1M15.5 7.5h.1M8.5 11.5h.1M12 11.5h.1M15.5 11.5h.1"/><path d="M10 21v-4.5h4V21"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.4A4.1 4.1 0 0 1 12 7.8a4.1 4.1 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5.5a4 4 0 0 1-8 0Z"/><path d="M8 5.5H5.2a3 3 0 0 0 2.9 4M16 5.5h2.8a3 3 0 0 1-2.9 4"/><path d="M12 13.5V17M8.5 20h7"/></symbol><symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.2 21 5.5l-3.2 8.8a2 2 0 0 1-1.2 1.2L10 17.8l-2.2 3.4-1.5-4.2-4.2-1.5Z"/><path d="m10 17.8-.4-3.6 11.4-8.7"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol><symbol id="i-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="11" rx="2"/><path d="M7.5 8h9M7.5 11h5"/><path d="m9.5 15 .5 5 2-1.3 2 1.3.5-5"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 15.5 4 14l3-4.5C9.5 5.8 13.5 3.5 19 3.5c0 5.5-2.3 9.5-6 12l-4.5 3-1.5-5.5Z"/><circle cx="14.5" cy="9" r="1.8"/><path d="M8.5 16.5 5 20"/></symbol><symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol></svg>
 
 <a class="skip" href="#fo">Ugrás a tartalomhoz</a>
 
@@ -1778,8 +2081,8 @@ section[id],[id]{ scroll-margin-top:84px; }
   <nav class="wrap kmenu-in" aria-label="Menü">
     <a href="#munka">A munka</a>
     <a href="#irodavideo">Videók az irodából</a>
+    <a href="#poziciok">Nyitott pozíciók</a>
     <a href="#idod">Heti menetrendek</a>
-    <a href="#csere">Amit adunk, amit hozzáteszel</a>
     <a href="#bevetel">A bevétel és a szerződés</a>
     <a href="#dontes">Kinek való, kinek nem</a>
     <a href="#emberek">Az emberek</a>
@@ -1808,15 +2111,8 @@ section[id],[id]{ scroll-margin-top:84px; }
         feladatokra számíthatsz, és hová juthatsz hosszabb távon.</p>
 
       <div class="hero-btns">
-        <button type="button" class="btn btn-fo" data-book data-ev="cta_hero">Lefoglalom az interjú időpontomat</button>
-        <a class="btn btn-vonal" href="#munka" data-ev="cta_reszletek">Előbb megnézem a részleteket</a>
+        <a class="btn btn-pink" href="#poziciok" data-ev="cta_hero_poz">Megnézem a nyitott pozíciókat</a>
       </div>
-
-      <ul class="hero-jelek">
-        <li><a href="#munka"><b>A munka</b><span>Mit csinálsz egy ügyféllel</span></a></li>
-        <li><a href="#bevetel"><b>A bevétel</b><span>Hogyan keletkezik</span></a></li>
-        <li><a href="#interju"><b>Az interjú</b><span>Két kör, és mi jön utána</span></a></li>
-      </ul>
     </div>
 
     <aside class="hero-kartya" aria-label="Akikkel az interjún találkozhatsz">
@@ -1829,22 +2125,22 @@ section[id],[id]{ scroll-margin-top:84px; }
         <li>
           <picture><source srcset="/assets/adv-gentischer-round.webp" type="image/webp"><img src="/assets/adv-gentischer-round.png" width="108" height="108" alt="" decoding="async"></picture>
           <span class="hk-nev">Gentischer Richárd</span>
-          <span class="hk-poz">Területi igazgató</span>
+          <span class="hk-poz">Igazgató</span>
         </li>
         <li>
           <picture><source srcset="/assets/adv-angelcsev.webp" type="image/webp"><img src="/assets/adv-angelcsev.png" width="108" height="108" alt="" decoding="async"></picture>
           <span class="hk-nev">Angelcsev Zoé</span>
-          <span class="hk-poz">Fiókvezető</span>
+          <span class="hk-poz">Branch manager</span>
         </li>
         <li>
           <picture><source srcset="/assets/adv-steinmetz.webp" type="image/webp"><img src="/assets/adv-steinmetz.png" width="108" height="108" alt="" decoding="async"></picture>
           <span class="hk-nev">Steinmetz Edvárd</span>
-          <span class="hk-poz">Fiókvezető</span>
+          <span class="hk-poz">Branch manager</span>
         </li>
         <li>
           <picture><source srcset="/assets/adv-hollo.webp" type="image/webp"><img src="/assets/adv-hollo.png" width="108" height="108" alt="" decoding="async"></picture>
           <span class="hk-nev">Holló Bernadett</span>
-          <span class="hk-poz">Fiókvezető</span>
+          <span class="hk-poz">Branch manager</span>
         </li>
       </ul>
 
@@ -1952,8 +2248,6 @@ section[id],[id]{ scroll-margin-top:84px; }
         <li><img src="/assets/logos/alfa.png" alt="Alfa" loading="lazy" decoding="async"></li>
         <li><img src="/assets/logos/mapfre.png" alt="Mapfre" loading="lazy" decoding="async"></li>
       </ul>
-      <p class="partnersav-jegy">Nem egy szolgáltató termékeit visszük: a felmérés után az
-        ügyfél helyzetéhez keressük a megoldást a teljes kínálatból.</p>
     </div>
       </div>
 
@@ -1975,6 +2269,265 @@ section[id],[id]{ scroll-margin-top:84px; }
       <span class="atvivo-tx">A főoldalon megnézem a szakmai összefoglalókat</span>
       <svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
     </a>
+  </div>
+</section>
+
+<!-- ══ 3/c. NYITOTT POZÍCIÓK · három szint, lenyitható részletekkel,
+     alatta a diákoknak szóló összehasonlítás ═══════════════════════ -->
+<section class="sec sec-feher" id="poziciok">
+  <div class="wrap">
+    <h2 class="sec-cim">Nyitott pozíciók</h2>
+    <p class="sec-alcim">Nézd át a nyitott pozíciókat és foglald le az interjú időpontod!</p>
+
+    <div class="poz-racs">
+
+      <article class="poz-kartya" data-poz="gyakornok">
+        <span class="poz-ikon" aria-hidden="true"><svg class="i"><use href="#i-rocket"></use></svg></span>
+        <h3 class="poz-cim">Gyakornok</h3>
+        <p class="poz-sav"><span class="poz-osszeg">150-600 e Ft/hó*</span>
+          <span class="poz-savjegy">az első évben, teljesítménytől függően, átlagos sáv</span></p>
+        <p class="poz-fix"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+          200 000 Ft fix az első hónapban</p>
+        <p class="poz-kinek">Egyetem vagy főállás mellett indulóknak, pénzügyi múlt nélkül.
+          Itt tanulod meg a szakmát, mentorral.</p>
+        <button type="button" class="btn btn-fo poz-gomb" data-book data-ev="cta_poz_gyakornok">Érdekel a pozíció</button>
+        <button type="button" class="btn btn-pink poz-reszlet-gomb" data-poz-nyit="poz-gyakornok" data-ev="poz_reszlet_gyakornok">Részletek</button>
+      </article>
+
+      <article class="poz-kartya" data-poz="tanacsado">
+        <span class="poz-ikon" aria-hidden="true"><svg class="i"><use href="#i-target"></use></svg></span>
+        <h3 class="poz-cim">Tanácsadó / Specialista</h3>
+        <p class="poz-sav"><span class="poz-osszeg">600 e-1,2 M Ft/hó*</span>
+          <span class="poz-savjegy">főállásban, teljesítménytől függően, átlagos sáv</span></p>
+        <p class="poz-fix"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+          Főállás, meglévő hatósági vizsgával</p>
+        <p class="poz-kinek">Hatósági vizsgával és banki vagy biztosítási tapasztalattal
+          érkezőknek, akik önállóan visznek ügyfélprojekteket. Választhatsz specializációt:
+          vagyon, banki üzletág, biztosítás.</p>
+        <button type="button" class="btn btn-fo poz-gomb" data-book data-ev="cta_poz_tanacsado">Érdekel a pozíció</button>
+        <button type="button" class="btn btn-pink poz-reszlet-gomb" data-poz-nyit="poz-tanacsado" data-ev="poz_reszlet_tanacsado">Részletek</button>
+      </article>
+
+      <article class="poz-kartya" data-poz="branch">
+        <span class="poz-ikon" aria-hidden="true"><svg class="i"><use href="#i-trophy"></use></svg></span>
+        <h3 class="poz-cim">Branch manager</h3>
+        <p class="poz-sav"><span class="poz-osszeg">1,5-3 M Ft/hó*</span>
+          <span class="poz-savjegy">3-8 fős csapattal, teljesítménytől függően, átlagos sáv</span></p>
+        <p class="poz-fix"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg>
+          Saját csapat, saját fiók</p>
+        <p class="poz-kinek">Annak, aki bizonyított tanácsadóként, és vállalkozói autonómiára vágyik,
+          vezetői perspektívákkal.</p>
+        <button type="button" class="btn btn-fo poz-gomb" data-book data-ev="cta_poz_branch">Érdekel a pozíció</button>
+        <button type="button" class="btn btn-pink poz-reszlet-gomb" data-poz-nyit="poz-branch" data-ev="poz_reszlet_branch">Részletek</button>
+      </article>
+
+    </div>
+
+
+<!-- A három pozíció részletei: a "Részletek" gomb ebből tölti a felugró ablakot.
+     A kártya mérete nem változik, a hosszú tartalom az ablakban van. -->
+<div class="poz-tar" hidden>
+  <article id="poz-gyakornok" data-cim="Gyakornok">
+    <div class="pab-bal">
+      <p class="pab-eyebrow">Ideális kezdet egyetem vagy főállás mellett</p>
+      <h2 class="pab-cim">Gyakornok</h2>
+      <h3 class="pab-h3"><svg class="i" aria-hidden="true"><use href="#i-briefcase"></use></svg> Munkaköri leírás</h3>
+      <p class="pab-leiras">Az új kollégákat a nulláról tanítjuk be. Az első 1-2 hónapban elemző gyakornokként, ösztöndíjas rendszerünkben tanulod a szakma alapjait: megtanulod megkülönböztetni a banki és biztosítási szerződéseket, és a közvetlen szakmai vezetőd mellett alap szinten kiszolgálod az ügyfeleket. Közben a saját akadémiánkon elvégzed a hatósági képzést és a vizsgát.</p>
+      <div class="pab-oszlopok">
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Szükségünk van rá</h3>
+          <ul class="pab-lista pab-kerunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Kíváncsiság és tanulási hajlandóság, igényes megjelenés</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Rendszeresség: hetente előre tervezhető idő a munkára</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Nyitottság az emberek felé: kérdezel, figyelsz, megtanulsz jól kommunikálni</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Hétköznapi szintű számítógépes ismeretek</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Minimum érettségi</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Büntetlen előélet <span class="ell">ELLENŐRIZENDŐ</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Kínálatunk</h3>
+          <ul class="pab-lista pab-adunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Közvetlen szakmai mentor</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>200 000 Ft fix az első hónapban</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>60 000 Ft ösztöndíj a hatósági képzéshez</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Folyamatos bónuszok, időszakos Apple eszköztámogatás</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Rugalmasan alakítható időbeosztás</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Főállású pozíciók hosszú távra</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span class="pab-kiemel">Szerződésben garantált előléptetési feltételek</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="pab-het"><b>Egy tipikus hét:</b> kb. 12-25 óra, 5-7 ügyfél, 1-2 irodai nap vagy délután, a többi akár otthonról.</p>
+    </div>
+    <aside class="pab-jobb">
+      <p class="pab-jobb-cim">Röviden</p>
+      <dl class="pab-tenyek">
+          <div><dt>Bevételi sáv</dt><dd>150-600 e Ft/hó*</dd></div>
+          <div><dt>Első hónap</dt><dd>200 000 Ft fix</dd></div>
+          <div><dt>Heti idő</dt><dd>kb. 12-25 óra</dd></div>
+          <div><dt>Képzés</dt><dd>hatósági képzés és vizsga, 60 000 Ft ösztöndíjjal</dd></div>
+      </dl>
+      <button type="button" class="btn btn-fo pab-cta" data-book data-ev="cta_poz_gyakornok_ablak">Érdekel a pozíció</button>
+      <button type="button" class="pab-zar" data-zar>Részletek elrejtése</button>
+    </aside>
+  </article>
+  <article id="poz-tanacsado" data-cim="Tanácsadó / Specialista">
+    <div class="pab-bal">
+      <p class="pab-eyebrow">Tapasztalt szakembereknek, főállásban</p>
+      <h2 class="pab-cim">Tanácsadó / Specialista</h2>
+      <h3 class="pab-h3"><svg class="i" aria-hidden="true"><use href="#i-briefcase"></use></svg> Munkaköri leírás</h3>
+      <p class="pab-leiras">Magánszemélyeknek és vállalkozásoknak segítesz az elérhető ajánlatok kiválogatásában, ügyintézésében. A munka
+        ügyféltalálkozókból, elemzésből és egyedi megoldások felépítéséből áll: új ügyfeleket hozol be, a
+        meglévőket pedig folyamatosan szervizeled, ha változik az élethelyzetük vagy a piac. Választasz egy
+        specializációs irányt, amelyik szakterületen otthon érzed magad (vagyon, banki üzletág vagy
+        biztosítás), és a teljes partneri kínálatból választod ki, mi illik az ügyfél helyzetéhez.</p>
+      <div class="pab-oszlopok">
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Szükségünk van rá</h3>
+          <ul class="pab-lista pab-kerunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Minimum érettségi, előny a befejezett felsőfokú tanulmány</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Meglévő hatósági vizsga</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Legalább 6 hónap releváns tapasztalat banki vagy biztosítási szektorból</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Konzisztens munka hétről hétre</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Kommunikatív, igényes megjelenés, megbízhatóság és felelősségvállalás a saját eredményeidért</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Kínálatunk</h3>
+          <ul class="pab-lista pab-adunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Szakértői vagy vezetői fejlődési út, a te döntésed szerint</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Szerződött partnerhálózat, stabil jogi és technológiai háttér</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Folyamatos szakmai képzés és oktatási rendszer, nemzetközi képzések, utak</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Folyamatos bónuszok, időszakos Apple eszköztámogatás</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span><span class="pab-kiemel">Szerződésben garantált előléptetési feltételek</span></span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="pab-het"><b>Egy tipikus hét:</b> kb. 35-40 óra, 8-12 ügyfél, napi irodai jelenlét, vegyes
+        személyes és online ügyfélnaptár.</p>
+    </div>
+    <aside class="pab-jobb">
+      <p class="pab-jobb-cim">Röviden</p>
+      <dl class="pab-tenyek">
+          <div><dt>Bevételi sáv</dt><dd>600 e-1,2 M Ft/hó*</dd></div>
+          <div><dt>Forma</dt><dd>főállás</dd></div>
+          <div><dt>Heti idő</dt><dd>kb. 35-40 óra</dd></div>
+          <div><dt>Belépés</dt><dd>érettségi, hatósági vizsga, 6 hónap tapasztalat</dd></div>
+          <div><dt>Specializáció</dt><dd>vagyon, banki üzletág, biztosítás</dd></div>
+      </dl>
+      <button type="button" class="btn btn-fo pab-cta" data-book data-ev="cta_poz_tanacsado_ablak">Érdekel a pozíció</button>
+      <button type="button" class="pab-zar" data-zar>Részletek elrejtése</button>
+    </aside>
+  </article>
+  <article id="poz-branch" data-cim="Branch manager">
+    <div class="pab-bal">
+      <p class="pab-eyebrow">Bizonyított tanácsadóknak, akik csapatot építenének</p>
+      <h2 class="pab-cim">Branch manager</h2>
+      <h3 class="pab-h3"><svg class="i" aria-hidden="true"><use href="#i-users"></use></svg> Munkaköri leírás</h3>
+      <p class="pab-leiras">Ügyfelek mellett a saját csapatod életét is irányítod. Új munkatársakat választasz ki,
+        mentorálsz és tanítasz be, átadod a szaktudásodat és a tapasztalatodat. Te felelsz a csapatod üzleti
+        céljaiért és fejlődéséért, részt veszel a rendezvények szervezésében és az iroda fejlesztésében.
+        Komolyabb felelősség skálázható bevételi portfolióval.</p>
+      <div class="pab-oszlopok">
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Szükségünk van rá</h3>
+          <ul class="pab-lista pab-kerunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Bizonyított tanácsadói eredmény, jellemzően 2-4 év után</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Meglévő hatósági vizsga, minimum érettségi, előny a felsőfokú végzettség</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Függetlenség, proaktivitás és felelősségvállalás a csapatod eredményéért</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Jó szervező- és kommunikációs készség, szándék és képesség mások fejlesztésére</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg><span>Céltudatos, igényes megjelenés és önfejlesztési igény</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="pab-h3 pab-h3-vonal">Kínálatunk</h3>
+          <ul class="pab-lista pab-adunk">
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Skálázható bevétel: ahány kolléga, annyi megoldandó élethelyzet</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Igazgatói mentorálás a csapatépítés első lépéseitől</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Hazai és nemzetközi vezetői programok, képzések, utak</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Szerződött partnerhálózat, stabil jogi és technológiai háttér</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span>Folyamatos bónuszok, versenyek, céges utak</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-plus"></use></svg><span><span class="pab-kiemel">Szerződésben garantált előléptetési feltételek</span></span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="pab-het"><b>Egy tipikus hét:</b> saját ügyfélnaptár mellett csapatmegbeszélések, egyéni
+        mentorálás, felvételi beszélgetések és a fiók heti tervezése, napi irodai jelenléttel.</p>
+    </div>
+    <aside class="pab-jobb">
+      <p class="pab-jobb-cim">Röviden</p>
+      <dl class="pab-tenyek">
+          <div><dt>Bevételi sáv</dt><dd>1,5-3 M Ft/hó*</dd></div>
+          <div><dt>Csapat</dt><dd>3-8 fő, saját fiók</dd></div>
+          <div><dt>Forma</dt><dd>főállás</dd></div>
+          <div><dt>Belépés</dt><dd>bizonyított tanácsadói eredmény, hatósági vizsga</dd></div>
+          <div><dt>Fejlődés</dt><dd>hazai és nemzetközi vezetői programok</dd></div>
+      </dl>
+      <button type="button" class="btn btn-fo pab-cta" data-book data-ev="cta_poz_branch_ablak">Érdekel a pozíció</button>
+      <button type="button" class="pab-zar" data-zar>Részletek elrejtése</button>
+    </aside>
+  </article>
+</div>
+
+    <p class="jogi-jegy">*A feltüntetett bevételi sávok tájékoztató jellegűek és nem garantáltak.
+      Az elérhető eredmény a ráfordított időtől, a megszerzett tudástól, az ügyfélfolyamatok
+      számától és az egyéni teljesítménytől függ. A sávok a meglévő munkatársaink havi
+      átlagát tükrözik.</p>
+
+    <details class="nyit bv-diak bv-diak-vilagos" data-ev="diak_nyitas">
+      <summary>Diákként érdeklődöm: főként miben más ez, mint egy klasszikus diákmunka?</summary>
+      <div class="nyit-be">
+        <div class="bv-tabla-keret">
+          <table class="bv-tabla">
+            <caption class="vh">Klasszikus diákmunka és a nálunk végzett munka összehasonlítása</caption>
+            <thead>
+              <tr><td></td><th scope="col">Klasszikus diákmunka</th><th scope="col">Nálunk</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Kereset</th>
+                <td data-fej="Klasszikus diákmunka">Kb. 2 000-2 500 Ft/óra, fix összeg</td>
+                <td data-fej="Nálunk">150-600 000 Ft/hó teljesítmény alapon: nem az óra, hanem az eredmény számít</td>
+              </tr>
+              <tr>
+                <th scope="row">Készségek</th>
+                <td data-fej="Klasszikus diákmunka">Többnyire rutinfeladatok: kiszolgálás, bevételezés, raktár, műszakok</td>
+                <td data-fej="Nálunk">Valós szakmai tapasztalat: tárgyalástechnika, ügyfélkezelés, pénzügyi elemzés,
+                  önéletrajzba kerülő kompetenciák</td>
+              </tr>
+              <tr>
+                <th scope="row">Beosztás</th>
+                <td data-fej="Klasszikus diákmunka">Fix műszak, leadott beosztás szerint, a vizsgaidőszak sem kivétel</td>
+                <td data-fej="Nálunk">Saját időgazdálkodás: vizsgaidőszakban lazíthatsz, utána ráerősíthetsz</td>
+              </tr>
+              <tr>
+                <th scope="row">Hosszú táv</th>
+                <td data-fej="Klasszikus diákmunka">Alap referencia és pénz, diploma után rendszerint vége</td>
+                <td data-fej="Nálunk">Kiépített kapcsolatrendszer, skálázható vezetői program, és a főállású opció
+                  a diploma után is megmarad</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="bv-alcim">Praktikus infók diákoknak</h4>
+        <ul class="bv-infok">
+          <li><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg>
+            <div><b>Rugalmas munkaidő</b>
+            Heti 15-20 óra a saját idősávodban, a vizsgaidőszak sem probléma.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-pin"></use></svg>
+            <div><b>Helyszín</b>
+            XI. kerület, Gellérthegy. Közel a BME, az ELTE, a Corvinus, a PPKE, a MATE és a KRE.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-sunrise"></use></svg>
+            <div><b>Nulláról indítunk</b>
+            Nem előírás a szakmai tapasztalat, a felkészítést tőlünk kapod meg.</div></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-certificate"></use></svg>
+            <div><b>Két finanszírozott képesítés</b>
+            A betanulás végén kapod meg, piacképes, önéletrajzba kerülő bizonyítványok.</div></li>
+        </ul>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -2000,12 +2553,18 @@ section[id],[id]{ scroll-margin-top:84px; }
 </section>
 
 <!-- ══ 4. AZ IDŐD ═══════════════════════════════════════════════════ -->
-<section class="sec sec-feher" id="idod">
+<section class="sec sec-vilagos sec-sav" id="idod">
   <div class="wrap">
-    <h2 class="sec-cim">Nézzünk meg közelebbről néhány hétköznapi menetrendet</h2>
-    <p class="sec-alcim">Törekszünk arra, hogy minden munkatársunk megtalálja a számításait a heti
-      menetrendjével, amit kevés kompromisszummal saját maga alakíthat.</p>
-
+    <details class="nyit nyit-nagy nyit-sav" id="idod-nyit" data-ev="idod_nyitas">
+      <summary>
+        <span class="nyit-sav-szoveg">
+          <span class="nyit-nagy-cim">Nézzünk meg közelebbről néhány hétköznapi menetrendet</span>
+          <span class="nyit-nagy-al">Egyetem mellett, főállás mellett, főállásban: heti órák,
+            ügyfélszám, egy tipikus nap.</span>
+        </span>
+        <span class="btn btn-pink nyit-gomb">Megnézem a menetrendeket</span>
+      </summary>
+      <div class="nyit-be">
     <div class="idorács">
 
       <article class="ido-kartya">
@@ -2077,62 +2636,11 @@ section[id],[id]{ scroll-margin-top:84px; }
     <p class="jogi-jegy">A feltüntetett bevételi sávok tájékoztató jellegűek és nem garantáltak.
       Az elérhető eredmény a ráfordított időtől, a megszerzett tudástól, az ügyfélfolyamatok
       számától és az egyéni teljesítménytől függ.</p>
+      </div>
+    </details>
   </div>
 </section>
 
-<!-- ══ 4/b. FOGLALÁSI PONT · az életbeosztás után ═══════════════════ -->
-<section class="ctasav ctasav-vilagos">
-  <div class="wrap">
-    <div class="cts-doboz">
-      <div class="cts-szoveg">
-        <p class="cts-cim">El tudod képzelni a saját hetedben?</p>
-        <p class="cts-alcim">Az első beszélgetésen együtt megnézzük, hogyan férhetne bele a
-          munka a te időbeosztásodba.</p>
-      </div>
-      <button type="button" class="btn btn-fo" data-book data-ev="cta_idod">Megnézem a szabad interjúidőpontokat</button>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 5. AMIT ADUNK, AMIT HOZZÁTESZEL ═════════════════════════════ -->
-<section class="sec sec-feher" id="csere">
-  <div class="wrap">
-    <h2 class="sec-cim">Mit adunk, és mit várunk új kollégáinktól?</h2>
-    <p class="sec-alcim">Nem kell kész pénzügyi szakértőként érkezned. Ha kíváncsi vagy, szeretsz
-      emberekkel dolgozni és hajlandó vagy fejlődni, minden szakmai segítséget megkapsz az
-      induláshoz.</p>
-
-    <div class="ketoszlop">
-      <div class="oszlop oszlop-ok">
-        <h3><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Amit mi adunk</h3>
-        <ul class="oszlop-parok">
-          <li><b>Mentor az első lépéstől</b>
-            Az első ügyfélhelyzetekben sem maradsz egyedül.</li>
-          <li><b>Érthető, gyakorlati betanulás</b>
-            Lépésről lépésre tanulod meg, hogyan működik a szakma.</li>
-          <li><b>Rugalmasan alakítható időbeosztás</b>
-            Egyetem vagy másik munka mellett is elkezdheted.</li>
-          <li><b>Valódi fejlődési lehetőség</b>
-            Haladhatsz szakértői vagy később vezetői irányba.</li>
-        </ul>
-      </div>
-
-      <div class="oszlop oszlop-te">
-        <h3><svg class="i" aria-hidden="true"><use href="#i-star"></use></svg> Amit te teszel hozzá</h3>
-        <ul class="oszlop-parok">
-          <li><b>Kíváncsiság és tanulási kedv</b>
-            Nem kell mindent tudnod, de akarnod kell fejlődni.</li>
-          <li><b>Rendszeresség</b>
-            Hetente előre tervezhető időt szánsz a munkára.</li>
-          <li><b>Nyitottság az emberek felé</b>
-            Kérdezel, figyelsz és megtanulsz jól kommunikálni.</li>
-          <li><b>Felelősség a saját eredményeidért</b>
-            A bevételed a fejlődéseddel és a teljesítményeddel együtt alakul.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══ 6. BEVÉTEL ÉS SZERZŐDÉS ══════════════════════════════════════
      Sorrend: elobb a mechanizmus, utana az atlathatosagi keret, csak
@@ -2140,32 +2648,12 @@ section[id],[id]{ scroll-margin-top:84px; }
      nem egy kiragadott osszeget lat. ═══════════════════════════════ -->
 <section class="sec sec-kozep" id="bevetel">
   <div class="wrap">
-    <h2 class="sec-cim">Hogyan és mennyit keresel?</h2>
-    <p class="sec-alcim">Teljesítményarányos fizetést alkalmazunk, más néven sikerdíjat. Előbb a
-      mechanizmust mutatjuk meg, utána a konkrét sávokat.</p>
-
-    <div class="bev-mechanizmus">
-      <div class="bev-lep">
-        <h3>Honnan jön a bevétel?</h3>
-        <p>A hazai és európai szabályozás szerint a tanácsadó vagy közvetítő díjazása a banki és
-          biztosítási termék árazásába van beépítve. Az ügyfél a tanácsadásért külön nem fizet,
-          a tanácsadó sikerdíjat kap.</p>
-      </div>
-      <div class="bev-lep">
-        <h3>Miért mindegy, melyik terméket ajánlod?</h3>
-        <p>Ugyanazt a díjazást kapjuk minden szolgáltatótól, ezért nincs pénzügyi érdek egyik
-          termék mellett sem, a sikerdíj mértékét pedig jogszabály korlátozza.
-          <!-- ELLENŐRIZENDŐ TARTALOM: a "minden szolgáltatótól ugyanaz" állítás jogi és üzleti
-               megerősítést igényel. Forrás és hatály megadása szükséges. -->
-        </p>
-      </div>
-      <div class="bev-lep">
-        <h3>Mikor keletkezik bevételed?</h3>
-        <p>Akkor, ha az általad kísért ügyfélfolyamat sikerrel zárul. Nincs garantált havi bér
-          és nincs órabér, helyette egy felfelé nyitott karrierstruktúrát kapsz, ami azoknak
-          igazán előnyös, akik alapvetően szeretnek dolgozni.</p>
-      </div>
-    </div>
+    <details class="nyit nyit-nagy nyit-sotet" id="bevetel-nyit">
+      <summary>
+        <span class="nyit-nagy-cim">Diákévek után főállású ajánlataink</span>
+        <span class="nyit-nagy-al">Az 1-2 év utáni főállású perspektívák.</span>
+      </summary>
+      <div class="nyit-be">
 
     <!-- atlathatosagi keret: ez mondja ki, hogy miert savok szerepelnek -->
     <div class="bv-jegyzet">
@@ -2180,51 +2668,8 @@ section[id],[id]{ scroll-margin-top:84px; }
       </div>
     </div>
 
-    <h3 class="bv-cim">Mire számíthatsz az első két évben</h3>
-
-    <ul class="bv-racs">
-      <li class="bv-kartya bv-elso">
-        <span class="bv-lab">1. hónap, mindenkinek</span>
-        <span class="bv-ert">200 000 Ft <em>fix</em></span>
-        <p>Egységesen ez jár a betanulási időszak alatt, miközben a mentoroddal már éles
-          helyzetekben dolgoztok. Ezzel párhuzamosan a teljesítményarányos formából is
-          részesülsz.
-          <!-- ELLENŐRIZENDŐ TARTALOM: a 200 000 Ft jogcime (betanulasi juttatas, osztondij,
-               eloleg?), brutto vagy netto, es a kifizetes idopontja megadasra var. -->
-        </p>
-      </li>
-      <li class="bv-kartya">
-        <span class="bv-lab">Diák vagy másodállás, első év</span>
-        <span class="bv-ert">150-600 <em>e Ft/hó</em></span>
-        <span class="penzjegy">teljesítménytől függően, átlagos sáv</span>
-        <p>Havi 8-12 ügyfélfolyamat mellett reális. Ha 25 év alatt vagy, SZJA-mentesség is jár.
-          A sáv attól függ, mennyi időt töltesz a munkával.</p>
-      </li>
-      <li class="bv-kartya">
-        <span class="bv-lab">Diák vagy másodállás, második évtől</span>
-        <span class="bv-ert">400-800 <em>e Ft/hó</em></span>
-        <span class="penzjegy">teljesítménytől függően, átlagos sáv</span>
-        <p>Akinek már rutinja van és konzisztensen dolgozik. Van, aki a vizsgaidőszakban lazább
-          hónapot tart, és van, aki akkor is ráerősít.</p>
-      </li>
-    </ul>
-
-    <ul class="bv-chipek" aria-label="Amit a bevétel mellé kapsz">
-      <li>200 000 Ft fix az első hónapban</li>
-      <li>SZJA-mentesség 25 éves korig</li>
-      <li>Negyedéves bónuszok</li>
-      <li>Apple eszköztámogatás</li>
-      <li>Ösztöndíjas MNB-képzés (60 000 Ft)</li>
-      <li>Megbízási szerződés</li>
-    </ul>
-
-    <p class="jogi-jegy">A bemutatott összegek tájékoztató jellegűek és nem garantáltak. Az
-      eredmény függ a ráfordított időtől, a megszerzett tudástól, az ügyfélfolyamatok számától és
-      az egyéni teljesítménytől. A konkrét feltételeket és a szerződés típusát az interjún vesszük
-      végig, írásban is.</p>
-
     <div class="bv-kiemelt">
-    <h3 class="bv-cim">Diákévek után főállású ajánlataink</h3>
+    <h3 class="bv-cim">Hova vezet a pálya 2-4 év után?</h3>
     <p class="bv-be">A diák és másodállású évek nálunk nem csak ugródeszka, hanem egy tudatosan
       felépített karrierpálya első lépései. A cél az, hogy a tehetséges, elkötelezett kollégáknak
       kiszámítható, hosszú távú perspektívát adjunk.</p>
@@ -2260,6 +2705,11 @@ section[id],[id]{ scroll-margin-top:84px; }
       </button>
     </div>
     </div>
+
+    <p class="jogi-jegy">A bemutatott összegek tájékoztató jellegűek és nem garantáltak. Az
+      eredmény függ a ráfordított időtől, a megszerzett tudástól, az ügyfélfolyamatok számától és
+      az egyéni teljesítménytől. A konkrét feltételeket és a szerződés típusát az interjún vesszük
+      végig, írásban is.</p>
 
 <!-- a ket hosszabb magyarazat szovege: a felugro ablak innen veszi at,
      keresok szamara is olvashato marad, mert a jelolesben van -->
@@ -2319,57 +2769,6 @@ section[id],[id]{ scroll-margin-top:84px; }
   </article>
 </div>
 
-    <details class="nyit nyit-sotet bv-diak" data-ev="diak_nyitas">
-      <summary>Diák vagyok: miben más ez, mint egy klasszikus diákmunka?</summary>
-      <div class="nyit-be">
-        <div class="bv-tabla-keret">
-          <table class="bv-tabla">
-            <caption class="vh">Klasszikus diákmunka és a nálunk végzett munka összehasonlítása</caption>
-            <thead>
-              <tr><td></td><th scope="col">Klasszikus diákmunka</th><th scope="col">Nálunk</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Kereset</th>
-                <td data-fej="Klasszikus diákmunka">Kb. 2 000-2 500 Ft/óra, fix összeg</td>
-                <td data-fej="Nálunk">150-600 000 Ft/hó teljesítmény alapon: nem az óra, hanem az eredmény számít</td>
-              </tr>
-              <tr>
-                <th scope="row">Készségek</th>
-                <td data-fej="Klasszikus diákmunka">Többnyire rutinfeladatok: kiszolgálás, bevételezés, raktár, műszakok</td>
-                <td data-fej="Nálunk">Valós szakmai tapasztalat: tárgyalástechnika, ügyfélkezelés, pénzügyi elemzés,
-                  önéletrajzba kerülő kompetenciák</td>
-              </tr>
-              <tr>
-                <th scope="row">Beosztás</th>
-                <td data-fej="Klasszikus diákmunka">Fix műszak, leadott beosztás szerint, a vizsgaidőszak sem kivétel</td>
-                <td data-fej="Nálunk">Saját időgazdálkodás: vizsgaidőszakban lazíthatsz, utána ráerősíthetsz</td>
-              </tr>
-              <tr>
-                <th scope="row">Hosszú táv</th>
-                <td data-fej="Klasszikus diákmunka">Alap referencia és pénz, diploma után rendszerint vége</td>
-                <td data-fej="Nálunk">Kiépített kapcsolatrendszer, skálázható vezetői program, és a főállású opció
-                  a diploma után is megmarad</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4 class="bv-alcim">Praktikus infók diákoknak</h4>
-        <ul class="bv-infok">
-          <li><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg>
-            <div><b>Rugalmas munkaidő</b>
-            Heti 15-20 óra a saját idősávodban, a vizsgaidőszak sem probléma.</div></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-pin"></use></svg>
-            <div><b>Helyszín</b>
-            XI. kerület, Gellérthegy. Közel a BME, az ELTE, a Corvinus, a PPKE, a MATE és a KRE.</div></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-sunrise"></use></svg>
-            <div><b>Nulláról indítunk</b>
-            Nem előírás a szakmai tapasztalat, a felkészítést tőlünk kapod meg.</div></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-certificate"></use></svg>
-            <div><b>Két finanszírozott képesítés</b>
-            A betanulás végén kapod meg, piacképes, önéletrajzba kerülő bizonyítványok.</div></li>
-        </ul>
       </div>
     </details>
   </div>
@@ -2379,14 +2778,18 @@ section[id],[id]{ scroll-margin-top:84px; }
 <section class="sec sec-feher" id="dontes">
   <div class="wrap">
     <h2 class="sec-cim">Kinek való ez, és kinek nem?</h2>
+    <p class="sec-alcim">Nem kell kész pénzügyi szakértőként érkezned. Ha kíváncsi vagy, szeretsz
+      emberekkel dolgozni és hajlandó vagy fejlődni, minden szakmai segítséget megkapsz az
+      induláshoz.</p>
+
     <div class="ketoszlop">
       <div class="oszlop oszlop-ok">
         <h3><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Neked való lehet, ha</h3>
         <ul>
-          <li>szeretsz emberekkel dolgozni</li>
-          <li>hajlandó vagy pénzügyi témákat tanulni</li>
-          <li>vállalod az önálló időbeosztás felelősségét</li>
-          <li>elfogadod a teljesítményarányos bevételt</li>
+          <li>szeretsz emberekkel dolgozni: kérdezel, figyelsz, jól kommunikálsz</li>
+          <li>kíváncsi vagy, és hajlandó vagy pénzügyi témákat tanulni</li>
+          <li>hetente előre tervezhető időt tudsz szánni a munkára</li>
+          <li>elfogadod a teljesítményarányos bevételt és a felelősséget a saját eredményeidért</li>
           <li>hosszabb távban gondolkodsz</li>
         </ul>
       </div>
@@ -2402,20 +2805,18 @@ section[id],[id]{ scroll-margin-top:84px; }
       </div>
     </div>
 
+    <ul class="adunk-sav" aria-label="Amit mi adunk hozzá">
+      <li><svg class="i" aria-hidden="true"><use href="#i-users"></use></svg><span><b>Mentor az első lépéstől</b> az első ügyfélhelyzetekben sem maradsz egyedül</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-book"></use></svg><span><b>Gyakorlati betanulás</b> lépésről lépésre tanulod meg a szakmát</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg><span><b>Rugalmas időbeosztás</b> egyetem vagy másik munka mellett is</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-chart-line"></use></svg><span><b>Valódi fejlődési út</b> szakértői vagy vezetői irányba</span></li>
+    </ul>
+
     <p class="dontes-zaro">Ha a jobb oldalon ismersz magadra, mondd el nyugodtan az interjún.
       Az interjú célja, hogy mindkét fél nyugodtan eldönthesse, van-e értelme közösen folytatni.</p>
   </div>
 </section>
 
-<!-- ══ ÁTVEZETŐ ═════════════════════════════════════════════════════ -->
-<section class="atvezeto">
-  <div class="wrap">
-    <p class="at-cim">Eddig stimmel?</p>
-    <p class="at-szoveg">Az első interjú körülbelül 30 perc, és arról szól, hogy kölcsönösen
-      megnézzük, van-e közös ügyünk.</p>
-    <button type="button" class="btn btn-fo" data-book data-ev="cta_kozepso">Lefoglalom az interjú időpontomat</button>
-  </div>
-</section>
 
 <!-- ══ 8. KOLLÉGÁINK SZEMÉLYES TÖRTÉNETEI ══════════════════════════
      Keskeny sav: csak arcok, nev es pozicio. A tortenet felugro
@@ -2430,22 +2831,22 @@ section[id],[id]{ scroll-margin-top:84px; }
       <li><button type="button" class="arc" data-tort="t-gentischer" data-ev="tortenet">
         <picture><source srcset="/assets/kar-13.webp" type="image/webp"><img src="/assets/kar-13.jpg" width="300" height="354" loading="lazy" decoding="async" alt=""></picture>
         <span class="arc-nev">Gentischer Richárd</span>
-        <span class="arc-poz">Területi igazgató</span>
+        <span class="arc-poz">Igazgató</span>
       </button></li>
       <li><button type="button" class="arc" data-tort="t-angelcsev" data-ev="tortenet">
         <picture><source srcset="/assets/kar-14.webp" type="image/webp"><img src="/assets/kar-14.jpg" width="300" height="449" loading="lazy" decoding="async" alt=""></picture>
         <span class="arc-nev">Angelcsev Zoé</span>
-        <span class="arc-poz">Fiókvezető</span>
+        <span class="arc-poz">Branch manager</span>
       </button></li>
       <li><button type="button" class="arc" data-tort="t-steinmetz" data-ev="tortenet">
         <picture><source srcset="/assets/kar-15.webp" type="image/webp"><img src="/assets/kar-15.jpg" width="300" height="449" loading="lazy" decoding="async" alt=""></picture>
         <span class="arc-nev">Steinmetz Edvárd</span>
-        <span class="arc-poz">Fiókvezető</span>
+        <span class="arc-poz">Branch manager</span>
       </button></li>
       <li><button type="button" class="arc" data-tort="t-hollo" data-ev="tortenet">
         <picture><source srcset="/assets/kar-16.webp" type="image/webp"><img src="/assets/kar-16.jpg" width="300" height="451" loading="lazy" decoding="async" alt=""></picture>
         <span class="arc-nev">Holló Bernadett</span>
-        <span class="arc-poz">Fiókvezető</span>
+        <span class="arc-poz">Branch manager</span>
       </button></li>
       <li><button type="button" class="arc" data-tort="t-hajszter" data-ev="tortenet">
         <picture><source srcset="/assets/kar-17.webp" type="image/webp"><img src="/assets/kar-17.jpg" width="160" height="160" loading="lazy" decoding="async" alt=""></picture>
@@ -2459,7 +2860,7 @@ section[id],[id]{ scroll-margin-top:84px; }
 <!-- a tortenetek szovege: a felugro ablak innen veszi at, keresok szamara
      is olvashato marad, mert a jelolesben van, nem szkriptben -->
 <div class="tort-tar" hidden>
-  <article id="t-gentischer" data-nev="Gentischer Richárd" data-poz="Területi igazgató" data-kep="/assets/kar-13.jpg">
+  <article id="t-gentischer" data-nev="Gentischer Richárd" data-poz="Igazgató" data-kep="/assets/kar-13.jpg">
     <p>Tizenkilenc évesen, baráti ajánlásra kezdtem 2015 decemberében. Fél év gyakornoki munka
       után főállásra váltottam. Az elején az volt a nehéz, hogy vállalkozói fejjel kellett
       gondolkodnom, miközben még tanultam a szakmát.</p>
@@ -2470,7 +2871,7 @@ section[id],[id]{ scroll-margin-top:84px; }
       ugyanúgy csinálod.</p>
   </article>
 
-  <article id="t-angelcsev" data-nev="Angelcsev Zoé" data-poz="Fiókvezető" data-kep="/assets/kar-14.jpg">
+  <article id="t-angelcsev" data-nev="Angelcsev Zoé" data-poz="Branch manager" data-kep="/assets/kar-14.jpg">
     <p>Amikor felvettek az egyetemre, jelentkeztem több helyre is dolgozni, viszont a korábbi
       tapasztalataimból tudtam, hogy a hagyományos diákmunkánál valamivel többre vágyom.</p>
     <p>Az elején az volt a nehéz, hogy többet kellett tanulnom és többet dolgoznom, mint a
@@ -2481,7 +2882,7 @@ section[id],[id]{ scroll-margin-top:84px; }
       kamatozik, csak nem azonnal.</p>
   </article>
 
-  <article id="t-steinmetz" data-nev="Steinmetz Edvárd" data-poz="Fiókvezető" data-kep="/assets/kar-15.jpg">
+  <article id="t-steinmetz" data-nev="Steinmetz Edvárd" data-poz="Branch manager" data-kep="/assets/kar-15.jpg">
     <p>2023-ban, suli mellett kezdtem asszisztensi feladatokkal. Eredetileg honvédelmi pályára
       készültem, jelentkeztem is a közszolgálati egyetemre.</p>
     <p>Az első hónapokban a fegyelem volt a nehéz: senki nem szólt rám, ha valamit nem csináltam
@@ -2490,12 +2891,12 @@ section[id],[id]{ scroll-margin-top:84px; }
       be.</p>
   </article>
 
-  <article id="t-hollo" data-nev="Holló Bernadett" data-poz="Fiókvezető" data-kep="/assets/kar-16.jpg">
+  <article id="t-hollo" data-nev="Holló Bernadett" data-poz="Branch manager" data-kep="/assets/kar-16.jpg">
     <p>2022-ben még a gyermekeimmel voltam otthon, és a COVID után kerestem, hol tudnék stabil
       jövőképpel elhelyezkedni. Egy ismeretlen szám hívott, és onnan indult az egész.</p>
     <p>A legnehezebb a kezdés ritmusa volt két gyerek mellett: meg kellett tanulnom heti szinten
       védeni azt a néhány órát.</p>
-    <p>Három év közös munka után ma saját fiókvezetőségem van, és tudom, hogy a rendszeresség
+    <p>Három év közös munka után ma branch managerként a saját csapatomat vezetem, és tudom, hogy a rendszeresség
       többet ér a nagy hajráknál.</p>
   </article>
 
@@ -2658,87 +3059,117 @@ section[id],[id]{ scroll-margin-top:84px; }
     <p class="sec-alcim">Ezek hangzanak el a leggyakrabban az első beszélgetéseken.</p>
 
     <div class="gyik-lista">
+      <div class="gy-csoport">
+        <h3 class="gy-csoport-cim">A munka és az időbeosztás</h3>
+        <ul class="gy-kerdesek">
+          <li><button type="button" class="gy-k" data-info="gy-1" data-ev="gyik">Mennyire stabil ez a szakma?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-2" data-ev="gyik">Mennyi időt kell hetente rászánnom?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-3" data-ev="gyik">Kell pénzügyi tapasztalat?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+        </ul>
+      </div>
 
-      <details class="gy" data-ev="gyik">
-        <summary>Mennyire stabil ez a szakma?</summary>
-        <div class="gy-be">
+      <div class="gy-csoport">
+        <h3 class="gy-csoport-cim">Bevétel és jogviszony</h3>
+        <ul class="gy-kerdesek">
+          <li><button type="button" class="gy-k" data-info="gy-4" data-ev="gyik">Milyen jogviszonyban dolgoznék?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-5" data-ev="gyik">Honnan jön a bevétel?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-6" data-ev="gyik">Mikor keletkezik bevételed?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-7" data-ev="gyik">Miért mindegy, melyik terméket ajánlod?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+        </ul>
+      </div>
+
+      <div class="gy-csoport">
+        <h3 class="gy-csoport-cim">Képzés és eszközök</h3>
+        <ul class="gy-kerdesek">
+          <li><button type="button" class="gy-k" data-info="gy-8" data-ev="gyik">Milyen képzés és vizsga szükséges?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-9" data-ev="gyik">Kell saját laptop vagy más eszköz?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+        </ul>
+      </div>
+
+      <div class="gy-csoport">
+        <h3 class="gy-csoport-cim">Indulás</h3>
+        <ul class="gy-kerdesek">
+          <li><button type="button" class="gy-k" data-info="gy-10" data-ev="gyik">Mi történik az első interjún?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+          <li><button type="button" class="gy-k" data-info="gy-11" data-ev="gyik">Mikor lehet elkezdeni?<svg class="i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="info-tar" hidden>
+      <article id="gy-1" data-cim="Mennyire stabil ez a szakma?">
           <p>A banki és biztosítási szektor kiemelkedő forgalmú, a magánszemélyek és
             vállalkozások mindennapi életének szerves része, nem egy múló trendről van szó.
             A független pénzügyi elemzők és tanácsadók iránti kereslet ma nagyobb, mint valaha:
             a fogyasztók egyre tudatosabban hasonlítanak össze minden terméket.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Milyen jogviszonyban dolgoznék?</summary>
-        <div class="gy-be">
+        
+      </article>
+      <article id="gy-2" data-cim="Mennyi időt kell hetente rászánnom?">
+          <p>Diákként és másodállásban jellemzően heti 10-16 óra. Ennél többre is van lehetőség.
+            Átmenetileg kevesebb is megoldható, például vizsgaidőszakban, de tartósan nem, mert
+            az ügyfeleket időben ki kell szolgálni.</p>
+        
+      </article>
+      <article id="gy-3" data-cim="Kell pénzügyi tapasztalat?">
+          <p>Nem. A kezdő kollégák elemzői pozícióban indulnak, és onnan fejlődnek tovább. Nem
+            neked kell kitalálnod a jó megoldást, hanem a jó kérdéseket feltenned egy kész
+            keretrendszer szerint. A szakmai részt a betanulás és a mentor adja.</p>
+        
+      </article>
+      <article id="gy-4" data-cim="Milyen jogviszonyban dolgoznék?">
           <p>Nem alkalmazotti jogviszonyról van szó, hanem szerződéses együttműködésről.
             <!-- ELLENŐRIZENDŐ TARTALOM: a szerződés pontos típusa (megbízási, vállalkozási,
                  egyéb), a szükséges adószám vagy vállalkozói forma, és a munkatársat terhelő
                  költségek megadása szükséges. -->
             A szerződés pontos típusát, a feltételeit és a vele járó kötelezettségeket az
             interjún vesszük végig, írásban is.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Mennyi időt kell hetente rászánnom?</summary>
-        <div class="gy-be">
-          <p>Diákként és másodállásban jellemzően heti 10-16 óra. Ennél többre is van lehetőség.
-            Átmenetileg kevesebb is megoldható, például vizsgaidőszakban, de tartósan nem, mert
-            az ügyfeleket időben ki kell szolgálni.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Kell pénzügyi tapasztalat?</summary>
-        <div class="gy-be">
-          <p>Nem. A kezdő kollégák elemzői pozícióban indulnak, és onnan fejlődnek tovább. Nem
-            neked kell kitalálnod a jó megoldást, hanem a jó kérdéseket feltenned egy kész
-            keretrendszer szerint. A szakmai részt a betanulás és a mentor adja.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Milyen képzés és vizsga szükséges?</summary>
-        <div class="gy-be">
+        
+      </article>
+      <article id="gy-5" data-cim="Honnan jön a bevétel?">
+          <p>A hazai és európai szabályozás szerint a tanácsadó vagy közvetítő díjazása a banki és biztosítási termék árazásába van beépítve. Az ügyfél a tanácsadásért külön nem fizet, a tanácsadó sikerdíjat kap.</p>
+        
+      </article>
+      <article id="gy-6" data-cim="Mikor keletkezik bevételed?">
+          <p>Akkor, ha az általad kísért ügyfélfolyamat sikerrel zárul. Nincs garantált havi bér és nincs órabér, helyette egy felfelé nyitott karrierstruktúrát kapsz, szerződésben garantált előléptetési feltételekkel, ami azoknak igazán előnyös, akik alapvetően szeretnek dolgozni.</p>
+        
+      </article>
+      <article id="gy-7" data-cim="Miért mindegy, melyik terméket ajánlod?">
+          <p>Ugyanazt a díjazást kapjuk minden szolgáltatótól, ezért nincs pénzügyi érdek egyik termék mellett sem, a sikerdíj mértékét pedig jogszabály korlátozza.</p>
+        
+      </article>
+      <article id="gy-8" data-cim="Milyen képzés és vizsga szükséges?">
           <p>A pénzügyi közvetítői tevékenységhez jogszabályban előírt hatósági képzés és
-            sikeres vizsga szükséges. A felkészülés online zajlik.
-            A képzéshez <b>60 000 Ft ösztöndíjat</b> adunk.
-            <!-- ELLENŐRIZENDŐ TARTALOM: a kepzes idotartama, dija es az esetleges mentessegi
-                 feltetelek hiteles MNB-forrast igenyelnek, mert a diploma szerinti automatikus
-                 mentesseg nem altalanos szabaly. -->
-            A képzés pontos időtartamát, díját és az esetleges mentességi feltételeket az
-            interjún, hivatalos tájékoztatóval együtt adjuk át.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Kell saját laptop vagy más eszköz?</summary>
-        <div class="gy-be">
+            sikeres vizsga szükséges. A tanfolyam és a vizsga a saját akadémiánkon elvégezhető:
+            4 napos képzés és egy órás vizsgaalkalom. A teljes költsége 45 000 Ft, amire
+            <b>60 000 Ft ösztöndíjat</b> adunk a hallgatóinknak. A képzés pontos időtartamát,
+            díját és az esetleges mentességi feltételeket az interjún, hivatalos tájékoztatóval
+            együtt adjuk át.</p>
+        
+      </article>
+      <article id="gy-9" data-cim="Kell saját laptop vagy más eszköz?">
           <p>Igen, egy saját laptop szükséges, amely böngészőt és táblázatkezelőt futtat. Külön
             szoftvert nem kell ismerned, a saját rendszereink használatát betanítjuk.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Mi történik az első interjún?</summary>
-        <div class="gy-be">
+        
+      </article>
+      <article id="gy-10" data-cim="Mi történik az első interjún?">
           <p>Körülbelül 30 perc, kötetlen beszélgetés. Nem kell rá különösebben felkészülnöd:
             megnézzük együtt, hol találunk közös nevezőket, te pedig felteszed a kérdéseidet.
             A második kör a konkrét folyamatokról és az együttműködés kereteiről szól.</p>
-        </div>
-      </details>
-
-      <details class="gy" data-ev="gyik">
-        <summary>Mikor lehet elkezdeni?</summary>
-        <div class="gy-be">
+        
+      </article>
+      <article id="gy-11" data-cim="Mikor lehet elkezdeni?">
           <p>A betanulás rugalmasan indítható, a képzési csoportok rendszeresen indulnak.
             A konkrét kezdési dátumot a második interjúkör után egyeztetjük, a te
             időbeosztásodhoz igazítva.</p>
-        </div>
-      </details>
+        
+      </article>
+    </div>
 
+    <div class="gy-segit">
+      <p class="gy-segit-cim">Nem találod a kérdésed?</p>
+      <p>Az első interjún bármit megkérdezhetsz, vagy írj nekünk előtte.</p>
+      <button type="button" class="btn btn-fo" data-book data-ev="cta_gyik">Lefoglalom az interjú időpontomat</button>
+      <a class="gy-segit-link" href="mailto:gentischer.info@ovb.hu" data-ev="email_gyik">Inkább írok előbb egy emailt</a>
     </div>
   </div>
 </section>
@@ -2889,6 +3320,21 @@ section[id],[id]{ scroll-margin-top:84px; }
   </div>
 </div>
 
+<!-- ══ POZÍCIÓ ABLAK ══════════════════════════════════════════════
+     A három pozíció részleteit mutatja kéthasábosan. A tartalmat a
+     .poz-tar blokk adott eleme adja. ══════════════════════════════ -->
+<div class="fablak pablak" id="pablak" hidden>
+  <div class="fablak-hatter" data-zar></div>
+  <div class="fablak-doboz pab-doboz" role="dialog" aria-modal="true"
+       aria-labelledby="pablak-cim" tabindex="-1">
+    <button type="button" class="fablak-x" data-zar aria-label="Bezárom az ablakot">
+      <svg class="i" aria-hidden="true"><use href="#i-x"></use></svg>
+    </button>
+    <h2 class="vh" id="pablak-cim"></h2>
+    <div class="pab-tartalom" id="pablak-tartalom"></div>
+  </div>
+</div>
+
 <!-- ══ SZÖVEGES ABLAK ══════════════════════════════════════════════
      Hosszabb magyarazatokhoz. A cimet es a tartalmat az .info-tar
      blokk adott eleme adja, ugyanazzal a viselkedessel, mint a tobbi
@@ -2925,7 +3371,7 @@ section[id],[id]{ scroll-margin-top:84px; }
           <picture><source srcset="/assets/adv-gentischer-round.webp" type="image/webp"><img src="/assets/adv-gentischer-round.png" width="108" height="108"
                alt="" loading="lazy" decoding="async"></picture>
           <span class="f-nev">Gentischer Richárd</span>
-          <span class="f-poz">Területi igazgató</span>
+          <span class="f-poz">Igazgató</span>
           <svg class="i f-nyil" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
         </a>
       </li>
@@ -2935,7 +3381,7 @@ section[id],[id]{ scroll-margin-top:84px; }
           <picture><source srcset="/assets/adv-angelcsev.webp" type="image/webp"><img src="/assets/adv-angelcsev.png" width="108" height="108"
                alt="" loading="lazy" decoding="async"></picture>
           <span class="f-nev">Angelcsev Zoé</span>
-          <span class="f-poz">Fiókvezető</span>
+          <span class="f-poz">Branch manager</span>
           <svg class="i f-nyil" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
         </a>
       </li>
@@ -2945,7 +3391,7 @@ section[id],[id]{ scroll-margin-top:84px; }
           <picture><source srcset="/assets/adv-steinmetz.webp" type="image/webp"><img src="/assets/adv-steinmetz.png" width="108" height="108"
                alt="" loading="lazy" decoding="async"></picture>
           <span class="f-nev">Steinmetz Edvárd</span>
-          <span class="f-poz">Fiókvezető</span>
+          <span class="f-poz">Branch manager</span>
           <svg class="i f-nyil" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
         </a>
       </li>
@@ -2955,7 +3401,7 @@ section[id],[id]{ scroll-margin-top:84px; }
           <picture><source srcset="/assets/adv-hollo.webp" type="image/webp"><img src="/assets/adv-hollo.png" width="108" height="108"
                alt="" loading="lazy" decoding="async"></picture>
           <span class="f-nev">Holló Bernadett</span>
-          <span class="f-poz">Fiókvezető</span>
+          <span class="f-poz">Branch manager</span>
           <svg class="i f-nyil" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
         </a>
       </li>
@@ -3094,6 +3540,7 @@ section[id],[id]{ scroll-margin-top:84px; }
   var foglalas = Ablak('fablak');
   var tortenet = Ablak('tablak');
   var szoveg = Ablak('sablak');
+  var pozicio = Ablak('pablak');
   /* a videoablak zarasakor ki kell uriteni a keretet, kulonben a lejatszas
      a hatterben folytatodna */
   var videoablak = Ablak('vablak', function () {
@@ -3113,6 +3560,20 @@ section[id],[id]{ scroll-margin-top:84px; }
     szoveg.doboz.scrollTop = 0;
     szoveg.nyit(gomb);
     mer('info_megnyitas', { temakor: forras.getAttribute('data-cim') || '' });
+  }
+
+  /* pozíció részletei: a .poz-tar blokkból, kéthasábos ablakban */
+  function pozNyit(gomb) {
+    if (!pozicio) return;
+    var forras = document.getElementById(gomb.getAttribute('data-poz-nyit'));
+    if (!forras) return;
+    document.getElementById('pablak-cim').textContent = forras.getAttribute('data-cim') || '';
+    var cel = document.getElementById('pablak-tartalom');
+    cel.innerHTML = '';
+    [].forEach.call(forras.children, function (gy) { cel.appendChild(gy.cloneNode(true)); });
+    pozicio.doboz.scrollTop = 0;
+    pozicio.nyit(gomb);
+    mer('pozicio_megnyitas', { pozicio: forras.getAttribute('data-cim') || '' });
   }
 
   /* a tortenet ablak feltoltese a .tort-tar blokkbol */
@@ -3157,6 +3618,8 @@ section[id],[id]{ scroll-margin-top:84px; }
     if (!e.target.closest) return;
     var im = e.target.closest('.ido-nyit');
     if (im) { e.preventDefault(); idoNyit(im); return; }
+    var pz = e.target.closest('[data-poz-nyit]');
+    if (pz) { e.preventDefault(); pozNyit(pz); return; }
     var t = e.target.closest('[data-tort]');
     if (t) { e.preventDefault(); tortenetNyit(t); return; }
     var sz = e.target.closest('[data-info]');
@@ -3305,6 +3768,28 @@ section[id],[id]{ scroll-margin-top:84px; }
       mer('mobilsav_elrejtes');
     });
   }
+
+  /* ── pozíciókártyák: egyforma fejmagasság, egy vonalban álló gombok ── */
+  (function () {
+    var racs = document.querySelector('.poz-racs');
+    if (!racs) return;
+    var kartyak = Array.prototype.slice.call(racs.querySelectorAll('.poz-kartya'));
+    function igazit() {
+      kartyak.forEach(function (k) { var v = k.querySelector('.poz-kinek'); if (v) v.style.minHeight = ''; });
+      if (window.innerWidth <= 940) return;
+      var max = 0, fejek = [];
+      kartyak.forEach(function (k) {
+        var v = k.querySelector('.poz-kinek'); if (!v) return;
+        var fej = v.getBoundingClientRect().bottom - k.getBoundingClientRect().top;
+        fejek.push([v, fej, v.getBoundingClientRect().height]); if (fej > max) max = fej;
+      });
+      fejek.forEach(function (f) { f[0].style.minHeight = (f[2] + (max - f[1])) + 'px'; });
+    }
+    igazit();
+    window.addEventListener('resize', igazit, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(igazit);
+    window.addEventListener('load', igazit);
+  })();
 
   savAllit();
   window.addEventListener('scroll', savAllit, { passive: true });
