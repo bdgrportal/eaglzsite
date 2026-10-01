@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_forras/
+Disallow: /5-9/
+
+Sitemap: https://eaglz.hu/sitemap.xml
