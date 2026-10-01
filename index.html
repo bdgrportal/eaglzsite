@@ -3656,8 +3656,64 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
   .adv-m-stats:has(> div:only-child){ display:inline-grid; min-width:11rem; }
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   23. TANÁCSADÓI KÁRTYÁK KISEBBEN · egyre több kolléga, kevesebb hely
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:1024px){ .adv-grid{ grid-template-columns:repeat(5,1fr) !important; gap:.9rem !important; } }
+@media(min-width:761px) and (max-width:1023px){ .adv-grid{ grid-template-columns:repeat(3,1fr) !important; } }
+.adv-card{ height:250px !important; }
+@media(max-width:760px){ .adv-card{ height:246px !important; } }
+.adv-front{ padding:1.1rem .9rem 1rem !important; }
+.adv-photo{ width:84px !important; height:84px !important; margin-bottom:.7rem !important; }
+.adv-front .adv-name{ font-size:.95rem; min-height:2.4em; line-height:1.2; }
+.adv-front .adv-role{ font-size:.8rem !important; min-height:2.6em; }
+.adv-front .adv-more{ font-size:.72rem; }
+@media(max-width:560px){ .adv-photo{ width:72px !important; height:72px !important; } .adv-card{ height:232px !important; } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   24. MOBIL JAVÍTÁSOK · spórolás-lista kártyákban, videósáv egy kártya
+   ══════════════════════════════════════════════════════════════════════ */
+@media(max-width:1023px){
+  .sav-grid{ gap:.7rem !important; }
+  .sav-item{
+    align-items:center !important; margin:0 !important; padding:1.15rem 1rem 1.2rem !important;
+    background:rgba(255,255,255,.045) !important; border:1px solid rgba(255,255,255,.1) !important;
+    border-radius:14px !important; animation:none !important;
+  }
+  .sav-item:hover{ background:rgba(255,255,255,.045) !important; }
+  .sav-item .sav-badge{ margin:0 auto .2rem !important; }
+  .sav-item .sav-text{ text-align:center !important; }
+}
+@media(max-width:760px){
+  .vid-grid{ gap:1rem !important; padding:.4rem 0 1.2rem !important; scroll-padding:0; }
+  .video-embed{ width:100% !important; scroll-snap-align:center; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   EAGLZ belebegés  ·  minden oldalon az utolsó stílusréteg
+   A tartalomblokkok a görgetéssel a nézetbe érve úsznak be (36 px,
+   0,9 s), egy szülőn belül lépcsőzve. Címek balról, képek enyhe
+   nagyításból. Csökkentett mozgásnál és JS nélkül minden azonnal látszik.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{ --lb-ki:cubic-bezier(.16,1,.3,1); }
+.lb{
+  opacity:0; transform:translate3d(0,36px,0);
+  transition:opacity .9s var(--lb-ki), transform .9s var(--lb-ki);
+  transition-delay:calc(var(--lb-k,0) * 90ms);
+  will-change:opacity,transform;
+}
+.lb.lb-bal{ transform:translate3d(-28px,0,0); }
+.lb.lb-kep{ transform:translate3d(0,24px,0) scale(.96); }
+.lb.lb-lat{ opacity:1; transform:none; }
+.lb.lb-lat.lb-kesz{ will-change:auto; transition-delay:0ms; }
+/* a korábbi halk felúszás (h-be) ezzel nem duplázódik */
+.h-be{ opacity:1 !important; transform:none !important; transition:none !important; }
+@media(prefers-reduced-motion:reduce){ .lb{ opacity:1 !important; transform:none !important; transition:none !important; } }
+.no-js .lb{ opacity:1 !important; transform:none !important; }
+
 </style>
-<meta name="eaglz-build" content="2026-10-01-2044">
+<meta name="eaglz-build" content="2026-10-01-2148">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -4260,7 +4316,7 @@ function toggleTeam(){
 
 <section id="video-testimonial" class="section" style="background:#fff;">
   <div class="container">
-    <div style="text-align:center;"><div class="label-chip chip-teal">Ügyfeleink visszajelzései</div><h2 class="section-title">Akik már végigcsinálták velünk.</h2><p class="section-sub">Hallgass bele ügyfeleink véleményébe!</p></div>
+    <div style="text-align:center;"><div class="label-chip chip-teal">Ügyfeleink visszajelzései</div><h2 class="section-title">Hallgass bele ügyfeleink véleményébe!</h2></div>
     <div class="vid-grid">
       <div class="video-embed">
         <iframe src="https://player.vimeo.com/video/615860220?badge=0&autopause=0&title=0&byline=0&portrait=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Ügyfélvélemény 1" loading="lazy"></iframe>
@@ -4978,32 +5034,6 @@ var ADVISORS = [
     "linkedin": "LINKEDIN_URL_IDE",
     "book": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0J9SG7Wb9aN9EvU0hrp7F8rY_uV0QqeFYwxDbvp7JlW1zrfkCkvjX7wszBL-nrJKlOwE9i3KYq?gv=true",
     "profil": "/tanacsado/bagocsi-renata",
-    "flip": ""
-  },
-  {
-    "name": "NEV_IDE",
-    "role": "Pénzügyi tanácsadó",
-    "cim": "POZICIO_IDE",
-    "photo": "",
-    "tags": [
-      "TAG_IDE"
-    ],
-    "kinek": "KINEK_IDE",
-    "bio": "BEMUTATKOZÓ_IDE",
-    "varos": "IRODA_IDE",
-    "mod": "MOD_IDE",
-    "nyelv": [
-      "NYELV_IDE"
-    ],
-    "mnb": "MNB_SZAM_IDE",
-    "ota": "EV_IDE",
-    "csaladok": "CSALAD_IDE",
-    "valasz": "VALASZIDO_IDE",
-    "email": "EMAIL_IDE",
-    "phone": "TELEFON_IDE",
-    "linkedin": "LINKEDIN_URL_IDE",
-    "book": "BOOKING_URL_IDE",
-    "profil": "PROFIL_URL_IDE",
     "flip": ""
   }
 ];
@@ -6017,6 +6047,67 @@ document.querySelectorAll('[data-upd]').forEach(function(e){ e.textContent = RAT
     clearTimeout(window.__hRacsT);
     window.__hRacsT = window.setTimeout(function () { try { racs(); } catch (e) {} }, 250);
   });
+})();
+
+/* EAGLZ belebegés · a lebeg.css párja. */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var VAL = [
+    'section > .container > *', 'section > .wrap > *', '.section > .container > *', '.sec > .wrap > *',
+    '.adv-grid > *', '.fw-grid > *', '.onl-grid > *', '.stats-inner > *', '.faq-list > *', '.gyik-lista > *', '.sav-grid > *',
+    '.t-racs > *', '.t-lepesek > *', '.poz-racs > *', '.videok > *', '.idorács > *', '.ketoszlop > *', '.adunk-sav > *',
+    '.szakaszok > *', '.rovid > *', '.hero-copy > *', '.hero-grid > *:not(.hero-copy)', '.hero-szoveg > *', '.hero-kartya',
+    '.thero-in > *', '.t-foto', '.t-szamok > *', '.art > *', '.toc', '.kpis > *', '.sz > .cont > *', '.hero > .cont > *'
+  ].join(',');
+  /* rács-burkolók: ezek maguk nem úsznak, a gyerekeik igen (lépcsőzve) */
+  var RACS = '.adv-grid,.fw-grid,.onl-grid,.stats-inner,.faq-list,.gyik-lista,.sav-grid,.t-racs,.t-lepesek,.poz-racs,.videok,.idorács,.ketoszlop,.adunk-sav,.szakaszok,.rovid,.kpis,.hero-grid,.hero-copy,.thero-in,.t-szamok,.vid-grid,.steps-grid,.art';
+  var elemek = document.querySelectorAll(VAL);
+  var szamlalo = new WeakMap(); var lista = [];
+  for (var i = 0; i < elemek.length; i++) {
+    var el = elemek[i];
+    if (el.closest('.ehead, .mhead, .mmob, .mega, .khead, .kmenu, .thead, .fablak, .adv-overlay, .imp-overlay, footer, .tk-szakasz, .t-sav, .t-logok, .partnersav, .eo-wrap')) continue;
+    if (el.matches(RACS)) continue;
+    if (el.classList.contains('lb') || (el.parentElement && el.parentElement.closest('.lb'))) continue;
+    if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.hidden) continue;
+    var r = el.getBoundingClientRect(); if (r.width === 0 && r.height === 0) continue;
+    if (r.height > window.innerHeight * 1.4) continue;
+    var t = window.getComputedStyle(el).transform; if (t && t !== 'none') continue;
+    var p = window.getComputedStyle(el).position; if (p === 'fixed' || p === 'sticky') continue;
+    var sz = el.parentElement; var n = szamlalo.get(sz) || 0; szamlalo.set(sz, n + 1);
+    el.style.setProperty('--lb-k', String(Math.min(n, 7)));
+    el.classList.add('lb');
+    if (/^H[1-3]$/.test(el.tagName) || el.classList.contains('section-title') || el.classList.contains('sec-cim') || el.classList.contains('t-cim')) el.classList.add('lb-bal');
+    if (el.tagName === 'IMG' || el.classList.contains('t-foto') || el.classList.contains('video-embed') || el.classList.contains('vkart')) el.classList.add('lb-kep');
+    lista.push(el);
+  }
+  function mutat(el) {
+    el.classList.add('lb-lat');
+    setTimeout(function () { el.classList.add('lb-kesz'); }, 1400);
+  }
+  if (!('IntersectionObserver' in window)) { lista.forEach(mutat); return; }
+  var io = new IntersectionObserver(function (bej) {
+    bej.forEach(function (b) { if (b.isIntersecting) { mutat(b.target); io.unobserve(b.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+  var varo = [];
+  window.requestAnimationFrame(function () {
+    lista.forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) setTimeout(function () { mutat(el); }, 60);
+      else { io.observe(el); varo.push(el); }
+    });
+  });
+  var kell = false;
+  window.addEventListener('scroll', function () {
+    if (kell) return; kell = true;
+    window.requestAnimationFrame(function () {
+      kell = false;
+      for (var i = varo.length - 1; i >= 0; i--) {
+        var el = varo[i];
+        if (el.classList.contains('lb-lat')) { varo.splice(i, 1); continue; }
+        if (el.getBoundingClientRect().bottom < 0) { mutat(el); io.unobserve(el); varo.splice(i, 1); }
+      }
+    });
+  }, { passive: true });
 })();
 
 </script>
