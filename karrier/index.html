@@ -2124,6 +2124,66 @@ section[id],[id]{ scroll-margin-top:84px; }
 @media(prefers-reduced-motion:reduce){ .lb{ opacity:1 !important; transform:none !important; transition:none !important; } }
 .no-js .lb{ opacity:1 !important; transform:none !important; }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   30. INSTAGRAM-AJÁNLÓ AZ IRODAI VIDEÓK MELLETT
+   ----------------------------------------------------------------------
+   Asztalon a bal hasáb üres részét tölti ki a cím és a bevezető alatt,
+   mobilon a videók után jön. Visszafogott kártya, egyetlen színes pont:
+   az Instagram-logó.
+   ══════════════════════════════════════════════════════════════════════ */
+.insta-kartya{
+  display:grid; grid-template-columns:auto 1fr; align-items:center; gap:.9rem 1rem;
+  margin-top:1.6rem; padding:1.15rem 1.2rem; max-width:420px;
+  background:var(--feher); border:1px solid var(--vonal); border-radius:var(--r-l);
+  box-shadow:var(--sh-1); color:var(--ink); text-decoration:none;
+  transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, border-color .25s;
+}
+.insta-kartya:hover{ transform:translateY(-2px); box-shadow:var(--sh-3); border-color:rgba(221,42,123,.35); }
+.insta-kartya:focus-visible{ outline:3px solid var(--fokusz); outline-offset:3px; }
+.insta-logo{
+  width:52px; height:52px; border-radius:15px; display:grid; place-items:center; flex:none;
+  background:radial-gradient(circle at 30% 107%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);
+  box-shadow:0 6px 16px rgba(214,36,159,.28);
+}
+.insta-logo svg{ width:30px; height:30px; }
+.insta-szoveg{ display:flex; flex-direction:column; gap:.2rem; min-width:0; }
+.insta-cim{ font-family:var(--fd); font-weight:700; font-size:1.02rem; line-height:1.3; color:var(--navy); }
+.insta-nev{ font-size:.86rem; color:var(--ink-3); font-weight:600; }
+.insta-gomb{
+  grid-column:1 / -1; justify-self:start; display:inline-flex; align-items:center; gap:.4rem;
+  min-height:40px; padding:.5rem 1.05rem; border-radius:999px;
+  background:var(--pink); color:#fff; font-weight:700; font-size:.88rem;
+  box-shadow:var(--sh-2); transition:background .2s;
+}
+.insta-gomb svg{ width:15px; height:15px; transition:transform .25s cubic-bezier(.16,1,.3,1); }
+.insta-kartya:hover .insta-gomb{ background:#d63a6c; }
+.insta-kartya:hover .insta-gomb svg{ transform:translate(2px,-2px); }
+@media(min-width:1000px){
+  #irodavideo > .wrap{ grid-template-rows:auto auto 1fr auto; }
+  #irodavideo .insta-kartya{ grid-column:1; grid-row:3; align-self:start; margin-top:1.8rem; }
+}
+@media(max-width:999px){
+  .insta-kartya{ max-width:none; grid-template-columns:auto 1fr auto; }
+  .insta-gomb{ grid-column:auto; justify-self:end; }
+}
+@media(max-width:420px){
+  .insta-kartya{ grid-template-columns:auto 1fr; }
+  .insta-gomb{ grid-column:1 / -1; justify-self:stretch; justify-content:center; }
+}
+
+/* 31. irodai videosor: négy videó egy sorban */
+@media(min-width:1000px){
+  #irodavideo .videok{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.1rem; }
+}
+@media(min-width:701px) and (max-width:999px){
+  #irodavideo .videok{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:.9rem; }
+}
+@media(max-width:700px){
+  #irodavideo .videok{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:.45rem; }
+  #irodavideo .videok .vkart h3{ font-size:.74rem; }
+  #irodavideo .videok .vk-jel{ width:32px; height:32px; }
+}
 </style>
 <meta name="eaglz-build" content="2026-10-01-2146">
 </head>
@@ -2618,16 +2678,31 @@ section[id],[id]{ scroll-margin-top:84px; }
      le semmilyen videófájlt. ══════════════════════════════════════ -->
 <section class="sec sec-vilagos" id="irodavideo">
   <div class="wrap">
-    <h2 class="sec-cim">Nézz be az irodai hétköznapokba</h2>
+    <h2 class="sec-cim">Irodai hétköznapok</h2>
     <p class="sec-alcim">A munka hangulatát nehéz néhány mondatból elképzelni. Ezekben a rövid
-      videókban megmutatjuk, hogyan telik egy átlagos nap, hogyan dolgozunk együtt, és milyen az
-      első időszak a gyakorlatban.</p>
+      videókban megmutatjuk, hogyan telik egy átlagos nap, és hogyan dolgozunk együtt.</p>
 
     <ul class="videok">
       <li class="vkart" data-video="/assets/kar-vid-iroda1.mp4" data-poster="/assets/kar-vid-iroda1.jpg" data-felirat=""><div class="vk-keret vk-t1"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda1.jpg)" aria-label="Lejátszom ezt a videót: Office day"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Office day</h3><p>Egy hétköznap az irodában, a reggeli tervezéstől az utolsó feladatig.</p></li>
       <li class="vkart" data-video="/assets/kar-vid-iroda2.mp4" data-poster="/assets/kar-vid-iroda2.jpg" data-felirat=""><div class="vk-keret vk-t2"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda2.jpg)" aria-label="Lejátszom ezt a videót: After work"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>After work</h3><p>Néhány pillanat abból, hogyan kapcsolódunk ki egy intenzív nap után.</p></li>
       <li class="vkart" data-video="/assets/kar-vid-iroda3.mp4" data-poster="/assets/kar-vid-iroda3.jpg" data-felirat=""><div class="vk-keret vk-t3"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda3.jpg)" aria-label="Lejátszom ezt a videót: Rooftop work"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Rooftop work</h3><p>Amikor a munka kilép az irodából: laptop, panoráma, jó idő.</p></li>
+      <li class="vkart" data-video="/assets/kar-vid-iroda4.mp4" data-poster="/assets/kar-vid-iroda4.jpg" data-felirat=""><div class="vk-keret vk-t4"><button type="button" class="vk-gomb" style="background-image:url(/assets/kar-vid-iroda4.jpg)" aria-label="Lejátszom ezt a videót: Négylábú segítőink"><span class="vk-jel" aria-hidden="true"><svg class="i"><use href="#i-play"></use></svg></span></button></div><h3>Négylábú segítőink</h3><p>Ha találkozol a kiskedvenceinkkel az irodában, ne lepődj meg rajta.</p></li>
     </ul>
+
+    <!-- Instagram-ajánló: asztalon a videók melletti bal hasáb alján, mobilon a videók alatt -->
+    <a class="insta-kartya" href="https://www.instagram.com/eaglzgram/" target="_blank" rel="noopener" data-ev="instagram_karrier"
+       aria-label="Az EAGLZ Instagram oldala (@eaglzgram), új lapon nyílik">
+      <span class="insta-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.05" fill="#fff" stroke="none"/></svg>
+      </span>
+      <span class="insta-szoveg">
+        <span class="insta-cim">Nemrég elindult az instánk, nézz be!</span>
+        <span class="insta-nev">@eaglzgram</span>
+      </span>
+      <span class="insta-gomb">Követem
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </span>
+    </a>
 
     <!-- Iroda-kártya + térkép: egy sorban, azonos magassággal -->
     <div class="iroda-bento" id="iroda">
