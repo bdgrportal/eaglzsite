@@ -3713,7 +3713,7 @@ p,li,h1,h2,h3,h4,h5,span,div,a,td,th,blockquote,figcaption,summary,label{
 .no-js .lb{ opacity:1 !important; transform:none !important; }
 
 </style>
-<meta name="eaglz-build" content="2026-10-02-0640">
+<meta name="eaglz-build" content="2026-10-02-0657">
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hw-pane,.faq-a{display:block!important}.count{visibility:visible!important}</style></noscript>
@@ -5019,6 +5019,30 @@ var ADVISORS = [
     "book": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0J9SG7Wb9aN9EvU0hrp7F8rY_uV0QqeFYwxDbvp7JlW1zrfkCkvjX7wszBL-nrJKlOwE9i3KYq?gv=true",
     "profil": "/tanacsado/bagocsi-renata",
     "flip": ""
+  },
+  {
+    "name": "Tímár Fruzsina",
+    "role": "",
+    "cim": "Asszisztencia · Budapest",
+    "photo": "/assets/adv-timar.jpg",
+    "tags": [],
+    "kinek": "KINEK_IDE",
+    "bio": "BEMUTATKOZÓ_IDE",
+    "varos": "IRODA_IDE",
+    "mod": "MOD_IDE",
+    "nyelv": [],
+    "mnb": "",
+    "ota": "",
+    "csaladok": "",
+    "valasz": "",
+    "email": "gentischer.iroda@ovb.hu",
+    "phone": "+36 30 088 0501",
+    "phone_kiirva": "06 30 088 0501",
+    "linkedin": "",
+    "book": "",
+    "profil": "",
+    "flip": "/assets/adv-timar-flip.jpg",
+    "asszisztens": true
   }
 ];
 
@@ -5193,17 +5217,22 @@ function openAdv(i){
   var how = ['Az első beszélgetés 30-60 perc, díjmentes.',
              'Online vagy az irodában, ahogy neked jobb.',
              'Semmit nem kell aláírnod aznap.'];
-  document.getElementById('advMHow').innerHTML = empty ? '' :
+  var asszisztens = !!a.asszisztens;
+  document.getElementById('advMHow').innerHTML = (empty || asszisztens) ? '' :
     '<div class="adv-m-how">'+how.map(function(t){
       return '<div>'+_IKON.ok+'<span>'+t+'</span></div>'; }).join('')+'</div>';
 
   /* ── gomb es kapcsolat ── */
   var url = _isPh(a.book) ? EAGLZ_BOOKING_FALLBACK : a.book;
-  if(_isPh(a.book) && !empty) hiany.push('saját foglalási naptár');
+  if(_isPh(a.book) && !empty && !a.asszisztens) hiany.push('saját foglalási naptár');
   var label = empty
     ? '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 16.5 12 12l4.5 4.5M12 12V3"/><path d="M4 21h16"/></svg> Érdekel a lehetőség'
     : '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg> Időpontot foglalok';
   if(empty) url = '/karrier';
+  if(asszisztens){
+    label = '<svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg> '+_esc(a.phone_kiirva || a.phone);
+    document.getElementById('advMBook').innerHTML = '<a href="tel:'+String(a.phone).replace(/\s+/g,'')+'">'+label+'</a>';
+  } else
   document.getElementById('advMBook').innerHTML =
     '<a href="'+url+'"'+(empty ? '' : ' target="_blank" rel="noopener"')+'>'+label+'</a>';
 
@@ -5218,13 +5247,13 @@ function openAdv(i){
              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Írok neki</a>');
     if(!_isPh(a.linkedin))
       c.push('<a class="adv-cbtn" href="'+a.linkedin+'" target="_blank" rel="noopener">LinkedIn</a>');
-    else hiany.push('LinkedIn');
+    else if(!a.asszisztens) hiany.push('LinkedIn');
   }
   var cEl = document.getElementById('advMContact');
   cEl.innerHTML = c.join('');
   cEl.style.display = c.length ? '' : 'none';
 
-  document.getElementById('advMNote').textContent = empty ? '' :
+  document.getElementById('advMNote').textContent = (empty || asszisztens) ? '' :
     (_isPh(a.book)
       ? 'A foglalás a közös EAGLZ naptárba fut be, onnan osztjuk le. Díjmentes és kötelezettségmentes.'
       : 'Díjmentes és kötelezettségmentes.');
